@@ -13,7 +13,7 @@
 		<org.aspectj-version>1.9.9.1</org.aspectj-version>
 		<org.slf4j-version>1.7.36</org.slf4j-version>
 		<com.oracle.database.security>21.6.0.0.1</com.oracle.database.security>
-	</properties>
+	</properties>	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>

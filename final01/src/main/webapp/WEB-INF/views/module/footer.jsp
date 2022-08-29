@@ -3,7 +3,7 @@
 <%@ include file="../module/head.jsp" %>
 
 <footer>
-<br><br><br><br><br><br><br><br><br><br><br><br><br>
+
 	<hr>
 
 	<table>
@@ -36,4 +36,5 @@
 			<td>이메일 : xxxx@xxx.xxx</td>
 		</tr>
 	</table>
+	<br>
 </footer>
