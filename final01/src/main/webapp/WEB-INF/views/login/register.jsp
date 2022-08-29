@@ -7,14 +7,14 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>로그인</title>
+	<title>회원가입</title>
 	<%@ include file="../module/head.jsp" %>
 </head>
 <body>
 	<header class="mb-3"></header>
 	<c:url var="mainUrl" value="." />
 	<section class="container" style="width: 480px;">
-		<c:url var="loginUrl" value="/login" />
+		<c:url var="loginUrl" value="/register" />
 		<form action="${loginUrl}" method="post">
 		<div class="center-block">
 			<h1 align="center"><a href="${mainUrl}/main">지구마켓</a></h1>
@@ -30,13 +30,40 @@
 				<input class="form-control is-invalid" type="text" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
 				<label for="id_password">비밀번호</label>
 			</div>
+			<div class="form-floating mb-2">
+				<input class="form-control is-invalid" type="text" id="id_confirmpassword" name="confirmpassword" value="" placeholder="비밀번호를 입력하세요">
+				<label for="id_confirmpassword">비밀번호 확인</label>
+			</div>
 			<br>
-			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" type="submit">로그인</button>
+			
+			<div class="form-floating mb-2">
+				<input class="form-control is-invalid" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요">
+				<label for="id_name">닉네임</label>
 			</div>
-			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='idpwfind'">아이디/비밀번호 찾기</button>
+			<br>
+			<div class="form-floating mb-2">
+				<input class="form-control is-invalid" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요">
+				<label for="id_email">이메일</label>
 			</div>
+			<br>
+			<div class="form-floating mb-2">
+				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요">
+				<label for="id_phone">전화번호</label>
+			</div>
+			<br>
+			<div class="form-floating mb-2">
+				<input class="form-control is-invalid" type="text" id="id_address" name="address" value="" placeholder="주소를 입력하세요">
+				<label for="id_address">주소</label>
+			</div>
+			
+			<br><br>
+			
+			<div class="mb-2 text-end">
+				<button class="btn btn-outline-primary bluebtn" type="submit">가입하기</button>
+			</div>
+			
+			<br>
+			
 		</form>
 	</section>
 	<br><br><br><br>
