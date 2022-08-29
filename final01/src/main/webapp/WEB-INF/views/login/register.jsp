@@ -66,5 +66,11 @@
 			
 		</form>
 	</section>
+	<br><br><br><br>
+	<br><br><br><br>
+	<br><br><br><br>
+	<br><br><br><br>
+	<br><br><br><br>
+	<%@ include file="../module/footer.jsp" %>
 </body>
 </html>
