@@ -6,6 +6,8 @@
 		<setting name="jdbcTypeForNull" value="NULL"/>
 	</settings>
 	<typeAliases>
+		<typeAlias type="com.myweb.home.login.model.AccountDTO" alias="accountDto" />
 		<typeAlias type="com.myweb.home.notice.model.NoticeDTO" alias="noticeDto" />
+		
 	</typeAliases>
 </configuration>
