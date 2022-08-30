@@ -12,7 +12,7 @@
 	
 	
 </head>
-<script>
+<script type="text/javascript">
 $(document).ready(function(){
 	 
     // 라디오버튼 클릭시 이벤트 발생
