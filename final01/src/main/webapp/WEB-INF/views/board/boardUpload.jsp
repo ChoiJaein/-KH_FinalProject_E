@@ -95,6 +95,7 @@ $(document).ready(function(){
 		</tr>
 		
 	</table>
+		<button class="btn btn-primary" onclick="location.href='mainpage'">취소</button>
 		<button class="btn btn-primary" type="submit">등록</button>
 	</div>
 	</section>
