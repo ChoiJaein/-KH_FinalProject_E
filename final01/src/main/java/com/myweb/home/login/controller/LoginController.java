@@ -78,16 +78,16 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-    //아이디,비밀번호 찾기 폼으로 이동
-	@RequestMapping(value = "/login/idfind", method =RequestMethod.GET)
-	public String idfind() throws Exception {
-		return "/login/idfind";
+    //아이디 찾기 폼으로 이동
+	@RequestMapping(value = "/login/idfindform", method =RequestMethod.GET)
+	public String idfindform() throws Exception {
+		return "/login/idfindform";
 	}
 	
-	//아이디,비밀번호 찾기 폼으로 이동
-	@RequestMapping(value = "/login/pwfind", method =RequestMethod.GET)
-	public String pwfind() throws Exception {
-		return "/login/idfind";
+	//비밀번호 찾기 폼으로 이동
+	@RequestMapping(value = "/login/pwfindform", method =RequestMethod.GET)
+	public String pwfindform() throws Exception {
+		return "/login/pwfindform";
 	}
 
 	

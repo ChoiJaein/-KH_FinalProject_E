@@ -36,7 +36,8 @@
 			</div>
 		</form>
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='login/idpwfind'">아이디/비밀번호 찾기</button>
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='login/idfindform'"> 아이디 찾기</button>
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='login/pwfindform'"> 비밀번호 찾기</button>
 			</div>
 	</section>
 	<br><br><br><br>
