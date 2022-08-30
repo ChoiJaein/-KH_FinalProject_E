@@ -78,7 +78,7 @@ function pwCheck(){
 	</div>
 		
 	<div>
-		<button class="btn btn-primary button-right" onclick="location.href='mainpage'">취소</button>
+		<button class="btn btn-primary button-right" onclick="location.href='/'">취소</button>
 		<button class="btn btn-primary button-right" type="submit" id="signout-btn" disabled>회원탈퇴</button>
 		<label class="button-right">탈퇴하실 경우 복구하실 수 없습니다.</label>
 	</div>
