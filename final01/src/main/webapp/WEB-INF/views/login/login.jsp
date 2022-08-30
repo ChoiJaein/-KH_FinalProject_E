@@ -34,10 +34,10 @@
 			<div class="mb-2 text-end">
 				<button class="btn btn-outline-primary bluebtn" type="submit">로그인</button>
 			</div>
-			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='idpwfind'">아이디/비밀번호 찾기</button>
-			</div>
 		</form>
+			<div class="mb-2 text-end">
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='login/idpwfind'">아이디/비밀번호 찾기</button>
+			</div>
 	</section>
 	<br><br><br><br>
 	<br><br><br><br>
