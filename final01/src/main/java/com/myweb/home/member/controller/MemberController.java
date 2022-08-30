@@ -25,7 +25,7 @@ public class MemberController {
 	@GetMapping(value="/register")
 	public void getRegister() throws Exception {
 		logger.info("get register");
-	}
+	} 
 	
 	// 회원가입 post. 회원가입 버튼 누르면 POST메소드
 	@PostMapping(value="/register")

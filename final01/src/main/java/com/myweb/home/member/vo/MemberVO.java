@@ -59,7 +59,7 @@ public class MemberVO {
 
 	@Override
 	public String toString() {
-		return "RegisterVO [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
+		return "MemberVO [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
 				+ ", address=" + address + ", phone=" + phone + "]";
 	}
 	
