@@ -9,7 +9,9 @@
 	       AND  PASSWORD = #{password}
  </select>
  <!-- 아이디 찾기 -->
- <select id="find_Id" parameterType="String" resultType="String">
-		SELECT ID FROM ACCOUNT WHERE EMAIL = #{email}
+ <select id="find_id" parameterType="String" resultType="accountDto">
+		SELECT *
+		FROM ACCOUNT 
+		WHERE EMAIL = #{email}
  </select>
   </mapper>

@@ -15,11 +15,10 @@
 <body>
   <div align="center">
 	<p id ="title" name = "title" align ="center"></p> 
-	<form action ="../login/find_Id" method = "post">
 	<h2>아이디 찾기</h2>
 	<p>아이디는 가입하신 이메일을 통해 찾을 수 있습니다.</p>
-	<div id ="find_IdFormDiv" name="find_Id" class="">
-    <form id ="find_Id" name="find_Id">
+	<div id ="find_idFormDiv" name="find_id" class="">
+    <form id ="find_id" name="find_id">
      <table>
          <tr>
              <td>
@@ -32,8 +31,8 @@
     
      <br>
        <br>
-	     <input type="button" id="find_IdBtn" value="아이디 찾기" size= 50px;> <br><br>
-	     <input type="button" id="goLoginBtn" value="취소" size= 50px;>
+	     <input type="button" id="find_idBtn" value="아이디 찾기" size= 50px;> <br><br>
+	     <input type="button" id="goLoginBtn" value="취소"size= 50px;>
   </form>
  </div>
  </div>

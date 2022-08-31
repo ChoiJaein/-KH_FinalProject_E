@@ -1,9 +1,8 @@
 package com.myweb.home.login.controller;
 
 
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -15,12 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.myweb.home.login.vo.LoginVO;
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.login.service.LoginService;
+import com.myweb.home.login.vo.LoginVO;
 
 
 
@@ -91,6 +89,20 @@ public class LoginController {
 	public String pwfindform() throws Exception {
 		return "/login/pwfindform";
 	}
-
+	
+	
+	@RequestMapping(value = "/login/find_id" , method = RequestMethod.GET)
+	public String find_id() throws Exception{
+		return "/login/find_id";
+	}
+	
+	
+	@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
+	public String find_id(HttpServletResponse response
+			, @RequestParam("email") AccountDTO accountDTO){
+		
+		return "/login/find_id";
+	
+	}
 	
 		}

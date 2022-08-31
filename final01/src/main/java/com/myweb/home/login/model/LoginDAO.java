@@ -23,6 +23,10 @@ public class LoginDAO {
 		return result;
 	}
 
-
+	public AccountDTO find_id(AccountDTO  data) {
+		logger.info("find_id({}", data);
+		AccountDTO result = session.selectOne("loginMapper.find_id", data);
+		return result;
+	}
 
 }

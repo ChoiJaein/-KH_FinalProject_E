@@ -1,7 +1,10 @@
 package com.myweb.home.login.service;
 
+
+import java.io.PrintWriter;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -40,8 +43,27 @@ public class LoginService {
 		 }
 		 
 	 }
+    
+	public boolean find_id(HttpSession session, AccountDTO accountDTO) {
+		
+		logger.info("find_id({},{}", session,accountDTO);
+		AccountDTO data = new AccountDTO();
+		data.setEmail(data.getEmail());
+		 
+		data = dao.find_id(data);
+		 if(data == null) {
+			
+			
+			 return false;
+			 
+		 }else {
+			session.setAttribute("find_idData", data);
+			
+			return true;
+		 }
+		
+	}
+	}
 
+	
 
-
-
-}
