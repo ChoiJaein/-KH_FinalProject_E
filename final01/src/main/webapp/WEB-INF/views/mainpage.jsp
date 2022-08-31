@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>메인화면</title>
-	<%@ include file="./module/head.jsp" %>
+	<%@ include file="../module/head.jsp" %>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	
 </head>
@@ -35,28 +35,28 @@
 		<table class="table">
 		
 			<tr class="text-center">
-				<td class="hover" onclick="location.href='${mainDigital}'"><span class="material-symbols-outlined ">photo_camera</span>
+				<td class="" onclick="location.href='${mainDigital}'"><span class="material-symbols-outlined ">photo_camera</span>
 					<br><label class="font-large">가전/디지털</label></td>
-				<td class="hover" onclick="location.href='${mainClothes}'"><span class="material-symbols-outlined">laundry</span>
+				<td class="" onclick="location.href='${mainClothes}'"><span class="material-symbols-outlined">laundry</span>
 					<br><label>의류</label></td>
-				<td class="hover" onclick="location.href='${mainBag}'"><span class="material-symbols-outlined">shopping_bag</span>
+				<td class="" onclick="location.href='${mainBag}'"><span class="material-symbols-outlined">shopping_bag</span>
 					<br><label>가방</label></td>
-				<td class="hover" onclick="location.href='${mainAccessories}'"><span class="material-symbols-outlined">headphones</span>
+				<td class="" onclick="location.href='${mainAccessories}'"><span class="material-symbols-outlined">headphones</span>
 					<br><label>액세서리</label></td>
-				<td class="hover" onclick="location.href='${mainBaby}'"><span class="material-symbols-outlined">pregnant_woman</span>
+				<td class="" onclick="location.href='${mainBaby}'"><span class="material-symbols-outlined">pregnant_woman</span>
 					<br><label>유아/출산</label></td>
 			</tr>
 	
 			<tr class="text-center">
-				<td class="hover" onclick="location.href='${mainPet}'"><span class="material-symbols-outlined">pets</span>
+				<td class="" onclick="location.href='${mainPet}'"><span class="material-symbols-outlined">pets</span>
 					<br><label>반려동물상품</label></td>
-				<td class="hover" onclick="location.href='${mainFurniture}'"><span class="material-symbols-outlined">bed</span>
+				<td class="" onclick="location.href='${mainFurniture}'"><span class="material-symbols-outlined">bed</span>
 					<br><label>가구</label></td>
-				<td class="hover" onclick="location.href='${mainBeauty}'"><span class="material-symbols-outlined">face_retouching_natural</span>
+				<td class="" onclick="location.href='${mainBeauty}'"><span class="material-symbols-outlined">face_retouching_natural</span>
 					<br><label>뷰티/미용</label></td>
-				<td class="hover" onclick="location.href='${mainOffice}'"><span class="material-symbols-outlined">print</span>
+				<td class="" onclick="location.href='${mainOffice}'"><span class="material-symbols-outlined">print</span>
 					<br><label>사무용품</label></td>
-				<td class="hover" onclick="location.href='${mainArt}'"><span class="material-symbols-outlined">image</span>
+				<td class="" onclick="location.href='${mainArt}'"><span class="material-symbols-outlined">image</span>
 					<br><label>예술/악기</label></td>
 			</tr>
 	
@@ -71,17 +71,53 @@
 		
 		<table class="table">
 		<c:if test="${not empty datas}">
-				<c:forEach items="${datas}" var="data">
 			<tr class="text-center">
+				<c:forEach items="${datas}" var="5">
 				<td onclick="location.href='/detail?id=${data.bid}'">
-					사진코드 들어갈 자리<br>
+					<img src='${data.url}' alt="Nothing" width="200px" height="200px"><br>
 					${data.btitle}<br>
 					${data.price}<br>
 					${data.buytype}
 				</td>
-			</tr>
 				</c:forEach>
+			</tr>
 			</c:if>
+		<c:if test="${datas == null}">
+			
+		<tr class="text-center">
+			<td>
+				<div style="background-color:skyblue; width:200px; height:200px"></div>
+				상품을 찾을수 없음<br>
+				0원<br>
+				택배배송
+			</td>
+			<td>
+				<div style="background-color:skyblue; width:200px; height:200px"></div>
+				상품을 찾을수 없음<br>
+				0원<br>
+				택배배송
+			</td>
+			<td>
+				<div style="background-color:skyblue; width:200px; height:200px"></div>
+				상품을 찾을수 없음<br>
+				0원<br>
+				택배배송
+			</td>
+			<td>
+				<div style="background-color:skyblue; width:200px; height:200px"></div>
+				상품을 찾을수 없음<br>
+				0원<br>
+				택배배송
+			</td>
+			<td>
+				<div style="background-color:skyblue; width:200px; height:200px"></div>
+				상품을 찾을수 없음<br>
+				0원<br>
+				택배배송
+			</td>
+		</tr>
+		
+		</c:if>
 		</table>
 	
 	</div>
