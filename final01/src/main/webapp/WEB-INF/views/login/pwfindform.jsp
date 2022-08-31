@@ -15,10 +15,10 @@
 <body>
 	   <div align="center">
        <p id ="title" name = "title" align ="center"></p> 
-		<form action="../login/find_pw" method="post">
+		<form action="../login/find_Pw" method="post">
 		<h2>비밀번호 찾기</h2>
 		<p>비밀번호는  가입하신 아이디와 이메일을 통해 찾을 수 있습니다.</p>
-		<div id ="find_PwFormDiv" name="find_Pw" class=""/>
+		<div id ="find_PwFormDiv" name="find_Pw" class="">
 		<form id ="find_Pw" name="find_Pw">
 	        <table>
 		         <tr><td>

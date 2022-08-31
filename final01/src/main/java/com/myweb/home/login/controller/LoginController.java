@@ -79,10 +79,12 @@ public class LoginController {
 	}
 	
     //아이디 찾기 폼으로 이동
-	@RequestMapping(value = "/login/idfindform", method =RequestMethod.GET)
+	@GetMapping(value = "/login/idfindform")
 	public String idfindform() throws Exception {
 		return "/login/idfindform";
 	}
+	
+	
 	
 	//비밀번호 찾기 폼으로 이동
 	@RequestMapping(value = "/login/pwfindform", method =RequestMethod.GET)
