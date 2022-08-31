@@ -13,7 +13,7 @@
 	
 </head>
 <body>
-	<header></header>
+	<header><%@ include file="./module/navigation.jsp" %></header>
 	<br><br><br><br><br><br>
 	<section class="container">
 	<div class="mb-1">
