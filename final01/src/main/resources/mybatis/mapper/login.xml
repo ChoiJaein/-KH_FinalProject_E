@@ -10,7 +10,7 @@
  </select>
  <!-- 아이디 찾기 -->
  <select id="find_id" parameterType="String" resultType="accountDto">
-		SELECT *
+		SELECT ACCOUNTID
 		FROM ACCOUNT 
 		WHERE EMAIL = #{email}
  </select>

@@ -43,26 +43,28 @@ public class LoginService {
 		 }
 		 
 	 }
-    
-	public boolean find_id(HttpSession session, AccountDTO accountDTO) {
-		
-		logger.info("find_id({},{}", session,accountDTO);
-		AccountDTO data = new AccountDTO();
-		data.setEmail(data.getEmail());
+	
+
+	public boolean find_id(HttpSession session, String email) {
+		logger.info("find_id({},{}",session, email);
+		 AccountDTO data = new AccountDTO();
+		 data.setEmail(data.getEmail());
 		 
-		data = dao.find_id(data);
-		 if(data == null) {
+		 data = dao.find_id(data);
+		 System.out.println("출력입니다!!111");
+		 if(data != null) {
+			 session.setAttribute("loginData", data);
+			 System.out.println("출력입니다!!222");
+			 return true;
 			
-			
+		 } else {
 			 return false;
-			 
-		 }else {
-			session.setAttribute("find_idData", data);
-			
-			return true;
+		     
 		 }
-		
 	}
+
+
+	
 	}
 
 	

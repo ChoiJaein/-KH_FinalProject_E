@@ -1,6 +1,8 @@
 package com.myweb.home.login.controller;
 
 
+import java.io.IOException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -90,19 +92,35 @@ public class LoginController {
 		return "/login/pwfindform";
 	}
 	
-	
+	//아이디 찾기 성공
 	@RequestMapping(value = "/login/find_id" , method = RequestMethod.GET)
 	public String find_id() throws Exception{
 		return "/login/find_id";
 	}
 	
-	
+	//아이디 찾기 성공
 	@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
-	public String find_id(HttpServletResponse response
-			, @RequestParam("email") AccountDTO accountDTO){
-		
-		return "/login/find_id";
 	
-	}
+	public String find_id(String email
+			, HttpServletRequest request
+			, HttpSession session) {
+		
+		logger.info("find_id({})",email);
+		
+	
+		boolean result = service.find_id(session,email);
+		
+		if(result) {
+			   //성공 
+			 return "/login/find_id";
+		   } else {
+			   //실패
+			  
+			   return"login/login";
+		   }
+		
+		
+		
 	
 		}
+}
