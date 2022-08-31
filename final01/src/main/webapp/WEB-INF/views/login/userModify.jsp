@@ -19,10 +19,10 @@
 		<div class="div-bc div-left">
 		
 			<div class="div-middle">
-				<div class="div-profile">
-					<img src="${photoupload.url}" alt="프로필사진" />
+				<div class="div1-profile-pic">
+					<img src="${data.url}" alt="프로필사진" />
 				</div>
-				<div class="div-profile">
+				<div class="div1-profile">
 					<input type="text" id="id_name" name="name" value="${data.name}" >
 				</div>
 			</div>
