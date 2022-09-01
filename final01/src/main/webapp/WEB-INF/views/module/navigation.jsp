@@ -10,7 +10,7 @@
 
 function search() {
 	var searchvalue = document.getElementById('searchvalue').value;
-	window.location.href = '${mainUrl}/search?'+searchvalue;
+	window.location.href = '${mainUrl}/list?search='+searchvalue;
 }
 
 </script>
