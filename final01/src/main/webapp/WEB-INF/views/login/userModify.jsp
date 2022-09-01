@@ -43,7 +43,7 @@
     <div class="mb-4 mt-4">
        <div style="background-color:rgba(233,236,239)">
 <!--이미지 경로체크 -->       
-          <img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="../static/img/modify/profile.png" 
+          <img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${data.url}" 
                    accept="image/png, image/jpeg, image/jpg" width="250" height="250">
 <!--닉네임 value값입력 -->
           <div>
