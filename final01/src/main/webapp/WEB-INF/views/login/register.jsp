@@ -65,39 +65,39 @@
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
 				<label for="id_accountid">아이디</label>
-				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
+				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요" required>
 				<input type="button" onclick="idOverlap()" value="중복확인" />
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<label for="id_password">비밀번호</label>
-				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
+				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요" required>
 			</div>
 			<div class="form-floating mb-2">
 				<label for="id_passwordConfirm">비밀번호 확인</label>
-				<input class="form-control" type="password" id="id_passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요" onkeyup="passConfirm()">
+				<input class="form-control" type="password" id="id_passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요" onkeyup="passConfirm()" required>
 				<span id ="confirmMsg"></span>
 			</div>
 			<br>
 			
 			<div class="form-floating mb-2">
 				<label for="id_name">닉네임</label>
-				<input class="form-control is-invalid" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요">
+				<input class="form-control is-invalid" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요" required>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<label for="id_email">이메일</label>
-				<input class="form-control is-invalid" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요">
+				<input class="form-control is-invalid" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요" required>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<label for="id_phone">전화번호</label>
-				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요">
+				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요" required>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<label for="id_address">주소</label>
-				<input class="form-control is-invalid" type="text" id="id_address" name="address" value="" placeholder="주소를 입력하세요">
+				<input class="form-control is-invalid" type="text" id="id_address" name="address" value="" placeholder="주소를 입력하세요" required>
 			</div>
 			
 			<br><br>
