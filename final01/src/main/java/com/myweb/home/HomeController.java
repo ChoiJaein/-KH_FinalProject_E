@@ -26,6 +26,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	@GetMapping("/main")
+	public String main() {
+		
+		return "mainpage";
+	}
+	
 	
 
 	

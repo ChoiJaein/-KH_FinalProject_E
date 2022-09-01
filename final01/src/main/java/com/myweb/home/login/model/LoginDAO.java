@@ -18,15 +18,16 @@ public class LoginDAO {
 	private SqlSession session;
 
 	public AccountDTO selectLogin(AccountDTO data) {
-		logger.info("selectLogin({},{}",data);
+		logger.info("selectLogin({},{})",data);
 		AccountDTO result = session.selectOne("loginMapper.selectLogin",data);
 		return result;
 	}
 
-	public AccountDTO find_id(AccountDTO data){
-		logger.info("find_id({}", data);
-		AccountDTO result = session.selectOne("loginMapper.find_id", data);
-		 System.out.println("출력입니다!!333");
+
+
+	public AccountDTO find_id(String email) {
+		logger.info("find_id({})", email);
+    	AccountDTO result = session.selectOne("loginMapper.find_id", email);
 		return result;
 	}
 

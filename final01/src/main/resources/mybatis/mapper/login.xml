@@ -9,9 +9,13 @@
 	       AND  PASSWORD = #{password}
  </select>
  <!-- 아이디 찾기 -->
- <select id="find_id" parameterType="String" resultType="accountDto">
+ <select id="find_id" parameterType="accountDto" resultType="accountDto">
 		SELECT ACCOUNTID
 		FROM ACCOUNT 
 		WHERE EMAIL = #{email}
  </select>
+ <update id="update_pw" parameterType="accountDto">
+		UPDATE ACCOUNT SET PASSWORD = #{password}
+		WHERE  ACCOUNTID = #{acccounId}
+ </update>
   </mapper>

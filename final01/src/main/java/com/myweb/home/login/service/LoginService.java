@@ -46,26 +46,28 @@ public class LoginService {
 	
 
 	public boolean find_id(HttpSession session, String email) {
-		logger.info("find_id({},{}",session, email);
+		logger.info("find_id({})", email);
 		 AccountDTO data = new AccountDTO();
-		 data.setEmail(data.getEmail());
+		 data.setEmail(email);
+		
 		 
-		 data = dao.find_id(data);
-		 System.out.println("출력입니다!!111");
-		 if(data != null) {
-			 session.setAttribute("loginData", data);
-			 System.out.println("출력입니다!!222");
-			 return true;
+		 data = dao.find_id(email);
+		 if(data == null) {
+			 
+			 return false;
 			
 		 } else {
-			 return false;
-		     
+			 session.setAttribute("emailData", data);
+			 return true;
 		 }
+	} 
+			
+		     
+		
 	}
 
 
 	
-	}
 
 	
 

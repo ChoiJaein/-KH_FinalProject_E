@@ -86,12 +86,6 @@ public class LoginController {
 	
 	
 	
-	//비밀번호 찾기 폼으로 이동
-	@RequestMapping(value = "/login/pwfindform", method =RequestMethod.GET)
-	public String pwfindform() throws Exception {
-		return "/login/pwfindform";
-	}
-	
 	//아이디 찾기 성공
 	@RequestMapping(value = "/login/find_id" , method = RequestMethod.GET)
 	public String find_id() throws Exception{
@@ -107,20 +101,27 @@ public class LoginController {
 		
 		logger.info("find_id({})",email);
 		
-	
+		
 		boolean result = service.find_id(session,email);
 		
 		if(result) {
-			   //성공 
-			 return "/login/find_id";
-		   } else {
-			   //실패
-			  
-			   return"login/login";
-		   }
-		
+			//성공 
+			return "/login/find_id";
+		} else {
+			//실패
+			
+			return"login/login";
+		}
+	}
+	
+	//비밀번호 찾기 폼으로 이동
+	@RequestMapping(value = "/login/pwfindform", method =RequestMethod.GET)
+	public String pwfindform() throws Exception {
+		return "/login/pwfindform";
+	}
+	
 		
 		
 	
-		}
+		
 }

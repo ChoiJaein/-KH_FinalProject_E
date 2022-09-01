@@ -14,9 +14,12 @@
 			</div>
 			<div>
 				<h5>
-					${ accountId }
+				<c:if test="${not empty sessionScope.emailData}">
+	        회원님의 아이디는    ${sessionScope.emailData.accountId} 입니다.
+	             
+	            </c:if>
 				</h5>
-				
+			
 	
 </head>
 <body>
