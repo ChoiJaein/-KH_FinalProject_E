@@ -14,6 +14,7 @@ function search() {
 }
 
 </script>
+<br><br>
 <nav class="navbar">
 	<div class="container">
 			<a class="navbar-brand" href="/">지구마켓</a>
@@ -35,5 +36,6 @@ function search() {
 				</c:if>
 		
 		</div>
-
 </nav>
+<br>
+<hr>
