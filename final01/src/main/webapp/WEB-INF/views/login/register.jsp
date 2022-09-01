@@ -10,50 +10,75 @@
 	<title>회원가입</title>
 	<%@ include file="../module/head.jsp" %>
 </head>
+
+<script type="text/javascript">
+	function idOverlap() {
+				console.log("idOverlap 호출")
+				console.log("아이디 입력 값 " + register.accountid.value)
+			$.ajax({
+				type : "post",
+				url : "idOverlap",
+				data : {"accountid" : register.accountid.value},
+				dataType : "text",
+				success : function(data) {
+					if(data == "1") {
+						alert("사용 가능한 아이디입니다.");
+					} else {
+						alert("이미 사용중인 아이디입니다.");
+					}
+				},
+				error : function() {
+					alert("아이디 중복 확인 실패");
+				}
+			});
+	}
+</script>
+
 <body>
 	<header class="mb-3"></header>
 	<c:url var="mainUrl" value="." />
 	<section class="container" style="width: 480px;">
 		<c:url var="loginUrl" value="/register" />
-		<form action="${loginUrl}" method="post">
+		<form action="${loginUrl}" name="register" method="post">
 		<div class="center-block">
 			<h1 align="center"><a href="${mainUrl}/main">지구마켓</a></h1>
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
 				<label for="id_accountid">아이디</label>
+				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
+				<input type="button" onclick="idOverlap()" value="중복확인" />
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
 				<label for="id_password">비밀번호</label>
+				<input class="form-control is-invalid" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
 			</div>
-			<div class="form-floating mb-2">
+			<!-- <div class="form-floating mb-2">
 				<input class="form-control is-invalid" type="text" id="id_confirmpassword" name="confirmpassword" value="" placeholder="비밀번호를 입력하세요">
 				<label for="id_confirmpassword">비밀번호 확인</label>
-			</div>
+			</div> -->
 			<br>
 			
 			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요">
 				<label for="id_name">닉네임</label>
+				<input class="form-control is-invalid" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요">
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요">
 				<label for="id_email">이메일</label>
+				<input class="form-control is-invalid" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요">
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요">
 				<label for="id_phone">전화번호</label>
+				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요">
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_address" name="address" value="" placeholder="주소를 입력하세요">
 				<label for="id_address">주소</label>
+				<input class="form-control is-invalid" type="text" id="id_address" name="address" value="" placeholder="주소를 입력하세요">
 			</div>
 			
 			<br><br>

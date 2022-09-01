@@ -7,6 +7,8 @@
 	</settings>
 	<typeAliases>
 	<typeAlias type="com.myweb.home.login.model.AccountDTO" alias="accountDto" />
+	<typeAlias type="com.myweb.home.member.vo.MemberVO" alias="memberVo" />
+	
 	<!--
 		<typeAlias type="com.myhome.web.dept.model.DeptDTO" alias="deptDto" />
 		<typeAlias type="com.myhome.web.emp.model.EmpDTO" alias="empDto" />

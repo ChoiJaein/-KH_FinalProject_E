@@ -2,19 +2,33 @@ package com.myweb.home.member.vo;
 
 public class MemberVO {
 
-	private String accountId;
+	private String accountid;
 	private String password;
 	private String name;
 	private String email;
-	private String address;
 	private String phone;
+	private String address;
 	
-	public String getAccountId() {
-		return accountId;
+	public MemberVO() {
+		
 	}
 	
-	public void setAccountId(String accountId) {
-		this.accountId = accountId;
+	public MemberVO(String accountid, String password, String name, String email, String phone, String address) {
+		super();
+		this.accountid = accountid;
+		this.password = password;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
+	}
+
+	public String getaccountid() {
+		return accountid;
+	}
+	
+	public void setaccountid(String accountid) {
+		this.accountid = accountid;
 	}
 	
 	public String getPassword() {
@@ -41,14 +55,6 @@ public class MemberVO {
 		this.email = email;
 	}
 	
-	public String getAddress() {
-		return address;
-	}
-	
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	
 	public String getPhone() {
 		return phone;
 	}
@@ -56,10 +62,18 @@ public class MemberVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+	
+	public String getAddress() {
+		return address;
+	}
+	
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	@Override
 	public String toString() {
-		return "MemberVO [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
+		return "MemberVO [accountid=" + accountid + ", password=" + password + ", name=" + name + ", email=" + email
 				+ ", address=" + address + ", phone=" + phone + "]";
 	}
 	
