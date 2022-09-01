@@ -12,6 +12,7 @@
 </head>
 
 <script type="text/javascript">
+	/* 아이디 중복 확인 */
 	function idOverlap() {
 				console.log("idOverlap 호출")
 				console.log("아이디 입력 값 " + register.accountid.value)
@@ -31,6 +32,23 @@
 					alert("아이디 중복 확인 실패");
 				}
 			});
+	}
+	
+	/* 비밀번호 확인 */
+	function passConfirm() {
+		var password = document.getElementById('id_password');
+		var passwordConfirm = document.getElementById('id_passwordConfirm');
+		var confirmMsg = document.getElementById('confirmMsg');
+		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
+		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+		
+		if(password.value == passwordConfirm.value) {
+			confirmMsg.style.color = correctColor;
+			confirmMsg.innerHTML = "비밀번호 일치";
+		} else {
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML = "비밀번호 불일치";
+		}
 	}
 </script>
 
@@ -53,12 +71,13 @@
 			<br>
 			<div class="form-floating mb-2">
 				<label for="id_password">비밀번호</label>
-				<input class="form-control is-invalid" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
+				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
 			</div>
-			<!-- <div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_confirmpassword" name="confirmpassword" value="" placeholder="비밀번호를 입력하세요">
-				<label for="id_confirmpassword">비밀번호 확인</label>
-			</div> -->
+			<div class="form-floating mb-2">
+				<label for="id_passwordConfirm">비밀번호 확인</label>
+				<input class="form-control" type="password" id="id_passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요" onkeyup="passConfirm()">
+				<span id ="confirmMsg"></span>
+			</div>
 			<br>
 			
 			<div class="form-floating mb-2">
