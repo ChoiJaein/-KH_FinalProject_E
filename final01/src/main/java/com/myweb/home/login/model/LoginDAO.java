@@ -2,6 +2,9 @@ package com.myweb.home.login.model;
 
 
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -30,5 +33,18 @@ public class LoginDAO {
     	AccountDTO result = session.selectOne("loginMapper.find_id", email);
 		return result;
 	}
+
+	
+	
+
+
+	public AccountDTO find_pw(AccountDTO data) throws Exception{
+		logger.info("find_pw({},{})", data);
+		AccountDTO result = session.selectOne("loginMapper.find_pw", data);
+		return result;
+	}
+
+
+
 
 }

@@ -14,8 +14,11 @@
 		FROM ACCOUNT 
 		WHERE EMAIL = #{email}
  </select>
- <update id="update_pw" parameterType="accountDto">
-		UPDATE ACCOUNT SET PASSWORD = #{password}
-		WHERE  ACCOUNTID = #{acccounId}
- </update>
+ <!-- 비밀번호 찾기 -->
+ <select id="find_pw" parameterType="accountDto" resultType="accountDto">
+		SELECT PASSWORD
+		FROM ACCOUNT 
+		WHERE ID = #{accountId} 
+		AND EMAIL = #{email}
+ </select>
   </mapper>

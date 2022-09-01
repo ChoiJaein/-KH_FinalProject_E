@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -120,8 +121,31 @@ public class LoginController {
 		return "/login/pwfindform";
 	}
 	
+	//비밀번호 찾기 성공
+	@RequestMapping(value = "/login/find_pw", method =RequestMethod.GET)
+	public String pw_find() throws Exception {
+		return "/login/find_pw";
+	}
+	
+	//비밀번호 찾기 성공
+	@RequestMapping(value = "/login/find_pw", method =RequestMethod.POST)
+	public String pw_find(LoginVO loginVo 
+			, HttpServletRequest request
+			, HttpSession session) throws Exception{
+	
+		logger.info("find_pw({},{})",loginVo);
+		System.out.println("안녕1");
+        boolean result = service.find_pw(session,loginVo);
 		
-		
+		if(result) {
+			//성공 
+			return "/login/find_pw";
+		} else {
+			//실패
+			
+			return"login/login";
+		}
+	}
 	
 		
 }

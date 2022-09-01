@@ -2,6 +2,7 @@ package com.myweb.home.login.service;
 
 
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
@@ -17,7 +18,7 @@ import com.myweb.home.login.model.LoginDAO;
 import com.myweb.home.login.vo.LoginVO;
 
 @Service
-public class LoginService {
+public class LoginService<accountDTO> {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginService.class);
 	
@@ -62,9 +63,30 @@ public class LoginService {
 		 }
 	} 
 			
+	
+
+
+	public  boolean find_pw(HttpSession session, LoginVO loginVo){
+		logger.info("find_pw({},{})", loginVo);
+		 AccountDTO data = new AccountDTO();
+		 data.setAccountId(loginVo.getAccountId());
+		 data.setEmail(loginVo.getEmail());
+		 
+		 data = dao.selectLogin(data);
+		 
+		 if(data != null) {
+			 session.setAttribute("loginData", data);
+			 return true;
+			
+		 } else {
+			 return false;
 		     
-		
+		 }
 	}
+	}
+	
+
+
 
 
 	

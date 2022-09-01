@@ -35,7 +35,10 @@
      <br>
        <br>
 	     <button class="btn btn-outline-primary bluebtn"  id="find_idBtn" value="아이디 찾기" >아이디찾기</button> <br><br>
+	     <button class="btn btn-outline-primary bluebtn"  id="reset" onclick= "location.href='../login'" value="취소" >취소</button> <br><br>
   </form>
+   </div>
+   </div>
  </section>
     <br><br><br><br>
 	<br><br><br><br>
