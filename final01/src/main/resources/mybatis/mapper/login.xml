@@ -5,7 +5,7 @@
   <mapper namespace="loginMapper">
  <select id="selectLogin" parameterType="accountDto" resultType="accountDto">
 	     SELECT * FROM ACCOUNT
-		 WHERE ACCOUNTID = #{accountId}
+		 WHERE ACCOUNTID = #{accountid}
 	       AND  PASSWORD = #{password}
  </select>
  <!-- 아이디 찾기 -->
@@ -18,7 +18,7 @@
  <!-- 비밀번호 찾기 -->
  <select id="find_pw" parameterType="java.util.Map" resultType="accountDto">
 		SELECT * FROM ACCOUNT                              
-		WHERE ACCCOUNTID = #{accountId} 
+		WHERE ACCCOUNTID = #{accountid} 
 		AND EMAIL = #{email}
  </select>
   </mapper>

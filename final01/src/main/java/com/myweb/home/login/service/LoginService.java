@@ -29,7 +29,7 @@ public class LoginService<accountDTO> {
 		 
 		logger.info("getLogin({},{}",session, loginVo);
 		 AccountDTO data = new AccountDTO();
-		 data.setAccountId(loginVo.getAccountId());
+		 data.setaccountid(loginVo.getAccountid());
 		 data.setPassword(loginVo.getPassword());
 		 
 		 data = dao.selectLogin(data);
@@ -72,7 +72,7 @@ public class LoginService<accountDTO> {
 			//map: 아이디, 이메일
 			logger.info("find_id({},{})",map);
 			AccountDTO data = new AccountDTO();
-			data.setAccountId(data.getAccountId());
+			data.setaccountid(data.getaccountid());
 			data.setEmail(data.getEmail());
 				
 			

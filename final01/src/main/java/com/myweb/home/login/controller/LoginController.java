@@ -57,7 +57,7 @@ public class LoginController {
 			, HttpServletRequest request
 			, HttpSession session) {
 	
-		logger.info("login({},{})",loginVo.getAccountId(), loginVo.getPassword());
+		logger.info("login({},{})",loginVo.getAccountid(), loginVo.getPassword());
 		boolean result = service.getLogin(session,loginVo);
 		ModelAndView mav = new ModelAndView();
 		
@@ -87,9 +87,9 @@ public class LoginController {
 	}
 	
     //아이디 찾기 폼으로 이동
-	@GetMapping(value = "/login/idfindform")
-	public String idfindform() throws Exception {
-		return "/login/idfindform";
+	@RequestMapping(value = "/login/findIdPw",method=RequestMethod.GET)
+	public String findIdPw() throws Exception {
+		return "/login/findIdPw";
 	}
 	
 	
@@ -136,15 +136,15 @@ public class LoginController {
 	//비밀번호 찾기 성공
 	@RequestMapping(value = "/login/find_pw", method =RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView find_pw(String accountId, @RequestParam String email
+	public ModelAndView find_pw(String accountid, @RequestParam String email
 			, HttpServletRequest request
 			, HttpSession session){
 	
-		logger.info("find_pw({},{})",accountId, email);
+		logger.info("find_pw({},{})",accountid, email);
 		
 		ModelAndView mav = new ModelAndView();
 		Map <String, String> map = new HashMap<String, String>();
-		map.put("accountId", accountId);
+		map.put("accountid", accountid);
 		map.put("email", email);
 		AccountDTO accountDTO;
 		return mav;

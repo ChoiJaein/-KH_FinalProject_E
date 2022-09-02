@@ -21,7 +21,7 @@
 </p>
 
 	<c:if test="${not empty sessionScope.loginData}">
-	      ${sessionScope.loginData.accountId} 님 환영합니다.
+	      ${sessionScope.loginData.accountid} 님 환영합니다.
 	      <a href="logout">로그아웃</a>
 	</c:if>
 	
