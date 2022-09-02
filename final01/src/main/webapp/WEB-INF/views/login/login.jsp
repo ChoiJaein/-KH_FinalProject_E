@@ -23,7 +23,7 @@
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_accountid" name="accountId" value="" placeholder="아이디를 입력하세요">
+				<input class="form-control is-invalid" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
 				<label for="id_accountid">아이디</label>
 			</div>
 			<br>
@@ -36,9 +36,12 @@
 				<button class="btn btn-outline-primary bluebtn" type="submit">로그인</button>
 			</div>
 		</form>
+			
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" id="find_id_btn" onclick="location.href='login/idfindform'" > 아이디 찾기</button>
-				<button class="btn btn-outline-primary bluebtn" id="find_pw_btn" onclick="location.href='login/pwfindform'"> 비밀번호 찾기</button>
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='findIdPw'">아이디/비밀번호 찾기</button>
+			</div>
+			<div class="mb-2 text-end">
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='register'">회원가입</button>
 			</div>
 	</section>
 	<br><br><br><br>
