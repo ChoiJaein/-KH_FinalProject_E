@@ -6,10 +6,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
+   <meta charset="UTF-8">
 	<title>로그인</title>
-	<%@ include file="../module/head.jsp" %>
+	<%@ include file="../module/head.jsp" %>  
 </head>
+ </script> 
 <body>
 	<header class="mb-3"></header>
 	<c:url var="mainUrl" value="." />
@@ -36,8 +37,8 @@
 			</div>
 		</form>
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='login/idfindform'"> 아이디 찾기</button>
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='login/pwfindform'"> 비밀번호 찾기</button>
+				<button class="btn btn-outline-primary bluebtn" id="find_id_btn" onclick="location.href='login/idfindform'" > 아이디 찾기</button>
+				<button class="btn btn-outline-primary bluebtn" id="find_pw_btn" onclick="location.href='login/pwfindform'"> 비밀번호 찾기</button>
 			</div>
 	</section>
 	<br><br><br><br>

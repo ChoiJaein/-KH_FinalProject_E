@@ -35,16 +35,15 @@ public class LoginDAO {
 	}
 
 	
-	
 
-
-	public AccountDTO find_pw(AccountDTO data) throws Exception{
-		logger.info("find_pw({},{})", data);
-		AccountDTO result = session.selectOne("loginMapper.find_pw", data);
+	public List<AccountDTO> find_pw(Map<String, String> map) {
+		logger.info("find_pw({},{})", map);
+		System.out.println("ssss111");
+		List<AccountDTO> result = session.selectList("loginMapper.find_pw", map);
 		return result;
 	}
 
-
+	
 
 
 }

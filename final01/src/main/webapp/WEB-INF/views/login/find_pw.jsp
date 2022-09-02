@@ -14,8 +14,8 @@
 			</div>
 			<div>
 				<h5>
-				<c:if test="${not empty sessionScope.loginData}">
-	        회원님의 비밀번호    ${sessionScope.loginData.password} 입니다.
+				<c:if test="${not empty sessionScope.passwordData}">
+	        회원님의 비밀번호    ${sessionScope.passwordData.password} 입니다.
 	             
 	            </c:if>
 				</h5>

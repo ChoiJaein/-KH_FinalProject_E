@@ -5,16 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
-<head>
-    
-    
+<head> 
 	<meta charset="UTF-8">
 	<title>비밀번호 찾기</title>
 	<%@ include file="../module/head.jsp" %>
 </head>
 <body>
 <header class="mb-3"></header>
-  <section>
+       <section>
 		<c:url var="find_pwUrl" value="/login/find_pw/"/>
 		<form action="${find_pwUrl}" method="post">
 		<div id ="find_pw" name="find_pw">
@@ -22,17 +20,18 @@
 		<p id ="title" name = "title" align ="center"></p> 
 		<h2>비밀번호 찾기</h2>
 		<p>비밀번호는  가입하신 아이디와 이메일을 통해 찾을 수 있습니다.</p>
+	        <div class=""></div>
 	        <table>
 		         <tr><td>
-	             <input type ="text" id="id_account" placeholder="아이디" size=50px;>
+	             <input type ="text" id="id_account" placeholder="아이디" name="accountId" size=50px;>
 	             <div class="caution" id="idDiv"></div>
-	             <input placeholder="이메일" type="text" id="email" size=50px;> <br><br>
+	             <input  type="text" id="email" name="email" placeholder="이메일" size=50px;> <br><br>
         		</td></tr>
         		 <br><br>
 	             <tr><td>
 	             <div align="center">
-                <button type="button" id="findPwBtn" value="비밀번호 찾기">비밀번호 찾기</button><br><br>
-                <button type="button" id="findPwBtn" value="취소" onclick="location.href='../login'">취소</button><br><br>
+                <button type="submit" id="findPwBtn" value="비밀번호 찾기">비밀번호 찾기</button><br><br>
+                <button type="button" id="reset" value="취소" onclick="location.href='../login'">취소</button><br><br>
 	             </td></tr>
              </table>
         </div>

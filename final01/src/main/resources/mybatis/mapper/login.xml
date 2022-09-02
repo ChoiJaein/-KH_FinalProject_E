@@ -14,11 +14,11 @@
 		FROM ACCOUNT 
 		WHERE EMAIL = #{email}
  </select>
+
  <!-- 비밀번호 찾기 -->
- <select id="find_pw" parameterType="accountDto" resultType="accountDto">
-		SELECT PASSWORD
-		FROM ACCOUNT 
-		WHERE ID = #{accountId} 
+ <select id="find_pw" parameterType="java.util.Map" resultType="accountDto">
+		SELECT * FROM ACCOUNT                              
+		WHERE ACCCOUNTID = #{accountId} 
 		AND EMAIL = #{email}
  </select>
   </mapper>

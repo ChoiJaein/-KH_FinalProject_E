@@ -66,26 +66,44 @@ public class LoginService<accountDTO> {
 	
 
 
-	public  boolean find_pw(HttpSession session, LoginVO loginVo){
-		logger.info("find_pw({},{})", loginVo);
+	//public  boolean find_pw(HttpSession session, LoginVO loginVo){
+		
+		public AccountDTO find_pw(HttpSession session, Map<String, String> map) {
+			//map: 아이디, 이메일
+			logger.info("find_id({},{})",map);
+			AccountDTO data = new AccountDTO();
+			data.setAccountId(data.getAccountId());
+			data.setEmail(data.getEmail());
+				
+			
+			if(data == null) {//가입되지 않은 정보
+				return null;
+			} else {
+				session.setAttribute("passwordData", data);
+				return data;
+			}
+	}
+		/*
+		logger.info("find_pw({},{})",session ,loginVo);
 		 AccountDTO data = new AccountDTO();
+		
 		 data.setAccountId(loginVo.getAccountId());
 		 data.setEmail(loginVo.getEmail());
 		 
 		 data = dao.selectLogin(data);
 		 
 		 if(data != null) {
-			 session.setAttribute("loginData", data);
+			 session.setAttribute("passwordData", data);
+			 System.out.println("data2222");	
 			 return true;
-			
 		 } else {
 			 return false;
 		     
 		 }
-	}
-	}
 	
-
+	}*/
+		
+}
 
 
 

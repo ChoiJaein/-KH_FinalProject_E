@@ -2,10 +2,14 @@ package com.myweb.home.login.controller;
 
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.sound.midi.MidiMessage;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,11 +21,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.login.service.LoginService;
 import com.myweb.home.login.vo.LoginVO;
+
+import oracle.jdbc.driver.Message;
 
 
 
@@ -95,7 +102,7 @@ public class LoginController {
 	
 	//아이디 찾기 성공
 	@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
-	
+	@ResponseBody
 	public String find_id(String email
 			, HttpServletRequest request
 			, HttpSession session) {
@@ -123,29 +130,31 @@ public class LoginController {
 	
 	//비밀번호 찾기 성공
 	@RequestMapping(value = "/login/find_pw", method =RequestMethod.GET)
-	public String pw_find() throws Exception {
+	public String find_pw() throws Exception {
 		return "/login/find_pw";
 	}
 	
 	//비밀번호 찾기 성공
 	@RequestMapping(value = "/login/find_pw", method =RequestMethod.POST)
-	public String pw_find(LoginVO loginVo 
+	@ResponseBody
+	public ModelAndView find_pw(String accountId, @RequestParam String email
 			, HttpServletRequest request
-			, HttpSession session) throws Exception{
+			, HttpSession session){
 	
-		logger.info("find_pw({},{})",loginVo);
-		System.out.println("안녕1");
-        boolean result = service.find_pw(session,loginVo);
+		logger.info("find_pw({},{})",accountId, email);
 		
-		if(result) {
-			//성공 
-			return "/login/find_pw";
-		} else {
-			//실패
-			
-			return"login/login";
-		}
+		ModelAndView mav = new ModelAndView();
+		Map <String, String> map = new HashMap<String, String>();
+		map.put("accountId", accountId);
+		map.put("email", email);
+		AccountDTO accountDTO;
+		return mav;
+		
+		
+		
 	}
+
+    
 	
-		
+	
 }

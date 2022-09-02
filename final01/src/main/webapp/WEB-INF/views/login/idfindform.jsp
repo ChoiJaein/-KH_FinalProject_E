@@ -5,8 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
-<head>
-    
+<head>  
 	<meta charset="UTF-8">
 	<title>아이디 찾기</title>
 	<%@ include file="../module/head.jsp" %>
@@ -14,6 +13,7 @@
 <body>
 <header class="mb-3"></header>
   <section>
+  
    <c:url var="find_idUrl" value="/login/find_id/"/>
    <form action="${find_idUrl}" method="post">
    <div id ="find_id" name="find_id">
@@ -34,9 +34,9 @@
     
      <br>
        <br>
-	     <button class="btn btn-outline-primary bluebtn"  id="find_idBtn" value="아이디 찾기" >아이디찾기</button> <br><br>
-	     <button class="btn btn-outline-primary bluebtn"  id="reset" onclick= "location.href='../login'" value="취소" >취소</button> <br><br>
+	     <button class="btn btn-outline-primary bluebtn"  id="find_idBtn"  value="아이디 찾기" >아이디찾기</button> <br><br>
   </form>
+	     <button class="btn btn-outline-primary bluebtn"  id="reset" onclick="location.href='../login'" value="취소" >취소</button> <br><br>
    </div>
    </div>
  </section>
