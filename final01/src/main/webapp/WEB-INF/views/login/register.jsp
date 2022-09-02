@@ -97,25 +97,22 @@
 			<br>
 			
 			<div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_postcode" value="" placeholder="우편번호"><br>
+			   <input class="form-control mb-3" type="text" id="sample6_postcode" name="address1" value="" placeholder="우편번호"><br>
 		    </div>
 			<div class="input-group">
-			    <input class="form-control mb-3" type="text" id="sample6_address" value="" placeholder="주소">	 
+			    <input class="form-control mb-3" type="text" id="sample6_address" name="address2"  value="" placeholder="주소">	 
 			</div>
 			 <div class="input-group">
-				<input class="form-control mb-3" type="text" id="sample6_detailAddress" value="" placeholder="상세주소">
+				<input class="form-control mb-3" type="text" id="sample6_detailAddress" name="address3"  value="" placeholder="상세주소">
 			   <div>		
 				<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
 			   </div>
 			 </div>		
 		
 		    <div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" value="" placeholder="참고항목">
+			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" name="address4"  value="" placeholder="참고항목">
 		  
 		 </div>
-			
-			
-			
 			
 			
 			<br><br>

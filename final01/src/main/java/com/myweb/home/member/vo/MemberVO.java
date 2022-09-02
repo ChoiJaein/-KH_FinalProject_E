@@ -7,21 +7,30 @@ public class MemberVO {
 	private String name;
 	private String email;
 	private String phone;
-	private String address;
+	private String address1;
+	private String address2;
+	private String address3;
+	private String address4;
 	
 	public MemberVO() {
 		
 	}
 	
-	public MemberVO(String accountid, String password, String name, String email, String phone, String address) {
+	public MemberVO(String accountid, String password, String name, String email, String phone, String address1,
+			String address2, String address3, String address4) {
 		super();
 		this.accountid = accountid;
 		this.password = password;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
-		this.address = address;
+		this.address1 = address1;
+		this.address2 = address2;
+		this.address3 = address3;
+		this.address4 = address4;
 	}
+
+
 
 	public String getaccountid() {
 		return accountid;
@@ -62,19 +71,44 @@ public class MemberVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	
-	public String getAddress() {
-		return address;
+
+	public String getAddress1() {
+		return address1;
 	}
-	
-	public void setAddress(String address) {
-		this.address = address;
+
+	public void setAddress1(String address1) {
+		this.address1 = address1;
+	}
+
+	public String getAddress2() {
+		return address2;
+	}
+
+	public void setAddress2(String address2) {
+		this.address2 = address2;
+	}
+
+	public String getAddress3() {
+		return address3;
+	}
+
+	public void setAddress3(String address3) {
+		this.address3 = address3;
+	}
+
+	public String getAddress4() {
+		return address4;
+	}
+
+	public void setAddress4(String address4) {
+		this.address4 = address4;
 	}
 
 	@Override
 	public String toString() {
 		return "MemberVO [accountid=" + accountid + ", password=" + password + ", name=" + name + ", email=" + email
-				+ ", address=" + address + ", phone=" + phone + "]";
+				+ ", phone=" + phone + ", address1=" + address1 + ", address2=" + address2 + ", address3=" + address3
+				+ ", address4=" + address4 + "]";
 	}
 	
 }

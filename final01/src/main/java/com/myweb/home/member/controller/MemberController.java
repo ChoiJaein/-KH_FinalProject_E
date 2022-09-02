@@ -36,7 +36,6 @@ public class MemberController {
 	public String register(MemberVO vo) {
 		logger.info("post register");
 		service.register(vo);
-		
 		return "redirect:/";
 	}
 

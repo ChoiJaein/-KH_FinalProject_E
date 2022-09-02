@@ -10,13 +10,19 @@
 			  , NAME
 			  , EMAIL
 			  , PHONE
-			  , ADDRESS)
+			  , ADDRESS1
+			  , ADDRESS2
+			  , ADDRESS3
+			  , ADDRESS4)
 		VALUES(#{accountid}
 			 , #{password}
 			 , #{name}
 			 , #{email}
 			 , #{phone}
-			 , #{address})
+			 , #{address1}
+			 , #{address2}
+			 , #{address3}
+			 , #{address4})
 	</insert>
 	
 	<!-- 아이디 중복 확인 -->
