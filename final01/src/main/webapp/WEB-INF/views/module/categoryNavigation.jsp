@@ -8,7 +8,7 @@
 <c:url var="mainUrl" value="." />
 
 
-			<div style="float:left; margin:0 0 0 50px; background-color:skyblue; position: static;">
+			<div style="float:left; margin:0 0 0 50px; background-color:skyblue; ">
 					<ul style="list-style:none">
 						<li>
 							<a class="dropdown-item">카테고리</a>
