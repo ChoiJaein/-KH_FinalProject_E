@@ -9,6 +9,63 @@
 	<meta charset="UTF-8">
 	<title>아이디 찾기</title>
 	<%@ include file="../module/head.jsp" %>
+	<style>
+ #modal.modal-overlay {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(1.5px);
+            -webkit-backdrop-filter: blur(1.5px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        #modal .modal-window {
+            background: rgba( 0, 0, 0, 0.70 ); // 69, 139, 197
+            box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+            backdrop-filter: blur( 13.5px );
+            -webkit-backdrop-filter: blur( 13.5px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.18 );
+            width: 400px;
+            height: 300px;
+            position: relative;
+            top: -100px;
+            padding: 10px;
+        }
+        #modal .title {
+            padding-left: 10px;
+            display: inline;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+            
+        }
+        #modal .title h2 {
+            display: inline;
+        }
+        #modal .close-area {
+            display: inline;
+            float: right;
+            padding-right: 10px;
+            cursor: pointer;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
+        
+        #modal .content {
+            margin-top: 20px;
+            padding: 0px 10px;
+            text-shadow: 1px 1px 2px gray;
+            color: white;
+        }
+</style>
 </head>
 <body>
 <header class="mb-3"></header>
@@ -27,16 +84,16 @@
          <tr>
              <td>
                 <br>
-                 <input placeholder="이메일"  id="email1" name="email" size=50px; required>
+                 <input placeholder="이메일"  id="email" name="email" size=50px; required>
              </td>
          </tr>
      </table>
     
      <br>
        <br>
-	     <button class="btn btn-outline-primary bluebtn"  id="find_idBtn"  value="아이디 찾기" >아이디찾기</button> <br><br>
+	     <button type="submit" class="btn btn-outline-primary bluebtn"  id="find_idBtn"  value="아이디 찾기" >아이디찾기</button> <br><br>
   </form>
-	     <button class="btn btn-outline-primary bluebtn"  id="reset" onclick="location.href='../login'" value="취소" >취소</button> <br><br>
+	     <button type="button" class="btn btn-outline-primary bluebtn"  id="reset" onclick="location.href='../login'" value="취소" >취소</button> <br><br>
    </div>
    </div>
  </section>

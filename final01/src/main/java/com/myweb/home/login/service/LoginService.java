@@ -76,11 +76,11 @@ public class LoginService<accountDTO> {
 			data.setEmail(data.getEmail());
 				
 			
-			if(data == null) {//가입되지 않은 정보
-				return null;
-			} else {
+			if(data != null) {//가입되지 않은 정보
 				session.setAttribute("passwordData", data);
 				return data;
+			} else {
+				return null;
 			}
 	}
 		/*

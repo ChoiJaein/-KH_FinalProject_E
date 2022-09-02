@@ -38,8 +38,7 @@ public class LoginDAO {
 
 	public List<AccountDTO> find_pw(Map<String, String> map) {
 		logger.info("find_pw({},{})", map);
-		System.out.println("ssss111");
-		List<AccountDTO> result = session.selectList("loginMapper.find_pw", map);
+			List<AccountDTO> result = session.selectList("loginMapper.find_pw", map);
 		return result;
 	}
 

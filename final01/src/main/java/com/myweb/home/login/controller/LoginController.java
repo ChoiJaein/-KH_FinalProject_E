@@ -102,7 +102,6 @@ public class LoginController {
 	
 	//아이디 찾기 성공
 	@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
-	@ResponseBody
 	public String find_id(String email
 			, HttpServletRequest request
 			, HttpSession session) {
