@@ -16,9 +16,15 @@
  </select>
 
  <!-- 비밀번호 찾기 -->
- <select id="find_pw" parameterType="java.util.Map" resultType="accountDto">
+  <select id="find_pw" parameterType="accountDto" resultType="accountDto">
 		SELECT * FROM ACCOUNT                              
-		WHERE ACCCOUNTID = #{accountid} 
+		WHERE ACCOUNTID = #{accountid} 
 		AND EMAIL = #{email}
- </select>
+ </select> 
+ 
+ <!-- 비밀번호 변경 -->
+	<!--<update id="update_pw" parameterType="accountDto">
+	UPDATE ACCOUNT SET PASSWOROD = #{password}
+	WHERE ACCOUNTID = #{accountid}
+	</update>-->
   </mapper>

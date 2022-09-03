@@ -53,7 +53,7 @@ public class LoginController {
 	
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
-	public String login(LoginVO loginVo
+	public String login(LoginVO loginVo,Model model
 			, HttpServletRequest request
 			, HttpSession session) {
 	
@@ -69,7 +69,7 @@ public class LoginController {
 			   return "redirect:/";
 		   } else {
 			   //실패
-			  
+			   model.addAttribute("msg","로그인 실패");
 			   return"login/login";
 		   }
 	       }
@@ -86,7 +86,7 @@ public class LoginController {
 		return "redirect:/";
 	}
 	
-    //아이디 찾기 폼으로 이동
+    //아이디,비밀번호 찾기 폼으로 이동
 	@RequestMapping(value = "/login/findIdPw",method=RequestMethod.GET)
 	public String findIdPw() throws Exception {
 		return "/login/findIdPw";
@@ -94,40 +94,28 @@ public class LoginController {
 	
 	
 	
-	//아이디 찾기 성공
-	@RequestMapping(value = "/login/find_id" , method = RequestMethod.GET)
-	public String find_id() throws Exception{
-		return "/login/find_id";
-	}
-	
-	//아이디 찾기 성공
-	@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
-	public String find_id(String email
-			, HttpServletRequest request
-			, HttpSession session) {
-		
-		logger.info("find_id({})",email);
-		
-		
-		boolean result = service.find_id(session,email);
-		
-		if(result) {
-			//성공 
-			return "/login/find_id";
-		} else {
-			//실패
+	//아이디 찾기 성공(전)
+		@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
+		public String find_id(String email
+				, HttpServletResponse response
+				, HttpSession session) throws Exception {
 			
-			return"login/login";
+			logger.info("find_id({})",email);
+			
+			
+			boolean result = service.find_id( response,session,email);
+			
+			if(result) {
+				//성공 
+				return "/login/find_id";
+			} else {
+				//실패
+				return"login/login";
+			}
 		}
-	}
+
 	
 	//비밀번호 찾기 폼으로 이동
-	@RequestMapping(value = "/login/pwfindform", method =RequestMethod.GET)
-	public String pwfindform() throws Exception {
-		return "/login/pwfindform";
-	}
-	
-	//비밀번호 찾기 성공
 	@RequestMapping(value = "/login/find_pw", method =RequestMethod.GET)
 	public String find_pw() throws Exception {
 		return "/login/find_pw";
@@ -135,25 +123,10 @@ public class LoginController {
 	
 	//비밀번호 찾기 성공
 	@RequestMapping(value = "/login/find_pw", method =RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView find_pw(String accountid, @RequestParam String email
-			, HttpServletRequest request
-			, HttpSession session){
-	
-		logger.info("find_pw({},{})",accountid, email);
+	public String find_pw(@ModelAttribute AccountDTO accountDTO,
+			HttpServletResponse response,HttpSession session) throws Exception{
+		service.find_pw(response,session, accountDTO);
 		
-		ModelAndView mav = new ModelAndView();
-		Map <String, String> map = new HashMap<String, String>();
-		map.put("accountid", accountid);
-		map.put("email", email);
-		AccountDTO accountDTO;
-		return mav;
-		
-		
-		
-	}
-
-    
-	
-	
+		return "/login/find_pw";
+    }
 }

@@ -2,18 +2,18 @@ package com.myweb.home.login.vo;
 
 public class LoginVO {
 
-	private String accountid;
-	private String password;
+	private static String accountid;
+	private static String password;
 	private String email;
 	
 	
-	public String getAccountid() {
+	public static String getAccountid() {
 		return accountid;
 	}
 	public void setAccountid(String accountid) {
 		this.accountid = accountid;
 	}
-	public String getPassword() {
+	public static  String getPassword() {
 		return password;
 	}
 	public void setPassword(String password) {

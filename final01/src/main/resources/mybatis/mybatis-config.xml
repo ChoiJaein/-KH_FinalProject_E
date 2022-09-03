@@ -8,5 +8,7 @@
 	<typeAliases>
 	<typeAlias type="com.myweb.home.login.model.AccountDTO" alias="accountDto" />
 	
+	
+	
 	</typeAliases>
 </configuration>

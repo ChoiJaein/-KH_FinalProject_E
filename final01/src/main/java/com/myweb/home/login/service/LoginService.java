@@ -1,6 +1,7 @@
 package com.myweb.home.login.service;
 
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.login.model.LoginDAO;
@@ -45,68 +47,45 @@ public class LoginService<accountDTO> {
 		 
 	 }
 	
-
-	public boolean find_id(HttpSession session, String email) {
+    
+	public boolean find_id(HttpServletResponse response,HttpSession session, String email) throws IOException {
 		logger.info("find_id({})", email);
+		response.setContentType("text/html;charset=utf-8");
+		PrintWriter out = response.getWriter();
 		 AccountDTO data = new AccountDTO();
 		 data.setEmail(email);
 		
 		 
 		 data = dao.find_id(email);
-		 if(data == null) {
-			 
-			 return false;
-			
-		 } else {
-			 session.setAttribute("emailData", data);
-			 return true;
-		 }
-	} 
-			
-	
-
-
-	//public  boolean find_pw(HttpSession session, LoginVO loginVo){
-		
-		public AccountDTO find_pw(HttpSession session, Map<String, String> map) {
-			//map: 아이디, 이메일
-			logger.info("find_id({},{})",map);
-			AccountDTO data = new AccountDTO();
-			data.setaccountid(data.getaccountid());
-			data.setEmail(data.getEmail());
-				
-			
-			if(data != null) {//가입되지 않은 정보
-				session.setAttribute("passwordData", data);
-				return data;
-			} else {
-				return null;
-			}
-	}
-		/*
-		logger.info("find_pw({},{})",session ,loginVo);
-		 AccountDTO data = new AccountDTO();
-		
-		 data.setAccountId(loginVo.getAccountId());
-		 data.setEmail(loginVo.getEmail());
-		 
-		 data = dao.selectLogin(data);
-		 
 		 if(data != null) {
-			 session.setAttribute("passwordData", data);
-			 System.out.println("data2222");	
-			 return true;
-		 } else {
-			 return false;
-		     
+			 session.setAttribute("emailData", data);
+			 return true;	 
 		 }
-	
-	}*/
-		
+		 out.println("<script>");
+			out.println("alert('가입된 아이디가 없습니다.');");
+			out.println("history.go(-1);");
+			out.println("</script>");
+			out.close();
+			return false;
+		 }
+
+
+				public AccountDTO find_pw(HttpServletResponse response,HttpSession session, AccountDTO accountDTO) throws Exception {
+					logger.info("find_pw({})",accountDTO);
+					response.setContentType("text/html;charset=utf-8");
+					AccountDTO data  = dao.find_pw(accountDTO);
+					
+					if(data == null) {//가입되지 않은 정보
+						return null;
+				
+					}else {
+						 session.setAttribute("passData", data);
+						return accountDTO;
+			
+					
+				}
 }
-
-
-
+}
 	
 
 	
