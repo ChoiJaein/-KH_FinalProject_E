@@ -8,14 +8,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>메인화면</title>
-	<%@ include file="../module/head.jsp" %>
+	<%@ include file="./module/head.jsp" %>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	
 </head>
 <body>
-	<header><%@ include file="../module/navigation.jsp" %></header>
+	<header><%@ include file="./module/navigation.jsp" %></header>
 	<br><br><br><br><br><br>
-	<%@ include file="../module/categoryNavigation.jsp" %>
+	<%@ include file="./module/categoryNavigation.jsp" %>
 	<section class="container" style="width:1250px;">
 		<div>
 			<c:url var="boardUrl" value="./list" />
@@ -25,12 +25,12 @@
 				<h2>'${data.categoryname}'상품 목록</h2>
 			</div>
 			<hr>
-			
-			<c:if test="${not empty datas}">
-				<c:forEach items="${datas}" var="data">
 						<c:url var="boardDetailUrl" value="./detail">
 							<c:param name="id">${data.bId}</c:param>
 						</c:url>
+			
+			<c:if test="${not empty datas}">
+				<c:forEach items="${datas}" var="data">
 
 					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
@@ -71,7 +71,7 @@
 			<!-- 데이터가 없을 경우 -->
 			<c:if test="${datas == null}">
 
-					<div style="width:1250px; height:250px;">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${data.url}" style="width:250px; height:250px;">
 							</div>
