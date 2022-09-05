@@ -72,16 +72,26 @@ public class LoginController {
 			   return"login/login";
 		   }
 	       }
-	
-    //아이디
-	@RequestMapping(value = "/login/findId",method=RequestMethod.GET)
-	public String findId() throws Exception {
-		return "/login/findId";
+
+	   
+	@RequestMapping(value="/accessDenied")
+	public String accessDeniedPage() throws Exception {
+		return "/login/accessDenied";
 	}
-	//비밀번호 찾기 폼으로 이동
-	@RequestMapping(value = "/login/findPw",method=RequestMethod.GET)
-	public String findPw() throws Exception {
-		return "/login/findPw";
+	
+	
+	//로그아웃
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/";
+	}
+	
+    //아이디,비밀번호 찾기 폼으로 이동
+	@RequestMapping(value = "/login/findIdPw",method=RequestMethod.GET)
+	public String findIdPw() throws Exception {
+		return "/login/findIdPw";
 	}
 	
 	@GetMapping(value = "/login/find_id")
@@ -91,7 +101,7 @@ public class LoginController {
 	
 	//아이디 찾기 성공
 		@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
-		public String find_id(String email
+		public String find_id( String email
 				, HttpServletResponse response
 				, HttpSession session) throws Exception {
 			
@@ -105,6 +115,7 @@ public class LoginController {
 				return "/login/find_id";
 			} else {
 				//실패
+
 				return"login/login";
 			}
 		}
@@ -118,21 +129,4 @@ public class LoginController {
 		
 		return "/login/find_pw";
     }
-	
-	
-	
-	// 로그인 거부(권한이 없을 때 접근 거부 페이지 = 403 에러 페이지)
-		@RequestMapping(value="/accessDenied")
-		public String accessDeniedPage() throws Exception {
-			return "/login/accessDenied";
-		}
-		
-   
-     //로그아웃
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpSession session) {
-		session.invalidate();
-		
-		return "redirect:/";
-	}
 }
