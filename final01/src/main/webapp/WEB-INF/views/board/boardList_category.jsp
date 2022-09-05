@@ -8,14 +8,14 @@
 <head>
 	<meta charset="UTF-8">
 	<title>메인화면</title>
-	<%@ include file="./module/head.jsp" %>
+	<%@ include file="../module/head.jsp" %>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	
 </head>
 <body>
-	<header><%@ include file="./module/navigation.jsp" %></header>
+	<header><%@ include file="../module/navigation.jsp" %></header>
 	<br><br><br><br><br><br>
-	<%@ include file="./module/categoryNavigation.jsp" %>
+	<%@ include file="../module/categoryNavigation.jsp" %>
 	<section class="container" style="width:1250px;">
 		<div>
 			<c:url var="boardUrl" value="./list" />
@@ -103,7 +103,7 @@
 							</div>
 					</div>
 					<br><br>
-
+					
 			</c:if>
 			
 			<nav>
@@ -132,5 +132,7 @@
 		</form>
 		</div>
 	</section>
+	
+	<footer><%@ include file="../module/footer.jsp" %></footer>
 </body>
 </html>
