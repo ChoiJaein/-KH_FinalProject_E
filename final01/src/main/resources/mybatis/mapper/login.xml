@@ -21,10 +21,4 @@
 		WHERE ACCOUNTID = #{accountid} 
 		AND EMAIL = #{email}
  </select> 
- 
- <!-- 비밀번호 변경 -->
-	<!--<update id="update_pw" parameterType="accountDto">
-	UPDATE ACCOUNT SET PASSWOROD = #{password}
-	WHERE ACCOUNTID = #{accountid}
-	</update>-->
   </mapper>

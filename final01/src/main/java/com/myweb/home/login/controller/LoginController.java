@@ -69,32 +69,27 @@ public class LoginController {
 			   return "redirect:/";
 		   } else {
 			   //실패
-			   model.addAttribute("msg","로그인 실패");
 			   return"login/login";
 		   }
 	       }
-
-	   
-
 	
-	
-	//로그아웃
-	@RequestMapping(value="/logout", method=RequestMethod.GET)
-	public String logout(HttpSession session) {
-		session.invalidate();
-		
-		return "redirect:/";
+    //아이디
+	@RequestMapping(value = "/login/findId",method=RequestMethod.GET)
+	public String findId() throws Exception {
+		return "/login/findId";
+	}
+	//비밀번호 찾기 폼으로 이동
+	@RequestMapping(value = "/login/findPw",method=RequestMethod.GET)
+	public String findPw() throws Exception {
+		return "/login/findPw";
 	}
 	
-    //아이디,비밀번호 찾기 폼으로 이동
-	@RequestMapping(value = "/login/findIdPw",method=RequestMethod.GET)
-	public String findIdPw() throws Exception {
-		return "/login/findIdPw";
+	@GetMapping(value = "/login/find_id")
+	public String find_id(Model model) {
+		return "/login/find_id";
 	}
 	
-	
-	
-	//아이디 찾기 성공(전)
+	//아이디 찾기 성공
 		@RequestMapping(value = "/login/find_id", method =RequestMethod.POST)
 		public String find_id(String email
 				, HttpServletResponse response
@@ -115,12 +110,6 @@ public class LoginController {
 		}
 
 	
-	//비밀번호 찾기 폼으로 이동
-	@RequestMapping(value = "/login/find_pw", method =RequestMethod.GET)
-	public String find_pw() throws Exception {
-		return "/login/find_pw";
-	}
-	
 	//비밀번호 찾기 성공
 	@RequestMapping(value = "/login/find_pw", method =RequestMethod.POST)
 	public String find_pw(@ModelAttribute AccountDTO accountDTO,
@@ -129,4 +118,21 @@ public class LoginController {
 		
 		return "/login/find_pw";
     }
+	
+	
+	
+	// 로그인 거부(권한이 없을 때 접근 거부 페이지 = 403 에러 페이지)
+		@RequestMapping(value="/accessDenied")
+		public String accessDeniedPage() throws Exception {
+			return "/login/accessDenied";
+		}
+		
+   
+     //로그아웃
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(HttpSession session) {
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 }

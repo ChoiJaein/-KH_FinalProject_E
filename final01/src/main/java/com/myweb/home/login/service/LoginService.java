@@ -70,12 +70,19 @@ public class LoginService<accountDTO> {
 		 }
 
 
-				public AccountDTO find_pw(HttpServletResponse response,HttpSession session, AccountDTO accountDTO) throws Exception {
+	public AccountDTO find_pw(HttpServletResponse response,HttpSession session, AccountDTO accountDTO) throws Exception {
 					logger.info("find_pw({})",accountDTO);
 					response.setContentType("text/html;charset=utf-8");
+					PrintWriter out = response.getWriter();
 					AccountDTO data  = dao.find_pw(accountDTO);
 					
 					if(data == null) {//가입되지 않은 정보
+						    out.println("<script>");
+							out.println("alert('가입된 비밀번호가 없습니다.');");
+							out.println("history.go(-1);");
+							out.println("</script>");
+							out.close();
+						
 						return null;
 				
 					}else {

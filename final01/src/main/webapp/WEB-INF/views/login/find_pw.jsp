@@ -19,16 +19,12 @@
 			     <h3>비밀번호 찾기 검색결과</h3>
 	         <div>
 			 	<div align ="center">
-				<c:if test="${empty sessionScope.passData}">
-				<p>등록된 비밀번호가 없습니다.</p>
-				</c:if>
 			    <c:if test="${not empty sessionScope.passData}">
-	               비밀번호는 ${sessionScope.passData.password} 입니다.
+	          회원님의   비밀번호는 ${sessionScope.passData.password} 입니다.
 	             </c:if>
 		<div class="form-label-group">
 				</div>
-			
-					<p class ="center-cancel ">
+					<button type="button" onclick= "location.href='..'" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">확인</button>
 					<button type="button" onclick="history.go(-1);" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">Cancel</button>
 					
 					</div>
