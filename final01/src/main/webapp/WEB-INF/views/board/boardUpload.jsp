@@ -9,27 +9,10 @@
 	<meta charset="UTF-8">
 	<title>게시글 등록</title>
 	<%@ include file="../module/head.jsp" %>
-	
+
 	
 </head>
-<script type="text/javascript">
-$(document).ready(function(){
-	 
-    // 라디오버튼 클릭시 이벤트 발생
-    $("input:radio[name=chk_type]").click(function(){
- 
-        if($("input[name=chk_type]:checked").val() == "directdelivery"){
-            $("input:text[name=location]").attr("disabled",false);
-           //직거래일경우 텍스트박스 활성화
- 
-        }else if($("input[name=chk_type]:checked").val() == "delivery"){
-              $("input:text[name=location]").attr("disabled",true);
-            //택배거래일경우 텍스트박스 비활성화
-        }
-    });
-});
 
-</script>
 <body>
 	<header></header>
 	<br><br><br><br><br><br>
@@ -37,9 +20,10 @@ $(document).ready(function(){
 	<div class="mb-1">
 	<table class="table">
 		<tr>
-			<th>상품 이미지 등록</th>
-			<th> 구현예정</th>
-			<th></th>
+			<th>이미지 등록</th>
+			<th><img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="" 
+                   accept="image/png, image/jpeg, image/jpg" width="250" height="250"></th>
+			<th><input id="imgSelect" name="uploadImg" type="file"></th>
 			<th></th>
 		</tr>
 		
@@ -99,5 +83,52 @@ $(document).ready(function(){
 		<button class="btn btn-primary" type="submit">등록</button>
 	</div>
 	</section>
+	
+	<script type="text/javascript">
+$(document).ready(function(){
+	 
+    // 라디오버튼 클릭시 이벤트 발생
+    $("input:radio[name=chk_type]").click(function(){
+ 
+        if($("input[name=chk_type]:checked").val() == "directdelivery"){
+            $("input:text[name=location]").attr("disabled",false);
+           //직거래일경우 텍스트박스 활성화
+ 
+        }else if($("input[name=chk_type]:checked").val() == "delivery"){
+              $("input:text[name=location]").attr("disabled",true);
+            //택배거래일경우 텍스트박스 비활성화
+        }
+    });
+});
+
+
+
+<!--이미지 업로드 미리보기-->
+function showImagePreview(e){
+	 var file = e.target.files[0];
+	 var imgUrl = URL.createObjectURL(file);
+	 previewImg.src = imgUrl;	 
+}
+
+<!--이미지 업로드 Ajax-->
+ function ajaxImageUpload(e){
+	 var file  =  e.target.files[0];
+	 var fData = new FormData();
+	 fData.append("uploadImage", file, file.name);
+	 
+	 $.ajax({
+		 type:"post",
+		 enctype:"multipart/form-data",
+		 url:"/ajax/imageUpload",
+		 data:fData,
+		 processData:false,
+	     contentType:false,
+	     success:function(data, status){
+	    	 previewImg.src = data.src;
+	     }
+	  
+	 });
+ } 
+</script>
 </body>
 </html>
