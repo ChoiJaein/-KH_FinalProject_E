@@ -3,6 +3,7 @@ package com.myweb.home.member.controller;
 import java.io.IOException;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,8 +50,10 @@ public class MemberController {
 	
 	// 회원정보 수정
 	@GetMapping(value="/myinfo/modify")
+//	public String userModify(HttpSession session, Model model) {
 	public String userModify() {
 		logger.info("get userModify");
+	//	model.addAttribute("memVO", service.readMember((String)session.getAttribute("accountid")));
 		return "login/userModify";
 	}
 	
