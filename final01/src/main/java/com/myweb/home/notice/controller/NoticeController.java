@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.myweb.home.common.util.Paging;
 import com.myweb.home.notice.model.NoticeDAO;
 import com.myweb.home.notice.model.NoticeDTO;
 import com.myweb.home.notice.service.NoticeService;
@@ -34,24 +35,42 @@ public class NoticeController {
 	private NoticeService service;
 
 	@RequestMapping(value="", method=RequestMethod.GET)
-	public String getList(Model model) {
+	public String getList(Model model, HttpSession session
+			, @RequestParam(defaultValue="1", required=false) int page
+			, @RequestParam(defaultValue="0", required=false) int pageCount) {
+		List data = service.getAll();
 		
-		List datas = service.getAll();
-		model.addAttribute("datas", datas);
+		if(session.getAttribute("pageCount") == null) {
+			session.setAttribute("pageCount", 5);
+		}
 		
-		logger.info("getList(model={})", model);
+		if(pageCount > 0) {
+			session.setAttribute("pageCount", pageCount);
+		}
 		
-		return "notice/home"; //나중에 변경
+		pageCount = Integer.parseInt(session.getAttribute("pageCount").toString());
+		Paging paging = new Paging(data, page, pageCount);
+		
+		model.addAttribute("data", paging.getPageData());
+		model.addAttribute("pageData", paging);
+		
+		return "notice/testhome"; // 나중에 변경
 	};
 	
 	@GetMapping(value="/detail")
-	public String getDetail(Model model, @RequestParam int id) {
-		
+	public String getDetail(Model model
+			, HttpSession session
+			, @RequestParam int id) {
 		NoticeDTO data = service.getData(id);
-		model.addAttribute("data", data);
 		
-		return "notice/testview"; //
-	};
+		if(data != null) {
+			model.addAttribute("data", data);
+			return "notice/testview"; //
+		} else {
+			model.addAttribute("error", "해당 데이터가 존재하지 않습니다.");
+			return "error/notExists"; //
+		}
+	}
 	
 	@GetMapping(value="/add")
 	public String add() {
@@ -71,7 +90,7 @@ public class NoticeController {
 		if(id!= -1) { 
 			return "redirect:/notice/detail?id=" + id;
 		} else {
-			request.setAttribute("error", "게시글 저장 실패!");
+			request.setAttribute("error", "게시글 저장에 실패하였습니다.");
 			return "notice/testadd"; //
 		}
 	}

@@ -14,7 +14,7 @@
 			, CREATEDATE 
 			, VIEWCNT	
 		  FROM NOTICE
-		  ORDER BY NOTICEID ASC
+		  ORDER BY CREATEDATE DESC
 	</select>
 	
 	<select id="selectDetailData" resultType="noticeDto">

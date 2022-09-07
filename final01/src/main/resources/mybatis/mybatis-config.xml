@@ -8,6 +8,6 @@
 	<typeAliases>
 		<typeAlias type="com.myweb.home.login.model.AccountDTO" alias="accountDto" />
 		<typeAlias type="com.myweb.home.notice.model.NoticeDTO" alias="noticeDto" />
-		
+		<typeAlias type="com.myweb.home.main.model.MainDTO" alias="mainDto" />
 	</typeAliases>
 </configuration>
