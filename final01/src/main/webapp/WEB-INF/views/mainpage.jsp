@@ -21,16 +21,16 @@
 			<h2>카테고리별 상품 찾기</h2>
 		</div>
 		
-		<c:url var="mainDigital" value="/main/list?type=digital" />
-		<c:url var="mainClothes" value="/main/list?type=clothes" />
-		<c:url var="mainBag" value="/main/list?type=bag" />
-		<c:url var="mainAccessories" value="/main/list?type=accessories" />
-		<c:url var="mainBaby" value="/main/list?type=baby" />
-		<c:url var="mainPet" value="/main/list?type=pet" />
-		<c:url var="mainFurniture" value="/main/list?type=furniture" />
-		<c:url var="mainBeauty" value="/main/list?type=beauty" />
-		<c:url var="mainOffice" value="/main/list?type=office" />
-		<c:url var="mainArt" value="/main/list?type=art" />
+		<c:url var="mainDigital" value="/main/list?type=1" />
+		<c:url var="mainClothes" value="/main/list?type=2" />
+		<c:url var="mainBag" value="/main/list?type=3" />
+		<c:url var="mainAccessories" value="/main/list?type=4" />
+		<c:url var="mainBaby" value="/main/list?type=5" />
+		<c:url var="mainPet" value="/main/list?type=6" />
+		<c:url var="mainFurniture" value="/main/list?type=7" />
+		<c:url var="mainBeauty" value="/main/list?type=8" />
+		<c:url var="mainOffice" value="/main/list?type=9" />
+		<c:url var="mainArt" value="/main/list?type=10" />
 		
 		<table class="table">
 		
