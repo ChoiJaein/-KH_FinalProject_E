@@ -26,7 +26,7 @@ public class MainContoller {
 	@Autowired
 	private NoticeService noticeService;
 	
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping(value="/a", method=RequestMethod.GET)
 	public String getNoticeList(Model model) {
 		
 		List ndata = noticeService.getAll();
@@ -36,7 +36,7 @@ public class MainContoller {
 		return "notice/testmain"; //
 	}
 	
-	@RequestMapping(value="", method=RequestMethod.GET)
+	@RequestMapping(value="/b", method=RequestMethod.GET)
 	public String getList(Model model) {
 		
 		List data = service.getAll();
