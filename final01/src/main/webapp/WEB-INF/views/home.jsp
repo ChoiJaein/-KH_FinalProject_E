@@ -72,12 +72,12 @@
 		<table class="table">
 		<c:if test="${not empty datas}">
 			<tr class="text-center">
-				<c:forEach items="${datas}" var="5">
-				<td onclick="location.href='/detail?id=${data.bid}'">
-					<img src='${data.url}' alt="Nothing" width="200px" height="200px"><br>
-					${data.btitle}<br>
+				<c:forEach items="${datas}" var="data">
+				<td onclick="location.href='/detail?id=${data.bId}'">
+					<img src="${data.url}" alt="Nothing" width="200px" height="200px"><br>
+					${data.bTitle}<br>
 					${data.price}<br>
-					${data.buytype}
+					${data.dealMethod}
 				</td>
 				</c:forEach>
 			</tr>
