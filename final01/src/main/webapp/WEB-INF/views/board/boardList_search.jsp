@@ -13,9 +13,11 @@
 	
 </head>
 <body>
-	<header><%@ include file="../module/navigation.jsp" %></header>
-	<br><br><br><br><br><br>
+	<header><%@ include file="../module/navigation.jsp" %>
 	<%@ include file="../module/categoryNavigation.jsp" %>
+	</header>
+
+	
 	<section class="container" style="width:1250px;">
 		<div>
 			<c:url var="boardUrl" value="./list" />
