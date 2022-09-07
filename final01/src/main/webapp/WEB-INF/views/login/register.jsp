@@ -10,68 +10,109 @@
 	<title>회원가입</title>
 	<%@ include file="../module/head.jsp" %>
 </head>
+
+<script type="text/javascript">
+	/* 아이디 중복 확인 */
+	function idOverlap() {
+				console.log("idOverlap 호출")
+				console.log("아이디 입력 값 " + register.accountid.value)
+			$.ajax({
+				type : "post",
+				url : "idOverlap",
+				data : {"accountid" : register.accountid.value},
+				dataType : "text",
+				success : function(data) {
+					if(data == "1") {
+						alert("사용 가능한 아이디입니다.");
+					} else {
+						alert("이미 사용중인 아이디입니다.");
+					}
+				},
+				error : function() {
+					alert("아이디 중복 확인 실패");
+				}
+			});
+	}
+	 
+	/* 비밀번호 확인 */
+	function passConfirm() {
+		var password = document.getElementById('id_password');
+		var passwordConfirm = document.getElementById('id_passwordConfirm');
+		var confirmMsg = document.getElementById('confirmMsg');
+		var correctColor = "#00ff00";	//맞았을 때 출력되는 색깔.
+		var wrongColor ="#ff0000";	//틀렸을 때 출력되는 색깔
+		
+		if(password.value == passwordConfirm.value) {
+			confirmMsg.style.color = correctColor;
+			confirmMsg.innerHTML = "비밀번호 일치";
+		} else {
+			confirmMsg.style.color = wrongColor;
+			confirmMsg.innerHTML = "비밀번호 불일치";
+		}
+	}
+</script>
+
 <body>
 	<header class="mb-3"></header>
 	<c:url var="mainUrl" value="." />
 	<section class="container" style="width: 480px;">
 		<c:url var="loginUrl" value="/register" />
-		<form action="${loginUrl}" method="post">
+		<form action="${loginUrl}" name="register" method="post">
 		<div class="center-block">
 			<h1 align="center"><a href="/main">지구마켓</a></h1>
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
-				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
 				<label for="id_accountid">아이디</label>
+				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요" required>
+				<input type="button" onclick="idOverlap()" value="중복확인" />
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control" type="text" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
 				<label for="id_password">비밀번호</label>
+				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요" required>
 			</div>
 			<div class="form-floating mb-2">
-				<input class="form-control" type="text" id="id_confirmpassword" name="confirmpassword" value="" placeholder="비밀번호를 입력하세요">
-				<label for="id_confirmpassword">비밀번호 확인</label>
+				<label for="id_passwordConfirm">비밀번호 확인</label>
+				<input class="form-control" type="password" id="id_passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요" onkeyup="passConfirm()" required>
+				<span id ="confirmMsg"></span>
 			</div>
 			<br>
 			
 			<div class="form-floating mb-2">
-				<input class="form-control" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요">
 				<label for="id_name">닉네임</label>
+				<input class="form-control is-invalid" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요" required>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요">
 				<label for="id_email">이메일</label>
+				<input class="form-control is-invalid" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요" required>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요">
 				<label for="id_phone">전화번호</label>
+				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요" required>
 			</div>
 			<br>
-			
+				
 			<div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_postcode" value="" placeholder="우편번호"><br>
+			   <input class="form-control mb-3" type="text" id="sample6_postcode" name="address1" value="" placeholder="우편번호"><br>
 		    </div>
 			<div class="input-group">
-			    <input class="form-control mb-3" type="text" id="sample6_address" value="" placeholder="주소">	 
+			    <input class="form-control mb-3" type="text" id="sample6_address" name="address2"  value="" placeholder="주소">	 
 			</div>
 			 <div class="input-group">
-				<input class="form-control mb-3" type="text" id="sample6_detailAddress" value="" placeholder="상세주소">
+				<input class="form-control mb-3" type="text" id="sample6_detailAddress" name="address3"  value="" placeholder="상세주소">
 			   <div>		
 				<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
 			   </div>
 			 </div>		
 		
 		    <div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" value="" placeholder="참고항목">
+			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" name="address4"  value="" placeholder="참고항목">
 		  
 		 </div>
-			
-			
-			
 			
 			
 			<br><br>
@@ -109,7 +150,7 @@
                  } else { // 사용자가 지번 주소를 선택했을 경우(J)
                      addr = data.jibunAddress;
                  }
-
+  
                  // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
                  if(data.userSelectedType === 'R'){
                      // 법정동명이 있을 경우 추가한다. (법정리는 제외)

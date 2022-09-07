@@ -47,7 +47,7 @@
                    accept="image/png, image/jpeg, image/jpg" width="250" height="250">
 <!--닉네임 value값입력 -->
           <div>
-            <input class="text-center mb-3" type="text" name="nickName" value="${data.name}" size="17">
+            <input class="text-center mb-3" type="text" name="name" value="${data.name}" size="17">
           </div>
           <div>
            <label class="input-file-button mb-4" for="imgSelect">프로필사진 변경</label>
@@ -61,7 +61,7 @@
 	<div class="input-form col-sm-7">		    
 		<div class="input-group">
 		    <label class="input-label w-100">ID</label>
-			<input class="form-control  form-control-lg  w-100 mb-3" type="text" name="accountId" value="${data.accountId}" aria-label="Disabled input example" disabled>
+			<input class="form-control  form-control-lg  w-100 mb-3" type="text" name="accountid" value="${data.accountid}" aria-label="Disabled input example" disabled>
 		</div>
 		<div class="input-group">
 			<label class="input-label w-100">비밀번호</label>
@@ -75,20 +75,20 @@
 		  		  
 			<label class="input-label w-100">주소</label>
 		    <div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_postcode" value="${data.address1}" placeholder="우편번호"><br>
+			   <input class="form-control mb-3" type="text" id="sample6_postcode" name="address1" value="${data.address1}" placeholder="우편번호"><br>
 		    </div>
 			<div class="input-group">
-			    <input class="form-control mb-3" type="text" id="sample6_address" value="${data.address2}" placeholder="주소">	 
+			    <input class="form-control mb-3" type="text" id="sample6_address" name="address2" value="${data.address2}" placeholder="주소">	 
 			</div>
 			 <div class="input-group">
-				<input class="form-control mb-3" type="text" id="sample6_detailAddress" value="${data.address3}" placeholder="상세주소">
+				<input class="form-control mb-3" type="text" id="sample6_detailAddress" name="address3" value="${data.address3}" placeholder="상세주소">
 			   <div>		
 				<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
 			   </div>
 			 </div>		
 		
 		    <div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" value="${data.address4}" placeholder="참고항목">
+			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" name="address4" value="${data.address4}" placeholder="참고항목">
 		  
 		 </div>
 		</div>	
@@ -107,7 +107,7 @@
   <hr>
 	  <div class="text-end col-sm-11 mb-5 mt-2">
 	    <button class="btn btn-primary" onclick="return myInfoCancel();">취 소</button>
-	    <button class="btn btn-primary" onclick="myInfoModiCheck(this.form);">수 정</button>
+	    <button class="btn btn-primary" type="submit">수 정</button>
 	  </div>			
  </form>
  </section>
@@ -150,8 +150,8 @@ function showImagePreview(e){
  <!--회원탈퇴 check-->
  <!--경로 수정할것.-->
  function unregister(){
-	 if(confirm("회원탈퇴를 하시겠습니까?")==true){
-		 location.href="/main";
+	 if(confirm("회원탈퇴를 진행하시겠습니까?")==true){
+		 location.href="/home/myinfo/signout";
 	 }else{
 		 return false;
 	 }
@@ -161,7 +161,7 @@ function showImagePreview(e){
 <!--경로 수정할것.-->
 function myInfoCancel(){
 	if(confirm("수정을 취소 하시겠습니까?") == true){
-	    location.href="/mypage";
+	    location.href="/home";
 	  }else{
 		  return false;
 	  }
@@ -173,12 +173,12 @@ function myInfoCancel(){
 	if(confirm("수정하시겠습니까?") == true){
 		form.submit();
 	    alert("수정이 완료되었습니다.");
-		location.href="/mypage"; 
 	}else{
 		return false;
 	}
  }
  </script>
+ 
  
  <!--우편번호 API-->
  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

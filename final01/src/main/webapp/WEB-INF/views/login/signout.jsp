@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -36,6 +39,9 @@ function pwCheck(){
 	
 	<section class="container">
 	
+	
+	<c:url var="signOut" value="/myinfo/signout"/>
+	<form class="large-form" action="${signOut}" method="post" enctype="multipart/form-data">
 	<div class="div-center">
 		<div class="div-bc div-left">
 		
@@ -56,7 +62,7 @@ function pwCheck(){
 				
 				<tr>
 					<td><label>아이디</label></td>
-					<td><input type="text" id="id_accountid" name="accountid" value="${data.accountid}" disabled></td>
+					<td><input type="text" id="id_accountid" name="accountid" value="${data.accountid}"></td>
 				</tr>
 				
 				<tr>
@@ -78,11 +84,12 @@ function pwCheck(){
 	</div>
 		
 	<div>
-		<button class="btn btn-primary button-right" onclick="location.href='/main'">취소</button>
+		<button class="btn btn-primary button-right" onclick="location.href='/home'">취소</button>
 		<button class="btn btn-primary button-right" id="signout-btn" onclick="userSignOut(this.form);" disabled>회원탈퇴</button>
 		<label class="button-right">탈퇴하실 경우 복구하실 수 없습니다.</label>
 	</div>
 	
+	</form>
 	</section>
 
 <script type="text/javascript">
@@ -97,7 +104,7 @@ function userSignOut(form){
 			
 	    alert("탈퇴되었습니다.");
 		form.submit();
-		location.href="/main"; 
+		location.href="/home"; 
 			
 		} else {
 			alert("비밀번호가 일치하지 않습니다.");
