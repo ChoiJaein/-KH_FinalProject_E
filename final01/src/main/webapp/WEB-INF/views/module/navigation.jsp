@@ -10,10 +10,11 @@
 
 function search() {
 	var searchvalue = document.getElementById('searchvalue').value;
-	window.location.href = '${mainUrl}/search?'+searchvalue;
+	window.location.href = '${mainUrl}/list?search='+searchvalue;
 }
 
 </script>
+<br><br>
 <nav class="navbar">
 	<div class="container">
 			<a class="navbar-brand" href="/">지구마켓</a>
@@ -35,5 +36,6 @@ function search() {
 				</c:if>
 		
 		</div>
-
 </nav>
+<br>
+<hr>
