@@ -26,7 +26,7 @@ public class MainContoller {
 	
 	@GetMapping
 		public String list() {
-		return "main/list";
+		return "board/boardList_category";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET) 
@@ -41,7 +41,7 @@ public class MainContoller {
 		model.addAttribute("cData", cData);
 		
 		
-		return "redirect:/main/testlist?type=" + data.getCateId();
+		return "redirect:/main/list?type=" + data.getCateId();
 		
 	}
 	
