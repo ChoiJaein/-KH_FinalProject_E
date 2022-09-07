@@ -9,7 +9,7 @@
 	<table>
 	
 	<colgroup>
-				<col class="col-2">
+				<col class="col-1">
 				<col class="col-auto">
 				<col class="col-auto">
 				<col class="col-1">
