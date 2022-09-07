@@ -7,7 +7,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>게시글 등록</title>
+	<title>게시글 수정</title>
 	<%@ include file="../module/head.jsp" %>
 
 	
@@ -21,7 +21,7 @@
 	<table class="table">
 		<tr>
 			<th>이미지 등록</th>
-			<th><img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="" 
+			<th><img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${data.url}" 
                    accept="image/png, image/jpeg, image/jpg" width="250" height="250"></th>
 			<th><input id="imgSelect" name="uploadImg" type="file"></th>
 			<th></th>
@@ -29,7 +29,7 @@
 		
 		<tr>
 			<th>제목</th>
-			<th><input class="form-control" type="text" name="title" placeholder="제목을 입력하세요." size="5"></th>
+			<th><input class="form-control" type="text" name="title" placeholder="제목을 입력하세요." size="5" value="${board.bTitle}"></th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -48,7 +48,7 @@
 		
 		<tr>
 			<th>내용</th>
-			<th colspan="3"><textarea name="content" rows="10" cols="100" placeholder="내용을 입력해주세요."></textarea></th>
+			<th colspan="3"><textarea name="content" rows="10" cols="100" placeholder="내용을 입력해주세요." value="${bContent}"></textarea></th>
 		</tr>
 		
 		<tr>
@@ -66,7 +66,7 @@
 		
 		<tr>
 			<th>가격</th>
-			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." ></th>
+			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." value="${board.price}" ></th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -80,7 +80,7 @@
 		
 	</table>
 		<button class="btn btn-primary" onclick="location.href='/'">취소</button>
-		<button class="btn btn-primary" type="submit">등록</button>
+		<button class="btn btn-primary" type="submit">수정완료</button>
 	</div>
 	</section>
 	

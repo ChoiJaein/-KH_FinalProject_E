@@ -41,7 +41,7 @@ function pwCheck(){
 		
 			<div class="div-middle">
 				<div class="div-profile">
-					<img src="${photoupload.url}" alt="프로필사진" />
+					<img src="${data.url}" alt="프로필사진" />
 				</div>
 				<div class="div-profile">
 					<input type="text" id="id_name" name="name" value="${data.name}" disabled>
@@ -78,12 +78,36 @@ function pwCheck(){
 	</div>
 		
 	<div>
-		<button class="btn btn-primary button-right" onclick="location.href='/'">취소</button>
-		<button class="btn btn-primary button-right" type="submit" id="signout-btn" disabled>회원탈퇴</button>
+		<button class="btn btn-primary button-right" onclick="location.href='/home'">취소</button>
+		<button class="btn btn-primary button-right" id="signout-btn" onclick="userSignOut(this.form);" disabled>회원탈퇴</button>
 		<label class="button-right">탈퇴하실 경우 복구하실 수 없습니다.</label>
 	</div>
 	
 	</section>
+
+<script type="text/javascript">
+
+
+
+
+function userSignOut(form){
+	if(confirm("탈퇴하시겠습니까?") == true){
+		
+		if(${data.password} === document.getElementById('id_password').value){ 
+			
+	    alert("탈퇴되었습니다.");
+		form.submit();
+		location.href="/home"; 
+			
+		} else {
+			alert("비밀번호가 일치하지 않습니다.");
+		}
+	}else{
+		return false;
+	}
+ }
+
+</script>
 
 
 </body>
