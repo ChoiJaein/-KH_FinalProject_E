@@ -100,7 +100,7 @@ public class MainDTO {
 	@Override
 	public String toString() {
 		return "MainDTO [bId=" + bId + ", accId=" + accId + ", cateId=" + cateId + ", bTitle=" + bTitle + ", price="
-				+ price + ", buyStatus=" + buyStatus + ", dealMethod=" + dealMethod + ", createDate=" + createDate + ", url="
+				+ price + ", condt=" + condt + ", dealMethod=" + dealMethod + ", createDate=" + createDate + ", url="
 				+ url + ", cateName=" + cateName + "]";
 	}
 	
