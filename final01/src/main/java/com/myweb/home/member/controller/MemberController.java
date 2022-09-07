@@ -65,9 +65,35 @@ public class MemberController {
 			return "alert";
 		} else {
 			model.addAttribute("msg", "수정을 실패하였습니다. 다시 시도해주세요.");
-			model.addAttribute("url", "/myinfo/modify");
+			model.addAttribute("url", "/home/myinfo/modify");
 			return "alert";
 		}
 	}
+	
+	// 회원 탈퇴
+	@GetMapping(value="/myinfo/signout")
+	public String signout() {
+		logger.info("get signout");
+		return "/login/signout";
+	}
+	
+	@PostMapping(value="/myinfo/signout")
+	public String signout(Model model, @ModelAttribute MemberVO vo) {
+		logger.info("post signout");
+		
+		boolean result = service.signout(vo);
+		
+		if(result) {
+			model.addAttribute("msg", "탈퇴가 완료되었습니다.");
+			model.addAttribute("url", "/home");
+			return "alert";
+		} else {
+			model.addAttribute("msg", "탈퇴를 실패하였습니다. 다시 시도해주세요.");
+			model.addAttribute("url", "/myinfo/signout");
+			return "alert";
+		}
+		
+	}
+
 	
 }

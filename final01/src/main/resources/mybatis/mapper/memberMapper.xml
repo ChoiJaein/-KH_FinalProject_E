@@ -43,4 +43,10 @@
 		   	 , EMAIL = #{email}
 		 WHERE ACCOUNTID = #{accountid}
 	</select>
+	
+	<!-- 회원 정보 삭제 -->
+	<select id="signout" >
+		DELETE FROM ACCOUNT
+		 WHERE ACCOUNTID = #{accountid}
+	</select>
 </mapper>

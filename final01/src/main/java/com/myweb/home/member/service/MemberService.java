@@ -43,4 +43,10 @@ public class MemberService {
 		boolean result = dao.userModify(vo);
 		return result;
 	}
+
+	public boolean signout(MemberVO vo) {
+		logger.info("signout(vo={})", vo);
+		boolean result = dao.signout(vo);
+		return result;
+	}
 }

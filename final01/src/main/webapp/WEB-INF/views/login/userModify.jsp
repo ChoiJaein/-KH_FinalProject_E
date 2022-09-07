@@ -61,7 +61,7 @@
 	<div class="input-form col-sm-7">		    
 		<div class="input-group">
 		    <label class="input-label w-100">ID</label>
-			<input class="form-control  form-control-lg  w-100 mb-3" type="text" name="accountid" value="${data.accountid}" aria-label="Disabled input example">
+			<input class="form-control  form-control-lg  w-100 mb-3" type="text" name="accountid" value="${data.accountid}" aria-label="Disabled input example" disabled>
 		</div>
 		<div class="input-group">
 			<label class="input-label w-100">비밀번호</label>
@@ -150,8 +150,8 @@ function showImagePreview(e){
  <!--회원탈퇴 check-->
  <!--경로 수정할것.-->
  function unregister(){
-	 if(confirm("회원탈퇴를 하시겠습니까?")==true){
-		 location.href="/main";
+	 if(confirm("회원탈퇴를 진행하시겠습니까?")==true){
+		 location.href="/home/myinfo/signout";
 	 }else{
 		 return false;
 	 }

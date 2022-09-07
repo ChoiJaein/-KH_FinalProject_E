@@ -31,4 +31,10 @@ public class MemberDAO {
 		int res = sqlSession.update("memberMapper.userModify", vo);
 		return res == 1 ? true : false;
 	}
+
+	public boolean signout(MemberVO vo) {
+		logger.info("signout(vo={})", vo);
+		int res = sqlSession.delete("memberMapper.signout", vo);
+		return res == 1 ? true : false;
+	}
 }
