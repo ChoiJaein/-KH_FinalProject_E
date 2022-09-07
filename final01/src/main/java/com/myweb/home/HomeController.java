@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.myweb.home.main.service.MainService;
+import com.myweb.home.notice.service.NoticeService;
 
 
 
@@ -26,17 +27,23 @@ public class HomeController {
 	
 	@Autowired
 	private MainService service;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String getList(Model model) {
 		logger.info("getList(model= {})", model);
 		
 		List datas = service.getAll();
+		List nDatas = noticeService.getAll();
 		
+		model.addAttribute("nDatas", nDatas); // 공지 리스트
 		model.addAttribute("datas", datas); // 품목 리스트
 		
 		return "home";		
 	}
+	
 	
 	// @GetMapping("/main")
 	public String main() {
