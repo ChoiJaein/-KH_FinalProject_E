@@ -33,14 +33,21 @@
    </div>
   </form>
 	     <button type="button" class="btn btn-outline-primary bluebtn"  id="reset" onclick="location.href='../login'" value="취소" >취소</button> <br><br>
-       
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-        <br><br><br><br>
-    
-    
-      <title>비밀번호 찾기</title>
+   </div>
+   </div>
+ 
+	</script>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   	<title>비밀번호 찾기</title>
 <header class="mb-3"></header>
        <section>
      
@@ -57,7 +64,6 @@
 	             <input type ="text" id="id_account" placeholder="아이디" name="accountid" size=50px;>
 	             <div class="caution" id="idDiv"></div>
 	             <input  type="text" id="email" name="email" placeholder="이메일" size=50px;> <br><br>
-	             
         		</td></tr>
         		 <br><br>
 	             <tr><td>

@@ -5,13 +5,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
    <meta charset="UTF-8">
 	<title>로그인</title>
 	<%@ include file="../module/head.jsp" %>  
 </head>
 <body>
+
 	<header class="mb-3"></header>
 	<c:url var="mainUrl" value="." />
 	<section class="container" style="width: 480px;">
@@ -43,10 +44,35 @@
 			<div class="mb-2 text-end">
 				<button class="btn btn-outline-primary bluebtn" onclick="location.href='/register'">회원가입</button>
 			</div>
+	        <div align= 'center'>
+	        <!-- 카카오 로그인 -->
+	       <button  type="button" class="btn" id="kakao-login-btn"
+	        onclick="location.href='/home/login/kakao'">
+			  <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="210"/>
+			</button>
+
+		   
+			<!-- 네이버 로그인 -->
+			<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>		  
+		    <div id ="naverIdLogin"></div>
+		   <script type="text/javascript">
+		      var naverLogin  = new naver.LoginWithNaverId(
+				   {
+					   clientId : "q379z6OiAG3HfRfviHRi",
+					   callbackUrl : "http://localhost/home/",
+					   isPopup: false,
+					   loginButton : {color: "green" ,type:3 , height:50}
+				   }
+		   );
+		   
+		   naverLogin.init();
+		   
+		   
+		   </script>
+		      		      
 			
-		
-		
-			
+	
+</body>
 	</section>
 	<br><br><br><br>
 	<br><br><br><br>
@@ -54,5 +80,4 @@
 	<br><br><br><br>
 	<br><br><br><br>
 	<%@ include file="../module/footer.jsp" %>
-</body>
 </html>
