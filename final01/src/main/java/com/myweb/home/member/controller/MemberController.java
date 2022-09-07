@@ -92,7 +92,7 @@ public class MemberController {
 			return "alert";
 		} else {
 			model.addAttribute("msg", "탈퇴를 실패하였습니다. 다시 시도해주세요.");
-			model.addAttribute("url", "/myinfo/signout");
+			model.addAttribute("url", "/home/myinfo/signout");
 			return "alert";
 		}
 		
