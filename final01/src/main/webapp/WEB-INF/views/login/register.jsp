@@ -17,7 +17,7 @@
 		<c:url var="loginUrl" value="/register" />
 		<form action="${loginUrl}" method="post">
 		<div class="center-block">
-			<h1 align="center"><a href="/main">지구마켓</a></h1>
+			<h1 align="center"><a href="/home">지구마켓</a></h1>
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">

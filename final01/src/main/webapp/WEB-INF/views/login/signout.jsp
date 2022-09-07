@@ -78,7 +78,7 @@ function pwCheck(){
 	</div>
 		
 	<div>
-		<button class="btn btn-primary button-right" onclick="location.href='/main'">취소</button>
+		<button class="btn btn-primary button-right" onclick="location.href='/home'">취소</button>
 		<button class="btn btn-primary button-right" id="signout-btn" onclick="userSignOut(this.form);" disabled>회원탈퇴</button>
 		<label class="button-right">탈퇴하실 경우 복구하실 수 없습니다.</label>
 	</div>
@@ -97,7 +97,7 @@ function userSignOut(form){
 			
 	    alert("탈퇴되었습니다.");
 		form.submit();
-		location.href="/main"; 
+		location.href="/home"; 
 			
 		} else {
 			alert("비밀번호가 일치하지 않습니다.");

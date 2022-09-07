@@ -151,7 +151,7 @@ function showImagePreview(e){
  <!--경로 수정할것.-->
  function unregister(){
 	 if(confirm("회원탈퇴를 하시겠습니까?")==true){
-		 location.href="/main";
+		 location.href="/home";
 	 }else{
 		 return false;
 	 }
