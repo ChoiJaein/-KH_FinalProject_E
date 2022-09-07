@@ -4,14 +4,34 @@
   
 <mapper namespace="mainMapper">
 	<select id="selectDatas" resultType="mainDto">
-		SELECT BOARD.BID, BOARD.BTITLE
-			 , BOARD.PRICE
-			 , BOARD.DEALMETHOD
-			 , BOARD.CREATEDATE
-			 , PHOTOUPLOAD.URL
-			FROM BOARD
-			RIGHT JOIN PHOTOUPLOAD
-			ON BOARD.BID = PHOTOUPLOAD.BID
-			ORDER BY BOARD.CREATEDATE DESC
+		SELECT B.BID as bId
+			, B.BTITLE as bTitle
+			, B.PRICE as price
+			, B.DEALMETHOD as dealMethod
+			, B.CREATEDATE as createDate
+			, CONCAT('/home' || P.URL, '/' || P.UUIDNAME) as url 
+		FROM BOARD B
+		RIGHT JOIN PHOTOUPLOAD P
+		ON B.BID = P.BID
+		ORDER BY B.CREATEDATE DESC
+	</select>
+	<select id="selectCateDatas" resultType="mainDto">
+			SELECT B.BID as bId
+			, B.ACCOUNTID as accId
+			, B.CATEGORYID as cateId
+			, B.BTITLE as bTitle
+			, B.PRICE as price
+			, B.PCONDITION as condt
+			, B.DEALMETHOD as dealMethod
+			, B.CREATEDATE as createDate
+			, CONCAT('/home' || P.URL, '/' || P.UUIDNAME) as url
+			, C.CATEGORYNAME as cateName
+		FROM BOARD B
+		RIGHT JOIN PHOTOUPLOAD P
+		ON B.BID = P.BID
+		RIGHT JOIN CATEGORY C
+		ON B.CATEGORYID = C.CATEGORYID
+		ORDER BY B.CREATEDATE DESC
+		WHERE C.CATEGORYNAME = ${cateName}
 	</select>
 </mapper>

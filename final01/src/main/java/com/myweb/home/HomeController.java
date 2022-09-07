@@ -26,7 +26,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@GetMapping("/main")
+	// @GetMapping("/main")
 	public String main() {
 		
 		return "mainpage";

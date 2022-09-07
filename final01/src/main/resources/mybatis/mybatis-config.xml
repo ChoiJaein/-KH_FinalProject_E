@@ -7,14 +7,8 @@
 	</settings>
 	<typeAliases>
 	<typeAlias type="com.myweb.home.login.model.AccountDTO" alias="accountDto" />
-<<<<<<< HEAD
 	<typeAlias type="com.myweb.home.member.vo.MemberVO" alias="memberVo" />
 	<typeAlias type="com.myweb.home.notice.model.NoticeDTO" alias="noticeDto" />
 	<typeAlias type="com.myweb.home.main.model.MainDTO" alias="mainDto" />
-=======
-	
-	
-	
->>>>>>> refs/remotes/origin/박희망BE
 	</typeAliases>
 </configuration>

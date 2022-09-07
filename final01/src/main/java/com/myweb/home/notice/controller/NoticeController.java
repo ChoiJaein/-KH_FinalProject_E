@@ -38,6 +38,8 @@ public class NoticeController {
 	public String getList(Model model, HttpSession session
 			, @RequestParam(defaultValue="1", required=false) int page
 			, @RequestParam(defaultValue="0", required=false) int pageCount) {
+		logger.info("getList(model= {})", model);
+		
 		List data = service.getAll();
 		
 		if(session.getAttribute("pageCount") == null) {
