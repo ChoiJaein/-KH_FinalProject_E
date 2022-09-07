@@ -24,4 +24,13 @@ public class MainService {
 		List<MainDTO> datas = dao.selectAll();
 		return datas;
 	}
+	
+	public List<MainDTO> getCate(MainDTO data) {
+		
+		List<MainDTO> datas = dao.selectCate(data);
+		
+		return datas;
+		
+	}
+	
 }
