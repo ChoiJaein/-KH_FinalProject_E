@@ -59,7 +59,7 @@
 		<c:url var="loginUrl" value="/register" />
 		<form action="${loginUrl}" name="register" method="post">
 		<div class="center-block">
-			<h1 align="center"><a href="/home">지구마켓</a></h1>
+			<h1 align="center"><a href="/main">지구마켓</a></h1>
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
@@ -95,24 +95,24 @@
 				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요" required>
 			</div>
 			<br>
-			<div class="form-floating mb-2">
-				<label for="id_address">주소</label>
-				<input class="form-control is-invalid" type="text" id="id_address" name="address" value="" placeholder="주소를 입력하세요" required>
+				
+			<div class="input-group">
+			   <input class="form-control mb-3" type="text" id="sample6_postcode" name="address1" value="" placeholder="우편번호"><br>
+		    </div>
+			<div class="input-group">
+			    <input class="form-control mb-3" type="text" id="sample6_address" name="address2"  value="" placeholder="주소">	 
 			</div>
 			 <div class="input-group">
-				<input class="form-control mb-3" type="text" id="sample6_detailAddress" value="" placeholder="상세주소">
+				<input class="form-control mb-3" type="text" id="sample6_detailAddress" name="address3"  value="" placeholder="상세주소">
 			   <div>		
 				<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
 			   </div>
 			 </div>		
 		
 		    <div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" value="" placeholder="참고항목">
+			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" name="address4"  value="" placeholder="참고항목">
 		  
 		 </div>
-			
-			
-			
 			
 			
 			<br><br>
@@ -150,7 +150,7 @@
                  } else { // 사용자가 지번 주소를 선택했을 경우(J)
                      addr = data.jibunAddress;
                  }
-
+  
                  // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
                  if(data.userSelectedType === 'R'){
                      // 법정동명이 있을 경우 추가한다. (법정리는 제외)

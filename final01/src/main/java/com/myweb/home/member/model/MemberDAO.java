@@ -15,13 +15,26 @@ public class MemberDAO {
 	private static final Logger logger = LoggerFactory.getLogger(MemberDAO.class);
 
 	@Autowired
-	private SqlSessionTemplate sql;
+	private SqlSessionTemplate sqlSession;
 	
 	public int register(MemberVO vo) {
-		return sql.insert("memberMapper.register", vo);
+		logger.info("register(vo={})", vo);
+		return sqlSession.insert("memberMapper.register", vo);
 	}
 
 	public MemberVO idOverlap(String accountid) {
-		return sql.selectOne("memberMapper.idOverlap", accountid);
+		return sqlSession.selectOne("memberMapper.idOverlap", accountid);
+	}
+
+	public boolean userModify(MemberVO vo) {
+		logger.info("userModify(vo={})", vo);
+		int res = sqlSession.update("memberMapper.userModify", vo);
+		return res == 1 ? true : false;
+	}
+
+	public boolean signout(MemberVO vo) {
+		logger.info("signout(vo={})", vo);
+		int res = sqlSession.delete("memberMapper.signout", vo);
+		return res == 1 ? true : false;
 	}
 }
