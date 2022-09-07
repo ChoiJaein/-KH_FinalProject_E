@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  * 
  */
@@ -42,3 +43,5 @@ function errorFocusing() {
 		error.parentElement.getElementsByClassName("input-text")[0].focus();
 	}
 }
+=======
+>>>>>>> refs/remotes/origin/박희망BE

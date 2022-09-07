@@ -2,7 +2,7 @@ package com.myweb.home.login.model;
 
 public class AccountDTO {
 
-	private String accountId;
+	private String accountid;
 	private String password;
 	private String name;
 	private String email;
@@ -16,11 +16,11 @@ public class AccountDTO {
 	
 	
 	
-	public String getAccountId() {
-		return accountId;
+	public String getaccountid() {
+		return accountid;
 	}
-	public void setAccountId(String accountId) {
-		this.accountId = accountId;
+	public void setaccountid(String accountid) {
+		this.accountid = accountid;
 	}
 	public String getPassword() {
 		return password;
@@ -85,7 +85,7 @@ public class AccountDTO {
 	
 	@Override
 	public String toString() {
-		return "AccountDTO [accountId=" + accountId + ", password=" + password + ", name=" + name + ", email=" + email
+		return "AccountDTO [accountid=" + accountid + ", password=" + password + ", name=" + name + ", email=" + email
 				+ ", address=" + address + ", phone=" + phone + ", birth=" + birth + ", admin=" + admin + ", filename="
 				+ filename + ", location=" + location + ", url=" + url + "]";
 	}

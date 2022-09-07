@@ -5,11 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type = "text/css" href="../css/">
 </head>
 <body>
-<p></p>
-<div align="center">
-</div>
+ <script type="text/javascript">
+window.onload=function(){
+	alert("권한이 없습니다.");
+}
+</script>
 </body>
 </html>

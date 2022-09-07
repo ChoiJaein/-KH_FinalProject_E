@@ -2,16 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-    <!--  
-    <select id="selectPerm" resultType="permDto">
-      SELECT * FROM PERMISSIONS
-        WHERE EMPID = #{id}
-    </select>-->
-  
   <mapper namespace="loginMapper">
  <select id="selectLogin" parameterType="accountDto" resultType="accountDto">
 	     SELECT * FROM ACCOUNT
-		 WHERE ACCOUNTID = #{accountId}
+		 WHERE ACCOUNTID = #{accountid}
 	       AND  PASSWORD = #{password}
-	    </select>
+ </select>
+ <!-- 아이디 찾기 -->
+ <select id="find_id" parameterType="accountDto" resultType="accountDto">
+		SELECT ACCOUNTID
+		FROM ACCOUNT 
+		WHERE EMAIL = #{email}
+ </select>
+
+ <!-- 비밀번호 찾기 -->
+  <select id="find_pw" parameterType="accountDto" resultType="accountDto">
+		SELECT * FROM ACCOUNT                              
+		WHERE ACCOUNTID = #{accountid} 
+		AND EMAIL = #{email}
+ </select> 
   </mapper>
