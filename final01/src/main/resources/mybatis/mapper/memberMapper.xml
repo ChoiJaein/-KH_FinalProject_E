@@ -29,4 +29,18 @@
 	<select id="idOverlap" parameterType="memberVo" resultType="memberVo">
 		SELECT ACCOUNTID FROM ACCOUNT WHERE ACCOUNTID = #{accountid}
 	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<select id="userModify" resultType="String">
+		UPDATE ACCOUNT
+		   SET NAME = #{name}
+		     , PASSWORD = #{password}
+		   	 , PHONE = #{phone}
+		   	 , ADDRESS1 = #{address1}
+		   	 , ADDRESS2 = #{address2}
+		   	 , ADDRESS3 = #{address3}
+		   	 , ADDRESS4 = #{address4}
+		   	 , EMAIL = #{email}
+		 WHERE ACCOUNTID = #{accountid}
+	</select>
 </mapper>

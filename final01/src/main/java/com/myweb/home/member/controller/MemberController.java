@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,6 +33,7 @@ public class MemberController {
 		return "login/register";
 	}
 	
+	//  !! 경로 수정해야 함 (mainPage or Login) !!
 	@PostMapping(value="/register")	
 	public String register(MemberVO vo) {
 		logger.info("post register");
@@ -44,4 +46,28 @@ public class MemberController {
 	public void idOverlap(HttpServletResponse response, @RequestParam("accountid") String accountid) throws IOException {
 		service.idOverlap(accountid, response);
 	}
+	
+	// 회원정보 수정
+	@GetMapping(value="/myinfo/modify")
+	public String userModify() {
+		logger.info("get userModify");
+		return "login/userModify";
+	}
+	
+	@PostMapping(value="/myinfo/modify")
+	public String userModify(Model model, @ModelAttribute MemberVO vo) {
+		logger.info("post userModify");
+		boolean result = service.userModify(vo);
+		
+		if(result) {
+			model.addAttribute("msg", "수정이 완료되었습니다.");
+			model.addAttribute("url", "/home");
+			return "alert";
+		} else {
+			model.addAttribute("msg", "수정을 실패하였습니다. 다시 시도해주세요.");
+			model.addAttribute("url", "/myinfo/modify");
+			return "alert";
+		}
+	}
+	
 }

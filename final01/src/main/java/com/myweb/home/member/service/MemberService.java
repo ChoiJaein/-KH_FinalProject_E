@@ -8,8 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
-
 import com.myweb.home.member.model.MemberDAO;
 import com.myweb.home.member.vo.MemberVO;
 
@@ -22,11 +20,12 @@ public class MemberService {
 	private MemberDAO dao;
 	
 	public void register(MemberVO vo) {
-		
+		logger.info("register(vo={})", vo);
 		dao.register(vo);
 	}
 
 	public void idOverlap(String accountid, HttpServletResponse response) throws IOException {
+		logger.info("idOverlap(accountid={})", accountid);
 		MemberVO vo = new MemberVO();
 		vo = dao.idOverlap(accountid);
 		if(vo == null) {
@@ -37,5 +36,11 @@ public class MemberService {
 			//id가 있으면 false(중복으로 사용 불가능)
 			response.getWriter().print("0");
 		}
+	}
+
+	public boolean userModify(MemberVO vo) {
+		logger.info("userModify(vo={})", vo);
+		boolean result = dao.userModify(vo);
+		return result;
 	}
 }
