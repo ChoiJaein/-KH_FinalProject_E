@@ -45,13 +45,4 @@ public class HomeController {
 	}
 	
 	
-	// @GetMapping("/main")
-	public String main() {
-		
-		return "mainpage";
-	}
-	
-	
-
-	
 }
