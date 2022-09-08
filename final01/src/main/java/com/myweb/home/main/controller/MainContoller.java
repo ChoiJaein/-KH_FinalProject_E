@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myweb.home.main.model.MainDTO;
 import com.myweb.home.main.service.MainService;
-import com.myweb.home.notice.service.NoticeService;
 
 @Controller
 @RequestMapping(value="/main")
@@ -25,43 +24,24 @@ public class MainContoller {
 	@Autowired
 	private MainService service;
 	
-	@Autowired
-	private NoticeService noticeService;
-
-	@RequestMapping(value="/a", method=RequestMethod.GET)
-	public String getList(Model model) {
-		logger.info("getList(model= {})", model);
-		
-		List data = service.getAll();
-		List nData = noticeService.getAll();
-		
-		model.addAttribute("nData", nData); // 공지 리스트
-		model.addAttribute("data", data); // 품목 리스트
-		
-		return "main/testmain";  //
-		
-			
-	}
-	
-	
 	@GetMapping
 		public String list() {
-		return "main/list";
+		return "board/boardList_category";
 	}
 	
 	@RequestMapping(value="/list", method=RequestMethod.GET) 
 		public String getCateList(Model model, 
-				@RequestParam(value="type") String category) {
+				@RequestParam(value="type") int category) {
 		
 		MainDTO data = new MainDTO();
-		data.setCateName(category);
+		data.setCateId(category);
 		
 		List cData = service.getCate(data);
 		
 		model.addAttribute("cData", cData);
 		
 		
-		return "redirect:/main/testlist?type=" + data.getCateName();
+		return "redirect:/main/list?type=" + data.getCateId();
 		
 	}
 	

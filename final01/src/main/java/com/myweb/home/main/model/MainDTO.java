@@ -10,29 +10,13 @@ public class MainDTO {
 	private String bTitle;
 	private int price;
 	private String condt;
+	private String buyStatus;
 	private String dealMethod;
 	private Date createDate;
 	private String url;
 	private String cateName;
 	
 	
-	
-	public int getCateId() {
-		return cateId;
-	}
-
-	public void setCateId(int cateId) {
-		this.cateId = cateId;
-	}
-
-	public String getCateName() {
-		return cateName;
-	}
-
-	public void setCateName(String cateName) {
-		this.cateName = cateName;
-	}
-
 	public int getbId() {
 		return bId;
 	}
@@ -47,6 +31,14 @@ public class MainDTO {
 	
 	public void setAccId(String accId) {
 		this.accId = accId;
+	}
+	
+	public int getCateId() {
+		return cateId;
+	}
+	
+	public void setCateId(int cateId) {
+		this.cateId = cateId;
 	}
 	
 	public String getbTitle() {
@@ -73,6 +65,14 @@ public class MainDTO {
 		this.condt = condt;
 	}
 	
+	public String getBuyStatus() {
+		return buyStatus;
+	}
+	
+	public void setBuyStatus(String buyStatus) {
+		this.buyStatus = buyStatus;
+	}
+	
 	public String getDealMethod() {
 		return dealMethod;
 	}
@@ -96,13 +96,22 @@ public class MainDTO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	public String getCateName() {
+		return cateName;
+	}
+	
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
+	}
 
 	@Override
 	public String toString() {
 		return "MainDTO [bId=" + bId + ", accId=" + accId + ", cateId=" + cateId + ", bTitle=" + bTitle + ", price="
-				+ price + ", buyStatus=" + buyStatus + ", dealMethod=" + dealMethod + ", createDate=" + createDate + ", url="
-				+ url + ", cateName=" + cateName + "]";
+				+ price + ", condt=" + condt + ", buyStatus=" + buyStatus + ", dealMethod=" + dealMethod
+				+ ", createDate=" + createDate + ", url=" + url + ", cateName=" + cateName + "]";
 	}
+	
 	
 
 	
