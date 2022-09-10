@@ -43,7 +43,8 @@ public class MainContoller {
 		
 		return "redirect:/main/list?type=" + data.getCateId();
 		
+		
+		
 	}
 	
-
 }
