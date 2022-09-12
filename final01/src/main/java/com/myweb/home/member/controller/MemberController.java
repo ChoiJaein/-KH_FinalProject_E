@@ -45,6 +45,7 @@ public class MemberController {
 	// 아이디 중복확인 처리
 	@PostMapping(value="/idOverlap")
 	public void idOverlap(HttpServletResponse response, @RequestParam("accountid") String accountid) throws IOException {
+		logger.info("idOverlap(response={},accountid={})", response, accountid);
 		service.idOverlap(accountid, response);
 	}
 	

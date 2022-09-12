@@ -23,6 +23,7 @@ public class MemberDAO {
 	}
 
 	public MemberVO idOverlap(String accountid) {
+		logger.info("idOverlap(accountid={})", accountid);
 		return sqlSession.selectOne("memberMapper.idOverlap", accountid);
 	}
 

@@ -29,7 +29,7 @@
 		
 		<tr>
 			<th>제목</th>
-			<th><input class="form-control" type="text" name="title" placeholder="제목을 입력하세요." size="5"></th>
+			<th><input class="form-control" type="text" name="btitle" placeholder="제목을 입력하세요." size="5"></th>
 			<th></th>
 			<th></th>
 		</tr>
@@ -48,21 +48,24 @@
 		
 		<tr>
 			<th>내용</th>
-			<th colspan="3"><textarea name="content" rows="10" cols="100" placeholder="내용을 입력해주세요."></textarea></th>
+			<th colspan="3"><textarea name="bcontent" rows="10" cols="100" placeholder="내용을 입력해주세요."></textarea></th>
 		</tr>
 		
 		<tr>
 			<th>유형</th>
-			<th><input type="radio" name="chk_type" value="directdelivery" checked>직거래</th>
-			<th><input type="radio" name="chk_type" value="delivery">택배거래</th>
+			<th><input type="radio" name="dealmethod" value="directdelivery" checked>직거래</th>
+			<th><input type="radio" name="dealmethod" value="delivery">택배거래</th>
 			<th></th>
 		</tr>
+
+<!-- 			지역 일단 보류
 		<tr>
 			<th></th>
 			<th><input class="" type="text" name="location" placeholder="지역을 입력하세요."></th>
 			<th></th>
 			<th></th>
-		</tr>
+		</tr> 
+-->
 		
 		<tr>
 			<th>가격</th>
@@ -73,8 +76,8 @@
 		
 		<tr>
 			<th>유형</th>
-			<th><input type="radio" name="chk_status" value="new" checked>새상품</th>
-			<th><input type="radio" name="chk_status" value="old">중고상품</th>
+			<th><input type="radio" name="pcondition" value="new" checked>새상품</th>
+			<th><input type="radio" name="pcondition" value="old">중고상품</th>
 			<th>　　　　　　　</th>
 		</tr>
 		
@@ -88,13 +91,13 @@
 $(document).ready(function(){
 	 
     // 라디오버튼 클릭시 이벤트 발생
-    $("input:radio[name=chk_type]").click(function(){
+    $("input:radio[name=dealmethod]").click(function(){
  
-        if($("input[name=chk_type]:checked").val() == "directdelivery"){
+        if($("input[name=dealmethod]:checked").val() == "directdelivery"){
             $("input:text[name=location]").attr("disabled",false);
            //직거래일경우 텍스트박스 활성화
  
-        }else if($("input[name=chk_type]:checked").val() == "delivery"){
+        }else if($("input[name=dealmethod]:checked").val() == "delivery"){
               $("input:text[name=location]").attr("disabled",true);
             //택배거래일경우 텍스트박스 비활성화
         }
