@@ -13,6 +13,7 @@ function search() {
 	window.location.href = '${mainUrl}/list?search='+searchvalue;
 }
 
+
 </script>
 <br><br>
 <nav class="navbar">
@@ -28,13 +29,15 @@ function search() {
 			<a class="" href="${mainUrl}/notice">공지사항</a>
 			
 				<c:if test="${not empty sessionScope.loginData}">
+	                     ${sessionScope.loginData.accountid} 님 환영합니다.
 						<a class="nav-link" href="${mainUrl}/mypage">마이페이지</a>
 						<a class="nav-link" href="${mainUrl}/logout">로그아웃</a>
 				</c:if>
 				<c:if test="${empty sessionScope.loginData}">
 						<a class="nav-link" href="${mainUrl}/login">로그인</a>
 				</c:if>
-		
+
+		        
 		</div>
 </nav>
 <br>

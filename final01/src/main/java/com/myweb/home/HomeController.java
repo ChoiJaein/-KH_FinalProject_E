@@ -18,7 +18,6 @@ import com.myweb.home.main.service.MainService;
 import com.myweb.home.notice.service.NoticeService;
 
 
-
 @Controller
 public class HomeController {
 	
@@ -44,5 +43,9 @@ public class HomeController {
 		return "home";		
 	}
 	
+	@RequestMapping(value="/board/boardList_search", method=RequestMethod.GET)
+	public String boardList_Search() {
+		return "board/boardList_search";
+	}
 	
 }
