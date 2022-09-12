@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="boardMapper">
+      <!-- 작성하기 -->
+      <insert id="write">
+     INSERT INTO BOARD (
+       BID
+     , BTITLE
+     , BCONTENT
+     , ACCOUNTID)
+       VALUES (BOARD_SEQ.NEXTVAL, #{btitle}, #{bcontent}, #{accountid})
+     </insert>     
+    <!-- 리스트 -->
+	<select id = "list" resultType = "BoardVO">
+	 SELECT BID, BTITLE, BCONTENT, ACCOUNTID,CREATEDATE
+	 FROM BOARD
+	    ORDER BY BID ASC
+     </select>  
+     <!-- 조회하기 -->
+     <select id= "read" resultType = "BoardVO">
+     SELECT BID, BTITLE, BCONTENT, ACCOUNTID, CREATEDATE
+     FROM BOARD
+     WHERE BID = #{bid}
+     </select>
+     
+     <!-- 게시물 총개수 -->
+     <select id ="count" resultType="int">
+     SELECT COUNT(bid) FROM BOARD
+     </select>
+     <!-- 게시물 목록 + 페이징 -->
+		<select id="listPage" parameterType="Criteria" resultType="BoardVO">
+			SELECT BID, BTITLE, BCONTENT, ACCOUNTID, CREATEDATE
+			 FROM (
+			        SELECT BID, BTITLE, BCONTENT, ACCOUNTID, CREATEDATE,
+			                ROW_NUMBER() OVER(ORDER BY BID DESC) AS rNUM
+			        FROM BOARD
+			 )BOARD
+			WHERE rNUM BETWEEN #{rowStart} AND #{rowEnd}
+			 ORDER BY BID DESC
+       </select>
+       <select id ="listCount" resultType="int">
+      <![CDATA[
+          SELECT COUNT(bid)
+          FROM BOARD
+          WHERE BID > 0
+          ]]>
+       </select>
+       <!-- 검색 -->
+		<select id="listSearch" resultType="BoardVO" parameterType="SearchCriteria">
+				SELECT BID, BTITLE, BCONTENT, ACCOUNTID, PCONDITION,PRICE,DEALMETHOD
+				 FROM (
+				        SELECT  BID, BTITLE, BCONTENT, ACCOUNTID, PCONDITION,PRICE,DEALMETHOD,
+				        ROW_NUMBER() OVER(ORDER BY BID DESC) AS rNum
+				        FROM Board
+				        WHERE 1=1
+				        AND BTITLE LIKE '%' || #{ keyword } || '%'
+				      ) board
+				    WHERE rNum BETWEEN #{rowStart} AND #{rowEnd}
+		</select>
+
+        
+		<!-- 검색 후 개수 -->
+		<select id="countSearch" resultType="int">
+		<![CDATA[
+		   SELECT COUNT(BID)
+		   FROM BOARD
+		   WHERE BID > 0
+		  ]]>
+           </select>
+           
+
+  </mapper>

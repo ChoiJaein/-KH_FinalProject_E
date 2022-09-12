@@ -10,5 +10,6 @@
 	<typeAlias type="com.myweb.home.member.vo.MemberVO" alias="memberVo" />
 	<typeAlias type="com.myweb.home.notice.model.NoticeDTO" alias="noticeDto" />
 	<typeAlias type="com.myweb.home.main.model.MainDTO" alias="mainDto" />
+	<typeAlias type="com.myweb.home.item.model.ItemVO" alias="itemVo" />
 	</typeAliases>
 </configuration>

@@ -28,7 +28,7 @@
 			</div>
 			<hr>
 						<c:url var="boardDetailUrl" value="./detail">
-							<c:param name="id">${data.bId}</c:param>
+							<c:param name="id">${data.bid}</c:param>
 						</c:url>
 			
 			<c:if test="${not empty datas}">
@@ -56,7 +56,7 @@
 										<td style="width:100px;">${data.dealmethod} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width:100px;">${data.name}</td>
+										<td style="width:100px;">${data.accountid}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
