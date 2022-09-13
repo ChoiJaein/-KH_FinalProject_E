@@ -234,17 +234,17 @@
 				<ul class="pagination justify-content-center">
 					<c:if test="${pageData.hasPrevPage()}">
 						<li class="page-item">
-							<a class="page-link" href="${boardUrl}?type=${data.categoryId}&page=${pageData.prevPageNumber}">Prev</a>
+							<a class="page-link" href="${boardUrl}?type=${data.cateId}&page=${pageData.prevPageNumber}">Prev</a>
 						</li>
 					</c:if>
 					<c:forEach items="${pageData.getPageNumberList(pageData.currentPageNumber - 2, pageData.currentPageNumber + 2)}" var="num">
 						<li class="page-item ${pageData.currentPageNumber eq num ? 'active' : ''}">
-							<a class="page-link" href="${boardUrl}?type=${data.categoryId}&page=${num}">${num}</a>
+							<a class="page-link" href="${boardUrl}?type=${tData.cateId}&page=${num}">${num}</a>
 						</li>
 					</c:forEach>
 					<c:if test="${pageData.hasNextPage()}">
 						<li class="page-item">
-							<a class="page-link" href="${boardUrl}?type=${data.categoryId}&page=${pageData.nextPageNumber}">Next</a>
+							<a class="page-link" href="${boardUrl}?type=${tData.cateId}&page=${pageData.nextPageNumber}">Next</a>
 						</li>
 					</c:if>
 				</ul>
