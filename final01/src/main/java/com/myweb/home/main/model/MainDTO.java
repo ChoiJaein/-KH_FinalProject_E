@@ -15,6 +15,7 @@ public class MainDTO {
 	private Date createDate;
 	private String url;
 	private String cateName;
+	private String userName;
 	
 	
 	public int getbId() {
@@ -104,15 +105,23 @@ public class MainDTO {
 	public void setCateName(String cateName) {
 		this.cateName = cateName;
 	}
+	
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
 	@Override
 	public String toString() {
 		return "MainDTO [bId=" + bId + ", accId=" + accId + ", cateId=" + cateId + ", bTitle=" + bTitle + ", price="
 				+ price + ", condt=" + condt + ", buyStatus=" + buyStatus + ", dealMethod=" + dealMethod
-				+ ", createDate=" + createDate + ", url=" + url + ", cateName=" + cateName + "]";
-	}
-	
-	
+				+ ", createDate=" + createDate + ", url=" + url + ", cateName=" + cateName + ", userName=" + userName
+				+ "]";
+	}	
 
 	
 
