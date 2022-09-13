@@ -16,7 +16,7 @@
 		ORDER BY B.CREATEDATE DESC
 	</select>
 	<select id="selectCateDatas" resultType="mainDto">
-			SELECT B.BID as bId
+		SELECT B.BID as bId
 			, B.ACCOUNTID as accId
 			, B.CATEGORYID as cateId
 			, B.BTITLE as bTitle
@@ -24,14 +24,14 @@
 			, B.PCONDITION as condt
 			, B.DEALMETHOD as dealMethod
 			, B.CREATEDATE as createDate
-			, CONCAT('/home' || P.URL, '/' || P.UUIDNAME) as url
+			, CONCAT(P.URL, '/' || P.UUIDNAME) as url
 			, C.CATEGORYNAME as cateName
 		FROM BOARD B
 		RIGHT JOIN PHOTOUPLOAD P
 		ON B.BID = P.BID
 		RIGHT JOIN CATEGORY C
 		ON B.CATEGORYID = C.CATEGORYID
+		WHERE C.CATEGORYID = ${cateId}
 		ORDER BY B.CREATEDATE DESC
-		WHERE C.CATEGORYNAME = ${cateName}
 	</select>
 </mapper>
