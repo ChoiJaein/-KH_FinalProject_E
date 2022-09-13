@@ -39,7 +39,7 @@
 								<img src="${data.url}" style="width:250px; height:250px;">
 							</div>
 						
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">${data.btitle}</td>
@@ -78,11 +78,11 @@
 								<img src="${data.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
-										<td style="width:750px;">${i}</td>
+										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
 										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
@@ -110,38 +110,7 @@
 								<img src="${data.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
-								<table style="width:1000px; height:250px; text-align:right;">
-									<tr>
-										<td style="width:100px;">게시글제목</td>
-										<td style="width:750px;">${i}</td>
-										<td></td>
-										<td></td>
-										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td style="width:100px;"></td>
-										<td style="width:750px;"></td>
-										<td></td>
-										<td></td>
-										<td style="width:100px;">직거래 &nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td style="width:100px;">판매자이름</td>
-										<td style="width:750px;"></td>
-										<td></td>
-										<td></td>
-										<td style="width:100px;">000,000원 &nbsp;&nbsp;&nbsp;</td>
-									</tr>
-								</table>
-							</div>
-					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
-							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
-								<img src="${data.url}" style="width:250px; height:250px;">
-							</div>
-							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
@@ -172,7 +141,7 @@
 								<img src="${data.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
@@ -203,11 +172,42 @@
 								<img src="${data.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
-										<td style="width:750px;">${i}</td>
+										<td style="width:750px;"></td>
+										<td></td>
+										<td></td>
+										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width:100px;"></td>
+										<td style="width:750px;"></td>
+										<td></td>
+										<td></td>
+										<td style="width:100px;">직거래 &nbsp;&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width:100px;">판매자이름</td>
+										<td style="width:750px;"></td>
+										<td></td>
+										<td></td>
+										<td style="width:100px;">000,000원 &nbsp;&nbsp;&nbsp;</td>
+									</tr>
+								</table>
+							</div>
+					</div>
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
+								<img src="${data.url}" style="width:250px; height:250px;">
+							</div>
+							
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
+								<table style="width:1000px; height:250px; text-align:right;">
+									<tr>
+										<td style="width:100px;">게시글제목</td>
+										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
 										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
