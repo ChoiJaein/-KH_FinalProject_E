@@ -9,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>상품정보</title>
 
-	<%@ include file="./module/head.jsp" %>
+	<%@ include file="../module/head.jsp" %>
 </head>
 <script type="text/javascript">
 	function ajaxWishList(element, id) {
