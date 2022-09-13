@@ -50,7 +50,7 @@ public class MainContoller {
 		
 		model.addAttribute("datas", paging.getPageData());  // 게시글
 		model.addAttribute("pageData", paging);
-		model.addAttribute("tData" ,tData); // 타이틀
+		model.addAttribute("tData" ,tData); // 카테고리 데이터
 		
 		return "board/boardList_category";
 		
