@@ -21,11 +21,37 @@
 			},
 			success: function(data) {
 				
-				if(/* 찜목록에 들어갔을 경우 */) {
-					element.innerHTML = "favorite_border";
+				if(element.innerHTML === 'favorite') {
+					/* 찜목록에 들어갔을 경우 */
+					element.innerHTML = 'favorite_border';
 				}
-				else if(/* 찜목록에서 제거되었을 경우 */) {
-					element.innerHTML = "favorite";
+				else if(element.innerHTML === 'favorite_border') {
+					/* 찜목록에서 제거되었을 경우 */
+					element.innerHTML = 'favorite';
+				}
+				
+			}
+			
+			fail : function(data) {
+				
+				if(element.innerHTML === 'favorite') {
+					/* 찜목록에 들어갔을 경우 */
+					element.innerHTML = 'favorite_border';
+				}
+				else if(element.innerHTML === 'favorite_border') {
+					/* 찜목록에서 제거되었을 경우 */
+					element.innerHTML = 'favorite';
+				}
+			
+			complete : function(data) {
+				
+				if(element.innerHTML === 'favorite') {
+					/* 찜목록에 들어갔을 경우 */
+					element.innerHTML = 'favorite_border';
+				}
+				else if(element.innerHTML === 'favorite_border') {
+					/* 찜목록에서 제거되었을 경우 */
+					element.innerHTML = 'favorite';
 				}
 				
 			}
@@ -76,7 +102,8 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick='favoriteTest()'>
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
+				<!-- <div style="float:right;" onclick='favoriteTest()'> -->
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
@@ -247,7 +274,7 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_like, ${loginData.accountId});">
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
