@@ -29,9 +29,11 @@ public class MainDAO {
 		
 	}
 	
-	public List<MainDTO> selectCate(MainDTO data) {
+	public List<MainDTO> selectCate(int id) {
 		String mapperId = String.format(mapper, "selectCateDatas");
-		List<MainDTO> res  = session.selectList(mapperId, data);
+		List<MainDTO> res  = session.selectList(mapperId, id);
+		
+		logger.info("selectCate(id= {})", id);
 		
 		return res;
 		

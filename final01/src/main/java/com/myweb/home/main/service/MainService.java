@@ -22,10 +22,12 @@ public class MainService {
 		logger.info("getAll()");
 		
 		List<MainDTO> datas = dao.selectAll();
+		
 		return datas;
 	}
 	
-	public List<MainDTO> getCate(MainDTO data) {
+	public List<MainDTO> getCate(int data) {
+		logger.info("getCate(data={})", data);
 		
 		List<MainDTO> datas = dao.selectCate(data);
 		

@@ -24,11 +24,11 @@
 			<form action="${boardUrl}" method="get">
 
 			<div>
-				<h2>'${data.categoryname}'상품 목록</h2>
+				<h2>'${datas.cateName}'상품 목록</h2>
 			</div>
 			<hr>
 						<c:url var="boardDetailUrl" value="./detail">
-							<c:param name="id">${data.bId}</c:param>
+							<c:param name="id">${datas.bId}</c:param>
 						</c:url>
 			
 			<c:if test="${not empty datas}">
@@ -53,7 +53,7 @@
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${data.dealmethod} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${data.dealMethod} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
 										<td style="width:100px;">${data.name}</td>
