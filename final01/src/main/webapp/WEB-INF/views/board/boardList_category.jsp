@@ -53,7 +53,7 @@
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${data.dealMethod} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${data.dealmethod} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
 										<td style="width:100px;">${data.name}</td>
