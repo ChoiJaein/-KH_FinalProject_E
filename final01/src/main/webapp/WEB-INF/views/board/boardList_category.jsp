@@ -23,7 +23,7 @@
 			<c:url var="boardUrl" value="./list" />
 			<form action="${boardUrl}" method="get">
 			<div>
-				<h2>'${data.cateName}'상품 목록</h2>
+				<h2>'${tData.cateName}'상품 목록</h2>
 			</div>
 			<hr>
 			<c:if test="${not empty datas}">

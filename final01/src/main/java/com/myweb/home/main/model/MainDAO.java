@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class MainDAO {
 	
@@ -37,5 +38,11 @@ public class MainDAO {
 		
 		return res;
 		
+	}
+	
+	public MainDTO selectCateTitle(int id) {
+		String mapperId = String.format(mapper, "selectCateName");
+		MainDTO res = session.selectOne(mapperId, id);
+		return res;
 	}
 }

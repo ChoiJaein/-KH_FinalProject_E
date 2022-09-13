@@ -32,8 +32,10 @@ public class MainContoller {
 		logger.info("getCateList(model= {})", model);
 		
 		List datas = service.getCate(category);
+		MainDTO tData = service.getCateTitle(category);
 		
-		model.addAttribute("datas", datas);
+		model.addAttribute("datas", datas); // 게시글
+		model.addAttribute("tData" ,tData); // 타이틀
 		
 		return "board/boardList_category";
 		
