@@ -23,7 +23,7 @@
 			<c:url var="boardUrl" value="./list" />
 			<form action="${boardUrl}" method="get">
 			<div>
-				<h2>'${datas.cateName}'상품 목록</h2>
+				<h2>'${data.cateName}'상품 목록</h2>
 			</div>
 			<hr>
 			<c:if test="${not empty datas}">
@@ -53,11 +53,11 @@
 										<td style="width:100px;">${data.dealMethod} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width:100px;">${data.bId}</td>
+										<td style="width:100px;">${data.userName}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${data.price} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;"><fmt:formatNumber value="${data.price}" pattern="#,###원"/> &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 								</table>
 							</div>
