@@ -10,6 +10,7 @@
 	<title>상품정보</title>
 
 	<%@ include file="../module/head.jsp" %>
+	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <script type="text/javascript">
 	function ajaxWishList(element, id) {
