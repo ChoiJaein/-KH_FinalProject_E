@@ -241,7 +241,7 @@
 
 
 <!-- 데이터가 있을경우 -->
-	<c:if test="${not empty datas}">
+	<c:if test="${not empty loginData}">
 		 <section class="container whole-size">
 		<div id="align-items">
 		  <div class="row align-items-start">
