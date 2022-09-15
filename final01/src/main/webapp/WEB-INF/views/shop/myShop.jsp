@@ -249,7 +249,7 @@
 		       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
 		<!--이미지 경로체크 -->
 		         <div class="col-4">
-		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/modify/profile.png">         
+		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="${data.accountImg}">         
 		         </div>
 		         
 		         <div class="col-8">
