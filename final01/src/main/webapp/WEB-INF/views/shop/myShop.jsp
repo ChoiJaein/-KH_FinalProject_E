@@ -257,8 +257,8 @@
 		              <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
 		             </div>
 		             <div>
-		              <p style="font-size:17px;">상품 판매  : value 회</p>
-		              <p style="font-size:17px;">내 상점 방문 : value 회 </p>
+		              <p style="font-size:17px;">상품 판매  : ${data.sellCnt} 회</p>
+		              <p style="font-size:17px;">내 상점 방문 : ${data.viewCnt} 회 </p>
 		            </div>
 		         </div>
 		       </div>
