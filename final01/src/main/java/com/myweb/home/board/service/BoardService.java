@@ -1,5 +1,7 @@
 package com.myweb.home.board.service;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.myweb.home.board.model.BoardDAO;
 import com.myweb.home.board.model.BoardDTO;
+import com.myweb.home.board.model.CategoryDTO;
 import com.myweb.home.board.vo.BoardVO;
 
 @Service
@@ -28,6 +31,19 @@ public class BoardService {
 			return data.getBid();
 		}
 		return -1;
+	}
+
+	
+//	public BoardDTO getData(int bid) {
+//		logger.info("getData(bid={})", bid);
+//		BoardDTO data = dao.selectData(bid);
+//		return data;
+//	}
+	
+	// 카테고리 설정을 위해 카테고리 정보 가져오기
+	public List<CategoryDTO> getCategory() {
+		List<CategoryDTO> datas = dao.searchCategory();
+		return datas;
 	}
 
 }

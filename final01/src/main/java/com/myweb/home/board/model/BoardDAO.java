@@ -1,5 +1,7 @@
 package com.myweb.home.board.model;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,4 +34,15 @@ public class BoardDAO {
 		return res == 1 ? true : false;
 	}
 
+//   			 BoardService의 getData()와 연결.
+//	public BoardDTO selectData(int bid) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+	public List<CategoryDTO> searchCategory() {
+		List<CategoryDTO> datas = session.selectList("categoryMapper.categorySelectAll");
+		return datas;
+	}
+	
 }

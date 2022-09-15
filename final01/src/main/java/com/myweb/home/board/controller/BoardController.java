@@ -1,15 +1,20 @@
 package com.myweb.home.board.controller;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.myweb.home.board.model.BoardDTO;
+import com.myweb.home.board.model.CategoryDTO;
 import com.myweb.home.board.service.BoardService;
 import com.myweb.home.board.vo.BoardVO;
 import com.myweb.home.login.model.AccountDTO;
@@ -23,21 +28,28 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
-	@GetMapping(value="/add")
-	public String add() {
+	@GetMapping(value="/board/add")
+	public String add(Model model) {
 		logger.info("add()");
+		List<CategoryDTO> categoryDatas = service.getCategory();
+		model.addAttribute("categoryDatas", categoryDatas);
 		return "board/boardUpload";
 	}
 	
-	@PostMapping(value="/add")
+	@PostMapping(value="/board/add")
 	public String add(@SessionAttribute("loginData") AccountDTO accountDto
-			, @ModelAttribute BoardVO boardVo) {
+			, @ModelAttribute BoardVO boardVo, Model model) {
 		logger.info("add(boardVo={})", boardVo);
 		
 		BoardDTO data = new BoardDTO();
 		data.setBtitle(boardVo.getBtitle());
 		data.setBcontent(boardVo.getBcontent());
 		data.setAccountid(accountDto.getaccountid());
+		data.setCategoryid(boardVo.getCategoryid());
+		data.setDealmethod(boardVo.getDealmethod());
+		data.setPrice(boardVo.getPrice());
+		data.setPcondition(boardVo.getPcondition());
+		data.setBuystatus(boardVo.getBuystatus());
 		
 		int bid = service.add(data);
 		if(bid != -1) {
@@ -47,5 +59,18 @@ public class BoardController {
 		}
 		
 	}
+	
+	
+//	@GetMapping(value="/board/modify")
+//	public String modify(Model model
+//			, @SessionAttribute("loginData") AccountDTO accountDto
+//			, @RequestParam int bid) {
+//		logger.info("modify(accountDto={}, bid={})", accountDto, bid);
+//		
+//		BoardDTO data = service.getData(bid);
+//		
+//		
+//	}
+	
 	
 }

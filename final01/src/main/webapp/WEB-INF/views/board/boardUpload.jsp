@@ -18,6 +18,8 @@
 	<br><br><br><br><br><br>
 	<section class="container">
 	<div class="mb-1">
+	<c:url var="boardAddUrl" value="/board/add" />
+	<form action="${boardAddUrl}" method="post">
 	<table class="table">
 		<tr>
 			<th>이미지 등록</th>
@@ -38,8 +40,8 @@
 			<th>카테고리</th>
 			<th><select class="form-select" id="id_category" name="categoryid">
 					<option>카테고리 선택</option>
-					<c:forEach items="${categoryDatas}" var="category">
-						<option value="${category.categoryid}">[${category.categoryid}] ${category.categoryname}</option>
+					<c:forEach items="${categoryDatas}" var="categoryDto">
+						<option value="${categoryDto.categoryid}">[${categoryDto.categoryid}] ${categoryDto.categoryname}</option>
 					</c:forEach>
 				</select></th>
 			<th></th>
@@ -53,8 +55,8 @@
 		
 		<tr>
 			<th>유형</th>
-			<th><input type="radio" name="dealmethod" value="directdelivery" checked>직거래</th>
-			<th><input type="radio" name="dealmethod" value="delivery">택배거래</th>
+			<th><input type="radio" name="dealmethod" value="직거래" checked>직거래</th>
+			<th><input type="radio" name="dealmethod" value="택배거래">택배거래</th>
 			<th></th>
 		</tr>
 
@@ -76,14 +78,15 @@
 		
 		<tr>
 			<th>유형</th>
-			<th><input type="radio" name="pcondition" value="new" checked>새상품</th>
-			<th><input type="radio" name="pcondition" value="old">중고상품</th>
+			<th><input type="radio" name="pcondition" value="새상품" checked>새상품</th>
+			<th><input type="radio" name="pcondition" value="중고">중고상품</th>
 			<th>　　　　　　　</th>
 		</tr>
 		
 	</table>
 		<button class="btn btn-primary" onclick="location.href='/'">취소</button>
 		<button class="btn btn-primary" type="submit">등록</button>
+	</form>
 	</div>
 	</section>
 	
@@ -93,11 +96,11 @@ $(document).ready(function(){
     // 라디오버튼 클릭시 이벤트 발생
     $("input:radio[name=dealmethod]").click(function(){
  
-        if($("input[name=dealmethod]:checked").val() == "directdelivery"){
+        if($("input[name=dealmethod]:checked").val() == "직거래"){
             $("input:text[name=location]").attr("disabled",false);
            //직거래일경우 텍스트박스 활성화
  
-        }else if($("input[name=dealmethod]:checked").val() == "delivery"){
+        }else if($("input[name=dealmethod]:checked").val() == "택배거래"){
               $("input:text[name=location]").attr("disabled",true);
             //택배거래일경우 텍스트박스 비활성화
         }
