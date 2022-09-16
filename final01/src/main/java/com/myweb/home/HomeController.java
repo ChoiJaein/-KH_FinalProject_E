@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.myweb.home.main.controller.MainContoller;
 import com.myweb.home.main.service.MainService;
 
-
 @Controller
 public class HomeController {
 	

@@ -54,7 +54,8 @@ public class MainContoller {
 		
 		return "board/boardList_category";
 		
+		
+		
 	}
 	
-
 }

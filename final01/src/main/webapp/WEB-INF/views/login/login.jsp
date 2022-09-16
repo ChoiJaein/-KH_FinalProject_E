@@ -42,7 +42,7 @@
 				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./findIdPw'">아이디 비밀번호 찾기</button>
 			</div>
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='/register'">회원가입</button>
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./register'">회원가입</button>
 			</div>
 	        <div align= 'center'>
 	        <!-- 카카오 로그인 -->
