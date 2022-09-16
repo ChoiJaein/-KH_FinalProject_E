@@ -2,7 +2,7 @@
  *  ACCOUNT 스키마
  */
 
-
+-- 09.13 FILENAME, LOCATION, URL 제거
  CREATE TABLE ACCOUNT (
               ACCOUNTID VARCHAR2(50) PRIMARY KEY
              ,PASSWORD  VARCHAR2(50) NOT NULL
@@ -15,9 +15,9 @@
              ,PHONE     VARCHAR2(15)
              ,BIRTH     DATE
              ,ADMIN     VARCHAR2(1) CHECK(ADMIN IN('Y', 'N'))
-             ,FILENAME  VARCHAR2(200)
-             ,LOCATION  VARCHAR2(500)
-             ,URL       VARCHAR2(500)  
+             ,VISITCNT NUMBER DEFAULT(0)
+             ,REGISTERDATE DATE DEFAULT(SYSDATE)
+
  );
      
 SELECT * FROM ACCOUNT;

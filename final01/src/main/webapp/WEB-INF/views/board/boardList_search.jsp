@@ -23,44 +23,46 @@
 			<c:url var="boardUrl" value="./list" />
 			<form action="${boardUrl}" method="get">
 
-			<div>
-				<h2>'${data.search}'상품 목록</h2>
-			</div>
+            <div class="search">
+			  <div>
+				<h2>'${scri.keyword}'상품 목록</h2>
+			  </div>
+			 </div> 
 			<hr>
 						<c:url var="boardDetailUrl" value="./detail">
-							<c:param name="id">${data.bId}</c:param>
+							<c:param name="id">${data.bid}</c:param>
 						</c:url>
 			
-			<c:if test="${not empty datas}">
-				<c:forEach items="${datas}" var="data">
+			<c:if test="${not empty list}">
+				<c:forEach items="${list}" var="list">
 
 					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
-								<img src="${data.url}" style="width:250px; height:250px;">
+							 <img src="${list.url}" style="width:250px; height:250px;"> 
 							</div>
 						
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
-										<td style="width:100px;">${data.btitle}</td>
+										<td style="width:100px;">${list.btitle}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${data.pcondition} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${list.pcondition} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
 										<td style="width:100px;"></td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${data.dealmethod} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${list.dealmethod} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width:100px;">${data.name}</td>
+										<td style="width:100px;">${list.accountid}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${data.price} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${list.price} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 								</table>
 							</div>
@@ -71,18 +73,18 @@
 			</c:if>
 
 			<!-- 데이터가 없을 경우 -->
-			<c:if test="${datas == null}">
+			<c:if test="${list == null}">
 				
 					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
-								<img src="${data.url}" style="width:250px; height:250px;">
+								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
-										<td style="width:750px;">${i}</td>
+										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
 										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
@@ -107,41 +109,10 @@
 					<br><br>
 					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
-								<img src="${data.url}" style="width:250px; height:250px;">
+								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
-								<table style="width:1000px; height:250px; text-align:right;">
-									<tr>
-										<td style="width:100px;">게시글제목</td>
-										<td style="width:750px;">${i}</td>
-										<td></td>
-										<td></td>
-										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td style="width:100px;"></td>
-										<td style="width:750px;"></td>
-										<td></td>
-										<td></td>
-										<td style="width:100px;">직거래 &nbsp;&nbsp;&nbsp;</td>
-									</tr>
-									<tr>
-										<td style="width:100px;">판매자이름</td>
-										<td style="width:750px;"></td>
-										<td></td>
-										<td></td>
-										<td style="width:100px;">000,000원 &nbsp;&nbsp;&nbsp;</td>
-									</tr>
-								</table>
-							</div>
-					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
-							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
-								<img src="${data.url}" style="width:250px; height:250px;">
-							</div>
-							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
@@ -169,10 +140,10 @@
 					</div>
 					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
-								<img src="${data.url}" style="width:250px; height:250px;">
+								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
@@ -200,14 +171,45 @@
 					</div>
 					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
-								<img src="${data.url}" style="width:250px; height:250px;">
+								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
 							
-							<div style="width:1000px; height:250px; background-color:gray; float:left;">
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
 										<td style="width:100px;">게시글제목</td>
-										<td style="width:750px;">${i}</td>
+										<td style="width:750px;"></td>
+										<td></td>
+										<td></td>
+										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width:100px;"></td>
+										<td style="width:750px;"></td>
+										<td></td>
+										<td></td>
+										<td style="width:100px;">직거래 &nbsp;&nbsp;&nbsp;</td>
+									</tr>
+									<tr>
+										<td style="width:100px;">판매자이름</td>
+										<td style="width:750px;"></td>
+										<td></td>
+										<td></td>
+										<td style="width:100px;">000,000원 &nbsp;&nbsp;&nbsp;</td>
+									</tr>
+								</table>
+							</div>
+					</div>
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
+								<img src="${list.url}" style="width:250px; height:250px;">
+							</div>
+							
+							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
+								<table style="width:1000px; height:250px; text-align:right;">
+									<tr>
+										<td style="width:100px;">게시글제목</td>
+										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
 										<td style="width:100px;">새상품 &nbsp;&nbsp;&nbsp;</td>
@@ -232,31 +234,32 @@
 					<br><br>
 			</c:if>
 			
-			<nav>
-			<div>
-				<ul class="pagination justify-content-center">
-					<c:if test="${pageData.hasPrevPage()}">
-						<li class="page-item">
-							<a class="page-link" href="${boardUrl}?type=${data.categoryId}&page=${pageData.prevPageNumber}">Prev</a>
-						</li>
-					</c:if>
-					<c:forEach items="${pageData.getPageNumberList(pageData.currentPageNumber - 2, pageData.currentPageNumber + 2)}" var="num">
-						<li class="page-item ${pageData.currentPageNumber eq num ? 'active' : ''}">
-							<a class="page-link" href="${boardUrl}?type=${data.categoryId}&page=${num}">${num}</a>
-						</li>
-					</c:forEach>
-					<c:if test="${pageData.hasNextPage()}">
-						<li class="page-item">
-							<a class="page-link" href="${boardUrl}?type=${data.categoryId}&page=${pageData.nextPageNumber}">Next</a>
-						</li>
-					</c:if>
-				</ul>
-			</div>
-			</nav>
 			
-			
-		</form>
+				<div>
+		 <c:forEach begin="1" end="${pageNum}" var="num">
+		      <span>
+		     <a href="../board/boardList_search?num=${num}">${num}</a>
+		  </span>
+		 </c:forEach>
 		</div>
+		
+		<section>
+		   <div>
+		   <ul>
+		    <c:if test="${pageMaker.prev}">
+		     <li><a href="boardList_search${pageMaker.makeSearch(pageMaker.startPage - 1)}">이전</a></li>
+		    </c:if>   
+		    
+		    <c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+		     <li><a href="boardList_search${pageMaker.makeSearch(idx)}">${idx}</a></li>
+		    </c:forEach>
+		      
+		    <c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+		     <li><a href="boardList_search${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
+		    </c:if>   
+		   </ul>
+		</div>
+		   </section>
 	</section>
 	
 	<footer><%@ include file="../module/footer.jsp" %></footer>

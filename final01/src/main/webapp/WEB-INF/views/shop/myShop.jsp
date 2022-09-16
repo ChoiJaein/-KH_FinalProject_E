@@ -99,148 +99,218 @@
 </style>	
 </head>
 <body>
-<header></header>
+<header>
+	<%@ include file="../module/navigation.jsp" %>
+</header>
+	<%@ include file="../module/categoryNavigation.jsp" %>
+
+<!-- 목업 -->
+<c:if test="${loginData == null}">
+	 <section class="container whole-size">
+	<div id="align-items">
+	  <div class="row align-items-start">
+	    <div class="mb-4 mt-4 row justify-content-center">
+	       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
+	<!--이미지 경로체크 -->
+	         <div class="col-4">
+	            <img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/modify/profile.png">         
+	         </div>
+	         
+	         <div class="col-8">
+	            <div class="mt-4 mb-3 border-bottom border-2 border-secondary">
+	              <p><b style="font-size:23px;">닉네임value</b> 님 환영합니다</p>
+	             </div>
+	             <div>
+	              <p style="font-size:17px;">상품 판매  : value 회</p>
+	              <p style="font-size:17px;">내 상점 방문 : value 회 </p>
+	            </div>
+	         </div>
+	       </div>
+	    </div>
+	 </div>
+	 
+	 
+	   <div class="mt-3">
+	     <div class="mb-4 border-bottom border-2 border-secondary border-width">
+	        <div class="mb-3">
+	          <h3>내 상품 목록 <i class="bi bi-house-door icon-size"></i></h3>   
+	        </div>
+	    </div>
+	  </div>
+	  
+	   <div class="row align-items-start">
+	    <div class="container-second justify-content-center">    
+	        
+	 <!-- 반복문 값이 있을때마다  상품목록div 하나씩 추가-->
+	     <table class="table-product mt-2">
+	        <colgroup>
+				<col class="col-4">
+				<col class="col-8">
+			 </colgroup>
+	        <tr>
+	            <td rowspan="2" style="height:90px;">
+	               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/watch.png">  
+	            </td>
+	            <td colspan="2" class="p-edit">상품명value</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" class="p-price"> 100.000.000 원</td>   
+	        </tr>
+	        <tr>
+	<!--상품관리페이지 주소 체크 -->   
+	            <td colspan="3">
+	              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
+	            </td>    
+	        </tr>
+	    </table>
+	
+	 
+	<!-- 반복문 완성 되면 삭제할 것.-->                
+	       <table class="table-product mt-2">
+	        <colgroup>
+				<col class="col-4">
+				<col class="col-8">
+			 </colgroup>
+	        <tr>
+	            <td rowspan="2" style="height:90px;">
+	               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
+	            </td>
+	            <td colspan="2" class="p-edit">상품명value</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" class="p-price"> 100.000.000 원</td>   
+	        </tr>
+	        <tr>
+	            <td colspan="3">
+	              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
+	            </td>    
+	        </tr>
+	    </table>
+	    
+	    <!-- 반복문 완성 되면 삭제할 것.-->                
+	       <table class="table-product mt-2">
+	        <colgroup>
+				<col class="col-4">
+				<col class="col-8">
+			 </colgroup>
+	        <tr>
+	            <td rowspan="2" style="height:90px;">
+	               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
+	            </td>
+	            <td colspan="2" class="p-edit">상품명value</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" class="p-price"> 100.000.000 원</td>   
+	        </tr>
+	        <tr>
+	            <td colspan="3">
+	              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
+	            </td>    
+	        </tr>
+	    </table>
+	 
+	  
+	 <!-- 테이블 정렬을위한 태그 -->                
+	       <table class="table-product mt-2" style="visibility:hidden;">
+	        <colgroup>
+				<col class="col-4">
+				<col class="col-8">
+			 </colgroup>
+	        <tr>
+	            <td rowspan="2" style="height:90px;">
+	               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
+	            </td>
+	            <td colspan="2" class="p-edit">상품명value</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" class="p-price"> 100.000.000 원</td>   
+	        </tr>
+	        <tr>
+	            <td colspan="3">
+	              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
+	            </td>    
+	        </tr>
+	    </table>   
+	  
+	  
+	    </div>
+	   </div>
+	 </div> 
+	</section>
+</c:if>
 
 
- <section class="container whole-size">
-<div id="align-items">
-  <div class="row align-items-start">
-    <div class="mb-4 mt-4 row justify-content-center">
-       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
-<!--이미지 경로체크 -->
-         <div class="col-4">
-            <img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/modify/profile.png">         
-         </div>
-         
-         <div class="col-8">
-            <div class="mt-4 mb-3 border-bottom border-2 border-secondary">
-              <p><b style="font-size:23px;">닉네임value</b> 님 환영합니다</p>
-             </div>
-             <div>
-              <p style="font-size:17px;">상품 판매  : value 회</p>
-              <p style="font-size:17px;">내 상점 방문 : value 회 </p>
-            </div>
-         </div>
-       </div>
-    </div>
- </div>
- 
- 
-   <div class="mt-3">
-     <div class="mb-4 border-bottom border-2 border-secondary border-width">
-        <div class="mb-3">
-          <h3>내 상품 목록 <i class="bi bi-house-door icon-size"></i></h3>   
-        </div>
-    </div>
-  </div>
-  
-   <div class="row align-items-start">
-    <div class="container-second justify-content-center">    
-        
- <!-- 반복문 값이 있을때마다  상품목록div 하나씩 추가-->
-     <table class="table-product mt-2">
-        <colgroup>
-			<col class="col-4">
-			<col class="col-8">
-		 </colgroup>
-        <tr>
-            <td rowspan="2" style="height:90px;">
-               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/watch.png">  
-            </td>
-            <td colspan="2" class="p-edit">상품명value</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="p-price"> 100.000.000 원</td>   
-        </tr>
-        <tr>
-<!--상품관리페이지 주소 체크 -->   
-            <td colspan="3">
-              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
-            </td>    
-        </tr>
-    </table>
+<!-- 데이터가 있을경우 -->
+	<c:if test="${not empty loginData}">
+		 <section class="container whole-size">
+		<div id="align-items">
+		  <div class="row align-items-start">
+		    <div class="mb-4 mt-4 row justify-content-center">
+		       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
+		<!--이미지 경로체크 -->
+		         <div class="col-4">
+		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="${data.accountImg}">         
+		         </div>
+		         
+		         <div class="col-8">
+		            <div class="mt-4 mb-3 border-bottom border-2 border-secondary">
+		              <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
+		             </div>
+		             <div>
+		              <p style="font-size:17px;">상품 판매  : ${data.sellCnt} 회</p>
+		              <p style="font-size:17px;">내 상점 방문 : ${data.viewCnt} 회 </p>
+		            </div>
+		         </div>
+		       </div>
+		    </div>
+		 </div>
+		 
+		 
+		   <div class="mt-3">
+		     <div class="mb-4 border-bottom border-2 border-secondary border-width">
+		        <div class="mb-3">
+		          <h3>내 상품 목록 <i class="bi bi-house-door icon-size"></i></h3>   
+		        </div>
+		    </div>
+		  </div>
+		  
+		   <div class="row align-items-start">
+		    <div class="container-second justify-content-center">    
+		        
+		 <!-- 반복문 값이 있을때마다  상품목록div 하나씩 추가-->
+		 <c:forEach items="${datas}" var="data">
+			     <table class="table-product mt-2">
+			        <colgroup>
+						<col class="col-4">
+						<col class="col-8">
+					 </colgroup>
+			        <tr>
+			            <td rowspan="2" style="height:90px;">
+			               <img id="previewImg" class="image-360 product-size" alt="profile" src="${data.url}">  
+			            </td>
+			            <td colspan="2" class="p-edit">${data.bTitle}</td>
+			        </tr>
+			        <tr>
+			            <td colspan="2" class="p-price"> ${data.price} 원</td>   
+			        </tr>
+			        <tr>
+			<!--상품관리페이지 주소 체크 -->   
+			            <td colspan="3">
+			              <button class="btn btn-primary btn-size" onclick="location.href='./modify?id=${data.bId}'">상품 관리 페이지</button>
+			            </td>    
+			        </tr>
+			    </table>
+		
+		 </c:forEach>
+		
+		  
+		  
+		    </div>
+		   </div>
+		 </div> 
+		</section>
+	</c:if>
 
- 
-<!-- 반복문 완성 되면 삭제할 것.-->                
-       <table class="table-product mt-2">
-        <colgroup>
-			<col class="col-4">
-			<col class="col-8">
-		 </colgroup>
-        <tr>
-            <td rowspan="2" style="height:90px;">
-               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
-            </td>
-            <td colspan="2" class="p-edit">상품명value</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="p-price"> 100.000.000 원</td>   
-        </tr>
-        <tr>
-            <td colspan="3">
-              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
-            </td>    
-        </tr>
-    </table>
-    
-    <!-- 반복문 완성 되면 삭제할 것.-->                
-       <table class="table-product mt-2">
-        <colgroup>
-			<col class="col-4">
-			<col class="col-8">
-		 </colgroup>
-        <tr>
-            <td rowspan="2" style="height:90px;">
-               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
-            </td>
-            <td colspan="2" class="p-edit">상품명value</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="p-price"> 100.000.000 원</td>   
-        </tr>
-        <tr>
-            <td colspan="3">
-              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
-            </td>    
-        </tr>
-    </table>
- 
- 
- 
- 
- 
-
-
-
-
-  
- <!-- 테이블 정렬을위한 태그 -->                
-       <table class="table-product mt-2" style="visibility:hidden;">
-        <colgroup>
-			<col class="col-4">
-			<col class="col-8">
-		 </colgroup>
-        <tr>
-            <td rowspan="2" style="height:90px;">
-               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
-            </td>
-            <td colspan="2" class="p-edit">상품명value</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="p-price"> 100.000.000 원</td>   
-        </tr>
-        <tr>
-            <td colspan="3">
-              <button class="btn btn-primary btn-size" onclick="location.href='https://www.naver.com'">상품 관리 페이지</button>
-            </td>    
-        </tr>
-    </table>   
-  
-  
-    </div>
-   </div>
- </div> 
-</section>
 
 
 <!--하단-->

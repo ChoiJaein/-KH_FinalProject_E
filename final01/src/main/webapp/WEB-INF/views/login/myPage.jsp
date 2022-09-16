@@ -59,101 +59,203 @@
 </style>	
 </head>
 <body>
-<header></header>
+<header>
+	<%@ include file="../module/navigation.jsp" %>
+</header>
+	<%@ include file="../module/categoryNavigation.jsp" %>
 
 
- <section class="container whole-size">
-  <div class="mt-5">
-     <div class="mb-5 border-bottom border-2 border-secondary border-width">
-        <div class="mb-3">
-          <h3> 마이페이지 <i class="bi bi-pencil-square"></i></h3>   
-        </div>
-    </div>
-  </div> 
+<!-- 목업 -->
+<c:if test="${loginData == null}">
+	 <section class="container whole-size">
+	  <div class="mt-5">
+	     <div class="mb-5 border-bottom border-2 border-secondary border-width">
+	        <div class="mb-3">
+	          <h3> 마이페이지 <i class="bi bi-pencil-square"></i></h3>   
+	        </div>
+	    </div>
+	  </div> 
+	
+	<c:url var="myinfoMain" value="/myinfo/main"/>
+	  <form action="${myinfoMain}" method="post" enctype="multipart/form-data">
+	<div id="align-items ">
+	  <div class="row align-items-start">
+	    <div class="mb-4 mt-4 row justify-content-center">
+	       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
+	<!--이미지 경로체크 -->
+	         <div class="col-4">
+	            <img id="previewImg" class="image-360 image-size" alt="profile" src="./static/img/modify/profile.png">         
+	         </div>
+	<!--닉네임value 체크 -->         
+	         <div class="col-8">
+	            <div class="mt-4 mb-3 border-bottom border-2 border-secondary ">
+	              <p><b style="font-size:23px;">닉네임value</b> 님 환영합니다</p>
+	             </div>
+	<!--닉네임value 체크 -->             
+	             <div>
+	              <p style="font-size:17px;"><b style="font-size:20px;">닉네임</b> 님의 총 구매횟수 : 값</p>
+	              <p style="font-size:17px;">지구마켓과 함께한 날 : 값 </p>
+	            </div>
+	<!--개인정보수정버튼 경로설정 -->            
+	            <div class="text-end mt-4">
+	              <button class="btn btn-primary" type="button" onclick="location.href='https://naver.com'">개인정보 수정</button>
+	            </div>
+	         </div>
+	       </div>
+	    </div>
+	 </div>
+	
+	 
+	  <div class="mt-5">
+	     <div class="mb-5 border-bottom border-2 border-secondary border-width">
+	        <div class="mb-3">
+	        </div>
+	    </div>
+	  </div> 
+	 
+	 
+	 <!--onclick 링크주소 설정--> 
+	 
+	 <div class="row align-items-start">
+	  <div class="container-second justify-content-center">
+	   <div class="col-sm-2  text-center shopmenu pointer " onclick="location.href='https://www.naver.com'">
+	     <div>
+	       <i class="bi bi-house-door icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">내 상점</p>
+	      </div>
+	   </div>
+	  
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='https://www.naver.com'">
+	     <div>
+	       <i class="bi bi-chat-dots icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">채 팅</p>
+	      </div>
+	   </div>
+	  
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='https://www.naver.com'">
+	     <div>
+	       <i class="bi bi-cart-check icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">구매목록</p>
+	      </div>
+	   </div>
+	  
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='https://www.naver.com'">
+	     <div>
+	       <i class="bi bi-bag-heart icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">찜</p>
+	      </div>
+	   </div>
+	  </div>
+	 </div> 
+	</div>
+	</form>
+	</section>
+</c:if>
 
-<c:url var="myinfoMain" value="/mypage"/>
-  <form action="${myinfoMain}" method="post" enctype="multipart/form-data">
-<div id="align-items ">
-  <div class="row align-items-start">
-    <div class="mb-4 mt-4 row justify-content-center">
-       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
-<!--이미지 경로체크 -->
-         <div class="col-4">
-            <img id="previewImg" class="image-360 image-size" alt="profile" src="./static/img/modify/profile.png">         
-         </div>
-<!--닉네임value 체크 -->         
-         <div class="col-8">
-            <div class="mt-4 mb-3 border-bottom border-2 border-secondary ">
-              <p><b style="font-size:23px;">닉네임value</b> 님 환영합니다</p>
-             </div>
-<!--닉네임value 체크 -->             
-             <div>
-              <p style="font-size:17px;"><b style="font-size:20px;">닉네임</b> 님의 총 구매횟수 : 값</p>
-              <p style="font-size:17px;">지구마켓과 함께한 날 : 값 </p>
-            </div>
-<!--개인정보수정버튼 경로설정 -->            
-            <div class="text-end mt-4">
-              <button class="btn btn-primary" type="button" onclick="location.href='https://naver.com'">개인정보 수정</button>
-            </div>
-         </div>
-       </div>
-    </div>
- </div>
 
- 
-  <div class="mt-5">
-     <div class="mb-5 border-bottom border-2 border-secondary border-width">
-        <div class="mb-3">
-        </div>
-    </div>
-  </div> 
- 
- 
- <!--onclick 링크주소 설정--> 
- 
- <div class="row align-items-start">
-  <div class="container-second justify-content-center">
-   <div class="col-sm-2  text-center shopmenu pointer " onclick="location.href='https://www.naver.com'">
-     <div>
-       <i class="bi bi-house-door icon-size"></i>
-     </div>
-      <div>
-        <p class="icon-font">내 상점</p>
-      </div>
-   </div>
-  
-   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='https://www.naver.com'">
-     <div>
-       <i class="bi bi-chat-dots icon-size"></i>
-     </div>
-      <div>
-        <p class="icon-font">채 팅</p>
-      </div>
-   </div>
-  
-   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='https://www.naver.com'">
-     <div>
-       <i class="bi bi-cart-check icon-size"></i>
-     </div>
-      <div>
-        <p class="icon-font">구매목록</p>
-      </div>
-   </div>
-  
-   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='https://www.naver.com'">
-     <div>
-       <i class="bi bi-bag-heart icon-size"></i>
-     </div>
-      <div>
-        <p class="icon-font">찜</p>
-      </div>
-   </div>
-  </div>
- </div> 
-</div>
-</form>
-</section>
 
+<!-- 로그인데이터가 있을 경우 -->
+<c:if test="${not empty loginData}">
+	 <section class="container whole-size">
+	  <div class="mt-5">
+	     <div class="mb-5 border-bottom border-2 border-secondary border-width">
+	        <div class="mb-3">
+	          <h3> 마이페이지 <i class="bi bi-pencil-square"></i></h3>   
+	        </div>
+	    </div>
+	  </div> 
+	
+	<c:url var="myinfoMain" value="/myinfo/main"/>
+	  <form action="${myinfoMain}" method="post" enctype="multipart/form-data">
+	<div id="align-items ">
+	  <div class="row align-items-start">
+	    <div class="mb-4 mt-4 row justify-content-center">
+	       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
+	<!--이미지 경로체크 -->
+	         <div class="col-4">
+	            <img id="previewImg" class="image-360 image-size" alt="profile" src="${data.url}">         
+	         </div>
+	<!--닉네임value 체크 -->         
+	         <div class="col-8">
+	            <div class="mt-4 mb-3 border-bottom border-2 border-secondary ">
+	              <p><b style="font-size:23px;">${data.name}</b> 님 환영합니다</p>
+	             </div>
+	<!--닉네임value 체크 -->             
+	             <div>
+	              <p style="font-size:17px;"><b style="font-size:20px;">닉네임</b> 님의 총 구매횟수 : ${data.buyCnt}값</p>
+	              <p style="font-size:17px;">지구마켓과 함께한 날 : ${data.day}값 </p>
+	            </div>
+	<!--개인정보수정버튼 경로설정 -->            
+	            <div class="text-end mt-4">
+	              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountId}'">개인정보 수정</button>
+	            </div>
+	         </div>
+	       </div>
+	    </div>
+	 </div>
+	
+	 
+	  <div class="mt-5">
+	     <div class="mb-5 border-bottom border-2 border-secondary border-width">
+	        <div class="mb-3">
+	        </div>
+	    </div>
+	  </div> 
+	 
+	 
+	 <!--onclick 링크주소 설정--> 
+	 
+	 <div class="row align-items-start">
+	  <div class="container-second justify-content-center">
+	   <div class="col-sm-2  text-center shopmenu pointer " onclick="location.href='https://www.naver.com'">
+	     <div>
+	       <i class="bi bi-house-door icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">내 상점</p>
+	      </div>
+	   </div>
+	  
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='https://www.naver.com'">
+	     <div>
+	       <i class="bi bi-chat-dots icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">채 팅</p>
+	      </div>
+	   </div>
+	  
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='./shoppinglist?id=${loginData.accountId}'">
+	     <div>
+	       <i class="bi bi-cart-check icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">구매목록</p>
+	      </div>
+	   </div>
+	  
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='./favoritelist?id=${loginData.accountId}'">
+	     <div>
+	       <i class="bi bi-bag-heart icon-size"></i>
+	     </div>
+	      <div>
+	        <p class="icon-font">찜</p>
+	      </div>
+	   </div>
+	  </div>
+	 </div> 
+	</div>
+	</form>
+	</section>
+</c:if>
 
 <!--하단-->
 <%@ include file="../module/footer.jsp" %>
