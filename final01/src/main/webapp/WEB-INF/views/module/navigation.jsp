@@ -20,7 +20,7 @@
 <br><br>
 <nav class="navbar">
 	<div class="container">
-			<a class="navbar-brand" href="/">지구마켓</a>
+			<a class="navbar-brand" href="${mainUrl}/home">지구마켓</a>
 			
 			<div class="search">
 			<input class="text_wide" type="text" id="keywordInput" name="keyword" value="${scri.keyword}">
