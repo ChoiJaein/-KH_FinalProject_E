@@ -43,9 +43,5 @@ public class HomeController {
 		return "home";		
 	}
 	
-	@RequestMapping(value="/board/boardList_search", method=RequestMethod.GET)
-	public String boardList_Search() {
-		return "board/boardList_search";
-	}
 	
 }

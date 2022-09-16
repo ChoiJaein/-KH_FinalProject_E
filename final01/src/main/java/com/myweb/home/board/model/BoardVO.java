@@ -15,6 +15,7 @@ public class BoardVO {
 	private Date createDate;
 	private int viewcnt;
 	private String buystatus;
+	private String url;
 	
 	
 	
@@ -103,6 +104,16 @@ public class BoardVO {
 	
 	public void setBuystatus(String buystatus) {
 		this.buystatus = buystatus;
+	}
+
+	
+	
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
 	@Override

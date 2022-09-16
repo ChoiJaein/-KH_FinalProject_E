@@ -19,59 +19,12 @@ import com.myweb.home.board.service.BoardService;
 
 @Controller
 public class BoardController {
-
-	/*
-	@RequestMapping(value="/boardList_search", method= RequestMethod.GET)
-    public void getSearch(Model model, @RequestParam("num") int num) throws Exception {
-	*/
-	
-	
-	
-
 		
 		@Autowired
 		private BoardService service;
 		
-		@RequestMapping(value="/board/list", method=RequestMethod.GET)
-		public void list(Model model) throws Exception{
-			
-			List<BoardVO> list = service.list();
-			
-			model.addAttribute("list", list);
-			
-		}
-		
-		@RequestMapping(value="/board/read", method=RequestMethod.GET)
-		public void read(@RequestParam("bid") int bid,Model model) throws Exception {
-			BoardVO  vo = service.read(bid);
-			model.addAttribute("read", vo);
-		}
-		
-		@RequestMapping(value="/board/write", method=RequestMethod.GET)
-		public void getWrite() throws Exception {
-			
-		}
-		
-		@RequestMapping(value="/board/write", method=RequestMethod.POST)
-		public String postWrite(BoardVO vo) throws Exception {
-			service.write(vo);
-			return"redirect:/";
-			
-		}
-
-		@RequestMapping(value="/board/listPage", method=RequestMethod.GET)
-		public void listPage(@ModelAttribute("cri") Criteria cri, Model model) throws Exception{
-			List<BoardVO> list = service.listPage(cri);
-			model.addAttribute("list", list);
-		  
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
-			pageMaker.setTotalCount(service.listCount());
-			model.addAttribute("pageMaker",pageMaker);
-		
-		}
-		
-		@RequestMapping(value = "/board/listSearch", method = RequestMethod.GET)
+		//상품 검색
+		@RequestMapping(value = "/board/boardList_search", method = RequestMethod.GET)
 		public void listPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
 		 
 		 List<BoardVO> list = service.listSearch(scri);
