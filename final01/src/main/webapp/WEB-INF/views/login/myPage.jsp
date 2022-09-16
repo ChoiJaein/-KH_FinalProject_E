@@ -71,7 +71,7 @@
     </div>
   </div> 
 
-<c:url var="myinfoMain" value="/myinfo/main"/>
+<c:url var="myinfoMain" value="/mypage"/>
   <form action="${myinfoMain}" method="post" enctype="multipart/form-data">
 <div id="align-items ">
   <div class="row align-items-start">
