@@ -1,5 +1,6 @@
 package com.myweb.home.board.model;
 
+//검색기준
 public class SearchCriteria extends Criteria {
 	
 	

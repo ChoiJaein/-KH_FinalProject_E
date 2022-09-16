@@ -1,5 +1,6 @@
 package com.myweb.home.board.model;
 
+
 public class Criteria {
 	
 	 private int page;
