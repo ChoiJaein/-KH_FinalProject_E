@@ -36,5 +36,8 @@ public class BoardController {
 		 model.addAttribute("pageMaker", pageMaker);
 		}
 		
-	
+	  @RequestMapping(value="/board/boardDetail", method = RequestMethod.GET)
+	  public String boardDetail(Model model) {
+		  return "/board/boardDetail";
+	  }
 }
