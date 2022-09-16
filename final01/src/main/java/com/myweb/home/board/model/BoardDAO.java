@@ -2,7 +2,7 @@ package com.myweb.home.board.model;
 
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 	public class BoardDAO {
 
 		@Autowired
-		private SqlSessionTemplate sqlSession;
+		private SqlSession sqlSession;
 	
 		
 		
