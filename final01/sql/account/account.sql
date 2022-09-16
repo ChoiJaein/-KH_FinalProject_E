@@ -15,6 +15,8 @@
              ,PHONE     VARCHAR2(15)
              ,BIRTH     DATE
              ,ADMIN     VARCHAR2(1) CHECK(ADMIN IN('Y', 'N'))
+             ,VISITCNT NUMBER DEFAULT(0)
+             ,REGISTERDATE DATE DEFAULT(SYSDATE)
 
  );
      
