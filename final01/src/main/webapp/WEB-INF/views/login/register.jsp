@@ -13,6 +13,7 @@
 
 <script type="text/javascript">
 	/* 아이디 중복 확인 */
+	
 	function idOverlap() {
 				console.log("idOverlap 호출")
 				console.log("아이디 입력 값 " + register.accountid.value)
