@@ -13,5 +13,7 @@
 	<typeAlias type="com.myweb.home.board.model.BoardDTO" alias="boardDto" />
 	<typeAlias type="com.myweb.home.board.model.CategoryDTO" alias="categoryDto" />
 	<typeAlias type="com.myweb.home.board.vo.BoardVO" alias="boardVo" />
+	<typeAlias type="com.myweb.home.board.model.Criteria" alias="criteria" />
+	<typeAlias type="com.myweb.home.board.model.SearchCriteria" alias="searchCriteria" />
 	</typeAliases>
 </configuration>

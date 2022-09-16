@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 
 import com.myweb.home.board.model.BoardDAO;
 import com.myweb.home.board.model.BoardDTO;
+import com.myweb.home.board.model.Criteria;
+import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.board.model.CategoryDTO;
 import com.myweb.home.board.vo.BoardVO;
  
@@ -45,5 +47,24 @@ public class BoardService {
 		List<CategoryDTO> datas = dao.searchCategory();
 		return datas;
 	}
+	
+	
+	
+	
+	
+	public int listCount() throws Exception {
+		return dao.listCount();
+	}
+ 
+	public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
+		return dao.listSearch(scri);
+	}
+	
+	public int countSearch(SearchCriteria scri)throws Exception {
+		return dao.countSearch(scri);
+	}
+	
+	
+	
 
 }

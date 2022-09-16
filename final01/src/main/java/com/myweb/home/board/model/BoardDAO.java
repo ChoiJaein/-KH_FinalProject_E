@@ -16,21 +16,21 @@ public class BoardDAO {
 	private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 
 	@Autowired
-	private SqlSession session;
+	private SqlSession sqlSession;
 	
 	private String mapper = "boardMapper.%s";
 	
 	public int getNextSeq() {
 		logger.info("getNextSeq()");
 		String mapperId = String.format(mapper, "getNextSeq");
-		int seq = session.selectOne(mapperId);
+		int seq = sqlSession.selectOne(mapperId);
 		return seq;
 	}
 
 	public boolean insertData(BoardDTO data) {
 		logger.info("insertData(data={})", data);
 		String mapperId = String.format(mapper, "insertData");
-		int res = session.insert(mapperId, data);
+		int res = sqlSession.insert(mapperId, data);
 		return res == 1 ? true : false;
 	}
 
@@ -41,8 +41,23 @@ public class BoardDAO {
 //	}
 
 	public List<CategoryDTO> searchCategory() {
-		List<CategoryDTO> datas = session.selectList("categoryMapper.categorySelectAll");
+		List<CategoryDTO> datas = sqlSession.selectList("categoryMapper.categorySelectAll");
 		return datas;
+	}
+	
+	
+	
+	
+	public int listCount() throws Exception {
+		return sqlSession.selectOne("boardMapper.listCount");
+	}
+	
+	public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
+	    return sqlSession.selectList("boardMapper.listSearch",scri);
+	}
+	
+	public int countSearch(SearchCriteria scri) throws Exception{
+		return sqlSession.selectOne("boardMapper.countSearch",scri);
 	}
 	
 }

@@ -19,7 +19,7 @@
 		<c:url var="loginUrl" value="/login" />
 		<form action="${loginUrl}" method="post" name ="loginForm">
 		<div class="center-block">
-			<h1 align="center"><a href="${mainUrl}/home">지구마켓</a></h1>
+			<h1 align="center"><a href="${mainUrl}/home/main">지구마켓</a></h1>
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
@@ -39,7 +39,7 @@
 		</form>
 			
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./login/findIdPw'">아이디 비밀번호 찾기</button>
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./findIdPw'">아이디 비밀번호 찾기</button>
 			</div>
 			<div class="mb-2 text-end">
 				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./register'">회원가입</button>

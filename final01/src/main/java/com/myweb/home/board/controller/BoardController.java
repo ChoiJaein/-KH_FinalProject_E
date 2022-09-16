@@ -73,4 +73,23 @@ public class BoardController {
 //	}
 	
 	
+	
+	
+	
+	//상품 검색
+	@RequestMapping(value = "/board/boardList_search", method = RequestMethod.GET)
+	public void listPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+	 
+	 List<BoardVO> list = service.listSearch(scri);
+	 model.addAttribute("list", list);
+	 PageMaker pageMaker = new PageMaker();
+	 pageMaker.setCri(scri);
+	 pageMaker.setTotalCount(service.listCount());
+	 //pageMaker.setTotalCount(service.countSearch(scri));
+	 model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	
+	
+	
 }
