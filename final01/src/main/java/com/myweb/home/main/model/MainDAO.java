@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class MainDAO {
 	
@@ -29,11 +30,19 @@ public class MainDAO {
 		
 	}
 	
-	public List<MainDTO> selectCate(MainDTO data) {
+	public List<MainDTO> selectCate(int id) {
 		String mapperId = String.format(mapper, "selectCateDatas");
-		List<MainDTO> res  = session.selectList(mapperId, data);
+		List<MainDTO> res  = session.selectList(mapperId, id);
+		
+		logger.info("selectCate(id= {})", id);
 		
 		return res;
 		
+	}
+	
+	public MainDTO selectCateTitle(int id) {
+		String mapperId = String.format(mapper, "selectCateName");
+		MainDTO res = session.selectOne(mapperId, id);
+		return res;
 	}
 }

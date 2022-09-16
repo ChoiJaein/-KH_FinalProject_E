@@ -74,7 +74,7 @@
 			<tr class="text-center">
 				<c:forEach items="${datas}" var="data">
 				<td onclick="location.href='/detail?id=${data.bId}'">
-					<img src="${data.url}" alt="Nothing" width="200px" height="200px"><br>
+					<img src="<%=request.getContextPath()%>${data.url}" alt="Nothing" width="200px" height="200px"><br>
 					${data.bTitle}<br>
 					<fmt:formatNumber value="${data.price}" pattern="#,###원"/><br>
 					${data.dealMethod}
