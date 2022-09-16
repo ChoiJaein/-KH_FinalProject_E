@@ -10,5 +10,8 @@
 	<typeAlias type="com.myweb.home.member.vo.MemberVO" alias="memberVo" />
 	<typeAlias type="com.myweb.home.notice.model.NoticeDTO" alias="noticeDto" />
 	<typeAlias type="com.myweb.home.main.model.MainDTO" alias="mainDto" />
+	<typeAlias type="com.myweb.home.board.model.BoardVO" alias="boardVo" />
+	<typeAlias type="com.myweb.home.board.model.Criteria" alias="criteria" />
+	<typeAlias type="com.myweb.home.board.model.SearchCriteria" alias="searchCriteria" />
 	</typeAliases>
 </configuration>

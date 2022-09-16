@@ -92,34 +92,34 @@
       <div>
          <div class="form-inline-input">
             <label class="form-label">First Name</label>
-            <input class="form-input form-size-300 mb-4 cursor" type="text" name="FirstName" placeholder="gil-dong">
+            <input class="form-input form-size-300 mb-4 cursor" type="text" name="FirstName" placeholder="이름">
           </div>
           <div class="form-inline-input">
             <label class="form-label">Last Name</label>
-            <input class="form-input form-size-300 mb-4 cursor" type="text" name="LastName"  placeholder="hong">
+            <input class="form-input form-size-300 mb-4 cursor" type="text" name="LastName" placeholder="성">
          </div>
       </div>  
        
       <div>   
          <div class="form-inline-input">
             <label class="form-label">Address</label>
-            <input class="form-input form-size-610 mb-1 cursor" type="text" name="AddressFirstLine" placeholder="역삼동 KH정보교육원">
-            <input class="form-input form-size-610 mb-4 cursor" type="text" name="AddressSecondLine" placeholder="">
+            <input class="form-input form-size-610 mb-1 cursor" type="text" name="AddressFirstLine"  placeholder="주소">
+            <input class="form-input form-size-610 mb-4 cursor" type="text" name="AddressSecondLine"  placeholder="상세주소">
          </div>
       </div>   
       
       <div>  
          <div class="form-inline-input">
            <label class="form-label">Country</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="Country" placeholder="서울특별시">
+           <input class="form-input form-size-200 mb-4 cursor" type="text" name="Country" placeholder="시/도">
          </div>
          <div class="form-inline-input">
            <label class="form-label">State</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="State" placeholder="강남구">         
+           <input class="form-input form-size-200 mb-4 cursor" type="text" name="State" placeholder="시/군/구">         
          </div>
           <div class="form-inline-input"> 
            <label class="form-label">Postal Code</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="PostalCode"  placeholder="06234">           
+           <input class="form-input form-size-200 mb-4 cursor" type="text" name="PostalCode"  placeholder="우편번호">           
          </div>
        </div> 
         
@@ -127,22 +127,22 @@
       <div>  
          <div class="form-inline-input">
            <label class="form-label">Name on Card</label>
-           <input class="form-input form-size-300 mb-4 cursor" type="text" name="NameOnCard" placeholder="hong gil-dong">
+           <input class="form-input form-size-300 mb-4 cursor" type="text" name="NameOnCard" placeholder="Name on Card">
          </div>
          <div class="form-inline-input"> 
            <label class="form-label">Credit Card Number</label>
-           <input class="form-input form-size-300 mb-4 cursor" type="text" name="CardNumber" placeholder="0000-0000-0000-0000">
+           <input class="form-input form-size-300 mb-4 cursor" type="text" name="CardNumber" placeholder="카드번호">
          </div>
         </div>
         
        <div> 
          <div class="form-inline-input">
              <label class="form-label">Expiration</label>
-             <input class="form-input form-size-300 mb-4 cursor" type="text" name="Expiration" placeholder="MM/YY">
+             <input class="form-input form-size-300 mb-4 cursor" type="text" name="Expiration" placeholder="만료일 MM/YY">
           </div>
           <div class="form-inline-input">
              <label class="form-label">CVV</label>
-             <input class="form-input form-size-300  mb-4 cursor" type="text" name="CVV" placeholder="123">
+             <input class="form-input form-size-300  mb-4 cursor" type="text" name="CVV" placeholder="CVV번호">
          </div>
        </div>       
      </div>

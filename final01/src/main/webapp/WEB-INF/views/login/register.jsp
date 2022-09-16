@@ -13,6 +13,7 @@
 
 <script type="text/javascript">
 	/* 아이디 중복 확인 */
+	
 	function idOverlap() {
 				console.log("idOverlap 호출")
 				console.log("아이디 입력 값 " + register.accountid.value)
@@ -82,17 +83,17 @@
 			
 			<div class="form-floating mb-2">
 				<label for="id_name">닉네임</label>
-				<input class="form-control is-invalid" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요" required>
+				<input class="form-control" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요" required>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<label for="id_email">이메일</label>
-				<input class="form-control is-invalid" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요" required>
+				<input class="form-control" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요" required>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<label for="id_phone">전화번호</label>
-				<input class="form-control is-invalid" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요" required>
+				<input class="form-control" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요" required>
 			</div>
 			<br>
 				
@@ -103,14 +104,14 @@
 			    <input class="form-control mb-3" type="text" id="sample6_address" name="address2"  value="" placeholder="주소">	 
 			</div>
 			 <div class="input-group">
-				<input class="form-control mb-3" type="text" id="sample6_detailAddress" name="address3"  value="" placeholder="상세주소">
+				<input class="form-control mb-3" type="text" id="sample6_detailAddress" name="address3"  value="" placeholder="상세주소(동,호수)">
 			   <div>		
 				<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
 			   </div>
 			 </div>		
 		
 		    <div class="input-group">
-			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" name="address4"  value="" placeholder="참고항목">
+			   <input class="form-control mb-3" type="text" id="sample6_extraAddress" name="address4"  value="" placeholder="주소 참고항목">
 		  
 		 </div>
 			
