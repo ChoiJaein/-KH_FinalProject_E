@@ -20,7 +20,7 @@ import com.myweb.home.board.vo.BoardVO;
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.login.vo.LoginVO;
 import com.myweb.home.member.controller.MemberController;
-
+ 
 @Controller
 public class BoardController {
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);

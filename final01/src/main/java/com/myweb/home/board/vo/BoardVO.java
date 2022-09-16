@@ -1,5 +1,5 @@
 package com.myweb.home.board.vo;
-
+ 
 public class BoardVO {
 	private int bid;
 	private String btitle;

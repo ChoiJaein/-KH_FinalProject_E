@@ -108,7 +108,7 @@ $(document).ready(function(){
 });
 
 
-
+ 
 <!--이미지 업로드 미리보기-->
 function showImagePreview(e){
 	 var file = e.target.files[0];
