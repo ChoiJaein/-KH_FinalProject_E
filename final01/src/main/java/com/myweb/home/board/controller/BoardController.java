@@ -10,13 +10,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.myweb.home.board.model.BoardDTO;
+import com.myweb.home.board.model.BoardVO;
 import com.myweb.home.board.model.CategoryDTO;
+import com.myweb.home.board.model.PageMaker;
+import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.board.service.BoardService;
-import com.myweb.home.board.vo.BoardVO;
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.login.vo.LoginVO;
 import com.myweb.home.member.controller.MemberController;

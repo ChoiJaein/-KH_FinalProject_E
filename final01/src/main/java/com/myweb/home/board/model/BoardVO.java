@@ -1,6 +1,6 @@
 package com.myweb.home.board.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class BoardVO {
 	
@@ -105,8 +105,6 @@ public class BoardVO {
 	public void setBuystatus(String buystatus) {
 		this.buystatus = buystatus;
 	}
-
-	
 	
 	public String getUrl() {
 		return url;
@@ -118,13 +116,10 @@ public class BoardVO {
 
 	@Override
 	public String toString() {
-		return "ItemVO [bid=" + bid + ", btitle=" + btitle + ", categoryid=" + categoryid + ", bcontent=" + bcontent
+		return "BoardVO [bid=" + bid + ", btitle=" + btitle + ", categoryid=" + categoryid + ", bcontent=" + bcontent
 				+ ", accountid=" + accountid + ", dealmethod=" + dealmethod + ", price=" + price + ", pcondition="
-				+ pcondition + ", createDate=" + createDate + ", viewcnt=" + viewcnt + ", buystatus=" + buystatus + "]";
+				+ pcondition + ", createDate=" + createDate + ", viewcnt=" + viewcnt + ", buystatus=" + buystatus
+				+ ", url=" + url + "]";
 	}
-	
-	
-	
-	
-	
+
 }

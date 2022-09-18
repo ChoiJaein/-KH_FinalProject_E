@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.myweb.home.board.vo.BoardVO;
+import com.myweb.home.board.model.BoardVO;
 
 @Repository
 public class BoardDAO {

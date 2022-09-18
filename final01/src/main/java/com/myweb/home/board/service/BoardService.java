@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.myweb.home.board.model.BoardDAO;
 import com.myweb.home.board.model.BoardDTO;
+import com.myweb.home.board.model.BoardVO;
 import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.board.model.CategoryDTO;
-import com.myweb.home.board.vo.BoardVO;
  
 @Service
 public class BoardService {
