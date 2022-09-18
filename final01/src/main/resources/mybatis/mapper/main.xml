@@ -13,6 +13,7 @@
 		FROM BOARD B
 		RIGHT JOIN PHOTOUPLOAD P
 		ON B.BID = P.BID
+		WHERE P.BID IS NOT NULL
 		ORDER BY B.CREATEDATE DESC
 	</select>
 	<select id="selectCateDatas" resultType="mainDto">
@@ -26,7 +27,7 @@
 			, B.CREATEDATE as createDate
 			, CONCAT(P.URL, '/' || P.UUIDNAME) as url
 			, C.CATEGORYNAME as cateName
-			, A.NAME AS userName
+			, A.NAME as userName
 		FROM BOARD B
 		RIGHT JOIN PHOTOUPLOAD P
 		ON B.BID = P.BID
@@ -34,15 +35,26 @@
 		ON A.ACCOUNTID  = B.ACCOUNTID
 		RIGHT JOIN CATEGORY C
 		ON B.CATEGORYID = C.CATEGORYID
-		WHERE B.CATEGORYID = ${cateId}
+		WHERE B.CATEGORYID = ${cateId} AND P.BID IS NOT NULL
 		ORDER BY B.CREATEDATE DESC
 	</select>
 	<select id="selectCateName" resultType = "mainDto">
-	   SELECT DISTINCT B.CATEGORYID AS cateId 
+	   SELECT DISTINCT B.CATEGORYID as cateId 
 			, C.CATEGORYNAME as cateName
   	     FROM BOARD B
  	    RIGHT JOIN CATEGORY C
  	       ON B.CATEGORYID = C.CATEGORYID
 	    WHERE B.CATEGORYID = ${cateId} 
 	</select>
+	<select id="selectShoppingList" resultType = "mainDto">
+		SELECT B.BID
+		 , B.BTITLE
+		 , B.PRICE
+		 , CONCAT(P.URL, '/' || P.UUIDNAME) as url
+		 FROM BOARD B
+		 RIGHT JOIN PHOTOUPLOAD P
+		 ON B.BID  = P.BID
+		 WHERE B.BUYSTATUS = ${accId}
+		 ORDER BY B.CREATEDATE DESC
+	 </select>
 </mapper>

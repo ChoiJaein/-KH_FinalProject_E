@@ -1,5 +1,7 @@
 package com.myweb.home.login.model;
 
+import java.sql.Date;
+
 public class AccountDTO {
 
 	private String accountid;
@@ -8,7 +10,7 @@ public class AccountDTO {
 	private String email;
 	private String address;
 	private String phone;
-	private String birth;
+	private Date birth;
 	private String admin;
 	private String filename;
 	private String location;
@@ -52,10 +54,10 @@ public class AccountDTO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 	public String getAdmin() {

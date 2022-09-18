@@ -181,21 +181,21 @@
 	       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
 	<!--이미지 경로체크 -->
 	         <div class="col-4">
-	            <img id="previewImg" class="image-360 image-size" alt="profile" src="${data.url}">         
+	            <img id="previewImg" class="image-360 image-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
 	         </div>
 	<!--닉네임value 체크 -->         
 	         <div class="col-8">
 	            <div class="mt-4 mb-3 border-bottom border-2 border-secondary ">
-	              <p><b style="font-size:23px;">${data.name}</b> 님 환영합니다</p>
+	              <p><b style="font-size:23px;">${pData.name}</b> 님 환영합니다</p>
 	             </div>
 	<!--닉네임value 체크 -->             
 	             <div>
-	              <p style="font-size:17px;"><b style="font-size:20px;">닉네임</b> 님의 총 구매횟수 : ${data.buyCnt}값</p>
-	              <p style="font-size:17px;">지구마켓과 함께한 날 : ${data.day}값 </p>
+	              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.num} 회</p>
+	              <p style="font-size:17px;">지구마켓과 함께한 날 : <fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/></p>
 	            </div>
 	<!--개인정보수정버튼 경로설정 -->            
 	            <div class="text-end mt-4">
-	              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountId}'">개인정보 수정</button>
+	              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountid}'">개인정보 수정</button>
 	            </div>
 	         </div>
 	       </div>
@@ -215,7 +215,7 @@
 	 
 	 <div class="row align-items-start">
 	  <div class="container-second justify-content-center">
-	   <div class="col-sm-2  text-center shopmenu pointer " onclick="location.href='https://www.naver.com'">
+	   <div class="col-sm-2  text-center shopmenu pointer " onclick="location.href=./myStore?id=${loginData.accountid}">
 	     <div>
 	       <i class="bi bi-house-door icon-size"></i>
 	     </div>
@@ -233,7 +233,7 @@
 	      </div>
 	   </div>
 	  
-	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='./shoppinglist?id=${loginData.accountId}'">
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='./shoppinglist?id=${loginData.accountid}'">
 	     <div>
 	       <i class="bi bi-cart-check icon-size"></i>
 	     </div>
@@ -242,7 +242,7 @@
 	      </div>
 	   </div>
 	  
-	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='./favoritelist?id=${loginData.accountId}'">
+	   <div class="col-sm-2 text-center shopmenu pointer" onclick="location.href='./favoritelist?id=${loginData.accountid}'">
 	     <div>
 	       <i class="bi bi-bag-heart icon-size"></i>
 	     </div>
