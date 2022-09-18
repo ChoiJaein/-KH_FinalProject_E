@@ -42,9 +42,17 @@
    <div class="col-sm-4 text-center">
     <div class="mb-4 mt-4">
        <div style="background-color:rgba(233,236,239)">
+     
+     
+     
 <!--이미지 경로체크 -->       
-          <img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${data.url}" 
-                   accept="image/png, image/jpeg, image/jpg" width="250" height="250">
+<%--           
+<img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${data.url}" 
+                   accept="image/png, image/jpeg, image/jpg" width="250" height="250"> 
+--%>
+
+
+
 <!--닉네임 value값입력 -->
           <div>
             <input class="text-center mb-3" type="text" name="name" value="${data.name}" size="17">
@@ -61,11 +69,11 @@
 	<div class="input-form col-sm-7">		    
 		<div class="input-group">
 		    <label class="input-label w-100">ID</label>
-			<input class="form-control  form-control-lg  w-100 mb-3" type="text" name="accountid" value="${data.accountid}" aria-label="Disabled input example" disabled>
+			<input class="form-control  form-control-lg  w-100 mb-3" type="text" name="accountid" value="${data.accountid}" readonly>
 		</div>
 		<div class="input-group">
 			<label class="input-label w-100">비밀번호</label>
-			<input class="form-control  form-control-lg w-auto mb-3" type="password" name="password" value="${data.password}" required>
+			<input class="form-control  form-control-lg w-auto mb-3" type="password" name="password" value="" required>
 		</div>
 		<div class="input-group">
 			<label class="input-label w-100">전화번호</label>

@@ -1,6 +1,7 @@
 package com.myweb.home.member.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -8,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.member.model.MemberDAO;
 import com.myweb.home.member.vo.MemberVO;
 
@@ -24,18 +27,10 @@ public class MemberService {
 		dao.register(vo);
 	}
 
-	public void idOverlap(String accountid, HttpServletResponse response) throws IOException {
-		logger.info("idOverlap(accountid={})", accountid);
-		MemberVO vo = new MemberVO();
-		vo = dao.idOverlap(accountid);
-		if(vo == null) {
-			//dao에서 select이 되지 않아야 true
-			//id가 없어야 true(사용 가능)
-			response.getWriter().print("1");
-		} else {
-			//id가 있으면 false(중복으로 사용 불가능)
-			response.getWriter().print("0");
-		}
+	public int idOverlap(MemberVO vo) {
+		logger.info("idOverlap(MemberVO={})", vo);
+		int result = dao.idOverlap(vo);
+		return result;
 	}
 
 	public boolean userModify(MemberVO vo) {
@@ -48,5 +43,11 @@ public class MemberService {
 		logger.info("signout(vo={})", vo);
 		boolean result = dao.signout(vo);
 		return result;
+	}
+
+	public MemberVO getAll(String accountid) {
+		logger.info("getAll(accountid={})", accountid);
+		MemberVO data = dao.selectAll(accountid);
+		return data;
 	}
 }

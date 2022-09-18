@@ -46,11 +46,17 @@ function pwCheck(){
 		<div class="div-bc div-left">
 		
 			<div class="div-middle">
-				<div class="div-profile">
+			
+			
+			<%--
+			 	<div class="div-profile">
 					<img src="${data.url}" alt="프로필사진" />
-				</div>
+				</div> 
+				--%>
+				
+				
 				<div class="div-profile">
-					<input type="text" id="id_name" name="name" value="${data.name}" disabled>
+					<input type="text" id="id_name" name="name" value="${data.name}" readonly>
 				</div>
 			</div>
 			
@@ -62,17 +68,17 @@ function pwCheck(){
 				
 				<tr>
 					<td><label>아이디</label></td>
-					<td><input type="text" id="id_accountid" name="accountid" value="${data.accountid}"></td>
+					<td><input type="text" id="id_accountid" name="accountid" value="${data.accountid}" readonly></td>
 				</tr>
 				
 				<tr>
 					<td><label>비밀번호</label></td>
-					<td><input type="text" id="id_password" name="password" onchange="pwCheck()"></td>
+					<td><input type="password" id="id_password" name="password" value="${data.password}" onchange="pwCheck()" readonly></td>
 				</tr>
 				
 				<tr>
 					<td><label>비밀번호 확인</label></td>
-					<td><input type="text" id="id_password_confirm" name="password_confirm" onchange="pwCheck()"></td>
+					<td><input type="password" id="id_password_confirm" name="password_confirm" onchange="pwCheck()"></td>
 				</tr>
 				<tr>
 					<td></td>

@@ -14,7 +14,7 @@
 <script type="text/javascript">
 	/* 아이디 중복 확인 */
 	
-	function idOverlap() {
+/* 	function idOverlap() {
 				console.log("idOverlap 호출")
 				console.log("아이디 입력 값 " + register.accountid.value)
 			$.ajax({
@@ -34,6 +34,31 @@
 				}
 			});
 	}
+*/
+	
+ 	function idOverlap() {
+		console.log("idOverlap 호출")
+		console.log("아이디 입력 값 " + $("#id_accountid").val())
+		$.ajax({
+			url : "idOverlap",
+			type : "post",
+			data : {"accountid" : $("#id_accountid").val()},
+			dataType : "json",
+			success : function(data) {
+				if(data.code == "fail") {
+					alert("이미 사용중인 아이디입니다. 다른 아이디를 입력하세요.");
+//					$("#submit").attr("disabled", "disabled");
+					$("#button_register").attr("disabled",true); 
+				} else if(data.code == "success") {
+					alert("사용 가능한 아이디입니다.");
+//					$("#submit").removeAttr("disabled");
+					$("#button_register").removeAttr("disabled"); 
+				}
+			}
+		})
+	} 
+
+	
 	 
 	/* 비밀번호 확인 */
 	function passConfirm() {
@@ -46,9 +71,11 @@
 		if(password.value == passwordConfirm.value) {
 			confirmMsg.style.color = correctColor;
 			confirmMsg.innerHTML = "비밀번호 일치";
+			$("#button_register").removeAttr("disabled"); 
 		} else {
 			confirmMsg.style.color = wrongColor;
 			confirmMsg.innerHTML = "비밀번호 불일치";
+			$("#button_register").attr("disabled",true); 
 		}
 	}
 </script>
@@ -119,7 +146,7 @@
 			<br><br>
 			
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" type="submit">가입하기</button>
+				<button class="btn btn-outline-primary bluebtn" type="submit" id="button_register" disabled>가입하기</button>
 			</div>
 			
 			<br>

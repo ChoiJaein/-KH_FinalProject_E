@@ -26,8 +26,9 @@
 	</insert>
 	
 	<!-- 아이디 중복 확인 -->
-	<select id="idOverlap" parameterType="memberVo" resultType="memberVo">
-		SELECT ACCOUNTID FROM ACCOUNT WHERE ACCOUNTID = #{accountid}
+	<select id="idOverlap" parameterType="memberVo" resultType="int">
+		SELECT COUNT(ACCOUNTID) FROM ACCOUNT 
+		WHERE ACCOUNTID = #{accountid}
 	</select>
 	
 	<!-- 회원 정보 수정 -->
@@ -49,4 +50,11 @@
 		DELETE FROM ACCOUNT
 		 WHERE ACCOUNTID = #{accountid}
 	</select>
+	
+	<!-- 회원 정보 불러오기 -->
+	<select id="selectAll" resultType="memberVo">
+		SELECT * FROM ACCOUNT
+		 WHERE ACCOUNTID = #{accountid}
+	</select>
+	
 </mapper>
