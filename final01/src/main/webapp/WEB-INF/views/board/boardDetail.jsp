@@ -18,7 +18,7 @@
 			type: "post",
 			url: "/ajax/board/wishList",
 			data: {
-				accountId : id
+				accountid : id
 			},
 			success: function(data) {
 				
@@ -74,16 +74,16 @@
 		 -->
 		<c:if test="${not empty datas}">
 			<c:set var="status" value="${data.buystatus}"/>
-			<c:set var="accountId" value="${loginData.accountId}" />
+			<c:set var="accountid" value="${loginData.accountid}" />
 		</c:if>
 		<c:if test="${datas == null}">
 			<c:set var="status" value=""/>
-			<c:set var="loginData.accountId" value="111" />
-			<c:set var="accountId" value="111" />
+			<c:set var="loginData.accountid" value="111" />
+			<c:set var="accountid" value="111" />
 		</c:if>
 		
 			<c:set var="buyId" value="${status}" />
-			<c:set var="myId" value="${accountId}" />
+			<c:set var="myId" value="${accountid}" />
 	
 	
 	<c:if test="${datas == null}">
@@ -103,7 +103,7 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
 				<!-- <div style="float:right;" onclick='favoriteTest()'> -->
 					<span class="material-icons" id="id_wishList">
 						favorite_border
@@ -119,7 +119,7 @@
 				<label>상태 : 새상품</label>
 				<br><br><br>
 				
-				<c:if test="${empty status}">
+			 	<c:if test="${empty status}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
@@ -163,7 +163,7 @@
 			<div>
 				<ul class="pagination justify-content-center">
 					<c:url var="boardUrl" value="/board/detail">
-						<c:param name="id">${data.bId}</c:param>
+						<c:param name="id">${data.bid}</c:param>
 					</c:url>
 					<c:if test="${reviewPage.hasPrevPage()}">
 						<li class="page-item">
@@ -197,12 +197,12 @@
 						<div class="card border-light">
 							<div class="card-header">
 								<div class="d-flex justify-content-between">
-									<span><small>${review.empName}</small></span>
-									<span><small>${review.createDate}</small></span>
+									<span><small>${review.accountid}</small></span>
+									<span><small>${review.createdate}</small></span>
 								</div>
 							</div>
 							<div class="card-body">
-								<input type="hidden" value="${review.id}">
+								<input type="hidden" value="${review.accountid}">
 								<c:choose>
 									<c:when test="${review.deleted()}">
 										<p class="text-muted">삭제된 댓글 입니다.</p>
@@ -212,11 +212,11 @@
 										<p class="card-text">${fn:replace(review.content, newLine, '<br>')}</p>
 									</c:otherwise>
 								</c:choose>
-								<c:if test="${sessionScope.loginData.accountId eq review.accountId}">
+								<c:if test="${sessionScope.loginData.accountid eq review.accountid}">
 									<c:if test="${not review.deleted()}">
 										<div class="text-end">
 											<button class="btn btn-sm btn-outline-dark" type="button" onclick="changeEdit(this);">수정</button>
-											<button class="btn btn-sm btn-outline-dark" type="button" onclick="reviewDelete(this, ${review.id})">삭제</button>
+											<button class="btn btn-sm btn-outline-dark" type="button" onclick="reviewDelete(this, ${review.accountid})">삭제</button>
 										</div>
 									</c:if>
 								</c:if>
@@ -224,7 +224,7 @@
 						</div>
 					</div>
 				</c:forEach>
-				
+				<!-- 
 				<c:if test="${buyId == myId}"> 
 				<!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
@@ -247,7 +247,7 @@
 					</c:if>
 				</c:when>
 				<c:when test="${empty status}">				
-					<label>구매하시고 후기를 남겨보세요.</label>
+					<label>구매하시고 후기를 남겨보세요.!!!</label>
 				</c:when>
 				
 				
@@ -263,8 +263,8 @@
 				<table class="table">
 					<tr>
 						<td style="text-align:left; vertical-align : bottom;"><h4>${data.categoryname}</h4></td>
-						<fmt:formatDate value="${data.createDate}" var="createDate" dateStyle="long" />
-						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${createDate}          조회수 : ${data.viewCnt}회</h6></td>
+						<fmt:formatDate value="${data.createdate}" var="createDate" dateStyle="long" />
+						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${createdate}          조회수 : ${data.viewCnt}회</h6></td>
 					</tr>
 				</table>
 		<div style="width:100%;">
@@ -275,19 +275,19 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
 				</div>
 				<br><br>
-				<h3>${data.bTitle}</h3>
+				<h3>${data.btitle}</h3>
 				<br>
 				<h4 style="text-align:right;">${data.price}원</h4>
 				<hr>
-				<label>유형 : ${data.dealMethod}</label>
+				<label>유형 : ${data.dealmethod}</label>
 				<br>
-				<label>상태 : ${data.pCondition}</label>
+				<label>상태 : ${data.pcondition}</label>
 				<br><br><br>
 				
 				<c:if test="${empty status}">
@@ -309,7 +309,7 @@
 				<h5>상품정보</h5>
 				<br><br>
 				<p>
-					${data.bContent}
+					${data.bcontent}
 				</p>
 			</div>	
 			
@@ -327,7 +327,7 @@
 			<div>
 				<ul class="pagination justify-content-center">
 					<c:url var="boardUrl" value="/board/detail">
-						<c:param name="id">${data.bId}</c:param>
+						<c:param name="id">${data.bid}</c:param>
 					</c:url>
 					<c:if test="${reviewPage.hasPrevPage()}">
 						<li class="page-item">
@@ -361,12 +361,12 @@
 						<div class="card border-light">
 							<div class="card-header">
 								<div class="d-flex justify-content-between">
-									<span><small>${review.empName}</small></span>
-									<span><small>${review.createDate}</small></span>
+									<span><small>${review.accountid}</small></span>
+									<span><small>${review.createdate}</small></span>
 								</div>
 							</div>
 							<div class="card-body">
-								<input type="hidden" value="${review.accountId}">
+								<input type="hidden" value="${review.accountid}">
 								<c:choose>
 									<c:when test="${review.deleted()}">
 										<p class="text-muted">삭제된 댓글 입니다.</p>
@@ -376,11 +376,11 @@
 										<p class="card-text">${fn:replace(review.content, newLine, '<br>')}</p>
 									</c:otherwise>
 								</c:choose>
-								<c:if test="${sessionScope.loginData.accountId eq review.accountId}">
+								<c:if test="${sessionScope.loginData.accountid eq review.accountid}">
 									<c:if test="${not review.deleted()}">
 										<div class="text-end">
 											<button class="btn btn-sm btn-outline-dark" type="button" onclick="changeEdit(this);">수정</button>
-											<button class="btn btn-sm btn-outline-dark" type="button" onclick="reviewDelete(this, ${review.accountId})">삭제</button>
+											<button class="btn btn-sm btn-outline-dark" type="button" onclick="reviewDelete(this, ${review.accountid})">삭제</button>
 										</div>
 									</c:if>
 								</c:if>
