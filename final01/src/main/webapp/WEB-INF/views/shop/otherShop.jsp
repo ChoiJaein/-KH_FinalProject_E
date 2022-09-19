@@ -271,7 +271,30 @@
 	        </tr>
 	    </table>
 	</c:forEach>
-	
+	<nav>
+			<div>
+				<ul class="pagination justify-content-center">
+					<c:url var="boardUrl" value="/othershop"/>
+					
+					<c:if test="${othershopPage.hasPrevPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}&page=${othershopPage.prevPageNumber}">Prev</a>
+						</li>
+					</c:if>
+					<c:forEach items="${othershopPage.getPageNumberList(othershopPage.currentPageNumber - 2, othershopPage.currentPageNumber + 2)}" var="num">
+						<li class="page-item ${othershopPage.currentPageNumber eq num ? 'active' : ''}">
+							<a class="page-link" href="${boardUrl}&page=${num}">${num}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${othershopPage.hasNextPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}&page=${othershopPage.nextPageNumber}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
+		</nav>
+		
 	    </div>
 	   </div>
 	 </div> 
