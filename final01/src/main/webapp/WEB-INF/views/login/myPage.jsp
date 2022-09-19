@@ -190,7 +190,7 @@
 	             </div>
 	<!--닉네임value 체크 -->             
 	             <div>
-	              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.num} 회</p>
+	              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt} 회</p>
 	              <p style="font-size:17px;">지구마켓과 함께한 날 : <fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/></p>
 	            </div>
 	<!--개인정보수정버튼 경로설정 -->            
@@ -215,7 +215,7 @@
 	 
 	 <div class="row align-items-start">
 	  <div class="container-second justify-content-center">
-	   <div class="col-sm-2  text-center shopmenu pointer " onclick="location.href=./myStore?id=${loginData.accountid}">
+	   <div class="col-sm-2  text-center shopmenu pointer " onclick="location.href='./myStore?id=${loginData.accountid}'">
 	     <div>
 	       <i class="bi bi-house-door icon-size"></i>
 	     </div>

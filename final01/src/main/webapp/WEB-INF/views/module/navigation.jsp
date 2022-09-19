@@ -33,7 +33,7 @@
 			
 				<c:if test="${not empty sessionScope.loginData}">
 	                     ${sessionScope.loginData.accountid} 님 환영합니다.
-						<a class="nav-link" href="${mainUrl}/info/main">마이페이지</a>
+						<a class="nav-link" href="${mainUrl}/myinfo/main">마이페이지</a>
 						<a class="nav-link" href="${mainUrl}/logout">로그아웃</a>
 				</c:if>
 				<c:if test="${empty sessionScope.loginData}">

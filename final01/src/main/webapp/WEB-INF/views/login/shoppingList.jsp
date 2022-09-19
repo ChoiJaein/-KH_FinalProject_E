@@ -119,7 +119,7 @@
               <p><b style="font-size:23px;">${pData.name}</b> 님 환영합니다</p>
              </div>
              <div>
-              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.num}회 </p>
+              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt}회 </p>
               <p style="font-size:17px;">지구마켓과 함께한 날 : <fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/> </p>
             </div>
 <!--개인정보수정버튼 이동경로 설정 -->            
@@ -166,7 +166,7 @@
     </div>
    </div>
  </div>
- <c:url var="boardUrl" value="/shoppinglist" />
+ <c:url var="boardUrl" value="./shoppinglist" />
 			<form action="${boardUrl}" method="get">
    			<nav>
 			<div>

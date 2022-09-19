@@ -249,7 +249,7 @@
 		       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
 		<!--이미지 경로체크 -->
 		         <div class="col-4">
-		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="${data.accountImg}">         
+		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
 		         </div>
 		         
 		         <div class="col-8">
@@ -257,8 +257,8 @@
 		              <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
 		             </div>
 		             <div>
-		              <p style="font-size:17px;">상품 판매  : ${data.sellCnt} 회</p>
-		              <p style="font-size:17px;">내 상점 방문 : ${data.viewCnt} 회 </p>
+		              <p style="font-size:17px;">상품 판매  : ${sData.sellCnt} 회</p>
+		              <p style="font-size:17px;">내 상점 방문 : ${pData.visitCnt} 회 </p>
 		            </div>
 		         </div>
 		       </div>
@@ -304,6 +304,29 @@
 		 </c:forEach>
 		
 		  
+		   <c:url var="boardUrl" value="./myStore" />
+			<form action="${boardUrl}" method="get">
+   			<nav>
+			<div>
+				<ul class="pagination justify-content-center">
+					<c:if test="${pageData.hasPrevPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}?page=${pageData.prevPageNumber}">Prev</a>
+						</li>
+					</c:if>
+					<c:forEach items="${pageData.getPageNumberList(pageData.currentPageNumber - 2, pageData.currentPageNumber + 2)}" var="num">
+						<li class="page-item ${pageData.currentPageNumber eq num ? 'active' : ''}">
+							<a class="page-link" href="${boardUrl}?page=${num}">${num}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${pageData.hasNextPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}?page=${pageData.nextPageNumber}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
+		</nav>
 		  
 		    </div>
 		   </div>

@@ -46,14 +46,7 @@ public class MainDAO {
 		return res;
 	}
 	
-	public List<MainDTO> selectBuyList(String id) {
-		logger.info("selectBuyList(id= {})", id);
-		String mapperId = String.format(mapper, "selectShoppingList");
-		List<MainDTO> res = session.selectList(mapperId, id);
-		
-		return res;
-		
-	}
+	
 	
 	
 	

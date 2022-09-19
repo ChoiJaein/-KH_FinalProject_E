@@ -28,9 +28,7 @@ public class InfoController {
 	@Autowired
 	private InfoService service;
 	
-	
-	
-	
+
 	@RequestMapping(value="/main")
 	public String getProfile(Model model, HttpSession session
 			, @SessionAttribute("loginData") AccountDTO accDto) {
@@ -90,10 +88,105 @@ public class InfoController {
 			
 			model.addAttribute("pData", pData); // 프로필 데이터
 			model.addAttribute("dData", dData); // 구매 횟수
-			model.addAttribute("datas", paging.getPageData()); // 상품 목록
+			model.addAttribute("datas", paging.getPageData()); // 구매 상품 목록
 			model.addAttribute("pageData", paging);
 			
 			return "login/shoppingList";
+		}  
+		//
+		if (session.getAttribute("loginData") == null) {
+			//로그인 안하고 진입시
+				model.addAttribute("msg", "접근 권한이 없습니다.");
+				model.addAttribute("url", "/home");
+				return "alert";
+			} else {
+			// 그 외 
+				model.addAttribute("msg", "잘못된 접근입니다.");
+				model.addAttribute("url", "/home");
+				return "alert";
+			
+		}
+	}
+	
+	@RequestMapping(value="/favoritelist")
+	public String getFavoriteDetail(Model model , HttpSession session
+			, @SessionAttribute("loginData") AccountDTO accDto
+			, @RequestParam(defaultValue="1", required=false) int page
+			, @RequestParam(defaultValue="0", required=false) int pageCount ) {
+		
+		logger.info("getShoppingDetail(model= {})", model);
+		
+		if(accDto != null) {
+			
+			InfoDTO pData = service.getUserInfo(accDto.getaccountid());
+			InfoDTO dData = service.getUserPurchase(accDto.getaccountid());
+			List datas = service.getFavoriteList(accDto.getaccountid());
+			
+			
+			if(session.getAttribute("pageCount") == null) {
+				session.setAttribute("pageCount", 5);
+			}
+			
+			if(pageCount > 0) {
+				session.setAttribute("pageCount", pageCount);
+			}
+			
+			pageCount = Integer.parseInt(session.getAttribute("pageCount").toString());
+			Paging paging = new Paging(datas, page, pageCount);
+			
+			
+			model.addAttribute("pData", pData); // 프로필 데이터
+			model.addAttribute("dData", dData); // 구매 횟수
+			model.addAttribute("datas", paging.getPageData()); //찜 상품 목록
+			model.addAttribute("pageData", paging);
+			
+			return "login/favoriteList";
+		}  
+		//
+		if (session.getAttribute("loginData") == null) {
+			//로그인 안하고 진입시
+				model.addAttribute("msg", "접근 권한이 없습니다.");
+				model.addAttribute("url", "/home");
+				return "alert";
+			} else {
+			// 그 외 
+				model.addAttribute("msg", "잘못된 접근입니다.");
+				model.addAttribute("url", "/home");
+				return "alert";
+			
+		}
+	}
+	
+	@RequestMapping(value="/myStore")
+	public String getStoreList (Model model , HttpSession session
+			, @SessionAttribute("loginData") AccountDTO accDto
+			, @RequestParam(defaultValue="1", required=false) int page
+			, @RequestParam(defaultValue="0", required=false) int pageCount ) {
+		if(accDto != null) {
+			
+			InfoDTO pData = service.getMyStoreInfo(accDto.getaccountid());
+			InfoDTO sData = service.getUserSelling(accDto.getaccountid());
+			List datas = service.getSellList(accDto.getaccountid());
+			
+			
+			if(session.getAttribute("pageCount") == null) {
+				session.setAttribute("pageCount", 5);
+			}
+			
+			if(pageCount > 0) {
+				session.setAttribute("pageCount", pageCount);
+			}
+			
+			pageCount = Integer.parseInt(session.getAttribute("pageCount").toString());
+			Paging paging = new Paging(datas, page, pageCount);
+			
+			service.incVisitCnt(session, pData);// 상점 방문 횟수 
+			model.addAttribute("pData", pData); // 프로필 데이터
+			model.addAttribute("sData", sData); // 판매 횟수
+			model.addAttribute("datas", paging.getPageData()); //판매중 상품 목록
+			model.addAttribute("pageData", paging);
+			
+			return "shop/myShop";
 		}  
 		//
 		if (session.getAttribute("loginData") == null) {

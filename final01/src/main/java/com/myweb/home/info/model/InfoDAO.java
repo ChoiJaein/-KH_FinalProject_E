@@ -8,8 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.myweb.home.main.model.MainDTO;
-
 @Repository
 public class InfoDAO {
 
@@ -34,7 +32,72 @@ private static final Logger logger = LoggerFactory.getLogger(InfoDAO.class);
 	public InfoDTO selectPurchase(String id) {
 		String mapperId = String.format(mapper, "selectPurchaseCount");
 		InfoDTO res = session.selectOne(mapperId, id);
+		
 		return res;
+	}
+	
+	public List<InfoDTO> selectBuyList(String id) {
+		logger.info("selectBuyList(id= {})", id);
+		String mapperId = String.format(mapper, "selectShoppingList");
+		List<InfoDTO> res = session.selectList(mapperId, id);
+		
+		return res;
+		
+	}
+	
+	public List<InfoDTO> selectLikeList(String id) {
+		String mapperId = String.format(mapper, "selectFavoriteList");
+		List<InfoDTO> res = session.selectList(mapperId, id);
+		
+		return res;
+		
+	}
+	
+	public List<InfoDTO> selectSaleList(String id) {
+		String mapperId = String.format(mapper, "selectSellingList");
+		List<InfoDTO> res = session.selectList(mapperId, id);
+		
+		return res;
+		
+	}
+	
+	public InfoDTO selectStoreProfile(String id) {
+		String mapperId = String.format(mapper, "selectMystoreProfile");
+		InfoDTO res  = session.selectOne(mapperId, id);
+		
+		return res;
+	}
+	
+	public InfoDTO selectSellCount(String id) {
+		String mapperId = String.format(mapper, "selectSellNum");
+		InfoDTO res = session.selectOne(mapperId, id);
+		
+		return res;
+	}
+	
+	public boolean updateVisitCnt(InfoDTO data) {
+		String mapperId = String.format(mapper, "updateViewCnt");
+		int res = session.update(mapperId, data);
+		
+		return res == 1 ? true : false;
+	}
+	
+	public ProfileStaticsDTO selectStatics(ProfileStaticsDTO data) {
+		String mapperId = String.format(mapper, "selectStatics");
+		ProfileStaticsDTO res = session.selectOne(mapperId, data);
+		return res;
+	}
+	
+	public boolean insertStatics(ProfileStaticsDTO data) {
+		String mapperId = String.format(mapper, "insertStatics");
+		int res = session.insert(mapperId, data);
+		return res == 1 ? true : false;
+	}
+	
+	public boolean updateStatics(ProfileStaticsDTO data) {
+		String mapperId = String.format(mapper, "updateStatics");
+		int res = session.update(mapperId, data);
+		return res == 1 ? true : false;
 	}
 	
 	

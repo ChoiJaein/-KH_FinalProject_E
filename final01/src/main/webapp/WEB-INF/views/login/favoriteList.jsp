@@ -224,20 +224,20 @@
 	       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:250px;">
 	<!--이미지 경로체크 -->
 	         <div class="col-4">
-	            <img id="previewImg" class="image-360 profile-size" alt="profile" src="${data.accountImg}">         
+	            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
 	         </div>
 	         
 	         <div class="col-8">
 	            <div class="mt-4 mb-3 border-bottom border-2 border-secondary">
-	              <p><b style="font-size:23px;">${data.name}</b> 님 환영합니다</p>
+	              <p><b style="font-size:23px;">${pData.name}</b> 님 환영합니다</p>
 	             </div>
 	             <div>
-	              <p style="font-size:17px;"><b style="font-size:20px;">${data.name}</b> 님의 총 구매횟수 : ${data.buyCnt}값</p>
-	              <p style="font-size:17px;">지구마켓과 함께한 날 : ${data.day}값 </p>
+	              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt}값</p>
+	              <p style="font-size:17px;">지구마켓과 함께한 날 :<fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/></p>
 	            </div>
 	<!--개인정보수정버튼 링크설정 -->            
 	            <div class="text-end mt-4">
-	              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountId}'">개인정보 수정</button>
+	              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountid}'">개인정보 수정</button>
 	            </div>
 	         </div>
 	       </div>
@@ -268,7 +268,7 @@
 			 </colgroup>
 	        <tr>
 	            <td rowspan="2" style="height:90px;">
-	               <img id="previewImg" class="image-360 product-size" alt="profile" src="${data.url}">  
+	               <img id="previewImg" class="image-360 product-size" alt="profile" src="<%=request.getContextPath()%>${data.url}">  
 	            </td>
 	            <td colspan="2" class="p-edit">${data.bTitle}</td>
 	        </tr>
@@ -277,7 +277,29 @@
 	        </tr>
 	    </table>
 	   </c:forEach> 
-	    
+	    <c:url var="boardUrl" value="./favoritelist" />
+			<form action="${boardUrl}" method="get">
+   			<nav>
+			<div>
+				<ul class="pagination justify-content-center">
+					<c:if test="${pageData.hasPrevPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}?page=${pageData.prevPageNumber}">Prev</a>
+						</li>
+					</c:if>
+					<c:forEach items="${pageData.getPageNumberList(pageData.currentPageNumber - 2, pageData.currentPageNumber + 2)}" var="num">
+						<li class="page-item ${pageData.currentPageNumber eq num ? 'active' : ''}">
+							<a class="page-link" href="${boardUrl}?page=${num}">${num}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${pageData.hasNextPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}?page=${pageData.nextPageNumber}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
+		</nav>
 	    
 	
 	    </div>
