@@ -286,7 +286,7 @@
 					 </colgroup>
 			        <tr>
 			            <td rowspan="2" style="height:90px;">
-			               <img id="previewImg" class="image-360 product-size" alt="profile" src="${data.url}">  
+			               <img id="previewImg" class="image-360 product-size" alt="profile" src="<%=request.getContextPath()%>${data.url}">  
 			            </td>
 			            <td colspan="2" class="p-edit">${data.bTitle}</td>
 			        </tr>

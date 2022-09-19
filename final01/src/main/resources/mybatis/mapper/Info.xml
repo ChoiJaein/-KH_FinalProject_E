@@ -67,9 +67,10 @@
 		  WHERE A.ACCOUNTID = #{accId} AND P.URL = '/static/account/upload'
 	</select>
 	<select id ="selectSellingList" resultType="infoDto">
-		SELECT B.BID
-	 		 , B.BTITLE
+		SELECT B.BID as bId
+	 		 , B.BTITLE as bTitle
 	 		 , CONCAT(P.URL, '/' || P.UUIDNAME) as url
+	 		 , B.PRICE as price
   		  FROM BOARD B
 		 RIGHT JOIN PHOTOUPLOAD P
     		ON B.BID = P.BID
@@ -87,7 +88,7 @@
 	<insert id="insertStatics" parameterType="profileStaticsDto">
 		INSERT INTO PROFILE_STATICS
 		     VALUES(PROFILE_STATICS_SEQ.NEXTVAL
-		          , #{accId}, #{bId}, 'Y', SYSDATE)
+		          , #{accId}, 'Y', SYSDATE)
 	</insert>
 	<update id="updateStatics" parameterType="profileStaticsDto">
 		UPDATE PROFILE_STATICS
