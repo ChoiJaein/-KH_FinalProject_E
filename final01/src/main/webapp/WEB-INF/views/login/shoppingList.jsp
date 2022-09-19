@@ -306,7 +306,7 @@
 							<a class="page-link" href="${boardUrl}&page=${shoppingPage.prevPageNumber}">Prev</a>
 						</li>
 					</c:if>
-					<c:forEach items="${shoppingPage.getPageNumberList(reviewPage.currentPageNumber - 2, reviewPage.currentPageNumber + 2)}" var="num">
+					<c:forEach items="${shoppingPage.getPageNumberList(shoppingPage.currentPageNumber - 2, shoppingPage.currentPageNumber + 2)}" var="num">
 						<li class="page-item ${shoppingPage.currentPageNumber eq num ? 'active' : ''}">
 							<a class="page-link" href="${boardUrl}&page=${num}">${num}</a>
 						</li>
