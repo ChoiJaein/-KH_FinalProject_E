@@ -20,7 +20,7 @@
 <br><br>
 <nav class="navbar">
 	<div class="container">
-			<a class="navbar-brand" href="${mainUrl}">지구마켓</a>
+			<a class="navbar-brand" href="/home">지구마켓</a>
 			
 			<div class="search">
 			<input class="text_wide" type="text" id="keywordInput" name="keyword" value="${scri.keyword}">
@@ -29,11 +29,11 @@
 			</div>
 			
 			
-			<a class="" href="${mainUrl}/notice">공지사항</a>
+			<a class="" href="/notice">공지사항</a>
 			
 				<c:if test="${not empty sessionScope.loginData}">
 	                     ${sessionScope.loginData.accountid} 님 환영합니다.
-						<a class="nav-link" href="${mainUrl}/mypage">마이페이지</a>
+						<a class="nav-link" href="/mypage">마이페이지</a>
 						<a class="nav-link" href="${mainUrl}/logout">로그아웃</a>
 				</c:if>
 				<c:if test="${empty sessionScope.loginData}">
