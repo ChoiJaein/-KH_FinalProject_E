@@ -30,7 +30,7 @@
 			 </div> 
 			<hr>
 						<c:url var="boardDetailUrl" value="./detail">
-							<c:param name="id">${data.bid}</c:param>
+							<c:param name="id">${data.bId}</c:param>
 						</c:url>
 			
 			<c:if test="${not empty list}">
@@ -44,21 +44,21 @@
 							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
-										<td style="width:100px;">${list.btitle}</td>
+										<td style="width:100px;">${list.bTitle}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${list.pcondition} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${list.pCondition} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
 										<td style="width:100px;"></td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${list.dealmethod} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${list.dealMethod} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width:100px;">${list.accountid}</td>
+										<td style="width:100px;">${list.accountId}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
