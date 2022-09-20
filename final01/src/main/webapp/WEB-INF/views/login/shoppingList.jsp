@@ -101,13 +101,20 @@
 	
 </head>
 <body>
-<header></header>
+<header>
+    <%@ include file="../module/navigation.jsp" %>
+ </header>
+	<%@ include file="../module/categoryNavigation.jsp" %>
 
+<<<<<<< HEAD
 
 
 <!-- 데이터가 없을경우 -->
 
 <c:if test="${data == null}">
+=======
+<c:if test="">
+>>>>>>> refs/remotes/origin/황준원
  <section class="container whole-size">
 <div id="align-items">
   <div class="row align-items-start">
@@ -150,7 +157,9 @@
     
  <!-- 반복문 값이 있을때마다  상품목록div 하나씩 추가-->
  <!-- 클릭시 상품페이지로 이동경로 체크 --> 
-    <table class="table-product mt-2 pointer" onclick="location.href='https://www.naver.com'">
+ <!-- 이미지 src 경로체크-->
+<c:forEach items="" var="">
+    <table class="table-product mt-2 pointer" onclick="location.href='./detail?id='">
         <colgroup>
 			<col class="col-4">
 			<col class="col-8">
@@ -165,45 +174,9 @@
             <td colspan="2" class="p-price"> 100.000.000 원</td>   
         </tr>
     </table>
+ </c:forEach>
 
-<!-- 반복문 완성 후 삭제할 것.-->                
-       <table class="table-product mt-2 pointer" onclick="location.href='https://www.naver.com'">
-        <colgroup>
-			<col class="col-4">
-			<col class="col-8">
-		 </colgroup>
-        <tr>
-            <td rowspan="2" style="height:90px;">
-               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
-            </td>
-            <td colspan="2" class="p-edit">상품명value</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="p-price"> 100.000.000 원</td>   
-        </tr>
-    </table>
  
- <!-- 반복문 완성 후 삭제할 것.-->                
-       <table class="table-product mt-2 pointer" onclick="location.href='https://www.naver.com'">
-        <colgroup>
-			<col class="col-4">
-			<col class="col-8">
-		 </colgroup>
-        <tr>
-            <td rowspan="2" style="height:90px;">
-               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
-            </td>
-            <td colspan="2" class="p-edit">상품명value</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="p-price"> 100.000.000 원</td>   
-        </tr>
-    </table>
- 
- 
- 
-   
-   
     
  <!-- 테이블 정렬을위한 태그 -->                
        <table class="table-product mt-2 pointer" style="visibility:hidden;">
@@ -229,6 +202,8 @@
    </div>
  </div>
 </section>
+</c:if>
+
 <!--하단-->
 </c:if>
 
