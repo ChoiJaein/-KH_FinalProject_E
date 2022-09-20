@@ -119,11 +119,11 @@
 				<label>상태 : 새상품</label>
 				<br><br><br>
 				
-				<c:if test="${empty status}">
+				<c:if test="${status eq '판매중'}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
-				<c:if test="${not empty status}">
+				<c:if test="${status ne '판매중'}">
 				<button class="btn btn-primary" style="float:right; background-color:red;" disabled>구매불가</button>
 				<h4 style="float:right;">판매완료</h4>
 				</c:if>
@@ -290,11 +290,11 @@
 				<label>상태 : ${data.pCondition}</label>
 				<br><br><br>
 				
-				<c:if test="${empty status}">
+				<c:if test="${status eq '판매중'}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
-				<c:if test="${not empty status}">
+				<c:if test="${status ne '판매중'}">
 				<button class="btn btn-primary" style="float:right; background-color:red;" disabled>구매불가</button>
 				<h4 style="float:right;">판매완료</h4>
 				</c:if>
@@ -405,12 +405,12 @@
 			</div>
 					
 			<c:choose>
-				<c:when test="${not empty status}">
+				<c:when test="${status ne '판매중'}">
 					<c:if test="${empty review}">
 						<label>후기 미등록.</label>
 					</c:if>
 				</c:when>
-				<c:when test="${empty status}">				
+				<c:when test="${status eq '판매중'}">				
 					<label>구매하시고 후기를 남겨보세요.</label>
 				</c:when>
 				
