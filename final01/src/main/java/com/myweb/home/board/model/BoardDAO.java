@@ -2,16 +2,21 @@ package com.myweb.home.board.model;
 
 import java.util.List;
 
-import org.mybatis.spring.SqlSessionTemplate;
+import org.apache.ibatis.session.SqlSession;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 
 
 	@Repository
 	public class BoardDAO {
 
+		
+		
 		@Autowired
-		private SqlSessionTemplate sqlSession;
+		private SqlSession sqlSession;
 	
 		
 		
@@ -19,7 +24,7 @@ import org.springframework.stereotype.Repository;
 			return sqlSession.selectOne("boardMapper.listCount");
 		}
 		
-		public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
+		public List<BoardDTO> listSearch(SearchCriteria scri) throws Exception {
 		    return sqlSession.selectList("boardMapper.listSearch",scri);
 		}
 		

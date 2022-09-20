@@ -302,7 +302,29 @@
 			    </table>
 		
 		 </c:forEach>
-		
+		<nav>
+			<div>
+				<ul class="pagination justify-content-center">
+					<c:url var="boardUrl" value="/myshop"/>
+					
+					<c:if test="${myshopPage.hasPrevPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}&page=${myshopPage.prevPageNumber}">Prev</a>
+						</li>
+					</c:if>
+					<c:forEach items="${myshopPage.getPageNumberList(myshopPage.currentPageNumber - 2, myshopPage.currentPageNumber + 2)}" var="num">
+						<li class="page-item ${myshopPage.currentPageNumber eq num ? 'active' : ''}">
+							<a class="page-link" href="${boardUrl}&page=${num}">${num}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${myshopPage.hasNextPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}&page=${myshopPage.nextPageNumber}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
+		</nav>
 		  
 		   <c:url var="boardUrl" value="./myStore" />
 			<form action="${boardUrl}" method="get">

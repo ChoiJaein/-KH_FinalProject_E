@@ -76,8 +76,12 @@
 	
 </head>
 <body>
+ <header>
+    <%@ include file="../module/navigation.jsp" %>
+ </header>
+	<%@ include file="../module/categoryNavigation.jsp" %>
   <section class="container whole-size" style="width:750px">
-     <div class="mt-3">
+     <div class="mt-5">
      <div class="mb-4 border-bottom border-2 border-secondary border-width">
         <div class="mb-3">
           <h3> <b>결 제</b> <i class="bi bi-credit-card"></i></h3>   
@@ -85,41 +89,42 @@
     </div>
   </div>
    
-
-     <c:url var="payUrl" value="/myinfo/pay" />
+<!--주소 Check-->
+     <c:url var="payUrl" value="/payment/pay" />
       <form action="${payUrl}" method="post">
      <div style="text-align: center;"> 
       <div>
          <div class="form-inline-input">
             <label class="form-label">First Name</label>
-            <input class="form-input form-size-300 mb-4 cursor" type="text" name="FirstName" placeholder="이름">
+            <input class="form-input form-size-300 mb-4 cursor" type="text" name="FirstName" placeholder="gil-dong">
           </div>
           <div class="form-inline-input">
             <label class="form-label">Last Name</label>
-            <input class="form-input form-size-300 mb-4 cursor" type="text" name="LastName" placeholder="성">
+            <input class="form-input form-size-300 mb-4 cursor" type="text" name="LastName"  placeholder="hong">
          </div>
       </div>  
        
       <div>   
          <div class="form-inline-input">
             <label class="form-label">Address</label>
-            <input class="form-input form-size-610 mb-1 cursor" type="text" name="AddressFirstLine"  placeholder="주소">
-            <input class="form-input form-size-610 mb-4 cursor" type="text" name="AddressSecondLine"  placeholder="상세주소">
+            <input class="form-input form-size-610 mb-1 cursor" type="text" name="AddressFirstLine" placeholder="역삼동 KH정보교육원">
+            <input class="form-input form-size-610 mb-4 cursor" type="text" name="AddressSecondLine" placeholder="">
          </div>
       </div>   
       
       <div>  
          <div class="form-inline-input">
            <label class="form-label">Country</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="Country" placeholder="시/도">
+           <input class="form-input form-size-200 mb-4 cursor" type="text" name="Country" placeholder="서울특별시">
          </div>
          <div class="form-inline-input">
            <label class="form-label">State</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="State" placeholder="시/군/구">         
+           <input class="form-input form-size-200 mb-4 cursor" type="text" name="State" placeholder="강남구">         
          </div>
           <div class="form-inline-input"> 
            <label class="form-label">Postal Code</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="PostalCode"  placeholder="우편번호">           
+           <input class="form-input form-size-200 mb-4 cursor" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                   name="PostalCode"  maxlength="5" placeholder="06234">           
          </div>
        </div> 
         
@@ -127,22 +132,23 @@
       <div>  
          <div class="form-inline-input">
            <label class="form-label">Name on Card</label>
-           <input class="form-input form-size-300 mb-4 cursor" type="text" name="NameOnCard" placeholder="Name on Card">
+           <input class="form-input form-size-300 mb-4 cursor" type="text" name="NameOnCard" placeholder="hong gil dong">
          </div>
          <div class="form-inline-input"> 
            <label class="form-label">Credit Card Number</label>
-           <input class="form-input form-size-300 mb-4 cursor" type="text" name="CardNumber" placeholder="카드번호">
+           <input class="form-input form-size-300 mb-4 cursor" type="text" name="CardNumber" placeholder="0000-0000-0000-0000">
          </div>
         </div>
         
        <div> 
          <div class="form-inline-input">
              <label class="form-label">Expiration</label>
-             <input class="form-input form-size-300 mb-4 cursor" type="text" name="Expiration" placeholder="만료일 MM/YY">
+             <input class="form-input form-size-300 mb-4 cursor" type="text" name="Expiration" maxlength="5" placeholder="MM/YY">
           </div>
           <div class="form-inline-input">
              <label class="form-label">CVV</label>
-             <input class="form-input form-size-300  mb-4 cursor" type="text" name="CVV" placeholder="CVV번호">
+             <input class="form-input form-size-300  mb-4 cursor" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    name="CVV" maxlength="3" placeholder="123">
          </div>
        </div>       
      </div>
@@ -168,19 +174,27 @@
 	return;
   }
  
- <!--결제버튼-->
- <!--주소 변경-->
-  function finalPay(form){
-	  if(confirm("결제 하시겠습니까?") === true){
-		  form.submit();
-		  alert("결제가 완료되었습니다.\n메인화면으로 이동합니다.");
-		  location.href="https://www.naver.com";
-	  }else{
-		  alert("결제에 실패하였습니다.");
-	  }
+ <!--결제 버튼-->
+ <!--정보입력 빈 칸 방지-->
+ function finalPay(form){
+	 if(form.FirstName.value =="" || form.LastName.value ==""){
+		 alert("이름은 반드시 입력해주세요");
+	 }else if(form.AddressFirstLine.value =="" || form.Country.value =="" || form.State.value=="" || form.PostalCode.value ==""){
+		 alert("주소를 입력해주세요");
+	 }else if(form.NameOnCard.value=="" || form.CardNumber.value=="" || form.Expiration.value=="" || form.CVV.value==""){
+		 alert("카드정보를 올바르게 입력해주세요");
+	 }else{
+		  if(confirm("결제 하시겠습니까?") === true){
+			  form.submit();
+<!--주소 Check-->			  
+			  alert("결제가 완료되었습니다.\n메인화면으로 이동합니다.");
+			  location.href="https://www.naver.com";
+		  }else{
+			  alert("결제에 실패하였습니다.");
+		  }			 
+	 }
 	  
-  }
-  
+ }
   
  </script>
 </body>
