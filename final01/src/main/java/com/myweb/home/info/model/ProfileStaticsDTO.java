@@ -49,6 +49,14 @@ public class ProfileStaticsDTO {
 	public void setLatestVisit(Date latestVisit) {
 		this.latestVisit = latestVisit;
 	}
+
+	@Override
+	public String toString() {
+		return "ProfileStaticsDTO [profileId=" + profileId + ", accId=" + accId + ", bId=" + bId + ", visited="
+				+ visited + ", latestVisit=" + latestVisit + "]";
+	}
+	
+	
 	
 	
 
