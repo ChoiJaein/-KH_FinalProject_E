@@ -15,5 +15,8 @@
 	<typeAlias type="com.myweb.home.board.model.BoardVO" alias="boardVo" />
 	<typeAlias type="com.myweb.home.board.model.Criteria" alias="criteria" />
 	<typeAlias type="com.myweb.home.board.model.SearchCriteria" alias="searchCriteria" />
+<!-- 
+	<typeAlias type="com.myweb.home.upload.model.PhotoUploadDTO" alias="photoUploadDto" /> 
+-->
 	</typeAliases>
 </configuration>

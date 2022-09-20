@@ -37,7 +37,7 @@
   
   
   <c:url var="myinfoModify" value="/myinfo/modify"/>
-  <form class="large-form" action="${myinfoModify}" method="post" enctype="multipart/form-data">
+  <form id="ajaxform" class="large-form" action="${myinfoModify}" method="post" enctype="multipart/form-data">
  <div class="d-flex">
    <div class="col-sm-4 text-center">
     <div class="mb-4 mt-4">
@@ -45,22 +45,49 @@
      
      
      
-<!--이미지 경로체크 -->       
-<%--           
-<img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${data.url}" 
+<!--이미지 경로체크 -->              
+			<img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${fileDatas.url}" 
                    accept="image/png, image/jpeg, image/jpg" width="250" height="250"> 
---%>
 
+			<div class="image-form left">
+				<img id="previewImg" class="image-360" alt="여기에는 증명 사진이 배치됩니다." src="${imagePath}">
+				<br>
+<%-- 			
+				<input id="imgSelect" type="file" name="uploadImg" value="이미지 선택" accept="image/png">
+				<c:if test="${not empty imageError}">
+					<label class="input-label-error">${imageError}</label>
+				</c:if> 
+--%>
+			</div> 
+
+<!-- 이미지 업로드 테스트용 -->
+			<div class="form_section">
+				<div class="form_section_title">
+					<label>상품 이미지</label>
+				</div>
+				<div class="form_section_content">
+					<input type="file" id="fileItem" name="uploadFile">
+				</div>
+			</div>
+
+<!-- 		
+		<div>
+			<label class="fileBtn" for="file">이미지 업로드</label>
+			<input type="file" name="file" id="file">
+		</div> 
+-->
 
 
 <!--닉네임 value값입력 -->
           <div>
             <input class="text-center mb-3" type="text" name="name" value="${data.name}" size="17">
           </div>
-          <div>
+<!--
+           <div>
            <label class="input-file-button mb-4" for="imgSelect">프로필사진 변경</label>
            <input id="imgSelect" name="uploadImg" type="file" style ="display:none;">
-          </div>
+          </div> 
+-->
           
        </div>
     </div>
@@ -127,6 +154,59 @@
 
 
 <script type="text/javascript">
+
+
+<!-- 테스트 한 내용들 -->
+/* 이미지 업로드 */
+$("input[type='file']").on("change", function(e){
+	
+	let formData = new FormData();
+	let fileInput = $('input[name="uploadFile"]');
+	let fileList = fileInput[0].files;
+	let fileObj = fileList[0];
+	
+	if(!fileCheck(fileObj.name, fileObj.size)){
+		return false;
+	}
+	
+	formData.append("uploadFile", fileObj);
+	
+	$.ajax({
+		url: "/home/uploadAjaxAction",
+    	processData : false,
+    	contentType : false,
+    	data : formData,
+    	type : "post",
+    	dataType : "json",
+    	success : function(result){
+    		console.log(result);
+    	}
+	});	
+	
+});
+
+
+/* var, method related with attachFile */
+let regex = new RegExp("(.*?)\.(jpg|png)$");
+let maxSize = 1048576; //1MB	
+
+function fileCheck(fileName, fileSize){
+
+	if(fileSize >= maxSize){
+		alert("파일 사이즈 초과");
+		return false;
+	}
+		  
+	if(!regex.test(fileName)){
+		alert("해당 종류의 파일은 업로드할 수 없습니다.");
+		return false;
+	}
+	
+	return true;		
+	
+}
+
+
 
 <!--이미지 업로드 미리보기-->
 function showImagePreview(e){
