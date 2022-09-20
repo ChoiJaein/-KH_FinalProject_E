@@ -31,7 +31,7 @@ public class LoginService<accountDTO> {
 		 
 		logger.info("getLogin({},{}",session, loginVo);
 		 AccountDTO data = new AccountDTO();
-		 data.setaccountid(loginVo.getAccountid());
+		 data.setAccountid(loginVo.getAccountid());
 		 data.setPassword(loginVo.getPassword());
 		 
 		 data = dao.selectLogin(data);

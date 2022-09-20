@@ -9,7 +9,10 @@ import org.springframework.stereotype.Service;
 
 import com.myweb.home.board.model.BoardDAO;
 import com.myweb.home.board.model.BoardDTO;
+<<<<<<< HEAD
 import com.myweb.home.board.model.BoardVO;
+=======
+>>>>>>> refs/remotes/origin/main
 import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.board.model.CategoryDTO;
@@ -19,6 +22,8 @@ public class BoardService {
 	
 	private static final Logger logger = LoggerFactory.getLogger(BoardService.class);
 
+	
+	
 	@Autowired
 	private BoardDAO dao;
 
@@ -56,7 +61,7 @@ public class BoardService {
 		return dao.listCount();
 	}
  
-	public List<BoardVO> listSearch(SearchCriteria scri) throws Exception {
+	public List<BoardDTO> listSearch(SearchCriteria scri) throws Exception {
 		return dao.listSearch(scri);
 	}
 	
@@ -65,6 +70,9 @@ public class BoardService {
 	}
 	
 	
+<<<<<<< HEAD
 	
 
+=======
+>>>>>>> refs/remotes/origin/main
 }

@@ -29,14 +29,18 @@
 			  </div>
 			 </div> 
 			<hr>
+<<<<<<< HEAD
+						<c:url var="boardDetailUrl" value="./detail" />
+=======
 						<c:url var="boardDetailUrl" value="./detail">
-							<c:param name="id">${data.bid}</c:param>
+							<c:param name="id">${data.bId}</c:param>
 						</c:url>
+>>>>>>> refs/remotes/origin/박희망BE
 			
 			<c:if test="${not empty list}">
 				<c:forEach items="${list}" var="list">
 
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 							 <img src="${list.url}" style="width:250px; height:250px;"> 
 							</div>
@@ -44,21 +48,21 @@
 							<div style="width:1000px; height:250px; background-color:darkgray; float:left;">
 								<table style="width:1000px; height:250px; text-align:right;">
 									<tr>
-										<td style="width:100px;">${list.btitle}</td>
+										<td style="width:100px;">${list.bTitle}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${list.pcondition} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${list.pCondition} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
 										<td style="width:100px;"></td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
-										<td style="width:100px;">${list.dealmethod} &nbsp;&nbsp;&nbsp;</td>
+										<td style="width:100px;">${list.dealMethod} &nbsp;&nbsp;&nbsp;</td>
 									</tr>
 									<tr>
-										<td style="width:100px;">${list.accountid}</td>
+										<td style="width:100px;">${list.accountId}</td>
 										<td style="width:750px;"></td>
 										<td></td>
 										<td></td>
@@ -75,7 +79,7 @@
 			<!-- 데이터가 없을 경우 -->
 			<c:if test="${list == null}">
 				
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -107,7 +111,7 @@
 							</div>
 					</div>
 					<br><br>
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -138,7 +142,7 @@
 								</table>
 							</div>
 					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -169,7 +173,7 @@
 								</table>
 							</div>
 					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -200,7 +204,7 @@
 								</table>
 							</div>
 					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -258,8 +262,12 @@
 		     <li><a href="boardList_search${pageMaker.makeSearch(pageMaker.endPage + 1)}">다음</a></li>
 		    </c:if>   
 		   </ul>
-		</div>
+			</div>
+		
 		   </section>
+		   </form>
+		   </div>
+		   
 	</section>
 	
 	<footer><%@ include file="../module/footer.jsp" %></footer>

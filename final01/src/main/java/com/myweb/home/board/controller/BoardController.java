@@ -2,6 +2,9 @@ package com.myweb.home.board.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.myweb.home.board.model.BoardDTO;
+import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.BoardVO;
 import com.myweb.home.board.model.CategoryDTO;
 import com.myweb.home.board.model.PageMaker;
@@ -61,6 +65,10 @@ public class BoardController {
 		} else {
 			return "board/boardUpload";
 		}
+	
+		
+		
+		
 		
 	}
 	

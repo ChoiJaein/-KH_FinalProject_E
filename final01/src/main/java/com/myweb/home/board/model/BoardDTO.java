@@ -3,64 +3,67 @@ package com.myweb.home.board.model;
 import java.sql.Date;
 
 public class BoardDTO {
-	private int bid;
-	private String btitle;
-	private int categoryid;
-	private String bcontent;
-	private String accountid;
-	private String dealmethod;
+	
+	private int bId;
+	private String bTitle;
+	private int categoryId;
+	private String bContent;
+	private String accountId;
+	private String dealMethod;
 	private int price;
-	private String pcondition;
-	private Date createdate;
-	private int viewcnt;
-	private String buystatus;
+	private String pCondition;
+	private Date createDate;
+	private int viewCnt;
+	private String buyStatus;
+	private String url;
 	
-	public int getBid() {
-		return bid;
+	
+	public int getbId() {
+		return bId;
 	}
 	
-	public void setBid(int bid) {
-		this.bid = bid;
+	public void setbId(int bId) {
+		this.bId = bId;
 	}
 	
-	public String getBtitle() {
-		return btitle;
+	public String getbTitle() {
+		return bTitle;
 	}
 	
-	public void setBtitle(String btitle) {
-		this.btitle = btitle;
+	public void setbTitle(String bTitle) {
+		this.bTitle = bTitle;
 	}
 	
-	public int getCategoryid() {
-		return categoryid;
+	public int getCategoryId() {
+		return categoryId;
 	}
 	
-	public void setCategoryid(int categoryid) {
-		this.categoryid = categoryid;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 	
-	public String getBcontent() {
-		return bcontent;
+	public String getbContent() {
+		return bContent;
 	}
 	
-	public void setBcontent(String bcontent) {
-		this.bcontent = bcontent;
+	public void setbContent(String bContent) {
+		this.bContent = bContent;
 	}
 	
-	public String getAccountid() {
-		return accountid;
+	public String getAccountId() {
+		return accountId;
 	}
 	
-	public void setAccountid(String accountid) {
-		this.accountid = accountid;
+	public void setAccountId(String accountId) {
+		this.accountId = accountId;
 	}
 	
-	public String getDealmethod() {
-		return dealmethod;
+	public String getDealMethod() {
+		return dealMethod;
 	}
 	
-	public void setDealmethod(String dealmethod) {
-		this.dealmethod = dealmethod;
+	public void setDealMethod(String dealMethod) {
+		this.dealMethod = dealMethod;
 	}
 	
 	public int getPrice() {
@@ -71,42 +74,63 @@ public class BoardDTO {
 		this.price = price;
 	}
 	
-	public String getPcondition() {
-		return pcondition;
+	public String getpCondition() {
+		return pCondition;
 	}
 	
-	public void setPcondition(String pcondition) {
-		this.pcondition = pcondition;
+	public void setpCondition(String pCondition) {
+		this.pCondition = pCondition;
 	}
 	
-	public Date getCreatedate() {
-		return createdate;
+	public Date getCreateDate() {
+		return createDate;
 	}
 	
-	public void setCreatedate(Date createdate) {
-		this.createdate = createdate;
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 	
-	public int getViewcnt() {
-		return viewcnt;
+	public int getViewCnt() {
+		return viewCnt;
 	}
 	
-	public void setViewcnt(int viewcnt) {
-		this.viewcnt = viewcnt;
+	public void setViewCnt(int viewCnt) {
+		this.viewCnt = viewCnt;
 	}
 	
-	public String getBuystatus() {
-		return buystatus;
+	public String getBuyStatus() {
+		return buyStatus;
 	}
 	
-	public void setBuystatus(String buystatus) {
-		this.buystatus = buystatus;
+	public void setBuyStatus(String buyStatus) {
+		this.buyStatus = buyStatus;
 	}
 	
+	public String getUrl() {
+		return url;
+	}
+	
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
 	@Override
 	public String toString() {
-		return "BoardDTO [bid=" + bid + ", btitle=" + btitle + ", categoryid=" + categoryid + ", bcontent=" + bcontent
-				+ ", accountid=" + accountid + ", dealmethod=" + dealmethod + ", price=" + price + ", pcondition="
-				+ pcondition + ", createdate=" + createdate + ", viewcnt=" + viewcnt + ", buystatus=" + buystatus + "]";
+		return "BoardDTO [bId=" + bId + ", bTitle=" + bTitle + ", categoryId=" + categoryId + ", bContent=" + bContent
+				+ ", accountId=" + accountId + ", dealMethod=" + dealMethod + ", price=" + price + ", pCondition="
+				+ pCondition + ", createDate=" + createDate + ", viewCnt=" + viewCnt + ", buyStatus=" + buyStatus
+				+ ", url=" + url + "]";
 	}
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
 }

@@ -10,9 +10,21 @@ import org.springframework.stereotype.Repository;
 
 import com.myweb.home.board.model.BoardVO;
 
+<<<<<<< HEAD
 @Repository
 public class BoardDAO {
+=======
+
+	@Repository
+	public class BoardDAO {
+
+		
+		
+		@Autowired
+		private SqlSession sqlSession;
+>>>>>>> refs/remotes/origin/main
 	
+<<<<<<< HEAD
 	private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 
 	@Autowired
@@ -61,3 +73,20 @@ public class BoardDAO {
 	}
 	
 }
+=======
+		
+		
+		public int listCount() throws Exception {
+			return sqlSession.selectOne("boardMapper.listCount");
+		}
+		
+		public List<BoardDTO> listSearch(SearchCriteria scri) throws Exception {
+		    return sqlSession.selectList("boardMapper.listSearch",scri);
+		}
+		
+		public int countSearch(SearchCriteria scri) throws Exception{
+			return sqlSession.selectOne("boardMapper.countSearch",scri);
+		}
+		
+}
+>>>>>>> refs/remotes/origin/main

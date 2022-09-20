@@ -277,7 +277,29 @@
 	        </tr>
 	    </table>
 	   </c:forEach> 
-	    
+	    <nav>
+			<div>
+				<ul class="pagination justify-content-center">
+					<c:url var="boardUrl" value="/favoriteList"/>
+					
+					<c:if test="${favoriteListPage.hasPrevPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}&page=${favoriteListPage.prevPageNumber}">Prev</a>
+						</li>
+					</c:if>
+					<c:forEach items="${favoriteListPage.getPageNumberList(favoriteListPage.currentPageNumber - 2, favoriteListPage.currentPageNumber + 2)}" var="num">
+						<li class="page-item ${favoriteListPage.currentPageNumber eq num ? 'active' : ''}">
+							<a class="page-link" href="${boardUrl}&page=${num}">${num}</a>
+						</li>
+					</c:forEach>
+					<c:if test="${favoriteListPage.hasNextPage()}">
+						<li class="page-item">
+							<a class="page-link" href="${boardUrl}&page=${favoriteListPage.nextPageNumber}">Next</a>
+						</li>
+					</c:if>
+				</ul>
+			</div>
+		</nav>
 	    
 	
 	    </div>

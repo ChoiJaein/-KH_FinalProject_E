@@ -92,3 +92,11 @@ img {
   max-width: 100%;
 }
 
+.text_wide {
+	width:500px; 
+}
+
+.upmargin {
+	margin:-100px 0 0 0;
+}
+
