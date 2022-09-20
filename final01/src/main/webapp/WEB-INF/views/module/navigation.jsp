@@ -10,9 +10,9 @@
 <script type="text/javascript">
  $(function(){
   $('#searchBtn').click(function() {
-     self.location = "boardList_search"
+     self.location = "list"
      + '${pageMaker.makeQuery(1)}'
-     + "&keyword="
+     + "?keyword="
      + encodeURIComponent($('#keywordInput').val());
     });
  });   
