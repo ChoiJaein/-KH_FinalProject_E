@@ -325,31 +325,6 @@
 				</ul>
 			</div>
 		</nav>
-		  
-		   <c:url var="boardUrl" value="./myStore" />
-			<form action="${boardUrl}" method="get">
-   			<nav>
-			<div>
-				<ul class="pagination justify-content-center">
-					<c:if test="${pageData.hasPrevPage()}">
-						<li class="page-item">
-							<a class="page-link" href="${boardUrl}?page=${pageData.prevPageNumber}">Prev</a>
-						</li>
-					</c:if>
-					<c:forEach items="${pageData.getPageNumberList(pageData.currentPageNumber - 2, pageData.currentPageNumber + 2)}" var="num">
-						<li class="page-item ${pageData.currentPageNumber eq num ? 'active' : ''}">
-							<a class="page-link" href="${boardUrl}?page=${num}">${num}</a>
-						</li>
-					</c:forEach>
-					<c:if test="${pageData.hasNextPage()}">
-						<li class="page-item">
-							<a class="page-link" href="${boardUrl}?page=${pageData.nextPageNumber}">Next</a>
-						</li>
-					</c:if>
-				</ul>
-			</div>
-		</nav>
-		  
 		    </div>
 		   </div>
 		 </div> 

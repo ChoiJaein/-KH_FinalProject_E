@@ -77,7 +77,7 @@ public class InfoService {
 	public void incVisitCnt(HttpSession session, InfoDTO data) {
 		ProfileStaticsDTO staticsData = new ProfileStaticsDTO();
 		staticsData.setbId(data.getbId());
-		staticsData.setAccId(((AccountDTO)session.getAttribute("loginData")).getaccountid());
+		staticsData.setAccId(((AccountDTO)session.getAttribute("loginData")).getAccountid());
 		
 		staticsData = dao.selectStatics(staticsData);
 		
@@ -90,7 +90,7 @@ public class InfoService {
 			
 			staticsData = new ProfileStaticsDTO();
 			staticsData.setbId(data.getbId());
-			staticsData.setAccId(((AccountDTO)session.getAttribute("loginData")).getaccountid());
+			staticsData.setAccId(((AccountDTO)session.getAttribute("loginData")).getAccountid());
 			result = dao.insertStatics(staticsData);
 			if(!result) {
 				throw new RuntimeException("조회수 통계 추가 처리에 문제가 발생 하였습니다.");

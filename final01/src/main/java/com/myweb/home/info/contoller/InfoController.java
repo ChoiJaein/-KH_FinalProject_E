@@ -35,8 +35,8 @@ public class InfoController {
 		
 		if(accDto != null) {
 			
-			InfoDTO pData = service.getUserInfo(accDto.getaccountid());
-			InfoDTO dData = service.getUserPurchase(accDto.getaccountid());
+			InfoDTO pData = service.getUserInfo(accDto.getAccountid());
+			InfoDTO dData = service.getUserPurchase(accDto.getAccountid());
 			
 			model.addAttribute("pData", pData); // 프로필 데이터
 			model.addAttribute("dData", dData); // 구매 횟수
@@ -69,9 +69,9 @@ public class InfoController {
 		
 		if(accDto != null) {
 			
-			InfoDTO pData = service.getUserInfo(accDto.getaccountid());
-			InfoDTO dData = service.getUserPurchase(accDto.getaccountid());
-			List datas = service.getPurchaseList(accDto.getaccountid());
+			InfoDTO pData = service.getUserInfo(accDto.getAccountid());
+			InfoDTO dData = service.getUserPurchase(accDto.getAccountid());
+			List datas = service.getPurchaseList(accDto.getAccountid());
 			
 			
 			if(session.getAttribute("pageCount") == null) {
@@ -89,7 +89,7 @@ public class InfoController {
 			model.addAttribute("pData", pData); // 프로필 데이터
 			model.addAttribute("dData", dData); // 구매 횟수
 			model.addAttribute("datas", paging.getPageData()); // 구매 상품 목록
-			model.addAttribute("pageData", paging);
+			model.addAttribute("shoppingPage", paging);
 			
 			return "login/shoppingList";
 		}  
@@ -118,9 +118,9 @@ public class InfoController {
 		
 		if(accDto != null) {
 			
-			InfoDTO pData = service.getUserInfo(accDto.getaccountid());
-			InfoDTO dData = service.getUserPurchase(accDto.getaccountid());
-			List datas = service.getFavoriteList(accDto.getaccountid());
+			InfoDTO pData = service.getUserInfo(accDto.getAccountid());
+			InfoDTO dData = service.getUserPurchase(accDto.getAccountid());
+			List datas = service.getFavoriteList(accDto.getAccountid());
 			
 			
 			if(session.getAttribute("pageCount") == null) {
@@ -164,9 +164,9 @@ public class InfoController {
 			, @RequestParam(defaultValue="0", required=false) int pageCount ) {
 		if(accDto != null) {
 			
-			InfoDTO pData = service.getMyStoreInfo(accDto.getaccountid());
-			InfoDTO sData = service.getUserSelling(accDto.getaccountid());
-			List datas = service.getSellList(accDto.getaccountid());
+			InfoDTO pData = service.getMyStoreInfo(accDto.getAccountid());
+			InfoDTO sData = service.getUserSelling(accDto.getAccountid());
+			List datas = service.getSellList(accDto.getAccountid());
 			
 			
 			if(session.getAttribute("pageCount") == null) {
