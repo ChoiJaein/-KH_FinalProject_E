@@ -6,7 +6,7 @@
 <%@ include file="../module/head.jsp" %>
 
 <!-- main이 아닌 boardList로 가므로 수정 필요  -->
-<c:url var="mainUrl" value="." />
+
 <script type="text/javascript">
  $(function(){
   $('#searchBtn').click(function() {
@@ -29,15 +29,15 @@
 			</div>
 			
 			
-			<a class="" href="/notice">공지사항</a>
+			<a class="" href="/home/notice">공지사항</a>
 			
 				<c:if test="${not empty sessionScope.loginData}">
 	                     ${sessionScope.loginData.accountid} 님 환영합니다.
-						<a class="nav-link" href="/mypage">마이페이지</a>
-						<a class="nav-link" href="${mainUrl}/logout">로그아웃</a>
+						<a class="nav-link" href="/home/mypage">마이페이지</a>
+						<a class="nav-link" href="/home/logout">로그아웃</a>
 				</c:if>
 				<c:if test="${empty sessionScope.loginData}">
-						<a class="nav-link" href="${mainUrl}/login">로그인</a>
+						<a class="nav-link" href="/home/login">로그인</a>
 				</c:if>
 
 		        
