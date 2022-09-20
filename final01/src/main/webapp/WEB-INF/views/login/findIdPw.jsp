@@ -14,7 +14,7 @@
 <body>
 <header class="mb-3"></header>
   <section>
-   <c:url var="find_idUrl" value="/login/find_id/"/>
+   <c:url var="find_idUrl" value="/login/find_id"/>
    <form action="${find_idUrl}" method="post" >
    <div id ="find_id" name="find_id">
    <div align="center">
@@ -51,7 +51,7 @@
 <header class="mb-3"></header>
        <section>
      
-	  	<c:url var="find_pwUrl" value="/login/find_pw/"/>
+	  	<c:url var="find_pwUrl" value="/login/find_pw"/>
 		<form action="${find_pwUrl}" method="post" >
 		<div id ="find_pw" name="find_pw">
 	    <div align="center">   

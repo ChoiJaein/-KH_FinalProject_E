@@ -45,13 +45,60 @@
 				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./register'">회원가입</button>
 			</div>
 	        <div align= 'center'>
-	        <!-- 카카오 로그인 -->
-	       <button  type="button" class="btn" id="kakao-login-btn"
-	        onclick="location.href='/home/login/kakao'">
-			  <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="210"/>
-			</button>
-
-		   
+	         <!-- 카카오 로그인 -->
+		        <button onclick="kakaoLogin();">
+		        <a href="javascript:void(0)">
+		            <span><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="210"" alt="카카오계정 로그인" style="height: 50px;"/></span>
+		        </a>
+		  	   </button>
+		       <!-- 
+		       <button onclick="kakaoLogout();">
+		        <a href="javascript:void(0)">
+		            <span>카카오 로그아웃</span>
+		        </a>
+		  	   </button>
+		        -->
+		  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+		  <script type="text/javascript">
+		  Kakao.init('d0ef6b76e117277cb82e82d03cff8759'); 
+		  console.log(Kakao.isInitialized()); 
+		  //카카오로그인
+		  function kakaoLogin() {
+		      Kakao.Auth.login({
+		    	  scope: 'profile_nickname, account_email, gender',
+		        success: function (response) {
+		          Kakao.API.request({
+		            url: '/v2/user/me',
+		            success: function (response) {
+		          	  console.log(response)
+		          	  alert("로그인 성공 !");
+		            },
+		            fail: function (error) {
+		              console.log(error)
+		            },
+		          })
+		        },
+		        fail: function (error) {
+		          console.log(error)
+		        },
+		      })
+		    }
+		  //카카오로그아웃 
+		  function kakaoLogout() {
+		      if (Kakao.Auth.getAccessToken()) {
+		        Kakao.API.request({
+		          url: '/v1/user/unlink',
+		          success: function (response) {
+		          	console.log(response)
+		          },
+		          fail: function (error) {
+		            console.log(error)
+		          },
+		        })
+		        Kakao.Auth.setAccessToken(undefined)
+		      }
+		    }  
+            </script>
 			<!-- 네이버 로그인 -->
 			<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>		  
 		    <div id ="naverIdLogin"></div>
@@ -63,17 +110,13 @@
 					   isPopup: false,
 					   loginButton : {color: "green" ,type:3 , height:50}
 				   }
-		   );
+		         );
 		   
-		   naverLogin.init();
-		   
-		   
-		   </script>
-		      		      
-			
-	
-</body>
-	</section>
+		     naverLogin.init();
+           </script>
+        
+	  </section>
+    </body>
 	<br><br><br><br>
 	<br><br><br><br>
 	<br><br><br><br>

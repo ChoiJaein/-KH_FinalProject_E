@@ -20,13 +20,18 @@
 			</div>
 			<div>
 			 	<div align ="center">
-					<h5>
+				 <c:if test="${not empty sessionScope.emailData}">	
 				회원님의 아이디는	${ emailData.accountid } 입니다.
-					</h5>
+				  </c:if>	
 					<div class="form-label-group">
 					<div class ="center-cancel ">
+<<<<<<< HEAD
 					<button type="button" onclick= "location.href='/home/login'" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">확인</button>
 					<button type="button" onclick="history.go(-1);" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">Cancel</button>
+=======
+						<button type="button" onclick= "location.href='..'" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">확인</button>
+						<button type="button" onclick="history.go(-1);" class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-margin-bottom w3-round">Cancel</button>
+>>>>>>> refs/remotes/origin/박희망BE
 					</div>
 			   </div>
 		</div>
