@@ -24,12 +24,12 @@
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
+				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
 				<label for="id_accountid">아이디</label>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control is-invalid" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
+				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
 				<label for="id_password">비밀번호</label>
 			</div>
 			<br>
@@ -39,7 +39,7 @@
 		</form>
 			
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./findIdPw'">아이디 비밀번호 찾기</button>
+				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./login/findIdPw'">아이디 비밀번호 찾기</button>
 			</div>
 			<div class="mb-2 text-end">
 				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./register'">회원가입</button>
