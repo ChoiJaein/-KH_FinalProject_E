@@ -81,6 +81,7 @@
 	</table>
 		<button class="btn btn-primary" onclick="location.href='/'">취소</button>
 		<button class="btn btn-primary" type="submit">수정완료</button>
+		<button class="btn btn-primary" onclick="location.href='/board/delete'">삭제</button>
 	</div>
 	</section>
 	
