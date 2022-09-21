@@ -61,16 +61,19 @@
 		<c:if test="${not empty datas}">
 			<c:set var="status" value="${data.buystatus}"/>
 			<c:set var="accountId" value="${loginData.accountId}" />
+			<c:set var="uploadId" value="${data.accountId}" />
 		</c:if>
+		<!-- 목업 확인용 -->
 		<c:if test="${datas == null}">
-			<c:set var="status" value=""/>
+			<c:set var="status" value="111"/>
 			<c:set var="loginData.accountId" value="111" />
 			<c:set var="accountId" value="111" />
+			<c:set var="uploadId" value="111" />
 		</c:if>
 		
 			<c:set var="buyId" value="${status}" />
 			<c:set var="myId" value="${accountId}" />
-	
+
 	
 	<c:if test="${datas == null}">
 	<section class="container" style="width:1250px;">
@@ -135,8 +138,13 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			
-
+			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:if test="${uploadId eq myId}">
+				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
+				<br><br>
+			</c:if>
+			<hr>
 					<div class="mb-1">
 						<form action="/board/boardDetail" method="post">
 							<input type="hidden" name="bid" value="${bid}">
@@ -223,7 +231,12 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			
+			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:if test="${uploadId eq myId}">
+				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
+				<br><br>
+			</c:if>
 			<hr>
 			<div style="width:100%; background-color:lightgray;">
 				<label style="font-size:20px;">상품 후기</label>
