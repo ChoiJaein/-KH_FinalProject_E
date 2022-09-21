@@ -20,7 +20,7 @@
 			data: {
 				accountId : id
 			},
-			success: function(data) {
+			success: function(data, status) {
 				
 				if(element.innerHTML === 'favorite') {
 					/* 찜목록에 들어갔을 경우 */
@@ -33,28 +33,14 @@
 				
 			}
 			
-			fail : function(data) {
-				
-				if(element.innerHTML === 'favorite') {
-					/* 찜목록에 들어갔을 경우 */
-					element.innerHTML = 'favorite_border';
-				}
-				else if(element.innerHTML === 'favorite_border') {
-					/* 찜목록에서 제거되었을 경우 */
-					element.innerHTML = 'favorite';
+			error : function(data, status) {
+				console.log("error:" + data);
+				console.log("error:" + status);
 				}
 			
-			complete : function(data) {
-				
-				if(element.innerHTML === 'favorite') {
-					/* 찜목록에 들어갔을 경우 */
-					element.innerHTML = 'favorite_border';
-				}
-				else if(element.innerHTML === 'favorite_border') {
-					/* 찜목록에서 제거되었을 경우 */
-					element.innerHTML = 'favorite';
-				}
-				
+			complete : function(data, status) {
+				console.log("error:" + data);
+				console.log("error:" + status);
 			}
 			
 		});
@@ -104,7 +90,6 @@
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
 				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
-				<!-- <div style="float:right;" onclick='favoriteTest()'> -->
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
@@ -163,7 +148,7 @@
 					</div>
 			
 			
-		<!-- 
+		
 			<c:choose>
 				<c:when test="${not empty status}">
 					<c:if test="${empty review}">
@@ -316,7 +301,7 @@
 				<c:if test="${buyId == myId}"> 
 				<!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
-				<!--  	<div class="mb-1">
+				  	<div class="mb-1">
 						<form action="/review/add" method="post">
 							<input type="hidden" name="bid" value="${data.bid}">
 							<div class="input-group">
@@ -341,7 +326,7 @@
 				
 			</c:choose>
 	</section>
-	</c:if>-->
+	</c:if>
 	
 	
 	
