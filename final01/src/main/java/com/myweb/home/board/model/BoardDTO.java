@@ -16,6 +16,7 @@ public class BoardDTO {
 	private int viewCnt;
 	private String buyStatus;
 	private String url;
+	private String cateName;
 	
 	
 	public int getbId() {
@@ -113,13 +114,21 @@ public class BoardDTO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	public String getCateName() {
+		return cateName;
+	}
+
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
+	}
 
 	@Override
 	public String toString() {
 		return "BoardDTO [bId=" + bId + ", bTitle=" + bTitle + ", categoryId=" + categoryId + ", bContent=" + bContent
 				+ ", accountId=" + accountId + ", dealMethod=" + dealMethod + ", price=" + price + ", pCondition="
 				+ pCondition + ", createDate=" + createDate + ", viewCnt=" + viewCnt + ", buyStatus=" + buyStatus
-				+ ", url=" + url + "]";
+				+ ", url=" + url + ", cateName=" + cateName + "]";
 	}
 	
 	

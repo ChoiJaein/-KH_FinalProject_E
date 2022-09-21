@@ -34,4 +34,52 @@
            </select>
            
 
+		<select id = "selectBoardData" resultType="boardDto">
+			SELECT B.BID as bId
+				, B.ACCOUNTID as accountId
+				, B.BTITLE as bTitle
+				, B.PRICE as price
+				, B.BCONTENT as bContent
+				, B.PCONDITION as pCondition
+				, B.DEALMETHOD as dealMethod
+				, B.CREATEDATE as createDate
+				, B.BUYSTATUS as buyStatus
+				, B.viewCnt as viewCnt
+				, CONCAT(P.URL, '/' || P.UUIDNAME) as url
+				, C.CATEGORYNAME as cateName
+				, A.NAME AS userName
+			FROM BOARD B
+			RIGHT JOIN PHOTOUPLOAD P
+			ON B.BID = P.BID
+			RIGHT JOIN ACCOUNT A
+			ON A.ACCOUNTID  = B.ACCOUNTID
+			RIGHT JOIN CATEGORY C
+			ON B.CATEGORYID = C.CATEGORYID
+			WHERE B.BID = #{bId}
+		</select>
+		
+		<select id="selectBoardStatics" parameterType="boardStaticsDto" resultType="boardStaticsDto">
+			SELECT  BOARDSTATID 
+			 , ACCOUNTID as accId
+			 , BID
+		     , VIEWED 
+		     , LATEST_VIEWED_DATE AS latestView
+		  FROM BOARD_STATICS
+		 WHERE BID = #{bId}
+		</select>
+		<insert id="insertBoardStatics" parameterType="boardStaticsDto">
+			INSERT INTO BOARD_STATICS
+		     VALUES(BOARD_STATICS_SEQ.NEXTVAL
+		         , #{accId} , #{bId}, 'Y', SYSDATE)
+		</insert>
+		<update id="updateBoardStatics" parameterType="boardStaticsDto">
+			UPDATE BOARD_STATICS
+		   SET LATEST_VISITED_DATE = SYSDATE
+		 WHERE BID = #{bId}
+		</update>
+		<update id="updateViewCnt" parameterType="boardDto">
+			UPDATE BOARD
+		   SET VIEWCNT = #{viewCnt} + 1
+		 WHERE BID = #{bId}
+		</update>
   </mapper>

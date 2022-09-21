@@ -95,7 +95,7 @@
 		   SET LATEST_VISITED_DATE = SYSDATE
 		 WHERE ACCOUNTID = #{accId}
 	</update>
-	<update id="updateViewCnt" parameterType="infoDto">
+	<update id="updateVisitCnt" parameterType="infoDto">
 		UPDATE ACCOUNT
 		   SET VISITCNT = #{visitCnt} + 1
 		 WHERE ACCOUNTID = #{accId}

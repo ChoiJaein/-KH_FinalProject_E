@@ -9,7 +9,8 @@
 	<meta charset="UTF-8">
 	<title>게시글 등록</title>
 	<%@ include file="../module/head.jsp" %>
-
+	<c:url var="ckeditor" value="/static/ckeditor" />
+	<script type="text/javascript" src="${ckeditor}/ckeditor.js"></script>
 	
 </head>
 
@@ -83,8 +84,13 @@
 		<button class="btn btn-primary" type="submit">등록</button>
 	</div>
 	</section>
-	
+	<c:url var="upload" value="/upload/image" />
 	<script type="text/javascript">
+	
+	CKEDITOR.replace("content", {
+		filebrowserUploadUrl: "${upload}?type=image"
+	})
+			
 $(document).ready(function(){
 	 
     // 라디오버튼 클릭시 이벤트 발생

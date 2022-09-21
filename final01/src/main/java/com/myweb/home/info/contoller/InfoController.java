@@ -138,7 +138,7 @@ public class InfoController {
 			model.addAttribute("pData", pData); // 프로필 데이터
 			model.addAttribute("dData", dData); // 구매 횟수
 			model.addAttribute("datas", paging.getPageData()); //찜 상품 목록
-			model.addAttribute("pageData", paging);
+			model.addAttribute("favoriteListPage", paging);
 			
 			return "login/favoriteList";
 		}  

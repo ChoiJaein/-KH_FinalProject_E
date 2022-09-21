@@ -16,6 +16,8 @@ public class LoggingInterceptor implements HandlerInterceptor{
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoggingInterceptor.class);
 	
+	
+	/*
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
@@ -58,5 +60,7 @@ public class LoggingInterceptor implements HandlerInterceptor{
 		
 		request.setAttribute("timer", date);
 	}
+	
+	*/
 
 }

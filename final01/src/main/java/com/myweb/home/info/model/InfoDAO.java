@@ -76,7 +76,7 @@ private static final Logger logger = LoggerFactory.getLogger(InfoDAO.class);
 	}
 	
 	public boolean updateVisitCnt(InfoDTO data) {
-		String mapperId = String.format(mapper, "updateViewCnt");
+		String mapperId = String.format(mapper, "updateVisitCnt");
 		int res = session.update(mapperId, data);
 		
 		return res == 1 ? true : false;

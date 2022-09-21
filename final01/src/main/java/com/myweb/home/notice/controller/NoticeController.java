@@ -29,7 +29,7 @@ import com.myweb.home.notice.vo.NoticeVO;
 @RequestMapping(value="/notice")
 public class NoticeController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(NoticeDAO.class);
+	private static final Logger logger = LoggerFactory.getLogger(NoticeController.class);
 	
 	@Autowired
 	private NoticeService service;
