@@ -4,7 +4,6 @@ public class LoginVO {
 
 	private String accountid;
 	private String password;
-	private String email;
 	
 	
 	public String getAccountid() {
@@ -22,19 +21,15 @@ public class LoginVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getEmail() {
-		return email;
-	}
-	
-	public void setEmail(String email) {
-		this.email = email;
-	}
 
 	@Override
 	public String toString() {
-		return "LoginVO [accountid=" + accountid + ", password=" + password + ", email=" + email + "]";
+		return "LoginVO [accountid=" + accountid + ", password=" + password + "]";
 	}
+
+	
+
+	
 	
 	
 	

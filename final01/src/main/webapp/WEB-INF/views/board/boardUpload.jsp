@@ -60,13 +60,6 @@
 			<th></th>
 		</tr>
 		<tr>
-			<th></th>
-			<!--  <th><input class="" type="text" name="location" placeholder="지역을 입력하세요."></th>-->
-			<th></th>
-			<th></th>
-		</tr>
-		
-		<tr>
 			<th>가격</th>
 			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." ></th>
 			<th></th>

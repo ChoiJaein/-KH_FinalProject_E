@@ -9,7 +9,8 @@
 	<meta charset="UTF-8">
 	<title>게시글 수정</title>
 	<%@ include file="../module/head.jsp" %>
-
+<c:url var="ckeditor" value="/static/ckeditor" />
+	<script type="text/javascript" src="${ckeditor}/ckeditor.js"></script>
 	
 </head>
 
@@ -18,28 +19,29 @@
 	<br><br><br><br><br><br>
 	<section class="container">
 	<div class="mb-1">
+	<c:url var="boardAddUrl" value="/board/modify" />
+	<form action="${boardAddUrl}" method="post" enctype="multipart/form-data">
 	<table class="table">
 		<tr>
-			<th>이미지 등록</th>
-			<th><img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${data.url}" 
-                   accept="image/png, image/jpeg, image/jpg" width="250" height="250"></th>
-			<th><input id="imgSelect" name="photoUpload" type="file"></th>
+			<th>대표 이미지</th>
+			<th><img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="<%=request.getContextPath()%>${data.url}" width="250" height="250"></th>
+			<th><input id="imgSelect" name="photoUpload" type="file" onchange="preview()"></th>
 			<th></th>
 		</tr>
 		
 		<tr>
 			<th>제목</th>
-			<th><input class="form-control" type="text" name="title" placeholder="제목을 입력하세요." size="5" value="${board.bTitle}"></th>
+			<th><input class="form-control" type="text" name="bTitle" placeholder="제목을 입력하세요." size="5" value="${data.bTitle}"></th>
 			<th></th>
 			<th></th>
 		</tr>
 		
 		<tr>
 			<th>카테고리</th>
-			<th><select class="form-select" id="id_category" name="categoryid">
+			<th><select class="form-select" id="id_category" name="cateId" >
 					<option>카테고리 선택</option>
-					<c:forEach items="${categoryDatas}" var="category">
-						<option value="${category.categoryid}">[${category.categoryid}] ${category.categoryname}</option>
+					<c:forEach items="${cData}" var="category" >
+						<option value="${category.cateId}">[${category.cateId}] ${category.cateName}</option>
 					</c:forEach>
 				</select></th>
 			<th></th>
@@ -48,43 +50,44 @@
 		
 		<tr>
 			<th>내용</th>
-			<th colspan="3"><textarea name="content" rows="10" cols="100" placeholder="내용을 입력해주세요." value="${bContent}"></textarea></th>
+			<th colspan="3"><textarea name="bContent" rows="10" cols="100" placeholder="내용을 입력해주세요." >${data.bContent}</textarea></th>
 		</tr>
 		
 		<tr>
 			<th>유형</th>
-			<th><input type="radio" name="chk_type" value="directdelivery" checked>직거래</th>
-			<th><input type="radio" name="chk_type" value="delivery">택배거래</th>
+			<th><input type="radio" name="dealMethod" value="직거래" checked>직거래</th>
+			<th><input type="radio" name="dealMethod" value="택배거래">택배거래</th>
 			<th></th>
 		</tr>
-		<tr>
-			<th></th>
-			<th><input class="" type="text" name="location" placeholder="지역을 입력하세요."></th>
-			<th></th>
-			<th></th>
-		</tr>
-		
 		<tr>
 			<th>가격</th>
-			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." value="${board.price}" ></th>
+			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." value="${data.price}"></th>
 			<th></th>
 			<th></th>
 		</tr>
 		
 		<tr>
 			<th>유형</th>
-			<th><input type="radio" name="chk_status" value="new" checked>새상품</th>
-			<th><input type="radio" name="chk_status" value="old">중고상품</th>
+			<th><input type="radio" name="pCondition" value="새상품" checked>새상품</th>
+			<th><input type="radio" name="pCondition" value="중고">중고상품</th>
 			<th>　　　　　　　</th>
 		</tr>
 		
 	</table>
 		<button class="btn btn-primary" onclick="location.href='/'">취소</button>
-		<button class="btn btn-primary" type="submit">수정완료</button>
+		<button class="btn btn-primary" type="submit">등록</button>
 	</div>
+	</form>
 	</section>
-	
+	<c:url var="upload" value="/upload/image" />
 	<script type="text/javascript">
+	
+	CKEDITOR.replace("bContent", {
+		filebrowserUploadUrl: "${upload}?type=image"
+	})
+	
+	function preview() { previewImg.src=URL.createObjectURL(event.target.files[0]); }
+			
 $(document).ready(function(){
 	 
     // 라디오버튼 클릭시 이벤트 발생

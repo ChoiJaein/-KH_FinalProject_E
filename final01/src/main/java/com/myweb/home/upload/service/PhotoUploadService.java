@@ -43,7 +43,7 @@ public class PhotoUploadService {
 		int count = dao.getCount(data.getbId());
 		
 		if(count > 1) {
-			// 업로드 수량 초과.
+			// 하나만 업로드, 업로드 수량 초과.
 			return -1;
 		}
 		

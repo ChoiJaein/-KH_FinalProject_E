@@ -12,6 +12,7 @@ import com.myweb.home.board.controller.BoardController;
 import com.myweb.home.info.model.InfoDTO;
 import com.myweb.home.info.model.ProfileStaticsDTO;
 import com.myweb.home.notice.model.NoticeDTO;
+import com.myweb.home.upload.model.PhotoUploadDTO;
 
 
 
@@ -83,4 +84,18 @@ import com.myweb.home.notice.model.NoticeDTO;
 			int res = sqlSession.insert("boardMapper.insertData", data);
 			return res == 1 ? true : false;
 		}
+		
+		public boolean updateBoardData(BoardDTO data) {
+			int res = sqlSession.update("boardMapper.updateContentData", data);
+			return res == 1 ? true : false;
+		
+		}
+		
+		public boolean updateFileData(PhotoUploadDTO data) {
+			int res = sqlSession.update("boardMapper.updateFileData", data);
+			return res == 1 ? true : false;
+		
+		}
+		
+		
 }

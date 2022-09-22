@@ -33,7 +33,6 @@
 		  ]]>
            </select>
            
-
 		<select id = "selectBoardData" resultType="boardDto">
 			SELECT B.BID as bId
 				, B.ACCOUNTID as accountId
@@ -96,4 +95,25 @@
 		FROM CATEGORY
 		ORDER BY CATEGORYID ASC
 	</select>
+	<update id="updateContentData" parameterType="boardDto">
+		UPDATE BOARD
+		   SET BID = #{bId}
+		   , BTITLE = #{bTitle}
+		   , BCONTENT = #{bContent}
+		   , CATEGORYID = #{cateId}
+		   , DEALMETHOD = #{dealMethod}
+		   , PCONDITION = #{pCondition}
+		   , PRICE =#{price}
+		 WHERE BID = #{bId}
+	</update>
+	
+	<update id="updateFileData" parameterType="boardDto">
+		UPDATE PHOTOUPLOAD
+		   SET UUIDNAME = #{uuidName}   
+           , FILENAME = #{fileName}
+		   , FILESIZE = #{fileSize}
+		   , FILETYPE = #{fileType}
+		 WHERE BID = #{bId}
+	</update>
+	
   </mapper>

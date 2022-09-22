@@ -18,6 +18,7 @@ import com.myweb.home.board.model.BoardStaticsDTO;
 import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.login.model.AccountDTO;
+import com.myweb.home.upload.model.PhotoUploadDTO;
 
 
 @Service
@@ -118,5 +119,16 @@ public class BoardService {
 		}
 		return -1;
 	}
+	
+	public boolean BoardModify(BoardDTO data) {
+		boolean result = dao.updateBoardData(data);
+		return result;
+	}
+	
+	public boolean ImageModify(PhotoUploadDTO data) {
+		boolean result = dao.updateFileData(data);
+		return result;
+	}
+	
 	
 }
