@@ -20,7 +20,7 @@
 			data: {
 				accountId : id
 			},
-			success: function(data) {
+			success: function(data, status) {
 				
 				if(element.innerHTML === 'favorite') {
 					/* 찜목록에 들어갔을 경우 */
@@ -33,28 +33,14 @@
 				
 			}
 			
-			fail : function(data) {
-				
-				if(element.innerHTML === 'favorite') {
-					/* 찜목록에 들어갔을 경우 */
-					element.innerHTML = 'favorite_border';
-				}
-				else if(element.innerHTML === 'favorite_border') {
-					/* 찜목록에서 제거되었을 경우 */
-					element.innerHTML = 'favorite';
+			error : function(data, status) {
+				console.log("error:" + data);
+				console.log("error:" + status);
 				}
 			
-			complete : function(data) {
-				
-				if(element.innerHTML === 'favorite') {
-					/* 찜목록에 들어갔을 경우 */
-					element.innerHTML = 'favorite_border';
-				}
-				else if(element.innerHTML === 'favorite_border') {
-					/* 찜목록에서 제거되었을 경우 */
-					element.innerHTML = 'favorite';
-				}
-				
+			complete : function(data, status) {
+				console.log("error:" + data);
+				console.log("error:" + status);
 			}
 			
 		});
@@ -72,21 +58,24 @@
 		<!--  data.buystatus는 board테이블의 buystatus를 이용해 null이면 구매전, id가 들어가있으면 구매자 id
 				로그인데이터에서 id를 가져와서 buystatus와 동일하면 내가 구매자.
 		 -->
-		<c:if test="${not empty data}">
-			<c:set var="status" value="${data.buyStatus}"/>
-			<c:set var="accountId" value="${loginData.accountid}" />
+		<c:if test="${not empty datas}">
+			<c:set var="status" value="${data.buystatus}"/>
+			<c:set var="accountId" value="${loginData.accountId}" />
+			<c:set var="uploadId" value="${data.accountId}" />
 		</c:if>
-		<c:if test="${data == null}">
-			<c:set var="status" value=""/>
+		<!-- 목업 확인용 -->
+		<c:if test="${datas == null}">
+			<c:set var="status" value="111"/>
 			<c:set var="loginData.accountId" value="111" />
 			<c:set var="accountId" value="111" />
+			<c:set var="uploadId" value="111" />
 		</c:if>
 		
 			<c:set var="buyId" value="${status}" />
 			<c:set var="myId" value="${accountId}" />
+
 	
-	
-	<c:if test="${empty data}">
+	<c:if test="${datas == null}">
 	<section class="container" style="width:1250px;">
 
 				<table class="table">
@@ -103,8 +92,7 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
-				<!-- <div style="float:right;" onclick='favoriteTest()'> -->
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
@@ -150,8 +138,13 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			
-
+			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:if test="${uploadId eq myId}">
+				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
+				<br><br>
+			</c:if>
+			<hr>
 					<div class="mb-1">
 						<form action="/board/boardDetail" method="post">
 							<input type="hidden" name="bid" value="${bid}">
@@ -161,7 +154,8 @@
 							</div>
 						</form>
 					</div>
-	
+			
+			
 		
 			<c:choose>
 				<c:when test="${not empty status}">
@@ -178,27 +172,27 @@
 	</section>
 	</c:if>
 				
-
 	
-	<c:if test="${not empty data}">
+	
+	<c:if test="${not empty datas}">
 		<section class="container" style="width:1250px;">
 
 				<table class="table">
 					<tr>
-						<td style="text-align:left; vertical-align : bottom;"><h4>${data.cateName}</h4></td>
+						<td style="text-align:left; vertical-align : bottom;"><h4>${data.categoryname}</h4></td>
 						<fmt:formatDate value="${data.createDate}" var="createDate" dateStyle="long" />
-						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${data.createDate}          조회수 : ${data.viewCnt}회</h6></td>
+						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${createDate}          조회수 : ${data.viewCnt}회</h6></td>
 					</tr>
 				</table>
 		<div style="width:100%;">
 			<div style="float:left;">
 				<div style="width:400px; height:400px; background-color:gray;">
-					<img id="previewImg" class="image-360" alt="profile" src="<%=request.getContextPath()%>${data.url}"
+					<img id="previewImg" class="image-360" alt="profile" src="${data.url}"
                   width="400px" height="400px" style="max-width:400px; max-height:400px;" />
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
@@ -237,13 +231,20 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			
+			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:if test="${uploadId eq myId}">
+				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
+				<br><br>
+			</c:if>
 			<hr>
 			<div style="width:100%; background-color:lightgray;">
 				<label style="font-size:20px;">상품 후기</label>
 			</div>
 			
+		
 
+		
 		<nav>
 			<div>
 				<ul class="pagination justify-content-center">
@@ -313,9 +314,9 @@
 				<c:if test="${buyId == myId}"> 
 				<!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
-			  	<div class="mb-1">
+				  	<div class="mb-1">
 						<form action="/review/add" method="post">
-							<input type="hidden" name="bid" value="${data.bId}">
+							<input type="hidden" name="bid" value="${data.bid}">
 							<div class="input-group">
 								<textarea class="form-control" name="content" rows="2"></textarea>
 								<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
@@ -337,9 +338,8 @@
 				 
 				
 			</c:choose>
-			
 	</section>
-	</c:if> 
+	</c:if>
 	
 	
 	
