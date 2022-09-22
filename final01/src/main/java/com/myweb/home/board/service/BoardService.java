@@ -102,4 +102,21 @@ public class BoardService {
 	
 	}
 	
+	public List<BoardDTO> getAll() {
+		List<BoardDTO> datas = dao.selectCate();
+		return datas;
+	}
+	
+	public int add(BoardDTO data) {
+		int seq = dao.getNextSeq();
+		data.setbId(seq);
+		
+		boolean result = dao.insertData(data);
+		
+		if(result) {
+			return data.getbId();
+		}
+		return -1;
+	}
+	
 }

@@ -45,7 +45,7 @@
 				, B.CREATEDATE as createDate
 				, B.BUYSTATUS as buyStatus
 				, B.viewCnt as viewCnt
-				, CONCAT(P.URL, '/' || P.UUIDNAME) as url
+				, CONCAT(P.URL, '/' || P.FILENAME) as url
 				, C.CATEGORYNAME as cateName
 				, A.NAME AS userName
 			FROM BOARD B
@@ -82,4 +82,18 @@
 		   SET VIEWCNT = #{viewCnt} + 1
 		 WHERE BID = #{bId}
 		</update>
+		
+		<select id="getNextSeq" resultType="_int">
+		SELECT  BOARD_SEQ.NEXTVAL FROM DUAL
+	</select>
+	<insert id="insertData" parameterType="boardDto">
+		INSERT INTO BOARD(BID, BTITLE, BCONTENT, ACCOUNTID, CATEGORYID, DEALMETHOD, PCONDITION, PRICE, CREATEDATE)
+		     VALUES(#{bId}, #{bTitle}, #{bContent}, #{accountId}, #{cateId}, #{dealMethod}, #{pCondition}, #{price}, SYSDATE)
+	</insert>
+	<select id="selectCateDatas" resultType="boardDto">
+		SELECT CATEGORYID as cateId
+			,  CATEGORYNAME as cateName
+		FROM CATEGORY
+		ORDER BY CATEGORYID ASC
+	</select>
   </mapper>

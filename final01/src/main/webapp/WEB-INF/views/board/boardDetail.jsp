@@ -10,8 +10,6 @@
 	<title>상품정보</title>
 
 	<%@ include file="../module/head.jsp" %>
-	<c:url var="ckeditor" value="/static/ckeditor" />
-	<script type="text/javascript" src="${ckeditor}/ckeditor.js"></script>
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
 <script type="text/javascript">

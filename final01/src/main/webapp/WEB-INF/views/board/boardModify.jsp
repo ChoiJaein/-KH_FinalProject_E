@@ -23,7 +23,7 @@
 			<th>이미지 등록</th>
 			<th><img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${data.url}" 
                    accept="image/png, image/jpeg, image/jpg" width="250" height="250"></th>
-			<th><input id="imgSelect" name="uploadImg" type="file"></th>
+			<th><input id="imgSelect" name="photoUpload" type="file"></th>
 			<th></th>
 		</tr>
 		

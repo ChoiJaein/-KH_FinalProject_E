@@ -68,4 +68,19 @@ import com.myweb.home.notice.model.NoticeDTO;
 			int res = sqlSession.update("boardMapper.updateBoardStatics", data);
 			return res == 1 ? true : false;
 		}
+		
+		public List<BoardDTO> selectCate() {
+			List<BoardDTO> res =  sqlSession.selectList("boardMapper.selectCateDatas");
+			return res;
+		}
+		
+		public int getNextSeq() {
+			int seq = sqlSession.selectOne("boardMapper.getNextSeq");
+			return seq;
+		}
+		
+		public boolean insertData(BoardDTO data) {
+			int res = sqlSession.insert("boardMapper.insertData", data);
+			return res == 1 ? true : false;
+		}
 }

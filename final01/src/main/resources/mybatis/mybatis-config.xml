@@ -10,6 +10,7 @@
 	<typeAlias type="com.myweb.home.member.vo.MemberVO" alias="memberVo" />
 	<typeAlias type="com.myweb.home.notice.model.NoticeDTO" alias="noticeDto" />
 	<typeAlias type="com.myweb.home.main.model.MainDTO" alias="mainDto" />
+	<typeAlias type="com.myweb.home.upload.model.PhotoUploadDTO" alias="photoUploadDto" />
 	<typeAlias type="com.myweb.home.info.model.InfoDTO" alias="infoDto" />
 	<typeAlias type="com.myweb.home.info.model.ProfileStaticsDTO" alias="profileStaticsDto" />
 	<typeAlias type="com.myweb.home.board.model.BoardStaticsDTO" alias="boardStaticsDto" />
