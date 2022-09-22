@@ -97,8 +97,7 @@
 	</select>
 	<update id="updateContentData" parameterType="boardDto">
 		UPDATE BOARD
-		   SET BID = #{bId}
-		   , BTITLE = #{bTitle}
+		   SET BTITLE = #{bTitle}
 		   , BCONTENT = #{bContent}
 		   , CATEGORYID = #{cateId}
 		   , DEALMETHOD = #{dealMethod}
@@ -107,13 +106,6 @@
 		 WHERE BID = #{bId}
 	</update>
 	
-	<update id="updateFileData" parameterType="boardDto">
-		UPDATE PHOTOUPLOAD
-		   SET UUIDNAME = #{uuidName}   
-           , FILENAME = #{fileName}
-		   , FILESIZE = #{fileSize}
-		   , FILETYPE = #{fileType}
-		 WHERE BID = #{bId}
-	</update>
+	
 	
   </mapper>

@@ -164,15 +164,30 @@ public class BoardController {
 		}
 		
 		@PostMapping(value="board/modify")
-		public String modify(Model model
+		public String modify(Model model, HttpServletRequest request
 				, @SessionAttribute("loginData") AccountDTO accDto
-				, @ModelAttribute BoardVO boardVo)
+				, @ModelAttribute BoardVO boardVo
+				, @RequestParam("photoUpload") MultipartFile[] files)
 		 {
 			logger.info("modify(model= {}, AccountDTO={}, boardVo={})", model, accDto, boardVo);
 			
 			BoardDTO data = service.getData(boardVo.getbId());
 			List<PhotoUploadDTO> fileDatas = photoUploadService.getDatas(boardVo.getbId());
 			
+			for(MultipartFile file: files) {
+				PhotoUploadDTO fileData = new PhotoUploadDTO();
+				
+				try {
+					int fileResult = photoUploadService.update(file, fileData);
+					if(fileResult == -1) {
+						request.setAttribute("error", "파일 업로드 수량을 초과하였습니다.");
+						return "board/boardUpload";
+					}
+				} catch(Exception e) {
+					request.setAttribute("error", "파일 업로드 작업중 예상치 못한 에러가 발생하였습니다.");
+					return "board/boardUpload";
+				}
+			}
 			
 			if(data != null) {
 				if(data.getAccountId().equals(accDto.getAccountid()) || accDto.getAdmin().equals("Y")) {
@@ -183,13 +198,6 @@ public class BoardController {
 					data.setpCondition(boardVo.getpCondition());
 					data.setPrice(boardVo.getPrice());
 					
-					/*//파일 수정
-					fileDatas.get(0).setFileName(photoUploadVo.getFileName());
-					fileDatas.get(0).setUuidName(photoUploadVo.getUuidName());
-					fileDatas.get(0).setFileType(photoUploadVo.getFileType());
-					fileDatas.get(0).setFileSize(photoUploadVo.getFileSize());
-					boolean fResult = service.ImageModify(img);
-					*/
 					boolean result = service.BoardModify(data);
 					
 					if(result) {

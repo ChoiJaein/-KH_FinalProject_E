@@ -18,6 +18,7 @@ import com.myweb.home.board.model.BoardStaticsDTO;
 import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.login.model.AccountDTO;
+import com.myweb.home.upload.model.PhotoUploadDAO;
 import com.myweb.home.upload.model.PhotoUploadDTO;
 
 
@@ -28,6 +29,9 @@ public class BoardService {
 	
 	@Autowired
 	private BoardDAO dao;
+	
+	@Autowired
+	private PhotoUploadDAO pDao;
 	
 	
 
@@ -126,7 +130,7 @@ public class BoardService {
 	}
 	
 	public boolean ImageModify(PhotoUploadDTO data) {
-		boolean result = dao.updateFileData(data);
+		boolean result = pDao.updateFileData(data);
 		return result;
 	}
 	

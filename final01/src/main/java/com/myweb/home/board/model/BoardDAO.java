@@ -91,11 +91,7 @@ import com.myweb.home.upload.model.PhotoUploadDTO;
 		
 		}
 		
-		public boolean updateFileData(PhotoUploadDTO data) {
-			int res = sqlSession.update("boardMapper.updateFileData", data);
-			return res == 1 ? true : false;
 		
-		}
 		
 		
 }

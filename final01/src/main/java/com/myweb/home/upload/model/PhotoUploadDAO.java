@@ -36,6 +36,13 @@ public class PhotoUploadDAO {
 		return res;
 	}
 	
+	public boolean updateFileData(PhotoUploadDTO data) {
+		logger.info("updateFileData(data= {})", data);
+		int res = session.update("photoUploadMapper.updateFileData", data);
+		return res == 1 ? true : false;
+	
+	}
+	
 	//프로필 사진 업로드
 	public PhotoUploadDTO selectProdfileData(String accId){
 		PhotoUploadDTO res = session.selectOne("photoUploadMapper.selectProfileData", accId);

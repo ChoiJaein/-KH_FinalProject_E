@@ -21,6 +21,7 @@
 	<div class="mb-1">
 	<c:url var="boardAddUrl" value="/board/modify" />
 	<form action="${boardAddUrl}" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="bId" value="${data.bId}">
 	<table class="table">
 		<tr>
 			<th>대표 이미지</th>
