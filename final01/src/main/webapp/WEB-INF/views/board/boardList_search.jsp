@@ -29,18 +29,14 @@
 			  </div>
 			 </div> 
 			<hr>
-<<<<<<< HEAD
-						<c:url var="boardDetailUrl" value="./detail" />
-=======
-						<c:url var="boardDetailUrl" value="./detail">
-							<c:param name="id">${data.bId}</c:param>
-						</c:url>
->>>>>>> refs/remotes/origin/박희망BE
+
+						
+
 			
 			<c:if test="${not empty list}">
 				<c:forEach items="${list}" var="list">
 
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 							 <img src="${list.url}" style="width:250px; height:250px;"> 
 							</div>

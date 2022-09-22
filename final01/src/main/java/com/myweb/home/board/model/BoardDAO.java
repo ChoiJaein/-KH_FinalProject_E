@@ -8,12 +8,14 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.myweb.home.board.service.BoardService;
+
 
 
 	@Repository
 	public class BoardDAO {
 
-		
+		 private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 		
 		@Autowired
 		private SqlSession sqlSession;
@@ -31,5 +33,19 @@ import org.springframework.stereotype.Repository;
 		public int countSearch(SearchCriteria scri) throws Exception{
 			return sqlSession.selectOne("boardMapper.countSearch",scri);
 		}
+
+		public void insertReview(ReviewDTO data) {
+			 logger.info("data({})",data);
+				sqlSession.insert("reviewMapper.insertReview", data);
+			}
+
+	
+		public List<ReviewDTO> ReviewList(int bId) {
+			logger.info("bId({})",bId);
+			return sqlSession.selectList("reviewMapper.ReviewList", bId);
+		}
+		
+		
+
 		
 }

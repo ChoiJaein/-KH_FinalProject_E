@@ -13,7 +13,7 @@
           ]]>
        </select>
        <!-- 검색 -->
-		<select id="listSearch" resultType="BoardDTO" parameterType="SearchCriteria">
+		<select id="listSearch" resultType="boardDto" parameterType="SearchCriteria">
 				SELECT BID, BTITLE, BCONTENT, ACCOUNTID, PCONDITION,PRICE,DEALMETHOD
 				 FROM (
 				        SELECT  BID, BTITLE, BCONTENT, ACCOUNTID, PCONDITION,PRICE,DEALMETHOD,
