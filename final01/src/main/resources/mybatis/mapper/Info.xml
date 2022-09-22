@@ -7,7 +7,7 @@
 	      SELECT A.ACCOUNTID as accId
 			   , A.NAME as name
 			   , TRUNC(SYSDATE) - TRUNC(A.REGISTERDATE) as regDate
-			   , CONCAT(P.URL, '/' || P.FILENAME) as url
+			   , CONCAT(P.URL, '/' || P.UUIDNAME) as url
 			FROM ACCOUNT A
 			RIGHT JOIN PHOTOUPLOAD P
 			ON A.ACCOUNTID = P.ACCOUNTID 
@@ -26,7 +26,7 @@
 	   SELECT B.BID as bId
 		    , B.BTITLE as bTitle
 		    , B.PRICE as price
-		    , CONCAT(P.URL, '/' || P.FILENAME) as url
+		    , CONCAT(P.URL, '/' || P.UUIDNAME) as url
 		 FROM BOARD B
 		 RIGHT JOIN PHOTOUPLOAD P
 		 ON B.BID  = P.BID
@@ -38,7 +38,7 @@
 	 	SELECT B.BID as bId
 			 , B.BTITLE as bTitle
 			 , B.PRICE as price
-			 , CONCAT(P.URL, '/' || P.FILENAME) as url
+			 , CONCAT(P.URL, '/' || P.UUIDNAME) as url
 			 , F.ACCOUNTID as accId
 		  FROM BOARD B
 		 RIGHT JOIN FAVORITE F
@@ -59,7 +59,7 @@
 	 <select id="selectMystoreProfile" resultType="infoDto">
 		SELECT  A.ACCOUNTID as accId
 			  , A.NAME as name
-		      , CONCAT(P.URL, '/' || P.FILENAME) as url
+		      , CONCAT(P.URL, '/' || P.UUIDNAME) as url
 		      , A.VISITCNT AS visitCnt
 		   FROM ACCOUNT A
 		  RIGHT JOIN PHOTOUPLOAD P
@@ -69,7 +69,7 @@
 	<select id ="selectSellingList" resultType="infoDto">
 		SELECT B.BID as bId
 	 		 , B.BTITLE as bTitle
-	 		 , CONCAT(P.URL, '/' || P.FILENAME) as url
+	 		 , CONCAT(P.URL, '/' || P.UUIDNAME) as url
 	 		 , B.PRICE as price
   		  FROM BOARD B
 		 RIGHT JOIN PHOTOUPLOAD P

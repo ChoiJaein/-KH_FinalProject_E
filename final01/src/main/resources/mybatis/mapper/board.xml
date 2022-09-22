@@ -45,7 +45,7 @@
 				, B.CREATEDATE as createDate
 				, B.BUYSTATUS as buyStatus
 				, B.viewCnt as viewCnt
-				, CONCAT(P.URL, '/' || P.FILENAME) as url
+				, CONCAT(P.URL, '/' || P.UUIDNAME) as url
 				, C.CATEGORYNAME as cateName
 				, A.NAME AS userName
 			FROM BOARD B

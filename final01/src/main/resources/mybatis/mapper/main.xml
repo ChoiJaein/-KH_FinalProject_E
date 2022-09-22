@@ -9,7 +9,7 @@
 			, B.PRICE as price
 			, B.DEALMETHOD as dealMethod
 			, B.CREATEDATE as createDate
-			, CONCAT(P.URL, '/' || P.FILENAME) as url 
+			, CONCAT(P.URL, '/' || P.UUIDNAME) as url 
 		FROM BOARD B
 		RIGHT JOIN PHOTOUPLOAD P
 		ON B.BID = P.BID
@@ -25,7 +25,7 @@
 			, B.PCONDITION as condt
 			, B.DEALMETHOD as dealMethod
 			, B.CREATEDATE as createDate
-			, CONCAT(P.URL, '/' || P.FILENAME) as url
+			, CONCAT(P.URL, '/' || P.UUIDNAME) as url
 			, C.CATEGORYNAME as cateName
 			, A.NAME as userName
 		FROM BOARD B

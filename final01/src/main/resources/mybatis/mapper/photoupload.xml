@@ -12,7 +12,7 @@
 		INSERT INTO PHOTOUPLOAD
 		     VALUES(PHOTOUPLOAD_SEQ.NEXTVAL
 		     	  , #{bId} 	   , #{accId}
-		          , #{fileName}, #{uuidName}
+		          , #{uuidName}, #{fileName}
 		          , #{location}, #{url}
 		          , #{fileSize}, #{fileType})
 	</insert>
