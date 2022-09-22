@@ -59,6 +59,8 @@
 			<th><input type="radio" name="dealMethod" value="택배거래">택배거래</th>
 			<th></th>
 		</tr>
+
+<!-- 			지역 일단 보류
 		<tr>
 			<th>가격</th>
 			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." ></th>
@@ -76,6 +78,7 @@
 	</table>
 		<button class="btn btn-primary" onclick="location.href='/'">취소</button>
 		<button class="btn btn-primary" type="submit">등록</button>
+	</form>
 	</div>
 	</form>
 	</section>
@@ -91,13 +94,13 @@
 $(document).ready(function(){
 	 
     // 라디오버튼 클릭시 이벤트 발생
-    $("input:radio[name=chk_type]").click(function(){
+    $("input:radio[name=dealmethod]").click(function(){
  
-        if($("input[name=chk_type]:checked").val() == "directdelivery"){
+        if($("input[name=dealmethod]:checked").val() == "직거래"){
             $("input:text[name=location]").attr("disabled",false);
            //직거래일경우 텍스트박스 활성화
  
-        }else if($("input[name=chk_type]:checked").val() == "delivery"){
+        }else if($("input[name=dealmethod]:checked").val() == "택배거래"){
               $("input:text[name=location]").attr("disabled",true);
             //택배거래일경우 텍스트박스 비활성화
         }
@@ -129,7 +132,7 @@ function showImagePreview(e){
 	     }
 	  
 	 });
- } 
+ }     
 </script>
 </body>
 </html>

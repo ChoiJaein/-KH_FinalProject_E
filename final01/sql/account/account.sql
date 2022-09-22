@@ -3,6 +3,7 @@
  */
 
 -- 09.13 FILENAME, LOCATION, URL 제거
+-- 09.19 BIRTH 제거
  CREATE TABLE ACCOUNT (
               ACCOUNTID VARCHAR2(50) PRIMARY KEY
              ,PASSWORD  VARCHAR2(50) NOT NULL
@@ -13,7 +14,6 @@
              ,ADDRESS3   VARCHAR2(100)
              ,ADDRESS4   VARCHAR2(100)
              ,PHONE     VARCHAR2(15)
-             ,BIRTH     DATE
              ,ADMIN     VARCHAR2(1) CHECK(ADMIN IN('Y', 'N'))
              ,VISITCNT NUMBER DEFAULT(0)
              ,REGISTERDATE DATE DEFAULT(SYSDATE)

@@ -24,6 +24,8 @@ import com.myweb.home.upload.model.PhotoUploadDTO;
 
 @Service
 public class BoardService {
+	
+	private static final Logger logger = LoggerFactory.getLogger(BoardService.class);
 
 	private static final Logger logger = LoggerFactory.getLogger(BoardService.class);
 	
@@ -35,6 +37,35 @@ public class BoardService {
 	
 	
 
+	public int add(BoardDTO data) {
+		logger.info("add(data={})", data);
+		int seq = dao.getNextSeq();
+		data.setBid(seq);
+		
+		boolean result = dao.insertData(data);
+		
+		if(result) {
+			return data.getBid();
+		}
+		return -1;
+	}
+
+	
+//	public BoardDTO getData(int bid) {
+//		logger.info("getData(bid={})", bid);
+//		BoardDTO data = dao.selectData(bid);
+//		return data;
+//	}
+	
+	// 카테고리 설정을 위해 카테고리 정보 가져오기
+	public List<CategoryDTO> getCategory() {
+		List<CategoryDTO> datas = dao.searchCategory();
+		return datas;
+	}
+	
+	
+	
+	
 	
 	public int listCount() throws Exception {
 		return dao.listCount();
@@ -134,5 +165,5 @@ public class BoardService {
 		return result;
 	}
 	
-	
+	    
 }

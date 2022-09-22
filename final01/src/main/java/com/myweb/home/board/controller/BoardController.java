@@ -35,6 +35,23 @@ import com.myweb.home.upload.vo.PhotoUploadVO;
 
 @Controller
 public class BoardController {
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
+
+	@Autowired
+	private BoardService service;
+	
+	@GetMapping(value="/board/add")
+	public String add(Model model) {
+		logger.info("add()");
+		List<CategoryDTO> categoryDatas = service.getCategory();
+		model.addAttribute("categoryDatas", categoryDatas);
+		return "board/boardUpload";
+	}
+	
+	@PostMapping(value="/board/add")
+	public String add(@SessionAttribute("loginData") AccountDTO accountDto
+			, @ModelAttribute BoardVO boardVo, Model model) {
+		logger.info("add(boardVo={})", boardVo);
 		
 	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	
@@ -219,5 +236,38 @@ public class BoardController {
 		}
 		
 		
+	}
 	
+	
+//	@GetMapping(value="/board/modify")
+//	public String modify(Model model
+//			, @SessionAttribute("loginData") AccountDTO accountDto
+//			, @RequestParam int bid) {
+//		logger.info("modify(accountDto={}, bid={})", accountDto, bid);
+//		
+//		BoardDTO data = service.getData(bid);
+//		
+//		
+//	}
+	
+	
+	
+	
+	
+	//상품 검색
+	@RequestMapping(value = "/board/boardList_search", method = RequestMethod.GET)
+	public void listPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+	 
+	 List<BoardVO> list = service.listSearch(scri);
+	 model.addAttribute("list", list);
+	 PageMaker pageMaker = new PageMaker();
+	 pageMaker.setCri(scri);
+	 pageMaker.setTotalCount(service.listCount());
+	 //pageMaker.setTotalCount(service.countSearch(scri));
+	 model.addAttribute("pageMaker", pageMaker);
+	}
+	
+	
+	
+	    
 }
