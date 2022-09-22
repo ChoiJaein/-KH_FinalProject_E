@@ -5,7 +5,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ include file="../module/head.jsp" %>
 
-<!-- main이 아닌 boardList로 가므로 수정 필요  -->
 
 <script type="text/javascript">
  $(function(){
@@ -35,6 +34,7 @@
 	                     ${sessionScope.loginData.accountid} 님 환영합니다.
 						<a class="nav-link" href="/home/mypage">마이페이지</a>
 						<a class="nav-link" href="/home/logout">로그아웃</a>
+						<a class="nav-link" href="/board/upload">게시글 업로드</a>
 				</c:if>
 				<c:if test="${empty sessionScope.loginData}">
 						<a class="nav-link" href="/home/login">로그인</a>

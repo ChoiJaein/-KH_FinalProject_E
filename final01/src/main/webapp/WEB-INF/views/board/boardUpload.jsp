@@ -63,7 +63,7 @@
 <!-- 			지역 일단 보류
 		<tr>
 			<th>가격</th>
-			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." ></th>
+			<th><input class="" type="text" name="price" placeholder="가격을 입력하세요." ></th>
 			<th></th>
 			<th></th>
 		</tr>
