@@ -66,7 +66,7 @@
 		
 		<tr>
 			<th>가격</th>
-			<th><input class="" type="number" name="price" placeholder="가격을 입력하세요." value="${board.price}" ></th>
+			<th><input class="" type="text" name="price" placeholder="가격을 입력하세요." value="${board.price}" ></th>
 			<th></th>
 			<th></th>
 		</tr>
