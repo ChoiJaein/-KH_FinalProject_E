@@ -85,7 +85,7 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		accountDto = (AccountDTO) session.getAttribute("loginData");
 		
-		String accountid = accountDto.getaccountid();
+		String accountid = accountDto.getAccountid();
 		MemberVO data = service.getAll(accountid);
 		model.addAttribute("data", data);
 		
@@ -117,7 +117,7 @@ public class MemberController {
 		HttpSession session = request.getSession();
 		accountDto = (AccountDTO) session.getAttribute("loginData");
 		
-		String accountid = accountDto.getaccountid();
+		String accountid = accountDto.getAccountid();
 		MemberVO data = service.getAll(accountid);
 		model.addAttribute("data", data);
 		
