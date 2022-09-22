@@ -249,7 +249,7 @@
 		       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
 		<!--이미지 경로체크 -->
 		         <div class="col-4">
-		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="${data.accountImg}">         
+		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
 		         </div>
 		         
 		         <div class="col-8">
@@ -257,8 +257,8 @@
 		              <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
 		             </div>
 		             <div>
-		              <p style="font-size:17px;">상품 판매  : ${data.sellCnt} 회</p>
-		              <p style="font-size:17px;">내 상점 방문 : ${data.viewCnt} 회 </p>
+		              <p style="font-size:17px;">상품 판매  : ${sData.sellCnt} 회</p>
+		              <p style="font-size:17px;">내 상점 방문 : ${pData.visitCnt} 회 </p>
 		            </div>
 		         </div>
 		       </div>
@@ -286,7 +286,7 @@
 					 </colgroup>
 			        <tr>
 			            <td rowspan="2" style="height:90px;">
-			               <img id="previewImg" class="image-360 product-size" alt="profile" src="${data.url}">  
+			               <img id="previewImg" class="image-360 product-size" alt="profile" src="<%=request.getContextPath()%>${data.url}">  
 			            </td>
 			            <td colspan="2" class="p-edit">${data.bTitle}</td>
 			        </tr>
@@ -325,8 +325,6 @@
 				</ul>
 			</div>
 		</nav>
-		  
-		  
 		    </div>
 		   </div>
 		 </div> 

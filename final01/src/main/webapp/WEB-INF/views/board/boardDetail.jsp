@@ -72,11 +72,11 @@
 		<!--  data.buystatus는 board테이블의 buystatus를 이용해 null이면 구매전, id가 들어가있으면 구매자 id
 				로그인데이터에서 id를 가져와서 buystatus와 동일하면 내가 구매자.
 		 -->
-		<c:if test="${not empty datas}">
-			<c:set var="status" value="${data.buystatus}"/>
-			<c:set var="accountId" value="${loginData.accountId}" />
+		<c:if test="${not empty data}">
+			<c:set var="status" value="${data.buyStatus}"/>
+			<c:set var="accountId" value="${loginData.accountid}" />
 		</c:if>
-		<c:if test="${datas == null}">
+		<c:if test="${data == null}">
 			<c:set var="status" value=""/>
 			<c:set var="loginData.accountId" value="111" />
 			<c:set var="accountId" value="111" />
@@ -86,7 +86,7 @@
 			<c:set var="myId" value="${accountId}" />
 	
 	
-	<c:if test="${datas == null}">
+	<c:if test="${empty data}">
 	<section class="container" style="width:1250px;">
 
 				<table class="table">
@@ -103,7 +103,7 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
 				<!-- <div style="float:right;" onclick='favoriteTest()'> -->
 					<span class="material-icons" id="id_wishList">
 						favorite_border
@@ -161,9 +161,8 @@
 							</div>
 						</form>
 					</div>
-			
-			
-		<!-- 
+	
+		
 			<c:choose>
 				<c:when test="${not empty status}">
 					<c:if test="${empty review}">
@@ -179,27 +178,27 @@
 	</section>
 	</c:if>
 				
+
 	
-	
-	<c:if test="${not empty datas}">
+	<c:if test="${not empty data}">
 		<section class="container" style="width:1250px;">
 
 				<table class="table">
 					<tr>
-						<td style="text-align:left; vertical-align : bottom;"><h4>${data.categoryname}</h4></td>
+						<td style="text-align:left; vertical-align : bottom;"><h4>${data.cateName}</h4></td>
 						<fmt:formatDate value="${data.createDate}" var="createDate" dateStyle="long" />
-						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${createDate}          조회수 : ${data.viewCnt}회</h6></td>
+						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${data.createDate}          조회수 : ${data.viewCnt}회</h6></td>
 					</tr>
 				</table>
 		<div style="width:100%;">
 			<div style="float:left;">
 				<div style="width:400px; height:400px; background-color:gray;">
-					<img id="previewImg" class="image-360" alt="profile" src="${data.url}"
+					<img id="previewImg" class="image-360" alt="profile" src="<%=request.getContextPath()%>${data.url}"
                   width="400px" height="400px" style="max-width:400px; max-height:400px;" />
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
@@ -244,9 +243,7 @@
 				<label style="font-size:20px;">상품 후기</label>
 			</div>
 			
-		
 
-		
 		<nav>
 			<div>
 				<ul class="pagination justify-content-center">
@@ -316,9 +313,9 @@
 				<c:if test="${buyId == myId}"> 
 				<!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
-				<!--  	<div class="mb-1">
+			  	<div class="mb-1">
 						<form action="/review/add" method="post">
-							<input type="hidden" name="bid" value="${data.bid}">
+							<input type="hidden" name="bid" value="${data.bId}">
 							<div class="input-group">
 								<textarea class="form-control" name="content" rows="2"></textarea>
 								<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
@@ -340,8 +337,9 @@
 				 
 				
 			</c:choose>
+			
 	</section>
-	</c:if>-->
+	</c:if> 
 	
 	
 	
