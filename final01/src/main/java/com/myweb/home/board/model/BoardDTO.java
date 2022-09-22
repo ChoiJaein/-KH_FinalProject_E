@@ -6,7 +6,6 @@ public class BoardDTO {
 	
 	private int bId;
 	private String bTitle;
-	private int categoryId;
 	private String bContent;
 	private String accountId;
 	private String dealMethod;
@@ -16,6 +15,9 @@ public class BoardDTO {
 	private int viewCnt;
 	private String buyStatus;
 	private String url;
+	private int cateId;
+	private String cateName;
+	
 	
 	
 	public int getbId() {
@@ -34,13 +36,6 @@ public class BoardDTO {
 		this.bTitle = bTitle;
 	}
 	
-	public int getCategoryId() {
-		return categoryId;
-	}
-	
-	public void setCategoryId(int categoryId) {
-		this.categoryId = categoryId;
-	}
 	
 	public String getbContent() {
 		return bContent;
@@ -113,13 +108,29 @@ public class BoardDTO {
 	public void setUrl(String url) {
 		this.url = url;
 	}
+	
+	public int getCateId() {
+		return cateId;
+	}
+
+	public void setCateId(int cateId) {
+		this.cateId = cateId;
+	}
+
+	public String getCateName() {
+		return cateName;
+	}
+
+	public void setCateName(String cateName) {
+		this.cateName = cateName;
+	}
 
 	@Override
 	public String toString() {
-		return "BoardDTO [bId=" + bId + ", bTitle=" + bTitle + ", categoryId=" + categoryId + ", bContent=" + bContent
-				+ ", accountId=" + accountId + ", dealMethod=" + dealMethod + ", price=" + price + ", pCondition="
-				+ pCondition + ", createDate=" + createDate + ", viewCnt=" + viewCnt + ", buyStatus=" + buyStatus
-				+ ", url=" + url + "]";
+		return "BoardDTO [bId=" + bId + ", bTitle=" + bTitle + ", bContent=" + bContent + ", accountId=" + accountId
+				+ ", dealMethod=" + dealMethod + ", price=" + price + ", pCondition=" + pCondition + ", createDate="
+				+ createDate + ", viewCnt=" + viewCnt + ", buyStatus=" + buyStatus + ", url=" + url + ", cateId="
+				+ cateId + ", cateName=" + cateName + "]";
 	}
 	
 	
@@ -127,7 +138,7 @@ public class BoardDTO {
 	
 	
 	
-
+   
 	
 	
 	

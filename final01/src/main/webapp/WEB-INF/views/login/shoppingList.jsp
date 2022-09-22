@@ -106,15 +106,11 @@
  </header>
 	<%@ include file="../module/categoryNavigation.jsp" %>
 
-<<<<<<< HEAD
 
 
 <!-- 데이터가 없을경우 -->
 
-<c:if test="${data == null}">
-=======
-<c:if test="">
->>>>>>> refs/remotes/origin/황준원
+<c:if test="${datas == null}">
  <section class="container whole-size">
 <div id="align-items">
   <div class="row align-items-start">
@@ -158,26 +154,6 @@
  <!-- 반복문 값이 있을때마다  상품목록div 하나씩 추가-->
  <!-- 클릭시 상품페이지로 이동경로 체크 --> 
  <!-- 이미지 src 경로체크-->
-<c:forEach items="" var="">
-    <table class="table-product mt-2 pointer" onclick="location.href='./detail?id='">
-        <colgroup>
-			<col class="col-4">
-			<col class="col-8">
-		 </colgroup>
-        <tr>
-            <td rowspan="2" style="height:90px;">
-               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/watch.png">  
-            </td>
-            <td colspan="2" class="p-edit">상품명value</td>
-        </tr>
-        <tr>
-            <td colspan="2" class="p-price"> 100.000.000 원</td>   
-        </tr>
-    </table>
- </c:forEach>
-
- 
-    
  <!-- 테이블 정렬을위한 태그 -->                
        <table class="table-product mt-2 pointer" style="visibility:hidden;">
         <colgroup>
@@ -205,7 +181,7 @@
 </c:if>
 
 <!--하단-->
-</c:if>
+
 
 
 <!-- 데이터가 있을경우 -->
@@ -218,7 +194,7 @@
        <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:250px;">
 <!--이미지 경로체크 -->
          <div class="col-4">
-            <img id="previewImg" class="image-360 profile-size" alt="profile" src="${loginData.accountImg}">         
+            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
          </div>
          
          <div class="col-8">
@@ -226,12 +202,12 @@
               <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
              </div>
              <div>
-              <p style="font-size:17px;"><b style="font-size:20px;">${loginData.name}</b> 님의 총 구매횟수 : ${loginData.buyCnt}값</p>
-              <p style="font-size:17px;">지구마켓과 함께한 날 : ${loginData.day}값 </p>
+              <p style="font-size:17px;"><b style="font-size:20px;">${loginData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt}회</p>
+              <p style="font-size:17px;">지구마켓과 함께한 날 : <fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/></p>
             </div>
 <!--개인정보수정버튼 이동경로 설정 -->            
             <div class="text-end mt-4">
-              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountId}'">개인정보 수정</button>
+              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountid}'">개인정보 수정</button>
             </div>
          </div>
        </div>
@@ -261,7 +237,7 @@
 			 </colgroup>
 	        <tr>
 	            <td rowspan="2" style="height:90px;">
-	               <img id="previewImg" class="image-360 product-size" alt="profile" src="${data.url}">  
+	               <img id="previewImg" class="image-360 product-size" alt="profile" src="<%=request.getContextPath()%>${data.url}">  
 	            </td>
 	            <td colspan="2" class="p-edit">${data.bTitle}</td>
 	        </tr>
@@ -314,7 +290,6 @@
 
 <%@ include file="../module/footer.jsp" %>
 <script type="text/javascript">
-
 </script>
 </body>
 </html>

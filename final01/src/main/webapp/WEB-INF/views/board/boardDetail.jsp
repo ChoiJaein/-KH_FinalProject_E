@@ -20,7 +20,7 @@
 			data: {
 				accountId : id
 			},
-			success: function(data) {
+			success: function(data, status) {
 				
 				if(element.innerHTML === 'favorite') {
 					/* 찜목록에 들어갔을 경우 */
@@ -33,28 +33,14 @@
 				
 			}
 			
-			fail : function(data) {
-				
-				if(element.innerHTML === 'favorite') {
-					/* 찜목록에 들어갔을 경우 */
-					element.innerHTML = 'favorite_border';
-				}
-				else if(element.innerHTML === 'favorite_border') {
-					/* 찜목록에서 제거되었을 경우 */
-					element.innerHTML = 'favorite';
+			error : function(data, status) {
+				console.log("error:" + data);
+				console.log("error:" + status);
 				}
 			
-			complete : function(data) {
-				
-				if(element.innerHTML === 'favorite') {
-					/* 찜목록에 들어갔을 경우 */
-					element.innerHTML = 'favorite_border';
-				}
-				else if(element.innerHTML === 'favorite_border') {
-					/* 찜목록에서 제거되었을 경우 */
-					element.innerHTML = 'favorite';
-				}
-				
+			complete : function(data, status) {
+				console.log("error:" + data);
+				console.log("error:" + status);
 			}
 			
 		});
@@ -75,16 +61,19 @@
 		<c:if test="${not empty datas}">
 			<c:set var="status" value="${data.buystatus}"/>
 			<c:set var="accountId" value="${loginData.accountId}" />
+			<c:set var="uploadId" value="${data.accountId}" />
 		</c:if>
+		<!-- 목업 확인용 -->
 		<c:if test="${datas == null}">
-			<c:set var="status" value=""/>
+			<c:set var="status" value="111"/>
 			<c:set var="loginData.accountId" value="111" />
 			<c:set var="accountId" value="111" />
+			<c:set var="uploadId" value="111" />
 		</c:if>
 		
 			<c:set var="buyId" value="${status}" />
 			<c:set var="myId" value="${accountId}" />
-	
+
 	
 	<c:if test="${datas == null}">
 	<section class="container" style="width:1250px;">
@@ -104,7 +93,6 @@
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
 				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
-				<!-- <div style="float:right;" onclick='favoriteTest()'> -->
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
@@ -150,96 +138,25 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			
+			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:if test="${uploadId eq myId}">
+				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
+				<br><br>
+			</c:if>
 			<hr>
-			<div style="width:100%; background-color:lightgray;">
-				<label style="font-size:20px;">상품 후기</label>
-			</div>
-			
-		
-
-		
-		<nav>
-			<div>
-				<ul class="pagination justify-content-center">
-					<c:url var="boardUrl" value="/board/detail">
-						<c:param name="id">${data.bId}</c:param>
-					</c:url>
-					<c:if test="${reviewPage.hasPrevPage()}">
-						<li class="page-item">
-							<a class="page-link" href="${boardUrl}&page=${reviewPage.prevPageNumber}">Prev</a>
-						</li>
-					</c:if>
-					<c:forEach items="${reviewPage.getPageNumberList(reviewPage.currentPageNumber - 2, reviewPage.currentPageNumber + 2)}" var="num">
-						<li class="page-item ${reviewPage.currentPageNumber eq num ? 'active' : ''}">
-							<a class="page-link" href="${boardUrl}&page=${num}">${num}</a>
-						</li>
-					</c:forEach>
-					<c:if test="${reviewPage.hasNextPage()}">
-						<li class="page-item">
-							<a class="page-link" href="${boardUrl}&page=${reviewPage.nextPageNumber}">Next</a>
-						</li>
-					</c:if>
-				</ul>
-			</div>
-		</nav>
-			
-		
-			
-			
-					
-					
-		
-					
-			<div class="mt-3 mb-3">
-				<c:forEach items="${reviewPage.pageData}" var="review">
 					<div class="mb-1">
-						<div class="card border-light">
-							<div class="card-header">
-								<div class="d-flex justify-content-between">
-									<span><small>${review.empName}</small></span>
-									<span><small>${review.createDate}</small></span>
-								</div>
-							</div>
-							<div class="card-body">
-								<input type="hidden" value="${review.id}">
-								<c:choose>
-									<c:when test="${review.deleted()}">
-										<p class="text-muted">삭제된 댓글 입니다.</p>
-									</c:when>
-									<c:otherwise>
-										<c:set var="newLine" value="<%= \"\n\" %>" />
-										<p class="card-text">${fn:replace(review.content, newLine, '<br>')}</p>
-									</c:otherwise>
-								</c:choose>
-								<c:if test="${sessionScope.loginData.accountId eq review.accountId}">
-									<c:if test="${not review.deleted()}">
-										<div class="text-end">
-											<button class="btn btn-sm btn-outline-dark" type="button" onclick="changeEdit(this);">수정</button>
-											<button class="btn btn-sm btn-outline-dark" type="button" onclick="reviewDelete(this, ${review.id})">삭제</button>
-										</div>
-									</c:if>
-								</c:if>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-				
-				<c:if test="${buyId == myId}"> 
-				<!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
-				     후기 작성 메뉴가 나옴 -->
-					<div class="mb-1">
-						<form action="/review/add" method="post">
-							<input type="hidden" name="bid" value="${data.bid}">
+						<form action="/board/boardDetail" method="post">
+							<input type="hidden" name="bid" value="${bid}">
 							<div class="input-group">
 								<textarea class="form-control" name="content" rows="2"></textarea>
 								<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
 							</div>
 						</form>
 					</div>
-				</c:if>
-			</div>
-					
+			
+			
+		
 			<c:choose>
 				<c:when test="${not empty status}">
 					<c:if test="${empty review}">
@@ -314,7 +231,12 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			
+			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:if test="${uploadId eq myId}">
+				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
+				<br><br>
+			</c:if>
 			<hr>
 			<div style="width:100%; background-color:lightgray;">
 				<label style="font-size:20px;">상품 후기</label>
@@ -392,7 +314,7 @@
 				<c:if test="${buyId == myId}"> 
 				<!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
-					<div class="mb-1">
+				  	<div class="mb-1">
 						<form action="/review/add" method="post">
 							<input type="hidden" name="bid" value="${data.bid}">
 							<div class="input-group">
@@ -413,7 +335,7 @@
 				<c:when test="${empty status}">				
 					<label>구매하시고 후기를 남겨보세요.</label>
 				</c:when>
-				
+				 
 				
 			</c:choose>
 	</section>

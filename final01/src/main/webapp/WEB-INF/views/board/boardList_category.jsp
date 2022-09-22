@@ -234,7 +234,7 @@
 				<ul class="pagination justify-content-center">
 					<c:if test="${pageData.hasPrevPage()}">
 						<li class="page-item">
-							<a class="page-link" href="${boardUrl}?type=${data.cateId}&page=${pageData.prevPageNumber}">Prev</a>
+							<a class="page-link" href="${boardUrl}?type=${tData.cateId}&page=${pageData.prevPageNumber}">Prev</a>
 						</li>
 					</c:if>
 					<c:forEach items="${pageData.getPageNumberList(pageData.currentPageNumber - 2, pageData.currentPageNumber + 2)}" var="num">

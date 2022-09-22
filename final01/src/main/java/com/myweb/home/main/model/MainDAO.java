@@ -45,4 +45,10 @@ public class MainDAO {
 		MainDTO res = session.selectOne(mapperId, id);
 		return res;
 	}
+	
+	
+	
+	
+	
+	
 }
