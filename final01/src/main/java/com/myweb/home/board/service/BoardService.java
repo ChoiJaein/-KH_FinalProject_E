@@ -9,10 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.myweb.home.board.model.BoardDAO;
 import com.myweb.home.board.model.BoardDTO;
-<<<<<<< HEAD
 import com.myweb.home.board.model.BoardVO;
-=======
->>>>>>> refs/remotes/origin/main
 import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.board.model.CategoryDTO;
@@ -30,12 +27,12 @@ public class BoardService {
 	public int add(BoardDTO data) {
 		logger.info("add(data={})", data);
 		int seq = dao.getNextSeq();
-		data.setBid(seq);
+		data.setbId(seq);
 		
 		boolean result = dao.insertData(data);
 		
 		if(result) {
-			return data.getBid();
+			return data.getbId();
 		}
 		return -1;
 	}
@@ -57,22 +54,17 @@ public class BoardService {
 	
 	
 	
-	public int listCount() throws Exception {
-		return dao.listCount();
-	}
- 
-	public List<BoardDTO> listSearch(SearchCriteria scri) throws Exception {
-		return dao.listSearch(scri);
-	}
+//	public int listCount() throws Exception {
+//		return dao.listCount();
+//	}
+// 
+//	public List<BoardDTO> listSearch(SearchCriteria scri) throws Exception {
+//		return dao.listSearch(scri);
+//	}
+//	
+//	public int countSearch(SearchCriteria scri)throws Exception {
+//		return dao.countSearch(scri);
+//	}
+//	
 	
-	public int countSearch(SearchCriteria scri)throws Exception {
-		return dao.countSearch(scri);
-	}
-	
-	
-<<<<<<< HEAD
-	
-
-=======
->>>>>>> refs/remotes/origin/main
 }

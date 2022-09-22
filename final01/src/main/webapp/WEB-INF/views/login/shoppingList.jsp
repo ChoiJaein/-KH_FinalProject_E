@@ -112,9 +112,6 @@
 <!-- 데이터가 없을경우 -->
 
 <c:if test="${data == null}">
-=======
-<c:if test="">
->>>>>>> refs/remotes/origin/황준원
  <section class="container whole-size">
 <div id="align-items">
   <div class="row align-items-start">

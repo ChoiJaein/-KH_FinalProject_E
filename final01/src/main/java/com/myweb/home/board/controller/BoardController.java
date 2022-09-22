@@ -50,14 +50,14 @@ public class BoardController {
 		logger.info("add(boardVo={})", boardVo);
 		
 		BoardDTO data = new BoardDTO();
-		data.setBtitle(boardVo.getBtitle());
-		data.setBcontent(boardVo.getBcontent());
-		data.setAccountid(accountDto.getaccountid());
-		data.setCategoryid(boardVo.getCategoryid());
-		data.setDealmethod(boardVo.getDealmethod());
+		data.setbTitle(boardVo.getBtitle());
+		data.setbContent(boardVo.getBcontent());
+		data.setAccountId(accountDto.getAccountid());
+		data.setCategoryId(boardVo.getCategoryid());
+		data.setDealMethod(boardVo.getDealmethod());
 		data.setPrice(boardVo.getPrice());
-		data.setPcondition(boardVo.getPcondition());
-		data.setBuystatus(boardVo.getBuystatus());
+		data.setpCondition(boardVo.getPcondition());
+		data.setBuyStatus(boardVo.getBuystatus());
 		
 		int bid = service.add(data);
 		if(bid != -1) {
@@ -88,19 +88,19 @@ public class BoardController {
 	
 	
 	
-	//상품 검색
-	@RequestMapping(value = "/board/boardList_search", method = RequestMethod.GET)
-	public void listPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
-	 
-	 List<BoardVO> list = service.listSearch(scri);
-	 model.addAttribute("list", list);
-	 PageMaker pageMaker = new PageMaker();
-	 pageMaker.setCri(scri);
-	 pageMaker.setTotalCount(service.listCount());
-	 //pageMaker.setTotalCount(service.countSearch(scri));
-	 model.addAttribute("pageMaker", pageMaker);
-	}
-	
+//	//상품 검색
+//	@RequestMapping(value = "/board/boardList_search", method = RequestMethod.GET)
+//	public void listPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+//	 
+//	 List<BoardVO> list = service.listSearch(scri);
+//	 model.addAttribute("list", list);
+//	 PageMaker pageMaker = new PageMaker();
+//	 pageMaker.setCri(scri);
+//	 pageMaker.setTotalCount(service.listCount());
+//	 //pageMaker.setTotalCount(service.countSearch(scri));
+//	 model.addAttribute("pageMaker", pageMaker);
+//	}
+//	
 	
 	
 	

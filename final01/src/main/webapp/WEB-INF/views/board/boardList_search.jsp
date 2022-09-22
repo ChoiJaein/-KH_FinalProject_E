@@ -29,13 +29,6 @@
 			  </div>
 			 </div> 
 			<hr>
-<<<<<<< HEAD
-						<c:url var="boardDetailUrl" value="./detail" />
-=======
-						<c:url var="boardDetailUrl" value="./detail">
-							<c:param name="id">${data.bId}</c:param>
-						</c:url>
->>>>>>> refs/remotes/origin/박희망BE
 			
 			<c:if test="${not empty list}">
 				<c:forEach items="${list}" var="list">
