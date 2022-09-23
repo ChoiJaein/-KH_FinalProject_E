@@ -80,14 +80,14 @@ public class BoardController {
 		
 		}
 		
-		@GetMapping(value="board/add")
+		@GetMapping(value="board/upload")
 		public String add(Model model) {
 			List datas = service.getAll();
 			model.addAttribute("cData", datas); //카테고리 정보
 			return "board/boardUpload";
 		}
 		
-		@PostMapping(value="board/add")
+		@PostMapping(value="board/upload")
 		public String add(HttpServletRequest request
 				, @SessionAttribute("loginData") AccountDTO accDto
 				, @ModelAttribute BoardVO boardVo

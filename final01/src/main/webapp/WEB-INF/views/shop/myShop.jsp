@@ -249,12 +249,12 @@
 		       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
 		<!--이미지 경로체크 -->
 		         <div class="col-4">
-		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
+		            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${photo.url}">         
 		         </div>
 		         
 		         <div class="col-8">
 		            <div class="mt-4 mb-3 border-bottom border-2 border-secondary">
-		              <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
+		              <p><b style="font-size:23px;">${pData.name}</b> 님 환영합니다</p>
 		             </div>
 		             <div>
 		              <p style="font-size:17px;">상품 판매  : ${sData.sellCnt} 회</p>

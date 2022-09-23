@@ -53,10 +53,10 @@ public class NoticeController {
 		pageCount = Integer.parseInt(session.getAttribute("pageCount").toString());
 		Paging paging = new Paging(data, page, pageCount);
 		
-		model.addAttribute("data", paging.getPageData());
+		model.addAttribute("datas", paging.getPageData());
 		model.addAttribute("pageData", paging);
 		
-		return "notice/testhome"; // 나중에 변경
+		return "notice/list"; 
 	};
 	
 	@GetMapping(value="/detail")
@@ -67,16 +67,17 @@ public class NoticeController {
 		
 		if(data != null) {
 			model.addAttribute("data", data);
-			return "notice/testview"; //
+			return "notice/detail"; //
 		} else {
-			model.addAttribute("error", "해당 데이터가 존재하지 않습니다.");
-			return "error/notExists"; //
+			model.addAttribute("msg", "해당 데이터가 존재하지 않습니다.");
+			model.addAttribute("url", "/home");
+			return "alert"; //
 		}
 	}
 	
 	@GetMapping(value="/add")
 	public String add() {
-		return "notice/testadd"; //
+		return "notice/add"; //
 	}
 	
 	@PostMapping(value="/add") 
@@ -92,8 +93,9 @@ public class NoticeController {
 		if(id!= -1) { 
 			return "redirect:/notice/detail?id=" + id;
 		} else {
-			request.setAttribute("error", "게시글 저장에 실패하였습니다.");
-			return "notice/testadd"; //
+			request.setAttribute("msg", "게시글 저장에 실패하였습니다.");
+			request.setAttribute("url", "notice/add");
+			return "notice/add"; 
 		}
 	}
 	
@@ -109,8 +111,9 @@ public class NoticeController {
 				model.addAttribute("data", data);
 				return "notice/testmodify"; //
 		} else {
-			model.addAttribute("error", "해당 데이터가 존재하지 않습니다.");
-			return "notice/testview"; //
+			model.addAttribute("msg", "해당 데이터가 존재하지 않습니다.");
+			model.addAttribute("url", "해당 데이터가 존재하지 않습니다.");
+			return "notice/modify";
 		}
 	}
 	
@@ -133,7 +136,7 @@ public class NoticeController {
 			}
 		} else {
 			model.addAttribute("error", "해당 데이터가 존재하지 않습니다.");
-			return "notice/testview";
+			return "notice/modify";
 		}
 	}
 	

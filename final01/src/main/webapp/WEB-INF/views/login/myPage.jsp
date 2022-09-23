@@ -181,7 +181,7 @@
 	       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:25%;">
 	<!--이미지 경로체크 -->
 	         <div class="col-4">
-	            <img id="previewImg" class="image-360 image-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
+	            <img id="previewImg" class="image-360 image-size" alt="profile" src="<%=request.getContextPath()%>${photo.url}">         
 	         </div>
 	<!--닉네임value 체크 -->         
 	         <div class="col-8">
@@ -190,7 +190,12 @@
 	             </div>
 	<!--닉네임value 체크 -->             
 	             <div>
+	             <c:if test="${empty pData.buyCnt}">
+	             <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : 0 회</p>
+	             </c:if>
+	             <c:if test="${not empty pData.buyCnt}">
 	              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt} 회</p>
+	             </c:if>
 	              <p style="font-size:17px;">지구마켓과 함께한 날 : <fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/></p>
 	            </div>
 	<!--개인정보수정버튼 경로설정 -->            

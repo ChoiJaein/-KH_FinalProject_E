@@ -106,7 +106,7 @@
 	<%@ include file="../module/categoryNavigation.jsp" %>
 
 
-<c:if test="${datas == null}">
+<c:if test="${pData == null}">
 	 <section class="container whole-size">
 	<div id="align-items">
 	  <div class="row align-items-start">
@@ -216,7 +216,7 @@
 
 
 
-<c:if test="${not empty datas}">
+<c:if test="${not empty pData}">
 	 <section class="container whole-size">
 	<div id="align-items">
 	  <div class="row align-items-start">
@@ -224,7 +224,7 @@
 	       <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:250px;">
 	<!--이미지 경로체크 -->
 	         <div class="col-4">
-	            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
+	            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${photo.url}">         
 	         </div>
 	         
 	         <div class="col-8">

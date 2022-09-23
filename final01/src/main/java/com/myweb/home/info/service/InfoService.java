@@ -34,6 +34,12 @@ public class InfoService {
 		
 		return data;	
 	}
+	public InfoDTO getUserPhoto(String id) {
+		InfoDTO data = dao.selectProfilePhoto(id);
+		
+		return data;
+		
+	}
 	
 	public InfoDTO getUserPurchase(String id) {
 		InfoDTO data = dao.selectPurchase(id);

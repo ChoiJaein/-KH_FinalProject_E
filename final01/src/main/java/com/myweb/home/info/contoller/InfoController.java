@@ -33,12 +33,16 @@ public class InfoController {
 	public String getProfile(Model model, HttpSession session
 			, @SessionAttribute("loginData") AccountDTO accDto) {
 		
+		logger.info("getProfile(model= {})", model);
+		
 		if(accDto != null) {
 			
 			InfoDTO pData = service.getUserInfo(accDto.getAccountid());
+			InfoDTO photo = service.getUserPhoto(accDto.getAccountid());
 			InfoDTO dData = service.getUserPurchase(accDto.getAccountid());
 			
 			model.addAttribute("pData", pData); // 프로필 데이터
+			model.addAttribute("photo", photo); // 프로필 사진 
 			model.addAttribute("dData", dData); // 구매 횟수
 			
 			return "login/myPage";
@@ -70,6 +74,7 @@ public class InfoController {
 		if(accDto != null) {
 			
 			InfoDTO pData = service.getUserInfo(accDto.getAccountid());
+			InfoDTO photo = service.getUserPhoto(accDto.getAccountid());
 			InfoDTO dData = service.getUserPurchase(accDto.getAccountid());
 			List datas = service.getPurchaseList(accDto.getAccountid());
 			
@@ -87,6 +92,7 @@ public class InfoController {
 			
 			
 			model.addAttribute("pData", pData); // 프로필 데이터
+			model.addAttribute("photo", photo); // 프로필 사진 
 			model.addAttribute("dData", dData); // 구매 횟수
 			model.addAttribute("datas", paging.getPageData()); // 구매 상품 목록
 			model.addAttribute("shoppingPage", paging);
@@ -119,6 +125,7 @@ public class InfoController {
 		if(accDto != null) {
 			
 			InfoDTO pData = service.getUserInfo(accDto.getAccountid());
+			InfoDTO photo = service.getUserPhoto(accDto.getAccountid());
 			InfoDTO dData = service.getUserPurchase(accDto.getAccountid());
 			List datas = service.getFavoriteList(accDto.getAccountid());
 			
@@ -136,6 +143,7 @@ public class InfoController {
 			
 			
 			model.addAttribute("pData", pData); // 프로필 데이터
+			model.addAttribute("photo", photo); // 프로필 사진 
 			model.addAttribute("dData", dData); // 구매 횟수
 			model.addAttribute("datas", paging.getPageData()); //찜 상품 목록
 			model.addAttribute("favoriteListPage", paging);
@@ -165,6 +173,7 @@ public class InfoController {
 		if(accDto != null) {
 			
 			InfoDTO pData = service.getMyStoreInfo(accDto.getAccountid());
+			InfoDTO photo = service.getUserPhoto(accDto.getAccountid());
 			InfoDTO sData = service.getUserSelling(accDto.getAccountid());
 			List datas = service.getSellList(accDto.getAccountid());
 			
@@ -182,6 +191,7 @@ public class InfoController {
 			
 			service.incVisitCnt(session, pData);// 상점 방문 횟수 
 			model.addAttribute("pData", pData); // 프로필 데이터
+			model.addAttribute("photo", photo); // 프로필 사진 
 			model.addAttribute("sData", sData); // 판매 횟수
 			model.addAttribute("datas", paging.getPageData()); //판매중 상품 목록
 			model.addAttribute("pageData", paging);

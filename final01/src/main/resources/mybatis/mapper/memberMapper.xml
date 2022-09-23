@@ -13,7 +13,9 @@
 			  , ADDRESS1
 			  , ADDRESS2
 			  , ADDRESS3
-			  , ADDRESS4)
+			  , ADDRESS4
+			  , ADMIN
+			  , REGISTERDATE)
 		VALUES(#{accountid}
 			 , #{password}
 			 , #{name}
@@ -22,7 +24,9 @@
 			 , #{address1}
 			 , #{address2}
 			 , #{address3}
-			 , #{address4})
+			 , #{address4}
+			 , 'N'
+			 , SYSDATE)
 	</insert>
 	
 	<!-- 아이디 중복 확인 -->

@@ -29,6 +29,16 @@ private static final Logger logger = LoggerFactory.getLogger(InfoDAO.class);
 		
 	}
 	
+	public InfoDTO selectProfilePhoto(String id) {
+		String mapperId = String.format(mapper, "selectUserPhoto");
+		InfoDTO res  = session.selectOne(mapperId, id);
+		
+		logger.info("selectProfile(id= {})", id);
+		
+		return res;
+		
+	}
+	
 	public InfoDTO selectPurchase(String id) {
 		String mapperId = String.format(mapper, "selectPurchaseCount");
 		InfoDTO res = session.selectOne(mapperId, id);
