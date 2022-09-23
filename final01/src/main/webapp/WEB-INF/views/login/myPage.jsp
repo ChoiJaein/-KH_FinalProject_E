@@ -190,11 +190,11 @@
 	             </div>
 	<!--닉네임value 체크 -->             
 	             <div>
-	             <c:if test="${empty pData.buyCnt}">
-	             <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : 0 회</p>
+	             <c:if test="${empty dData.buyCnt}">
+	             <p style="font-size:17px;"><b style="font-size:20px;">${loginData.name}</b> 님의 총 구매횟수 : 0회</p>
 	             </c:if>
-	             <c:if test="${not empty pData.buyCnt}">
-	              <p style="font-size:17px;"><b style="font-size:20px;">${pData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt} 회</p>
+	             <c:if test="${not empty dData.buyCnt}">
+	              <p style="font-size:17px;"><b style="font-size:20px;">${loginData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt}회</p>
 	             </c:if>
 	              <p style="font-size:17px;">지구마켓과 함께한 날 : <fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/></p>
 	            </div>
