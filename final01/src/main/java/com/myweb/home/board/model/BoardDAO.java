@@ -93,5 +93,27 @@ private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 		
 		}
 		
-			   
+		//review
+		public void insertReview(ReviewDTO data) {
+			 logger.info("data({})",data);
+				sqlSession.insert("reviewMapper.insertReview", data);
+			}
+
+	
+		public List<ReviewDTO> ReviewList(int bId) {
+			logger.info("bId({})",bId);
+			return sqlSession.selectList("reviewMapper.ReviewList", bId);
+		}
+
+		public ReviewDTO getReview(int id) {
+			logger.info("id({})",id);
+			return sqlSession.selectOne("reviewMapper.getReview", id);
+		}
+
+		public boolean deleteData(ReviewDTO data) {
+			logger.info("data({})",data);
+			int res = sqlSession.delete("reviewMapper.deleteData", data);
+			return res == 1 ? true : false;
+		}
+	   
 }

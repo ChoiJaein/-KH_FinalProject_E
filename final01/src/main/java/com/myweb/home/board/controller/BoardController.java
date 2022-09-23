@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -17,12 +18,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.myweb.home.board.model.BoardDTO;
 import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.PageMaker;
+import com.myweb.home.board.model.ReviewDTO;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.board.service.BoardService;
 import com.myweb.home.board.vo.BoardVO;
@@ -217,5 +220,85 @@ public class BoardController {
 			}
 			
 		}
-	    
-}
+		
+		//리뷰 등록
+		@RequestMapping(value="/board/boardDetail", method = RequestMethod.GET)
+		  public void boardDetail(@RequestParam(value="bId",defaultValue="0") int bId ,Model model) throws Exception {
+			
+			 logger.info("boardDetail");
+			 List<ReviewDTO> review = service.ReviewList(bId);
+			 model.addAttribute("review", review); 
+			
+		 }
+		
+
+		@RequestMapping(value="/board/boardDetail", method = RequestMethod.POST)
+		public String insertReview(Model model,
+				ReviewDTO data, HttpSession session,HttpServletRequest request) throws Exception{
+			    logger.info("datas({})", data);
+			   
+			     String bid =request.getParameter("bid");
+				 String content = request.getParameter("content");
+				 
+				 AccountDTO account = (AccountDTO)session.getAttribute("loginData");
+				 
+				 try {
+					 data.setAccountId(account.getAccountid());
+					 data.setbId(Integer.parseInt(bid));
+					 data.setContent(content);
+				 
+				 
+				 
+				 }catch(Exception e) {
+					 
+				 }
+				 service.insertReview(data);
+				 
+			 return "redirect:/board/boardDetail?id=" + data.getbId();
+				
+		}
+ 
+
+
+		//상품후기 삭제
+			
+			@RequestMapping(value="/review/delete", method= RequestMethod.POST)
+			@ResponseBody
+			public void reviewDelete(ReviewDTO reviewDTO,HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
+				
+				
+				logger.info("post review delete");
+				
+				
+				response.setContentType("application/json; charset=utf-8");
+				
+				String id = request.getParameter("id");
+				
+				ReviewDTO reviewData = service.getReview(Integer.parseInt(id));
+				AccountDTO account = (AccountDTO)session.getAttribute("loginData");
+				
+				
+				StringBuilder sb = new StringBuilder();
+				sb.append("{");
+				if(reviewData.getAccountId() == account.getAccountid()) {
+					boolean result =service.remove(reviewData);
+					System.out.println("xxx");
+					if(result) {
+			    		sb.append(String.format("\"%s\": \"%s\"", "code","success"));
+			    	}else {
+			    		sb.append(String.format("\"%s\": \"%s\"", "code","error"));
+			    	}
+			    }else {
+			    	sb.append(String.format("\"%s\": \"%s\"", "code","error"));
+			    }
+				sb.append("}");
+				
+				response.getWriter().append(sb.toString());
+				response.getWriter().flush();
+			}
+		
+		
+		
+		}
+
+

@@ -24,4 +24,23 @@
      ON R.ACCOUNTID = A.ACCOUNTID
    WHERE R.BID = #{bId}
   </select>
+  <select id ="getReview" resultType="reviewDto">
+  
+  SELECT R.ID
+       , R.ACCOUNTID
+       , R.CONTENT
+       , A.ACCOUNTID
+       , R.CREATEDATE
+       , R.STARSCORE
+       , R.DELETED
+       , R.HIDDEN
+   FROM REVIEW R
+   JOIN ACCOUNT A
+     ON R.ACCOUNTID = A.ACCOUNTID
+   WHERE R.ID = #{id}
+  </select>
+  <delete id="deleteData" parameterType="reviewDto">
+	  DELETE FROM REVIEW
+	   WHERE ID =#{id}
+	</delete>
   </mapper>

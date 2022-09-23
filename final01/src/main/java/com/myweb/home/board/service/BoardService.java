@@ -16,6 +16,7 @@ import com.myweb.home.board.model.BoardDAO;
 import com.myweb.home.board.model.BoardDTO;
 import com.myweb.home.board.model.BoardStaticsDTO;
 import com.myweb.home.board.model.Criteria;
+import com.myweb.home.board.model.ReviewDTO;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.upload.model.PhotoUploadDAO;
@@ -131,5 +132,28 @@ public class BoardService {
 		return result;
 	}
 	
-	    
+	
+	
+	//review
+	public void insertReview(ReviewDTO data) throws Exception{
+		 logger.info("data({})",data);
+		dao.insertReview(data);
+	}
+
+	public List<ReviewDTO> ReviewList(int bId) throws Exception{
+		 logger.info("bId({})",bId);
+		return dao.ReviewList(bId);
+	}
+
+	public ReviewDTO getReview(int id) {
+		logger.info("id({})",id);
+		return dao.getReview(id);
+	}
+
+	public boolean remove(ReviewDTO data) {
+		 logger.info("data({})",data);
+		boolean result = dao.deleteData(data);
+		return result;
+		
+	}    
 }
