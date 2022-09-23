@@ -33,7 +33,7 @@
   * Database : Oracle 18c
 * Front-end
   * Web : HTML5, CSS,JavaScript, JSP, AJAX, jQuery
-  * API : Bootstrap4, Naver 로그인, Kakao 로그인, Facebook 로그인, Daum 주소찾기
+  * API : Bootstrap5, Naver 로그인, Kakao 로그인, Facebook 로그인, Daum 주소찾기
 -----
 ### 5. 지구마켓 프로젝트 기능 설명
 ##### <메인페이지>
