@@ -29,7 +29,9 @@
 			  </div>
 			 </div> 
 			<hr>
-			
+				<c:url var="boardDetailUrl" value="./detail">
+					<c:param name="id">${data.bId}</c:param>
+				</c:url>
 			<c:if test="${not empty list}">
 				<c:forEach items="${list}" var="list">
 

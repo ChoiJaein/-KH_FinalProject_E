@@ -8,34 +8,45 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.myweb.home.board.model.BoardDAO;
+import com.myweb.home.member.controller.MemberController;
 
 @Repository
 public class PhotoUploadDAO {
-
+	
 	private static final Logger logger = LoggerFactory.getLogger(PhotoUploadDAO.class);
 	
 	@Autowired
 	private SqlSession session;
 	
-//	// 사진 업로드 순서대로 파일 아이디 설정
-//	public int getFileIdSeq() {
-//		logger.info("getFileIdSeq()");
-//		int seq = session.selectOne("photoUploadMapper.getFileIdSeq");
-//		return seq;
-//	}
-//	
-//	public boolean insertData(PhotoUploadDTO data) {
-//		logger.info("insertData(PhotoUploadDTO={}", data);
-//		int res = session.insert("photoUploadMapper.insertData", data);
-//		System.out.println(res);
-//		return res == 1 ? true : false;
-//	}
-//
-//	public List<PhotoUploadDTO> selectDatas(String accountid) {
-//		logger.info("selectDatas(accountid={}", accountid);
-//		List<PhotoUploadDTO> res = session.selectList("photoUploadMapper.selectDatas", accountid);
-//		return res;
-//	}
+	public int getCount(int bId) {
+		int res = session.selectOne("photoUploadMapper.getCount", bId);
+		return res;
+	}
+
+	public boolean insertData(PhotoUploadDTO data) {
+		logger.info("insertData(data= {})", data);
+		int res = session.insert("photoUploadMapper.insertData", data);
+		System.out.println(res);
+		return res == 1 ? true : false;
+	}
+
+	public List<PhotoUploadDTO> selectBoardDatas(int bId) {
+		logger.info("selectBoardDatas(int= {})", bId);
+		List<PhotoUploadDTO> res = session.selectList("photoUploadMapper.selectBoardDatas", bId);
+		return res;
+	}
+	
+	public boolean updateFileData(PhotoUploadDTO data) {
+		logger.info("updateFileData(data= {})", data);
+		int res = session.update("photoUploadMapper.updateFileData", data);
+		return res == 1 ? true : false;
+	
+	}
+	
+	//프로필 사진 업로드
+	public PhotoUploadDTO selectProdfileData(String accId){
+		PhotoUploadDTO res = session.selectOne("photoUploadMapper.selectProfileData", accId);
+		return res;
+	}
 
 }

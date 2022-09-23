@@ -2,56 +2,64 @@ package com.myweb.home.upload.model;
 
 public class PhotoUploadDTO {
 	
-	private int fileid;
-	private int bid;
-	private String accountid;
-	private String uuidname;
-	private String filename;
+	private int fileId;
+	private int bId;
+	private String accId;
+	private String uuidName;
+	private String fileName;
 	private String location;
 	private String url;
-	private int filesize;
-	private String filetype;
+	private long fileSize;
+	private String fileType;
 	
-	public int getFileid() {
-		return fileid;
+	public PhotoUploadDTO() {}
+	
+	public PhotoUploadDTO(int bId, String location, String url) {
+		this.bId = bId;
+		this.location = location;
+		this.url = url;
 	}
 	
-	public void setFileid(int fileid) {
-		this.fileid = fileid;
+	public int getFileId() {
+		return fileId;
 	}
 	
-	public int getBid() {
-		return bid;
+	public void setFileId(int fileId) {
+		this.fileId = fileId;
 	}
 	
-	public void setBid(int bid) {
-		this.bid = bid;
+	public int getbId() {
+		return bId;
 	}
 	
-	public String getAccountid() {
-		return accountid;
+	public void setbId(int bId) {
+		this.bId = bId;
 	}
 	
-	public void setAccountid(String accountid) {
-		this.accountid = accountid;
+	public String getAccId() {
+		return accId;
 	}
 	
-	public String getUuidname() {
-		return uuidname;
+	public void setAccId(String accId) {
+		this.accId = accId;
 	}
 	
-	public void setUuidname(String uuidname) {
-		this.uuidname = uuidname;
+	public String getUuidName() {
+		return uuidName;
 	}
 	
-	public String getFilename() {
-		return filename;
+	public void setUuidName(String uuidName) {
+		this.uuidName = uuidName;
 	}
 	
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public String getFileName() {
+		return fileName;
 	}
-	
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public String getLocation() {
 		return location;
 	}
@@ -68,27 +76,29 @@ public class PhotoUploadDTO {
 		this.url = url;
 	}
 	
-	public int getFilesize() {
-		return filesize;
+	public long getFileSize() {
+		return fileSize;
 	}
 	
-	public void setFilesize(int filesize) {
-		this.filesize = filesize;
+	public void setFileSize(long fileSize) {
+		this.fileSize = fileSize;
 	}
 	
-	public String getFiletype() {
-		return filetype;
+	public String getFileType() {
+		return fileType;
 	}
 	
-	public void setFiletype(String filetype) {
-		this.filetype = filetype;
+	public void setFileType(String fileType) {
+		this.fileType = fileType;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "PhotoUploadDTO [fileid=" + fileid + ", bid=" + bid + ", accountid=" + accountid + ", uuidname="
-				+ uuidname + ", filename=" + filename + ", location=" + location + ", url=" + url + ", filesize="
-				+ filesize + ", filetype=" + filetype + "]";
+		return "PhotoUploadDTO [fileId=" + fileId + ", bId=" + bId + ", accId=" + accId + ", uuidName=" + uuidName
+				+ ", fileName=" + fileName + ", location=" + location + ", url=" + url + ", fileSize=" + fileSize
+				+ ", fileType=" + fileType + "]";
 	}
 	
+	
+
 }
