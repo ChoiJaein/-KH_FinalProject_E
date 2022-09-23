@@ -110,7 +110,7 @@
 
 <!-- 데이터가 없을경우 -->
 
-<c:if test="${datas == pData}">
+<c:if test="${empty pData}">
  <section class="container whole-size">
 <div id="align-items">
   <div class="row align-items-start">
