@@ -110,7 +110,7 @@
 
 <!-- 데이터가 없을경우 -->
 
-<c:if test="${datas == null}">
+<c:if test="${empty pData}">
  <section class="container whole-size">
 <div id="align-items">
   <div class="row align-items-start">
@@ -186,7 +186,7 @@
 
 <!-- 데이터가 있을경우 -->
 
-<c:if test="${not empty datas}">
+<c:if test="${not empty pData}">
  <section class="container whole-size">
 <div id="align-items">
   <div class="row align-items-start">
@@ -194,7 +194,7 @@
        <div class="d-flex" style="background-color:rgba(233,236,239); width:700px; height:250px;">
 <!--이미지 경로체크 -->
          <div class="col-4">
-            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${pData.url}">         
+            <img id="previewImg" class="image-360 profile-size" alt="profile" src="<%=request.getContextPath()%>${photo.url}">         
          </div>
          
          <div class="col-8">
@@ -202,7 +202,12 @@
               <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
              </div>
              <div>
+             <c:if test="${empty dData.buyCnt}">
+             <p style="font-size:17px;"><b style="font-size:20px;">${loginData.name}</b> 님의 총 구매횟수 : 0회</p>
+             </c:if>
+             <c:if test="${not empty dData.buyCnt}">
               <p style="font-size:17px;"><b style="font-size:20px;">${loginData.name}</b> 님의 총 구매횟수 : ${dData.buyCnt}회</p>
+             </c:if>
               <p style="font-size:17px;">지구마켓과 함께한 날 : <fmt:formatNumber value="${pData.regDate}" pattern="#,###일째"/></p>
             </div>
 <!--개인정보수정버튼 이동경로 설정 -->            

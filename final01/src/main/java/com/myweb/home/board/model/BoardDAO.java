@@ -15,11 +15,10 @@ import com.myweb.home.notice.model.NoticeDTO;
 import com.myweb.home.upload.model.PhotoUploadDTO;
 
 
-
 	@Repository
 	public class BoardDAO {
-
-		private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
+		
+private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 		
 		@Autowired
 		private SqlSession sqlSession;
@@ -37,6 +36,9 @@ import com.myweb.home.upload.model.PhotoUploadDTO;
 		public int countSearch(SearchCriteria scri) throws Exception{
 			return sqlSession.selectOne("boardMapper.countSearch",scri);
 		}
+	
+		
+
 		
 		public BoardDTO selectBoardDetail(int id) {
 			logger.info("selectBoardDetail(id={})", id);
@@ -91,7 +93,27 @@ import com.myweb.home.upload.model.PhotoUploadDTO;
 		
 		}
 		
-		
-		
-		   
+		//review
+		public void insertReview(ReviewDTO data) {
+			 logger.info("data({})",data);
+				sqlSession.insert("reviewMapper.insertReview", data);
+			}
+
+	
+		public List<ReviewDTO> ReviewList(int bId) {
+			logger.info("bId({})",bId);
+			return sqlSession.selectList("reviewMapper.ReviewList", bId);
+		}
+
+		public ReviewDTO getReview(int id) {
+			logger.info("id({})",id);
+			return sqlSession.selectOne("reviewMapper.getReview", id);
+		}
+
+		public boolean deleteData(ReviewDTO data) {
+			logger.info("data({})",data);
+			int res = sqlSession.delete("reviewMapper.deleteData", data);
+			return res == 1 ? true : false;
+		}
+	   
 }

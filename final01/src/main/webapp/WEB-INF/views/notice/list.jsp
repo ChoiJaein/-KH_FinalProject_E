@@ -33,11 +33,10 @@
     <div class="row">
 	  <h5 class="col-10 mt-3">공지사항 <i class="bi bi-megaphone"></i></h5> 
 	    <div class="col-1 " style="padding-left:18px">
- <!--관리자 권한체크 // 접속자세션 eq 관리자권한 체크
-  <c:if test="session.loginData.accId eq ">    
+
+  <c:if test="${ session.loginData.admint eq 'Y'}">    
      	    <button class="btn btn-primary" type="button" onclick="location.href='${noticeUrl}/add'">글 작성</button>  	    
-  </c:if>
-  -->	
+ </c:if>
 	    </div>
         <div class="col-1 " style="padding-left:0px"> 
          <select class="form-select" onchange="location.href='${noticeUrl}?pageCount=' + this.value">
@@ -73,13 +72,13 @@
 	   <c:if test="${not empty datas}">
 		   <c:forEach items="${datas}" var="data">
 		     <c:url value="/notice/detail" var="noticeDetailUrl" >
-		        <c:param name="id">${data.id}</c:param>
+		        <c:param name="id">${data.notId}</c:param>
 		      </c:url>
 			      <tr onclick="location.href='${noticeDetailUrl}'">
-			        <td>번 호</td>
-			        <td>제 목</td> 
-			        <td>작 성 자</td>
-			        <td>작 성 일</td>
+			        <td>${data.notId}</td>
+			        <td>${data.title}</td> 
+			        <td>운영자</td>
+			        <td>${data.createDate}</td>
 			      </tr>
 		   </c:forEach>
 		 </c:if>

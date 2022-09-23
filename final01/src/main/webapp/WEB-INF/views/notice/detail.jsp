@@ -21,22 +21,18 @@
   <section class="container">
    <div class="mt-5">
 	   <div class="mb-1 border-bottom border-2 border-secondary">
-<!--data.title-->
-	     <h5>제목 값</h5> 
+	     <h5>${data.title}</h5> 
 	   </div>	   
-	   <div class="mb-3 text-end">
-<!--data.createDate, data.accountId, data.viewCnt 값 넣기 -->	   
-	      <label class="text-muted"><small>홍길동</small></label>
-	      <fmt:formatDate value="" var="createDate" dateStyle="medium"/>
+	   <div class="mb-3 text-end"> 
+	      <label class="text-muted"><small>운영자</small></label>
+	      <fmt:formatDate value="${data.createDate }" var="createDate" dateStyle="medium"/>
 	      <label class="text-muted"><small>${createDate}</small></label>
-	      <label class="text-muted"><small>조회수</small></label>
 	   </div>   
    </div>
    
-	 <div class="mb-5 border-bottom border-2 border-secondary">
-<!--data.content -->	  
+	 <div class="mb-5 border-bottom border-2 border-secondary">  
 	    <p>
-	    내용 값
+	    ${data.content}
 	    </p>
     </div>
     
@@ -44,12 +40,12 @@
       <div class="mb-1 text-center">
       <c:url var="noticeUrl" value="/notice"/>
         <button class="btn btn-primary" type="button" onclick="location.href='${noticeUrl}'">목 록</button>
-<!-- 권한별 수정,삭제표기 // 접속자세션 eq 관리자권한 체크
-	<c:if test="session.loginData.accId eq ">
-	     <button class="btn btn-primary" type="button" onclick="location.href='${noticeUrl}/modify?id='">수 정</button>
+
+	<c:if test="${session.loginData.admin eq 'Y'}">
+	     <button class="btn btn-primary" type="button" onclick="location.href='${noticeUrl}/modify?id=${data.notId }'">수 정</button>
 	     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#removeModal">삭 제</button>
     </c:if>  
--->	   
+
 	  </div>
     </div>  
   </section>

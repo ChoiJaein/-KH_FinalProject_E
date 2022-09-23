@@ -4,15 +4,18 @@
   
 <mapper namespace="InfoMapper">
 	<select id="selectUserDatas" resultType="infoDto">
-	      SELECT A.ACCOUNTID as accId
-			   , A.NAME as name
-			   , TRUNC(SYSDATE) - TRUNC(A.REGISTERDATE) as regDate
-			   , CONCAT(P.URL, '/' || P.UUIDNAME) as url
-			FROM ACCOUNT A
-			RIGHT JOIN PHOTOUPLOAD P
-			ON A.ACCOUNTID = P.ACCOUNTID 
-			WHERE A.ACCOUNTID = #{accId} AND P.URL = '/static/account/upload'
-
+	      SELECT ACCOUNTID as accId
+			   , NAME as name
+			   , TRUNC(SYSDATE) - TRUNC(REGISTERDATE) as regDate
+			FROM ACCOUNT 
+		   WHERE ACCOUNTID = #{accId}
+	</select>
+	<select id="selectUserPhoto" resultType="infoDto">
+		SELECT 
+			ACCOUNTID as accId
+			, CONCAT(URL, '/' || UUIDNAME) as url
+		  FROM PHOTOUPLOAD
+		 WHERE ACCOUNTID = #{accId} AND URL = '/static/account/upload'
 	</select>
 	<select id="selectPurchaseCount" resultType="infoDto">
 		SELECT BUYSTATUS as buyStatus

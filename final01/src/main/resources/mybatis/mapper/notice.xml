@@ -11,7 +11,7 @@
 			, ACCOUNTID as accId
 			, TITLE
 			, CONTENT
-			, CREATEDATE 
+			, CREATEDATE as createDate
 			, VIEWCNT	
 		  FROM NOTICE
 		  ORDER BY CREATEDATE DESC
