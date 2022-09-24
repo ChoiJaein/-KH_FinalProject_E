@@ -39,5 +39,8 @@ public class MainService {
 		MainDTO data = dao.selectCateTitle(id);
 		return data;
 	}
+
+	
+
 	
 }
