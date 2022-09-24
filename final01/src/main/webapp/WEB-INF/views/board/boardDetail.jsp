@@ -64,7 +64,7 @@
 			<c:set var="uploadId" value="${data.accountId}" />
 		</c:if>
 		<!-- 목업 확인용 -->
-		<c:if test="${datas == null}">
+		<c:if test="${data == null}">
 			<c:set var="status" value="111"/>
 			<c:set var="loginData.accountId" value="111" />
 			<c:set var="accountId" value="111" />
@@ -233,10 +233,28 @@
 			<br><br><br><br><br><br>
 			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
 				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:url var="boardUrl" value="/board" />
 			<c:if test="${uploadId eq myId}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
+				<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#removeModal">삭제</button>
 				<br><br>
 			</c:if>
+			<div class="modal fade" id="removeModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h6 class="modal-title">삭제 확인</h6>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						해당 데이터를 삭제하겠습니까?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" onclick="deleteBoard(${data.bId})">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
 			<hr>
 			<div style="width:100%; background-color:lightgray;">
 				<label style="font-size:20px;">상품 후기</label>
@@ -348,6 +366,27 @@
 	
 	
 	<script type="text/javascript">
+	function deleteBoard(id) {
+		$.ajax({
+			url: "<%=request.getContextPath()%>/board/delete",
+			type: "post",
+			data: {
+				id: id
+			},
+			dataType: "json",
+			success: function(data) {
+				if(data.code === "success") {
+					alert("삭제 완료");
+					location.href = "/home";
+				} else if(data.code === "permissionError") {
+					alert("권한이 오류");
+				} else if(data.code === "notExists") {
+					alert("이미 삭제되었습니다.")
+				}
+			}
+		});
+	}
+	
 		function changeEdit(element) {
 			element.innerText = "확인";
 			element.nextElementSibling.remove();
@@ -401,6 +440,7 @@
 				form.submit();
 			}
 		}
+		
 		
 		function favoriteTest() {
 			if(id_wishList.innerHTML === 'favorite') {

@@ -13,7 +13,6 @@
 	<script type="text/javascript" src="${ckeditor}/ckeditor.js"></script>
 	
 </head>
-
 <body>
 	<header></header>
 	<br><br><br><br><br><br>
@@ -77,8 +76,8 @@
 	</table>
 		<button class="btn btn-primary" onclick="location.href='/'">취소</button>
 		<button class="btn btn-primary" type="submit">수정완료</button>
-		<button class="btn btn-primary" onclick="location.href='/board/delete'">삭제</button>
 	</div>
+	
 	</form>
 	</section>
 	<c:url var="upload" value="/upload/image" />
@@ -89,6 +88,7 @@
 	})
 	
 	function preview() { previewImg.src=URL.createObjectURL(event.target.files[0]); }
+	
 			
 $(document).ready(function(){
 	 
@@ -106,34 +106,6 @@ $(document).ready(function(){
     });
 });
 
-
-
-<!--이미지 업로드 미리보기-->
-function showImagePreview(e){
-	 var file = e.target.files[0];
-	 var imgUrl = URL.createObjectURL(file);
-	 previewImg.src = imgUrl;	 
-}
-
-<!--이미지 업로드 Ajax-->
- function ajaxImageUpload(e){
-	 var file  =  e.target.files[0];
-	 var fData = new FormData();
-	 fData.append("uploadImage", file, file.name);
-	 
-	 $.ajax({
-		 type:"post",
-		 enctype:"multipart/form-data",
-		 url:"/ajax/imageUpload",
-		 data:fData,
-		 processData:false,
-	     contentType:false,
-	     success:function(data, status){
-	    	 previewImg.src = data.src;
-	     }
-	  
-	 });
- } 
 </script>
 </body>
 </html>

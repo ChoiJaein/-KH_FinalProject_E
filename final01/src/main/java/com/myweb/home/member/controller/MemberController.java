@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.myweb.home.info.model.InfoDTO;
+import com.myweb.home.info.service.InfoService;
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.member.service.MemberService;
 import com.myweb.home.member.vo.MemberVO;
@@ -34,6 +36,9 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private InfoService photoService;
 	
 	// 회원 가입
 	@GetMapping(value="/register")
@@ -86,8 +91,12 @@ public class MemberController {
 		accountDto = (AccountDTO) session.getAttribute("loginData");
 		
 		String accountid = accountDto.getAccountid();
+		
 		MemberVO data = service.getAll(accountid);
+		InfoDTO photo = photoService.getUserPhoto(accountid);
+		
 		model.addAttribute("data", data);
+		model.addAttribute("photo", photo); // 사진
 		
 		return "login/userModify";
 	}
@@ -118,7 +127,11 @@ public class MemberController {
 		accountDto = (AccountDTO) session.getAttribute("loginData");
 		
 		String accountid = accountDto.getAccountid();
+		
+		InfoDTO photo = photoService.getUserPhoto(accountid);
 		MemberVO data = service.getAll(accountid);
+		
+		model.addAttribute("photo", photo); // 사진
 		model.addAttribute("data", data);
 		
 		return "/login/signout";

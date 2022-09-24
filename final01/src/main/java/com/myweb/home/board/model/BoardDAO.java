@@ -37,7 +37,11 @@ private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 			return sqlSession.selectOne("boardMapper.countSearch",scri);
 		}
 	
-		
+		//delete를 위함
+		public BoardDTO selectDeleteBoard(int id) {
+			BoardDTO res = sqlSession.selectOne("boardMapper.selectBoardAllData", id);
+			return res;
+		}
 
 		
 		public BoardDTO selectBoardDetail(int id) {
@@ -91,6 +95,10 @@ private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 			int res = sqlSession.update("boardMapper.updateContentData", data);
 			return res == 1 ? true : false;
 		
+		}
+		public boolean deleteBoardData(BoardDTO data) {
+			int res = sqlSession.delete("boardMapper.deleteBoardData", data);
+			return res == 1 ? true : false;
 		}
 		
 		//review

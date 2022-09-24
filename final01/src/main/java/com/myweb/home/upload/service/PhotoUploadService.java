@@ -64,7 +64,7 @@ public class PhotoUploadService {
 	@Transactional
 	public int update(MultipartFile file, PhotoUploadDTO data) throws Exception {
 		
-		logger.info("upload(file= {},data= {})", file, data);
+		logger.info("update(file= {},data= {})", file, data);
 		
 		File folder = new File(data.getLocation());
 		if(!folder.exists()) {
@@ -77,13 +77,7 @@ public class PhotoUploadService {
 		data.setUuidName(uuid.toString());
 		data.setFileSize((int)file.getSize());
 		data.setFileType(file.getContentType());
-		
-		int count = dao.getCount(data.getbId());
-		
-		if(count > 1) {
-			// 하나만 업로드, 업로드 수량 초과.
-			return -1;
-		}
+		data.setbId(data.getbId());
 		
 		boolean result = dao.updateFileData(data);
 		if(result) {
