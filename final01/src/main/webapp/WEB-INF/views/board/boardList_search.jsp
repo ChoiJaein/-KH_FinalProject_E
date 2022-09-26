@@ -19,23 +19,19 @@
 
 	
 	<section class="container" style="width:1250px;">
-		<div>
-			<c:url var="boardUrl" value="./list" />
-			<form action="${boardUrl}" method="get">
-
+		
             <div class="search">
 			  <div>
 				<h2>'${scri.keyword}'상품 목록</h2>
 			  </div>
 			 </div> 
 			<hr>
-				<c:url var="boardDetailUrl" value="./detail">
-					<c:param name="id">${data.bId}</c:param>
+				<c:url var="boardDetailUrl" value="./detail">	
 				</c:url>
 			<c:if test="${not empty list}">
 				<c:forEach items="${list}" var="list">
 
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 							 <img src="${list.url}" style="width:250px; height:250px;"> 
 							</div>
@@ -74,7 +70,7 @@
 			<!-- 데이터가 없을 경우 -->
 			<c:if test="${list == null}">
 				
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -106,7 +102,7 @@
 							</div>
 					</div>
 					<br><br>
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -137,7 +133,7 @@
 								</table>
 							</div>
 					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -168,7 +164,7 @@
 								</table>
 							</div>
 					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -199,7 +195,7 @@
 								</table>
 							</div>
 					</div>
-					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bid}'">
+					<br><br><div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="${list.url}" style="width:250px; height:250px;">
 							</div>
@@ -260,8 +256,8 @@
 			</div>
 		
 		   </section>
-		   </form>
-		   </div>
+		   
+		  
 		   
 	</section>
 	
