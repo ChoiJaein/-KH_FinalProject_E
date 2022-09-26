@@ -269,7 +269,7 @@ public class BoardController {
 		}
 		
 		
-		//좋아요
+		//띰하기
 		@PostMapping(value="board/wishList", produces="application/json; charset=utf-8")
 		@ResponseBody
 		public String like(HttpSession session

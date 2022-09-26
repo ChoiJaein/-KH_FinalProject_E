@@ -155,6 +155,7 @@ public class BoardService {
 		favorData.setbId(data.getbId());
 		
 		if(dao.selectFavorData(favorData) != null) {
+			//찜 기록이 있을 시
 			
 			boolean FavorDelete = dao.deleteFavorData(favorData);
 			
@@ -165,7 +166,7 @@ public class BoardService {
 			return -1;
 			
 		} else {
-			
+			//찜 기록이 없을 시
 			boolean FavorInsert = dao.insertFavorData(favorData);
 			
 			if(!FavorInsert) {
