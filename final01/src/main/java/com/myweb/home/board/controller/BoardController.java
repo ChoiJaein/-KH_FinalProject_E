@@ -51,8 +51,8 @@ public class BoardController {
 		//상품 검색
 		@RequestMapping(value = "/board/boardList_search", method = RequestMethod.GET)
 		public void listPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
-		 
 		 List<BoardDTO> list = service.listSearch(scri);
+		 logger.info("boardList_search(search {},{})", scri,model);
 		 model.addAttribute("list", list);
 		 PageMaker pageMaker = new PageMaker();
 		 pageMaker.setCri(scri);
@@ -60,6 +60,9 @@ public class BoardController {
 		 //pageMaker.setTotalCount(service.countSearch(scri));
 		 model.addAttribute("pageMaker", pageMaker);
 		}
+		
+		
+		
 	
 		@RequestMapping(value = "/board/detail", method = RequestMethod.GET) 
 		public String BoardDetailView(Model model
@@ -276,13 +279,10 @@ public class BoardController {
 				
 				ReviewDTO reviewData = service.getReview(Integer.parseInt(id));
 				AccountDTO account = (AccountDTO)session.getAttribute("loginData");
-				
-				
 				StringBuilder sb = new StringBuilder();
 				sb.append("{");
 				if(reviewData.getAccountId() == account.getAccountid()) {
 					boolean result =service.remove(reviewData);
-					System.out.println("xxx");
 					if(result) {
 			    		sb.append(String.format("\"%s\": \"%s\"", "code","success"));
 			    	}else {
