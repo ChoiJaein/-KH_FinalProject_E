@@ -266,7 +266,7 @@
 			<br><br><br><br><br><br>
 			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
 				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
-			<c:url var="boardUrl" value="/board" />
+		
 			<c:if test="${uploadId eq myId}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
 				<br><br>
@@ -341,11 +341,11 @@
 	            </div>
 	           </c:forEach>
 	                    
-                    <c:if test="${buyId == myId}"> 
+                    
                     <!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
 					<div class="mb-1">
-						<form role="form" method="post" autocomplete="off">
+						<form action="../review/add" method="post" autocomplete="off">
 							<input type="hidden" name="bid" value="${bId}">
 							<div class="input-group">
 								<textarea class="form-control" name="content" id="content" rows="2"></textarea>
@@ -353,8 +353,7 @@
 							</div>
 						</form>
 					</div>
-		      </c:if>	
-			</div>
+			   </div>
 	
 					
 			<c:choose>

@@ -270,8 +270,8 @@ public class BoardController {
 		
 		
 		
-		//리뷰 등록
-		@RequestMapping(value="/review/add", method = RequestMethod.GET)
+		
+		@RequestMapping(value="/board/boardDetail", method = RequestMethod.GET)
 		  public void boardDetail(@RequestParam(value="bId",defaultValue="0") int bId ,Model model) throws Exception {
 			
 			 logger.info("boardDetail");
@@ -280,7 +280,7 @@ public class BoardController {
 			
 		 }
 		
-
+		//리뷰 등록
 		@RequestMapping(value="/review/add", method = RequestMethod.POST)
 		public String insertReview(Model model,
 				ReviewDTO data, HttpSession session,HttpServletRequest request) throws Exception{
@@ -303,17 +303,17 @@ public class BoardController {
 				 }
 				 service.insertReview(data);
 				 
-			 return "redirect:/board/detail?id=" + data.getbId();
-				
+			
+				 return "redirect:/board/boardDetail?id=" + data.getbId();
 		}
  
 
 
 		//상품후기 삭제
 			
-			@RequestMapping(value="/review/delete", method= RequestMethod.POST)
+			@RequestMapping(value="/review/delete", method= RequestMethod.GET)
 			@ResponseBody
-			public void reviewDelete(ReviewDTO reviewDTO,HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
+			public String reviewDelete(ReviewDTO reviewDTO,HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
 				
 				
 				logger.info("post review delete");
@@ -341,10 +341,11 @@ public class BoardController {
 				
 				response.getWriter().append(sb.toString());
 				response.getWriter().flush();
-			}
+			
+			return "redirect:/board/boardDetail?id=" + reviewDTO.getbId();
+           
+                    }
+           }
 		
-		
-		
-		}
 
 
