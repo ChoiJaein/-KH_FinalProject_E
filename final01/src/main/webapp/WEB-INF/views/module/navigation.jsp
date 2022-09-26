@@ -19,7 +19,7 @@
 <br><br>
 <nav class="navbar">
 	<div class="container">
-			<a class="navbar-brand" href="/home">지구마켓</a>
+			<a class="navbar-brand"  style="font-size: 50px;"href="/home">지구마켓</a>
 			
 			<div class="search">
 			<input class="text_wide" type="text" id="keywordInput" name="keyword" value="${scri.keyword}">
@@ -31,7 +31,7 @@
 			<a class="" href="/home/notice">공지사항</a>
 			
 				<c:if test="${not empty sessionScope.loginData}">
-	                     ${sessionScope.loginData.accountid} 님 환영합니다.
+	                     ${sessionScope.loginData.accountid} 님
 						<a class="nav-link" href="/home/myinfo/main">마이페이지</a>
 						<a class="nav-link" href="/home/logout">로그아웃</a>
 						<a class="nav-link" href="/home/board/upload">게시글 업로드</a>
