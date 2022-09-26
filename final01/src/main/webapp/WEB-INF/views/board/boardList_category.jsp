@@ -31,7 +31,7 @@
 					<c:url var="boardDetailUrl" value="./detail">
 							<c:param name="id">${data.bId}</c:param>
 						</c:url>
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='/home/board/detail?id=${data.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 								<img src="<%=request.getContextPath()%>${data.url}" style="width:250px; height:250px;">
 							</div>
