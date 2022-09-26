@@ -175,6 +175,7 @@
 				<br><br>
 			</c:if>
 			<hr>
+			<!-- 
 					<div class="mb-1">
 						<form action="/board/boardDetail" method="post">
 							<input type="hidden" name="bid" value="${bid}">
@@ -184,7 +185,7 @@
 							</div>
 						</form>
 					</div>
-			
+			 
 			
 		
 			<c:choose>
@@ -197,8 +198,8 @@
 					<label>구매하시고 후기를 남겨보세요.</label>
 				</c:when>
 				
-				
 			</c:choose>
+			-->
 	</section>
 	</c:if>
 				
@@ -302,7 +303,9 @@
 				</ul>
 			</div>
 		</nav>
-			
+     </section>
+	</c:if>
+	
 		
 			
 			
@@ -351,13 +354,63 @@
 						<form action="/review/add" method="post">
 							<input type="hidden" name="bId" value="${data.bId}">
 							<div class="input-group">
-								<textarea class="form-control" name="content" rows="2"></textarea>
+								<textarea class="form-control" name="content" id="content" rows="2"></textarea>
 								<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
 							</div>
 						</form>
 					</div>
-				</c:if>
+		      </c:if>	
 			</div>
+			
+		<div class="mt-3 mb-3">
+		<c:forEach items="${review}" var="review">
+			<div class="mb-1"> 
+               <div class="card border-light"> 
+                   <div class="card-header"> 
+                       <div class="d-flex justify-content-between">
+	                     <span><small>${review.accountId}</small></span>
+			             <span><small>${review.createDate}</small></span>
+                       </div>
+                     </div>
+                     <div class="card-body">
+                      <input type="hidden" value="${review.accountId}">
+                         <c:choose>
+                         <c:when test="${review.isDeleted()}">
+                         <p class="text-muted">삭제된 댓글 입니다.</p>
+                         </c:when>
+                        <c:otherwise>
+	                        <c:set var="newLine" value="<%= \"\n\" %>" />
+	                       <p class="card-text">${fn:replace(review.content, newLine, '<br>')}</p>
+                        </c:otherwise>
+                       </c:choose>
+                    <c:if test="${sessionScope.loginData.accountid eq review.accountId}">
+							<c:if test="${not review.isDeleted()}">
+							<div class="text-end">
+					             <button class="btn btn-sm btn-outline-dark" type="button" onclick="changeEdit(this);">수정</button>
+						         <button class="btn btn-sm btn-outline-dark" type="button" onclick="reviewDelete(this, ${review.id})">삭제</button>
+			                 </div>
+			                </c:if>
+				         </c:if>				
+			        </div>
+			      </div>
+	            </div>
+	           </c:forEach>
+	                    
+                    <c:if test="${buyId == myId}"> 
+                    <!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
+				     후기 작성 메뉴가 나옴 -->
+					<div class="mb-1">
+						<form role="form" method="post" autocomplete="off">
+							<input type="hidden" name="bid" value="${bId}">
+							<div class="input-group">
+								<textarea class="form-control" name="content" id="content" rows="2"></textarea>
+								<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
+							</div>
+						</form>
+					</div>
+		      </c:if>	
+			</div>
+	
 					
 			<c:choose>
 				<c:when test="${not empty status}">
@@ -367,13 +420,9 @@
 				</c:when>
 				<c:when test="${empty status}">				
 					<label>구매하시고 후기를 남겨보세요.</label>
-				</c:when>
-				 
-				
+				</c:when>	
 			</c:choose>
-	</section>
-	</c:if>
-	
+		
 	
 	
 	
@@ -416,7 +465,7 @@
 		
 		function reviewDelete(element, id) {
 			$.ajax({
-				url: "/review/delete",
+				url: "/home/review/delete",
 				type: "post",
 				data: {
 					id: id

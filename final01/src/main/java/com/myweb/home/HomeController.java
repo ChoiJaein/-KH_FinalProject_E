@@ -30,7 +30,10 @@ private static final Logger logger = LoggerFactory.getLogger(MainContoller.class
 		model.addAttribute("datas", datas); // 품목 리스트
 		
 		return "home";		
+
 	}
 	
+
 	
+
 }
