@@ -98,7 +98,6 @@
 			<c:set var="accountId" value="111" />
 			<c:set var="uploadId" value="111" />
 		</c:if>
-		
 			<c:set var="buyId" value="${data.buyStatus}" />
 			<c:set var="myId" value="${loginData.accountid}" />
 
@@ -134,16 +133,15 @@
 				<br>
 				<label>상태 : 새상품</label>
 				<br><br><br>
-				
 				<c:if test="${empty status} ">
-					<c:if test="${not empty loginData}">
+					 <c:if test="${not empty loginData.accountid}">
 						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
-					</c:if>
-				<h4 style="float:right;">판매중</h4>
+					 </c:if>
+					<h4 style="float:right;">판매중</h4>	
 				</c:if>
 				<c:if test="${not empty status}">
-				<button class="btn btn-primary" style="float:right; background-color:red;" disabled>구매불가</button>
-				<h4 style="float:right;">판매완료</h4>
+					<button class="btn btn-primary" style="float:right; background-color:red;" disabled>구매불가</button>
+					<h4 style="float:right;">판매완료</h4>
 				</c:if>
 			</div>	
 		</div>		
@@ -238,7 +236,7 @@
 				<br><br><br>
 				
 				<c:if test="${empty status} ">
-					<c:if test="${not empty loginData}">
+					<c:if test="${not empty loginData.accountid}">
 						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
 					</c:if>
 				<h4 style="float:right;">판매중</h4>
