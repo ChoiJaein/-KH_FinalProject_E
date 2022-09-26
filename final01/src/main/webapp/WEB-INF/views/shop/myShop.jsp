@@ -301,7 +301,7 @@
 			        <tr>
 			<!--상품관리페이지 주소 체크 -->   
 			            <td colspan="3">
-			              <button class="btn btn-primary btn-size" onclick="location.href='./modify?id=${data.bId}'">상품 관리 페이지</button>
+			              <button class="btn btn-primary btn-size" onclick="location.href='/home/board/modify?id=${data.bId}'">상품 관리 페이지</button>
 			            </td>    
 			        </tr>
 			    </table>

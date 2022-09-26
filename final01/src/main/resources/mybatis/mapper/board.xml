@@ -50,7 +50,7 @@
 				, B.DEALMETHOD as dealMethod
 				, B.CREATEDATE as createDate
 				, B.BUYSTATUS as buyStatus
-				, B.viewCnt as viewCnt
+				, B.VIEWCNT as viewCnt
 				, CONCAT(P.URL, '/' || P.UUIDNAME) as url
 				, C.CATEGORYNAME as cateName
 				, A.NAME AS userName
@@ -80,7 +80,7 @@
 		</insert>
 		<update id="updateBoardStatics" parameterType="boardStaticsDto">
 			UPDATE BOARD_STATICS
-		   SET LATEST_VISITED_DATE = SYSDATE
+		   SET LATEST_VIEWED_DATE = SYSDATE
 		 WHERE BID = #{bId}
 		</update>
 		<update id="updateViewCnt" parameterType="boardDto">
