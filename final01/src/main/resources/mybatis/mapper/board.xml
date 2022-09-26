@@ -116,6 +116,21 @@
 		DELETE FROM BOARD
 			WHERE BID = #{bId}
 	</delete>
-	
-	
+	<select id = "selectFavor" resultType="favoriteDto">
+			SELECT
+			   FAVORITEID as favId
+			 , ACCOUNTID as accId
+			 , BID
+		  FROM FAVORITE
+		 WHERE BID = #{bId} AND ACCOUNTID = #{accId}
+	</select>
+	<insert id="insertFavor" parameterType="favoriteDto">
+			INSERT INTO FAVORITE
+		     VALUES(FAVORITE_SEQ.NEXTVAL
+		         , #{accId} , #{bId})
+	</insert>
+	<delete id = "deleteFavor" >
+			DELETE FROM FAVORITE
+			WHERE BID = #{bId} AND ACCOUNTID = #{accId}
+	</delete>
   </mapper>

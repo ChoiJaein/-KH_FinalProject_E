@@ -40,42 +40,7 @@
 	     }
 	     alert(msg);
  </script>
-<script type="text/javascript">
-	function ajaxWishList(element, id) {
-		$.ajax({
-			type: "post",
-			url: "/ajax/board/wishList",
-			data: {
-				accountId : id
-			},
-			success: function(data, status) {
-				
-				if(element.innerHTML === 'favorite') {
-					/* 찜목록에 들어갔을 경우 */
-					element.innerHTML = 'favorite_border';
-				}
-				else if(element.innerHTML === 'favorite_border') {
-					/* 찜목록에서 제거되었을 경우 */
-					element.innerHTML = 'favorite';
-				}
-				
-			}
-			
-			error : function(data, status) {
-				console.log("error:" + data);
-				console.log("error:" + status);
-				}
-			
-			complete : function(data, status) {
-				console.log("error:" + data);
-				console.log("error:" + status);
-			}
-			
-		});
-	}
 
-	
-</script>
 <body>
 	<header><%@ include file="../module/navigation.jsp" %>
 	</header>
@@ -222,9 +187,11 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
-					<span class="material-icons" id="id_wishList">
-						favorite_border
+				<div style="float:right;" onclick="ajaxWishList(${data.bId});">
+						<c:if test="${not empty loginData && loginData.accountid != data.accountId}">
+							<span class="material-icons" style = "color:red" id="id_wishList">
+								favorite_border
+						</c:if>
 					</span>
 				</div>
 				<br><br>
@@ -375,6 +342,39 @@
 	
 	<script type="text/javascript">
 	
+	var spanValue =  document.getElementById("id_wishList");
+
+	function ajaxWishList(bId) {
+		$.ajax({
+			type: "post",
+			url: "<%=request.getContextPath()%>/board/wishList",
+			data: {
+				bId : bId
+				
+			},
+			success: function(data) {
+				
+				if(data.code === 'like') {
+					/* 찜목록에 들어갔을 경우 */
+					spanValue.innerHTML = 'favorite';
+				}
+				else if(data.code === 'unlike') {
+					/* 찜목록에서 제거되었을 경우 */
+					spanValue.innerHTML = 'favorite_border';
+					
+				} else if (data.code === 'fail') {
+					alert(data.message);
+					location.href = "<%=request.getContextPath()%>/board/detail"
+				
+				}
+			}
+				
+			
+		});
+	}
+
+	
+	
 		function changeEdit(element) {
 			element.innerText = "확인";
 			element.nextElementSibling.remove();
@@ -429,7 +429,6 @@
 			}
 		}
 		
-		
 		function favoriteTest() {
 			if(id_wishList.innerHTML === 'favorite') {
 				id_wishList.innerHTML = 'favorite_border';
@@ -437,6 +436,8 @@
 			else id_wishList.innerHTML = 'favorite';
 
 		}
+		
+		
 		
 	</script>
 </body>

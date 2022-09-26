@@ -101,6 +101,26 @@ private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 			return res == 1 ? true : false;
 		}
 		
+		public FavoriteDTO selectFavorData(FavoriteDTO data) {
+			logger.info("selectFavorData(data={})", data);
+			
+			FavoriteDTO res = sqlSession.selectOne("boardMapper.selectFavor", data);
+			
+			return res;
+		}
+		
+		public boolean insertFavorData(FavoriteDTO data) {
+			logger.info("insertFavorData(data={})", data);
+			int res = sqlSession.insert("boardMapper.insertFavor", data);
+			return res == 1 ? true : false;
+		}
+		
+		public boolean deleteFavorData(FavoriteDTO data) {
+			logger.info("deleteFavorData(data={})", data);
+			int res = sqlSession.delete("boardMapper.deleteFavor", data);
+			return res == 1 ? true : false;
+		}
+		
 		//review
 		public void insertReview(ReviewDTO data) {
 			 logger.info("data({})",data);

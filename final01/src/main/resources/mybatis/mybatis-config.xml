@@ -18,5 +18,6 @@
 	<typeAlias type="com.myweb.home.board.model.Criteria" alias="criteria" />
 	<typeAlias type="com.myweb.home.board.model.SearchCriteria" alias="searchCriteria" />
 	<typeAlias type="com.myweb.home.board.model.ReviewDTO" alias="reviewDto" />
+	<typeAlias type="com.myweb.home.board.model.FavoriteDTO" alias="favoriteDto" />
 	</typeAliases>  
 </configuration>

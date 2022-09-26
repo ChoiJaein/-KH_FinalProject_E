@@ -16,6 +16,7 @@ import com.myweb.home.board.model.BoardDAO;
 import com.myweb.home.board.model.BoardDTO;
 import com.myweb.home.board.model.BoardStaticsDTO;
 import com.myweb.home.board.model.Criteria;
+import com.myweb.home.board.model.FavoriteDTO;
 import com.myweb.home.board.model.ReviewDTO;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.login.model.AccountDTO;
@@ -144,6 +145,37 @@ public class BoardService {
 		boolean result = dao.deleteBoardData(data);
 		
 		return result;
+	}
+	
+	public int favor(HttpSession session, BoardDTO data) {
+		AccountDTO accData = (AccountDTO)session.getAttribute("loginData");
+		
+		FavoriteDTO favorData = new FavoriteDTO();
+		favorData.setAccId(accData.getAccountid());
+		favorData.setbId(data.getbId());
+		
+		if(dao.selectFavorData(favorData) != null) {
+			
+			boolean FavorDelete = dao.deleteFavorData(favorData);
+			
+			if(!FavorDelete) {
+				
+				return 0;
+			}
+			return -1;
+			
+		} else {
+			
+			boolean FavorInsert = dao.insertFavorData(favorData);
+			
+			if(!FavorInsert) {
+				
+				return 0;
+			}
+			return 1;
+			
+		}
+		
 	}
 	
 	

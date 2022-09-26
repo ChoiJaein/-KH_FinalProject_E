@@ -269,6 +269,38 @@ public class BoardController {
 		}
 		
 		
+		//좋아요
+		@PostMapping(value="board/wishList", produces="application/json; charset=utf-8")
+		@ResponseBody
+		public String like(HttpSession session
+				, @RequestParam("bId") int bId) {
+			logger.info("like(session = {}, bId = {})", session, bId);
+			
+			
+			BoardDTO data = new BoardDTO();
+			JSONObject json = new JSONObject();
+			
+			data.setbId(bId);
+			
+			int favor = service.favor(session, data);
+			
+			if(favor == 1 ) {
+				
+				json.put("code", "like");
+			} else if(favor == -1) {
+				
+				json.put("code", "unlike");
+			} else if (favor == 0) {
+				
+				json.put("code", "fail");
+				json.put("message", "처리 과정중 오류가 발생하였습니다.");
+			}
+				
+			
+			return json.toJSONString();
+		}
+		
+		
 		
 		//리뷰 등록
 		@RequestMapping(value="/review/add", method = RequestMethod.GET)
