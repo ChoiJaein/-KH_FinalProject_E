@@ -2,6 +2,7 @@
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
@@ -9,7 +10,10 @@
 		http://www.springframework.org/schema/beans               https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context             https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/tx                  https://www.springframework.org/schema/tx/spring-tx.xsd
-		http://www.springframework.org/schema/aop                 https://www.springframework.org/schema/aop/spring-aop.xsd">
+		http://www.springframework.org/schema/aop                 https://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/websocket			  http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+
+
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -64,4 +68,12 @@
 		</interceptor>
 	</interceptors>
 	
+	<!-- path는 웹소켓 주소 -->
+	<beans:bean id="chattingCSHandler" class="com.myweb.home.socket.Chatting"></beans:bean>
+		<websocket:handlers>
+			<websocket:mapping handler="chattingCSHandler" path="/chatting/cs"/>
+			<websocket:handshake-interceptors>
+				<beans:bean class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></beans:bean>
+			</websocket:handshake-interceptors>
+		</websocket:handlers>
 </beans:beans>

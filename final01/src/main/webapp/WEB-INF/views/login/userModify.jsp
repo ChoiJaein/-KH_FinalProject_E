@@ -58,7 +58,7 @@
           </div>
           <div>
            <label class="input-file-button mb-4" for="imgSelect">프로필사진 변경</label>
-           <input id="imgSelect" name="uploadImg" type="file" onchange="preview()" style ="display:none;">
+           <input id="imgSelect" name="photoUpload" type="file" onchange="preview()" style ="display:none;">
           </div>
           
        </div>

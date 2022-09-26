@@ -27,16 +27,16 @@
        <c:url var="noticeModifyUrl" value="/notice/modify"/>
           <form action="${noticeModifyUrl}" method="post">
 <!--value에 data.noticeId // 어떤게시물에대한 수정인지 확인하기위한 hidden input-->          
-           <input type="hidden" name ="id" value="">
+           <input type="hidden" name ="id" value="${data.notId}">
              <div class="mb-3">
 <!--value에 data.title -->            
-                <input class="form-control" type="text" name="title" value="제목값" placeholder="제목을 입력하세요">
+                <input class="form-control" type="text" name="title" value="${data.title}" placeholder="제목을 입력하세요">
              </div>
              <hr>
              <div class="mb-3">
 <!--data.content -->                
                  <textarea class="form-control" name="content" rows="15"
-                  placeholder="내용을 입력하세요">내용값</textarea>
+                  placeholder="내용을 입력하세요">${data.content }</textarea>
              </div>
              <div class="mb-3 text-end">
                 <button class="btn btn-primary" type="button" onclick="return addCancel();">취 소</button>
