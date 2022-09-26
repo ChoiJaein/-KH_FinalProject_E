@@ -7,6 +7,7 @@
 	      SELECT ACCOUNTID as accId
 			   , NAME as name
 			   , TRUNC(SYSDATE) - TRUNC(REGISTERDATE) as regDate
+			   , VISITCNT as visitCnt
 			FROM ACCOUNT 
 		   WHERE ACCOUNTID = #{accId}
 	</select>
@@ -56,18 +57,15 @@
 	 	SELECT BUYSTATUS
 	 	     , COUNT(*) AS sellCnt
 		  FROM BOARD 
- 		 WHERE ACCOUNTID = '1' AND BUYSTATUS IS NOT NULL
+ 		 WHERE ACCOUNTID = #{accId} AND BUYSTATUS IS NOT NULL
  	     GROUP BY BUYSTATUS
 	 </select>
 	 <select id="selectMystoreProfile" resultType="infoDto">
-		SELECT  A.ACCOUNTID as accId
-			  , A.NAME as name
-		      , CONCAT(P.URL, '/' || P.UUIDNAME) as url
-		      , A.VISITCNT AS visitCnt
-		   FROM ACCOUNT A
-		  RIGHT JOIN PHOTOUPLOAD P
-			 ON A.ACCOUNTID = P.ACCOUNTID 
-		  WHERE A.ACCOUNTID = #{accId} AND P.URL = '/static/account/upload'
+		SELECT  ACCOUNTID as accId
+			  , NAME as name
+		      , VISITCNT AS visitCnt
+		   FROM ACCOUNT
+		  WHERE ACCOUNTID = #{accId}
 	</select>
 	<select id ="selectSellingList" resultType="infoDto">
 		SELECT B.BID as bId

@@ -19,7 +19,7 @@
 	<br><br><br><br><br><br>
 	<section class="container">
 	<div class="mb-1">
-	<c:url var="boardAddUrl" value="/board/add" />
+	<c:url var="boardAddUrl" value="/board/upload" />
 	<form action="${boardAddUrl}" method="post" enctype="multipart/form-data">
 	<table class="table">
 		<tr>
@@ -60,7 +60,7 @@
 			<th></th>
 		</tr>
 
-<!-- 			지역 일단 보류
+<!-- 			지역 일단 보류   -->
 		<tr>
 			<th>가격</th>
 			<th><input class="" type="text" name="price" placeholder="가격을 입력하세요." ></th>

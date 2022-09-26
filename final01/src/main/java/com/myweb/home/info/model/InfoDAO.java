@@ -79,6 +79,7 @@ private static final Logger logger = LoggerFactory.getLogger(InfoDAO.class);
 	}
 	
 	public InfoDTO selectSellCount(String id) {
+		logger.info("selectSellCountt(id= {})", id);
 		String mapperId = String.format(mapper, "selectSellNum");
 		InfoDTO res = session.selectOne(mapperId, id);
 		
@@ -86,6 +87,7 @@ private static final Logger logger = LoggerFactory.getLogger(InfoDAO.class);
 	}
 	
 	public boolean updateVisitCnt(InfoDTO data) {
+		logger.info("updateVisitCnt(data= {})", data);
 		String mapperId = String.format(mapper, "updateVisitCnt");
 		int res = session.update(mapperId, data);
 		
@@ -93,18 +95,21 @@ private static final Logger logger = LoggerFactory.getLogger(InfoDAO.class);
 	}
 	
 	public ProfileStaticsDTO selectStatics(ProfileStaticsDTO data) {
+		logger.info("selectStatics(data= {})", data);
 		String mapperId = String.format(mapper, "selectStatics");
 		ProfileStaticsDTO res = session.selectOne(mapperId, data);
 		return res;
 	}
 	
 	public boolean insertStatics(ProfileStaticsDTO data) {
+		logger.info("insertStatics(data= {})", data);
 		String mapperId = String.format(mapper, "insertStatics");
 		int res = session.insert(mapperId, data);
 		return res == 1 ? true : false;
 	}
 	
 	public boolean updateStatics(ProfileStaticsDTO data) {
+		logger.info("updateStatics(data= {})", data);
 		String mapperId = String.format(mapper, "updateStatics");
 		int res = session.update(mapperId, data);
 		return res == 1 ? true : false;

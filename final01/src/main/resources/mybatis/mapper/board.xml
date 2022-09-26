@@ -33,6 +33,13 @@
 		  ]]>
            </select>
            
+        <select id = "selectBoardAllData" resultType="boardDto">
+        	SELECT *
+        	  FROM BOARD
+        	 WHERE BID = #{bId}
+        	
+        </select>
+           
 		<select id = "selectBoardData" resultType="boardDto">
 			SELECT B.BID as bId
 				, B.ACCOUNTID as accountId
@@ -105,7 +112,10 @@
 		   , PRICE =#{price}
 		 WHERE BID = #{bId}
 	</update>
-	
+	<delete id="deleteBoardData">
+		DELETE FROM BOARD
+			WHERE BID = #{bId}
+	</delete>
 	
 	
   </mapper>

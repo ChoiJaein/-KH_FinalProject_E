@@ -6,7 +6,6 @@ public class ProfileStaticsDTO {
 	
 	private int profileId;
 	private String accId;
-	private int bId;
 	private String visited;
 	private Date latestVisit;
 	
@@ -24,14 +23,6 @@ public class ProfileStaticsDTO {
 	
 	public void setAccId(String accId) {
 		this.accId = accId;
-	}
-	
-	public int getbId() {
-		return bId;
-	}
-	
-	public void setbId(int bId) {
-		this.bId = bId;
 	}
 	
 	public String getVisited() {
@@ -52,7 +43,7 @@ public class ProfileStaticsDTO {
 
 	@Override
 	public String toString() {
-		return "ProfileStaticsDTO [profileId=" + profileId + ", accId=" + accId + ", bId=" + bId + ", visited="
+		return "ProfileStaticsDTO [profileId=" + profileId + ", accId=" + accId + ", visited="
 				+ visited + ", latestVisit=" + latestVisit + "]";
 	}
 	

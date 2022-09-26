@@ -42,11 +42,12 @@ public class PhotoUploadDAO {
 		return res == 1 ? true : false;
 	
 	}
-	
-	//프로필 사진 업로드
-	public PhotoUploadDTO selectProdfileData(String accId){
-		PhotoUploadDTO res = session.selectOne("photoUploadMapper.selectProfileData", accId);
-		return res;
-	}
 
+	public boolean insertProfileData(PhotoUploadDTO data) {
+		int res = session.insert("photoUploadMapper.insertProfileData", data);
+		System.out.println(res);
+		return res == 1 ? true : false;
+	}
+	
+	
 }

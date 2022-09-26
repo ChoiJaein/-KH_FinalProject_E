@@ -20,6 +20,12 @@ public class PhotoUploadDTO {
 		this.url = url;
 	}
 	
+	public PhotoUploadDTO(String accId, String location, String url) {
+		this.accId = accId;
+		this.location = location;
+		this.url = url;
+	}
+	
 	public int getFileId() {
 		return fileId;
 	}
