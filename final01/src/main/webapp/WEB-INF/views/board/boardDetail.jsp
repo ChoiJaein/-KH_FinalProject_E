@@ -238,13 +238,13 @@
 				<label>상태 : ${data.pCondition}</label>
 				<br><br><br>
 				
-				<c:if test="${status == null} ">
+				<c:if test="${empty data.buyStatus}">
 					<c:if test="${not empty loginData}">
 						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
 					</c:if>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
-				<c:if test="${status != null}">
+				<c:if test="${data.buyStatus != null}">
 				<button class="btn btn-primary" style="float:right; background-color:red;" disabled>구매불가</button>
 				<h4 style="float:right;">판매완료</h4>
 				</c:if>
