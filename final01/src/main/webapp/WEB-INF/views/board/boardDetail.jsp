@@ -12,6 +12,34 @@
 	<%@ include file="../module/head.jsp" %>
 	<link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
 </head>
+<!-- iamport.payment.js -->
+ <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js">
+	 IMP.init('자신의가맹점_키');
+	
+	 IMP.request_pay({
+	     pg : 'inicis', // version 1.1.0부터 지원.
+	     pay_method : 'card',
+	     merchant_uid : 'merchant_' + new Date().getTime(),
+	     name : '주문명:결제테스트',
+	     amount : 14000, //판매 가격
+	     buyer_email : 'iamport@siot.do',
+	     buyer_name : '구매자이름',
+	     buyer_tel : '010-1234-5678',
+	     buyer_addr : '서울특별시 강남구 삼성동',
+	     buyer_postcode : '123-456'
+	 }, function(rsp) {
+	     if ( rsp.success ) {
+	         var msg = '결제가 완료되었습니다.';
+	         msg += '고유ID : ' + rsp.imp_uid;
+	         msg += '상점 거래ID : ' + rsp.merchant_uid;
+	         msg += '결제 금액 : ' + rsp.paid_amount;
+	         msg += '카드 승인번호 : ' + rsp.apply_num;
+	     } else {
+	         var msg = '결제에 실패하였습니다.';
+	         msg += '에러내용 : ' + rsp.error_msg;
+	     }
+	     alert(msg);
+ </script>
 <script type="text/javascript">
 	function ajaxWishList(element, id) {
 		$.ajax({
@@ -64,7 +92,7 @@
 			<c:set var="uploadId" value="${data.accountId}" />
 		</c:if>
 		<!-- 목업 확인용 -->
-		<c:if test="${datas == null}">
+		<c:if test="${data == null}">
 			<c:set var="status" value="111"/>
 			<c:set var="loginData.accountId" value="111" />
 			<c:set var="accountId" value="111" />
@@ -92,7 +120,7 @@
 				</div>
 			</div>
 			<div style="float:left; width:800px; margin-left:5px;">
-				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountId});">
+				<div style="float:right;" onclick="ajaxWishList(id_wishList, ${loginData.accountid});">
 					<span class="material-icons" id="id_wishList">
 						favorite_border
 					</span>
@@ -107,8 +135,10 @@
 				<label>상태 : 새상품</label>
 				<br><br><br>
 				
-				<c:if test="${empty status}">
-				<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
+				<c:if test="${empty status} ">
+					<c:if test="${not empty loginData}">
+						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
+					</c:if>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
 				<c:if test="${not empty status}">
@@ -207,8 +237,10 @@
 				<label>상태 : ${data.pCondition}</label>
 				<br><br><br>
 				
-				<c:if test="${empty status}">
-				<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
+				<c:if test="${empty status} ">
+					<c:if test="${not empty loginData}">
+						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
+					</c:if>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
 				<c:if test="${not empty status}">
@@ -233,6 +265,7 @@
 			<br><br><br><br><br><br>
 			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
 				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
+			<c:url var="boardUrl" value="/board" />
 			<c:if test="${uploadId eq myId}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
 				<br><br>
@@ -311,7 +344,7 @@
 					</div>
 				</c:forEach>
 				
-				<c:if test="${buyId == myId}"> 
+				<c:if test="${not empty buyId && buyId == myId}"> 
 				<!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
 				  	<div class="mb-1">
@@ -348,6 +381,7 @@
 	
 	
 	<script type="text/javascript">
+	
 		function changeEdit(element) {
 			element.innerText = "확인";
 			element.nextElementSibling.remove();
@@ -401,6 +435,7 @@
 				form.submit();
 			}
 		}
+		
 		
 		function favoriteTest() {
 			if(id_wishList.innerHTML === 'favorite') {

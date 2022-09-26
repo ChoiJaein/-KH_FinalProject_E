@@ -62,7 +62,7 @@ public class PhotoUploadService {
 	}
 	
 	@Transactional
-	public int update(MultipartFile file, PhotoUploadDTO data) throws Exception {
+	public int Profileupload(MultipartFile file, PhotoUploadDTO data) throws Exception {
 		
 		logger.info("upload(file= {},data= {})", file, data);
 		
@@ -84,6 +84,38 @@ public class PhotoUploadService {
 			// 하나만 업로드, 업로드 수량 초과.
 			return -1;
 		}
+		
+		boolean result = dao.insertProfileData(data);
+		if(result) {
+			try {
+				file.transferTo(new File(data.getLocation() + File.separatorChar + data.getUuidName()));
+				return 1;
+			} catch (IOException e) {
+				throw new Exception("서버에 파일 업로드를 실패하였습니다.");
+			}
+		} else {
+			// 업로드 실패
+			return 0;
+		}
+	}
+	
+	@Transactional
+	public int update(MultipartFile file, PhotoUploadDTO data) throws Exception {
+		
+		logger.info("update(file= {},data= {})", file, data);
+		
+		File folder = new File(data.getLocation());
+		if(!folder.exists()) {
+			folder.mkdirs();
+		}
+		
+		UUID uuid = UUID.nameUUIDFromBytes(file.getBytes());
+		
+		data.setFileName(file.getOriginalFilename());
+		data.setUuidName(uuid.toString());
+		data.setFileSize((int)file.getSize());
+		data.setFileType(file.getContentType());
+		data.setbId(data.getbId());
 		
 		boolean result = dao.updateFileData(data);
 		if(result) {

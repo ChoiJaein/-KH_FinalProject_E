@@ -18,8 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.myweb.home.common.util.Paging;
+import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.notice.model.NoticeDAO;
 import com.myweb.home.notice.model.NoticeDTO;
 import com.myweb.home.notice.service.NoticeService;
@@ -82,61 +84,86 @@ public class NoticeController {
 	
 	@PostMapping(value="/add") 
 	public String add(HttpServletRequest request,
-			@ModelAttribute NoticeVO noticeVo) {
+			 @ModelAttribute NoticeVO noticeVo
+			,@SessionAttribute("loginData") AccountDTO accDto) {
 		NoticeDTO data = new NoticeDTO();
 		data.setTitle(noticeVo.getTitle());
 		data.setContent(noticeVo.getContent());
 		data.setNotId(noticeVo.getNotId());
 		
-		int id = service.add(data);
-		
-		if(id!= -1) { 
-			return "redirect:/notice/detail?id=" + id;
+		if(accDto.getAdmin().equals("Y")) {
+			int id = service.add(data);
+			
+			if(id!= -1) { 
+				return "redirect:/notice/detail?id=" + id;
+			} else {
+				request.setAttribute("error", "게시글 저장에 실패하였습니다.");
+				return "notice/add"; 
+			}
+			
 		} else {
-			request.setAttribute("msg", "게시글 저장에 실패하였습니다.");
-			request.setAttribute("url", "notice/add");
-			return "notice/add"; 
+			request.setAttribute("error", "해당 작업의 권한이 없습니다.");
+			return "/home";
+			
 		}
+		
+		
 	}
 	
 	@GetMapping(value="/modify")
 	public String modify(Model model
-			, @RequestParam int id) {
+			, @RequestParam int id
+			, @SessionAttribute("loginData") AccountDTO accDto) {
 	
 		logger.info("modify(model= {}, id ={})", model, id);
 		
 		NoticeDTO data = service.getData(id);
 		
 		if(data != null) {
+			if(accDto.getAdmin().equals("Y")) {
 				model.addAttribute("data", data);
-				return "notice/testmodify"; //
+				return "board/modify";
+			} else {	
+				model.addAttribute("msg", "해당 작업을 수행할 권한이 없습니다.");
+				model.addAttribute("url", "/home");
+				return "alert";
+			}
 		} else {
 			model.addAttribute("msg", "해당 데이터가 존재하지 않습니다.");
-			model.addAttribute("url", "해당 데이터가 존재하지 않습니다.");
-			return "notice/modify";
+			model.addAttribute("url", "/home");
+			return "alert";
 		}
 	}
 	
 	@PostMapping(value="/modify")
 	public String modify(Model model
-			, @ModelAttribute NoticeVO noticeVo) {
+			, @ModelAttribute NoticeVO noticeVo
+			, @SessionAttribute("loginData") AccountDTO accDto) {
 		
 		logger.info("modify(model= {}, noticeVo ={})", model, noticeVo);
 		
 		NoticeDTO data = service.getData(noticeVo.getNotId());
 		
 		if(data != null) {
-			data.setTitle(noticeVo.getTitle());
-			data.setContent(noticeVo.getContent());
-			boolean result = service.modify(data);
-			if(result) {
-				return "redirect:/notice/detail?id=" + data.getNotId();
+			if(accDto.getAdmin().equals("Y")) {
+				data.setTitle(noticeVo.getTitle());
+				data.setContent(noticeVo.getContent());
+				boolean result = service.modify(data);
+				
+				if(result) {
+					return "redirect:/notice/detail?id=" + data.getNotId();
+				} else {
+					return modify(model, noticeVo.getNotId(), accDto);
+				}
 			} else {
-				return modify(model, noticeVo.getNotId());
-			}
-		} else {
-			model.addAttribute("error", "해당 데이터가 존재하지 않습니다.");
-			return "notice/modify";
+				model.addAttribute("msg", "해당 작업을 수행할 권한이 없습니다.");
+				model.addAttribute("url", "/home");
+			return "alert";
+			} 
+		}else {
+			model.addAttribute("msg", "해당 데이터가 없습니다.");
+			model.addAttribute("url", "/home");
+		return "alert";
 		}
 	}
 	

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
+
 
 import com.myweb.home.board.model.BoardDTO;
 import com.myweb.home.board.model.Criteria;
@@ -83,14 +85,14 @@ public class BoardController {
 		
 		}
 		
-		@GetMapping(value="board/upload")
+		@GetMapping(value="/board/upload")
 		public String add(Model model) {
 			List datas = service.getAll();
 			model.addAttribute("cData", datas); //카테고리 정보
 			return "board/boardUpload";
 		}
 		
-		@PostMapping(value="board/upload")
+		@PostMapping(value="/board/upload")
 		public String add(HttpServletRequest request
 				, @SessionAttribute("loginData") AccountDTO accDto
 				, @ModelAttribute BoardVO boardVo
@@ -134,7 +136,7 @@ public class BoardController {
 			}
 		}
 		
-		@GetMapping(value="board/modify")
+		@GetMapping(value="/board/modify")
 		public String modify(Model model,
 				@SessionAttribute("loginData") AccountDTO accDto,
 				@RequestParam int id
@@ -147,6 +149,7 @@ public class BoardController {
 			
 			BoardDTO data= service.getData(id);
 			List<PhotoUploadDTO> fileDatas = photoUploadService.getDatas(id);
+		
 			
 	
 			if(data != null) {
@@ -166,7 +169,7 @@ public class BoardController {
 			}
 		}
 		
-		@PostMapping(value="board/modify")
+		@PostMapping(value="/board/modify")
 		public String modify(Model model, HttpServletRequest request
 				, @SessionAttribute("loginData") AccountDTO accDto
 				, @ModelAttribute BoardVO boardVo
@@ -175,23 +178,27 @@ public class BoardController {
 			logger.info("modify(model= {}, AccountDTO={}, boardVo={})", model, accDto, boardVo);
 			
 			BoardDTO data = service.getData(boardVo.getbId());
-			List<PhotoUploadDTO> fileDatas = photoUploadService.getDatas(boardVo.getbId());
-			
-			for(MultipartFile file: files) {
-				PhotoUploadDTO fileData = new PhotoUploadDTO();
-				
-				try {
-					int fileResult = photoUploadService.update(file, fileData);
-					if(fileResult == -1) {
-						request.setAttribute("error", "파일 업로드 수량을 초과하였습니다.");
-						return "board/boardUpload";
+			/*
+			 * 
+
+				for(MultipartFile file: files) {
+					PhotoUploadDTO fileData = new PhotoUploadDTO();
+					fileData.setbId(boardVo.getbId());
+					
+					try {
+						int fileResult = photoUploadService.update(file, fileData);
+						if(fileResult == -1) {
+							model.addAttribute("msg", "파일 업로드 수량을 초과하였습니다.");
+							model.addAttribute("url", "/home");
+							return "alert";
+						}
+					} catch(Exception e) {
+						model.addAttribute("msg", "파일 업로드 작업중 예상치 못한 에러가 발생하였습니다.");
+						model.addAttribute("url", "/home");
+						return "alert";
 					}
-				} catch(Exception e) {
-					request.setAttribute("error", "파일 업로드 작업중 예상치 못한 에러가 발생하였습니다.");
-					return "board/boardUpload";
 				}
-			}
-			
+			*/
 			if(data != null) {
 				if(data.getAccountId().equals(accDto.getAccountid()) || accDto.getAdmin().equals("Y")) {
 					data.setbTitle(boardVo.getbTitle());
@@ -221,8 +228,47 @@ public class BoardController {
 			
 		}
 		
+		@PostMapping(value="/board/delete", produces="application/json; charset=utf-8")
+		@ResponseBody
+		public String delete(@SessionAttribute("loginData") AccountDTO accDto
+				, @RequestParam int id) {
+			
+			logger.info("delete(id = {}, accDto={})", id, accDto);
+			
+			BoardDTO data = service.getDeleteBoardData(id);
+			
+			JSONObject json = new JSONObject();
+			
+			if(data == null) {
+				// 삭제할 데이터 없음
+				json.put("code", "notExists");
+				json.put("message", "이미 삭제 된 데이터 입니다.");
+			} else {
+				if(data.getAccountId().equals(accDto.getAccountid())) {
+					// 작성자, 수정자 동일인
+					boolean result = service.removeBoard(data);
+					if(result) {
+						json.put("code", "success");
+						json.put("message", "삭제가 완료되었습니다.");
+					} else {
+						// 삭제 실패
+						json.put("code", "fail");
+						json.put("message", "삭제 작업 중 문제가 발생하였습니다.");
+					}
+				} else {
+					// 작성자, 수정자 동일인 아님 - 권한 없음
+					json.put("code", "permissionError");
+					json.put("message", "삭제 할 권한이 없습니다.");
+				}
+			}
+			
+			return json.toJSONString();
+		}
+		
+		
+		
 		//리뷰 등록
-		@RequestMapping(value="/board/boardDetail", method = RequestMethod.GET)
+		@RequestMapping(value="/review/add", method = RequestMethod.GET)
 		  public void boardDetail(@RequestParam(value="bId",defaultValue="0") int bId ,Model model) throws Exception {
 			
 			 logger.info("boardDetail");
@@ -232,7 +278,7 @@ public class BoardController {
 		 }
 		
 
-		@RequestMapping(value="/board/boardDetail", method = RequestMethod.POST)
+		@RequestMapping(value="/review/add", method = RequestMethod.POST)
 		public String insertReview(Model model,
 				ReviewDTO data, HttpSession session,HttpServletRequest request) throws Exception{
 			    logger.info("datas({})", data);
@@ -254,7 +300,7 @@ public class BoardController {
 				 }
 				 service.insertReview(data);
 				 
-			 return "redirect:/board/boardDetail?id=" + data.getbId();
+			 return "redirect:/board/detail?id=" + data.getbId();
 				
 		}
  

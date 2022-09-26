@@ -20,12 +20,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
+import com.myweb.home.info.model.InfoDTO;
+import com.myweb.home.info.service.InfoService;
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.member.service.MemberService;
 import com.myweb.home.member.vo.MemberVO;
+import com.myweb.home.upload.model.PhotoUploadDTO;
+import com.myweb.home.upload.service.PhotoUploadService;
 
 @Controller
 public class MemberController {
@@ -34,6 +40,12 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private InfoService photoService;
+	
+	@Autowired
+	private PhotoUploadService photoUploadService;
 	
 	// 회원 가입
 	@GetMapping(value="/register")
@@ -86,16 +98,41 @@ public class MemberController {
 		accountDto = (AccountDTO) session.getAttribute("loginData");
 		
 		String accountid = accountDto.getAccountid();
+		
 		MemberVO data = service.getAll(accountid);
+		InfoDTO photo = photoService.getUserPhoto(accountid);
+		
 		model.addAttribute("data", data);
+		model.addAttribute("photo", photo); // 사진
 		
 		return "login/userModify";
 	}
 	
 	@PostMapping(value="/myinfo/modify")
-	public String userModify(Model model, @ModelAttribute MemberVO vo) {
+	public String userModify(Model model, HttpServletRequest request
+			, @ModelAttribute MemberVO vo , @SessionAttribute("loginData") AccountDTO accDto
+			,@RequestParam("photoUpload") MultipartFile[] files) {
 		logger.info("post userModify(Model={}, MemberVO={})", model, vo);
 		boolean result = service.userModify(vo);
+		
+		String id = accDto.getAccountid();
+		
+		for(MultipartFile file: files) {
+			String location = request.getServletContext().getRealPath("/resources/account/upload");
+			String url = "/static/account/upload";
+			PhotoUploadDTO fileData = new PhotoUploadDTO(id, location, url);
+			
+			try {
+				int fileResult = photoUploadService.Profileupload(file, fileData);
+				if(fileResult == -1) {
+					request.setAttribute("error", "파일 업로드 수량을 초과하였습니다.");
+					return "board/boardUpload";
+				}
+			} catch(Exception e) {
+				request.setAttribute("error", "파일 업로드 작업중 예상치 못한 에러가 발생하였습니다.");
+				return "board/boardUpload";
+			}
+		}
 		
 		if(result) {
 			model.addAttribute("msg", "수정이 완료되었습니다.");
@@ -105,7 +142,9 @@ public class MemberController {
 			model.addAttribute("msg", "수정을 실패하였습니다. 다시 시도해주세요.");
 			model.addAttribute("url", "/home/myinfo/modify");
 			return "alert";
-		}
+			}
+		
+		
 	}
 	
 	
@@ -118,7 +157,11 @@ public class MemberController {
 		accountDto = (AccountDTO) session.getAttribute("loginData");
 		
 		String accountid = accountDto.getAccountid();
+		
+		InfoDTO photo = photoService.getUserPhoto(accountid);
 		MemberVO data = service.getAll(accountid);
+		
+		model.addAttribute("photo", photo); // 사진
 		model.addAttribute("data", data);
 		
 		return "/login/signout";

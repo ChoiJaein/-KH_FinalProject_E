@@ -48,11 +48,10 @@ function pwCheck(){
 			<div class="div-middle">
 			
 			
-			<%--
+			
 			 	<div class="div-profile">
-					<img src="${data.url}" alt="프로필사진" />
+					<img src="<%=request.getContextPath()%>${photo.url}" alt="프로필사진" />
 				</div> 
-				--%>
 				
 				
 				<div class="div-profile">

@@ -13,7 +13,6 @@
 	<script type="text/javascript" src="${ckeditor}/ckeditor.js"></script>
 	
 </head>
-
 <body>
 	<header></header>
 	<br><br><br><br><br><br>
@@ -77,8 +76,25 @@
 	</table>
 		<button class="btn btn-primary" onclick="location.href='/'">취소</button>
 		<button class="btn btn-primary" type="submit">수정완료</button>
-		<button class="btn btn-primary" onclick="location.href='/board/delete'">삭제</button>
+		<button class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#removeModal">삭제</button>
 	</div>
+	<div class="modal fade" id="removeModal" tabindex="-1" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h6 class="modal-title">삭제 확인</h6>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						해당 데이터를 삭제하겠습니까?
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-sm btn-danger" data-bs-dismiss="modal" onclick="deleteBoard(${data.bId})">확인</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	
 	</form>
 	</section>
 	<c:url var="upload" value="/upload/image" />
@@ -89,6 +105,27 @@
 	})
 	
 	function preview() { previewImg.src=URL.createObjectURL(event.target.files[0]); }
+	
+	function deleteBoard(id) {
+		$.ajax({
+			url: "<%=request.getContextPath()%>/board/delete",
+			type: "post",
+			data: {
+				id: id
+			},
+			dataType: "json",
+			success: function(data) {
+				if(data.code === "success") {
+					alert("삭제 완료");
+					location.href = "/home";
+				} else if(data.code === "permissionError") {
+					alert("권한이 오류");
+				} else if(data.code === "notExists") {
+					alert("이미 삭제되었습니다.")
+				}
+			}
+		});
+	}
 			
 $(document).ready(function(){
 	 
@@ -106,34 +143,6 @@ $(document).ready(function(){
     });
 });
 
-
-
-<!--이미지 업로드 미리보기-->
-function showImagePreview(e){
-	 var file = e.target.files[0];
-	 var imgUrl = URL.createObjectURL(file);
-	 previewImg.src = imgUrl;	 
-}
-
-<!--이미지 업로드 Ajax-->
- function ajaxImageUpload(e){
-	 var file  =  e.target.files[0];
-	 var fData = new FormData();
-	 fData.append("uploadImage", file, file.name);
-	 
-	 $.ajax({
-		 type:"post",
-		 enctype:"multipart/form-data",
-		 url:"/ajax/imageUpload",
-		 data:fData,
-		 processData:false,
-	     contentType:false,
-	     success:function(data, status){
-	    	 previewImg.src = data.src;
-	     }
-	  
-	 });
- } 
 </script>
 </body>
 </html>

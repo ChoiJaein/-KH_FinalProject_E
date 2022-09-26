@@ -19,6 +19,7 @@ import com.myweb.home.board.model.Criteria;
 import com.myweb.home.board.model.ReviewDTO;
 import com.myweb.home.board.model.SearchCriteria;
 import com.myweb.home.login.model.AccountDTO;
+import com.myweb.home.notice.model.NoticeDTO;
 import com.myweb.home.upload.model.PhotoUploadDAO;
 import com.myweb.home.upload.model.PhotoUploadDTO;
 
@@ -44,6 +45,11 @@ public class BoardService {
 	
 	public int countSearch(SearchCriteria scri)throws Exception {
 		return dao.countSearch(scri);
+	}
+	
+	public BoardDTO getDeleteBoardData(int id) {
+		BoardDTO data = dao.selectDeleteBoard(id);
+		return data;
 	}
 	
 	public BoardDTO getData(int id) {
@@ -129,6 +135,14 @@ public class BoardService {
 	
 	public boolean ImageModify(PhotoUploadDTO data) {
 		boolean result = pDao.updateFileData(data);
+		return result;
+	}
+	
+	public boolean removeBoard(BoardDTO data) {
+		logger.info("remove(data = {})", data);
+		
+		boolean result = dao.deleteBoardData(data);
+		
 		return result;
 	}
 	

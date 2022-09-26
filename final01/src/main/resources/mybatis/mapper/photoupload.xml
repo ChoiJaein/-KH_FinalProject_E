@@ -37,4 +37,13 @@
 		   , FILETYPE = #{fileType}
 		 WHERE BID = #{bId}
 	</update>
+	
+	<insert id="insertProfileData" parameterType="photoUploadDto">
+		INSERT INTO PHOTOUPLOAD
+		     VALUES(PHOTOUPLOAD_SEQ.NEXTVAL
+		     	  , NULL 	   , #{accId}
+		          , #{uuidName}, #{fileName}
+		          , #{location}, #{url}
+		          , #{fileSize}, #{fileType})
+	</insert>
 </mapper>
