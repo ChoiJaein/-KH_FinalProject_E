@@ -129,30 +129,6 @@
        </div> 
         
         
-      <div>  
-         <div class="form-inline-input">
-           <label class="form-label">Name on Card</label>
-           <input class="form-input form-size-300 mb-4 cursor" type="text" name="NameOnCard" placeholder="hong gil dong">
-         </div>
-         <div class="form-inline-input"> 
-           <label class="form-label">Credit Card Number</label>
-           <input class="form-input form-size-300 mb-4 cursor" type="text" name="CardNumber" placeholder="0000-0000-0000-0000">
-         </div>
-        </div>
-        
-       <div> 
-         <div class="form-inline-input">
-             <label class="form-label">Expiration</label>
-             <input class="form-input form-size-300 mb-4 cursor" type="text" name="Expiration" maxlength="5" placeholder="MM/YY">
-          </div>
-          <div class="form-inline-input">
-             <label class="form-label">CVV</label>
-             <input class="form-input form-size-300  mb-4 cursor" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                    name="CVV" maxlength="3" placeholder="123">
-         </div>
-       </div>       
-     </div>
-               
           <div class="text-end button-left">
             <button class="btn btn-primary" type="button" onclick="cancel();">취 소</button>
             <!-- <button class="btn btn-primary" type="button" onclick="finalPay(this.form);">결 제</button> -->
@@ -209,8 +185,7 @@
 	IMP.init(code);
 		//결제요청
 		IMP.request_pay({
-			//name과 amout만있어도 결제 진행가능
-			//pg : 'kakao', //pg사 선택 (kakao, kakaopay 둘다 가능)
+			pg : 'kcp',
 			pay_method: 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
 			name : '결제테스트', // 상품명
@@ -236,7 +211,7 @@
 				console.log("결제성공 " + msg);
 			}
 			else{//결제 실패시
-				var msg = '결제에 실패했습니다';
+				var msg = '';
 				msg += '에러 : ' + rsp.error_msg
 			}
 			console.log(msg);
