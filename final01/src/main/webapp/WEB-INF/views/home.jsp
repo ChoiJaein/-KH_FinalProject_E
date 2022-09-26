@@ -73,7 +73,7 @@
 		<c:if test="${not empty datas}">
 			<tr class="text-center">
 				<c:forEach items="${datas}" var="data" begin="0" end="4">
-				<td onclick="location.href='/detail?id=${data.bId}'">
+				<td onclick="location.href='/home/board/detail?id=${data.bId}'">
 					<img src="<%=request.getContextPath()%>${data.url}" alt="Nothing" width="200px" height="200px"><br>
 					${data.bTitle}<br>
 					<fmt:formatNumber value="${data.price}" pattern="#,###원"/><br>

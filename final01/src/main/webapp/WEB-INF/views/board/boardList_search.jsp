@@ -31,7 +31,7 @@
 			<c:if test="${not empty list}">
 				<c:forEach items="${list}" var="list">
 
-					<div style="width:1250px; height:250px;" onclick="location.href='${boardDetailUrl}?id=${list.bId}'">
+					<div style="width:1250px; height:250px;" onclick="location.href='/home/board/detail?id=${list.bId}'">
 							<div style="width:250px; height:250px; background-color:skyblue; float:left; vertical-align:middle;">
 							 <img src="${list.url}" style="width:250px; height:250px;"> 
 							</div>

@@ -34,7 +34,7 @@
 	                     ${sessionScope.loginData.accountid} 님 환영합니다.
 						<a class="nav-link" href="/home/myinfo/main">마이페이지</a>
 						<a class="nav-link" href="/home/logout">로그아웃</a>
-						<a class="nav-link" href="/board/upload">게시글 업로드</a>
+						<a class="nav-link" href="/home/board/upload">게시글 업로드</a>
 				</c:if>
 				<c:if test="${empty sessionScope.loginData}">
 						<a class="nav-link" href="/home/login">로그인</a>
