@@ -98,8 +98,7 @@
 			<c:set var="accountId" value="111" />
 			<c:set var="uploadId" value="111" />
 		</c:if>
-			<c:set var="buyId" value="${data.buyStatus}" />
-			<c:set var="myId" value="${loginData.accountid}" />
+			
 
 	
 	<c:if test="${empty data}">
@@ -134,13 +133,13 @@
 				<label>상태 : 새상품</label>
 				<br><br><br>
 				
-				<c:if test="${empty status} ">
+				<c:if test="${empty data.buyStatus} ">
 					<c:if test="${not empty loginData}">
 						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
 					</c:if>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
-				<c:if test="${not empty status}">
+				<c:if test="${not empty data.buyStatus}">
 				<button class="btn btn-primary" style="float:right; background-color:red;" disabled>구매불가</button>
 				<h4 style="float:right;">판매완료</h4>
 				</c:if>
@@ -167,9 +166,9 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+			<!-- 판매자아이디 uploadId     로그인한아이디 loginData.accountid    
 				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
-			<c:if test="${uploadId eq myId}">
+			<c:if test="${uploadId eq loginData.accountid}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
 				<br><br>
 			</c:if>
@@ -263,10 +262,10 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+			<!-- 판매자아이디 uploadId     로그인한아이디 loginData.accountid    
 				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
 			<c:url var="boardUrl" value="/board" />
-			<c:if test="${uploadId eq myId}">
+			<c:if test="${uploadId eq loginData.accountid}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
 				<br><br>
 			</c:if>
@@ -339,35 +338,39 @@
 			      </div>
 	            </div>
 	           </c:forEach>
-	                    
-                    <c:if test="${buyId == myId}"> 
-                    <!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
-				     후기 작성 메뉴가 나옴 -->
-					<div class="mb-1">
-						<form role="form" method="post" autocomplete="off">
-							<input type="hidden" name="bid" value="${bId}">
-							<div class="input-group">
-								<textarea class="form-control" name="content" id="content" rows="2"></textarea>
-								<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
-							</div>
-						</form>
-					</div>
-		      </c:if>	
-			</div>
-	
-					
-			<c:choose>
-				<c:when test="${not empty status}">
-					<c:if test="${empty review}">
-						<label>후기 미등록.</label>
-					</c:if>
-				</c:when>
-				<c:when test="${empty status}">				
-					<label>구매하시고 후기를 남겨보세요.</label>
-				</c:when>	
-			</c:choose>
+	            <c:if test="${not empty loginData.accountid}">
+                    <c:if test="${data.buyStatus eq loginData.accountid}"> 
+	                    <!-- data.buyStatus == loginData.accountid  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
+					     후기 작성 메뉴가 나옴 -->
+						<div class="mb-1">
+							<form role="form" method="post" autocomplete="off">
+								<input type="hidden" name="bid" value="${bId}">
+								<div class="input-group">
+									<textarea class="form-control" name="content" id="content" rows="2"></textarea>
+									<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
+								</div>
+							</form>
+						</div>
+		     		</c:if>	
+				</c:if>
 		
-	
+			
+				<c:choose>
+					<c:when test="${not empty data.buyStatus}">
+						<c:if test="${empty review}">
+							<div style="width:100%;">
+								<label style="text-align:center;">후기 미등록.</label>
+							</div>
+						</c:if>
+					</c:when>
+					<c:when test="${empty data.buyStatus}">				
+						<div style="width:100%;">
+							<label style="text-align:center;">구매하시고 후기를 남겨보세요.</label>
+						</div>
+					</c:when>	
+				</c:choose>
+			
+		</div>
 	
 	
 	<footer><%@ include file="../module/footer.jsp" %></footer>
