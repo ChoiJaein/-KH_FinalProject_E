@@ -107,129 +107,11 @@ public class MemberController {
 		return "login/userModify";
 	}
 	
-//	@PostMapping(value="/myinfo/modify")
-//	public String userModify(HttpServletRequest request, Model model
-//			, AccountDTO accountDto, @ModelAttribute MemberVO vo) {
-//		logger.info("post userModify(Model={}, accountDto={}, MemberVO={})", model, accountDto, vo);
-//
-//		boolean result = service.userModify(vo);
-//		
-//		if(result) {
-//			model.addAttribute("msg", "수정이 완료되었습니다.");
-//			model.addAttribute("url", "/home");
-//			return "alert";
-//		} else {
-//			model.addAttribute("msg", "수정을 실패하였습니다. 다시 시도해주세요.");
-//			model.addAttribute("url", "/home/myinfo/modify");
-//			return "alert";
-//		}
-//	}
-	
-			// 파일 저장
-	/* 첨부 파일 업로드 */
-	@PostMapping(value="uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
-		
-		logger.info("uploadAjaxActionPOST..........");
-		String uploadFolder = "/Users/jaein/git/KH_FinalProject_E/final01/src/main/webapp/resources/img/member";
-		
-		/* 날짜 폴더 경로 */
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		
-		Date date = new Date();
-		
-		String str = sdf.format(date);
-		
-		String datePath = str.replace("-", File.separator);
-		
-		/* 폴더 생성 */
-		File uploadPath = new File(uploadFolder, datePath);
-		
-		if(uploadPath.exists() == false) {
-			uploadPath.mkdirs();
-		}
-		
-		/* 이미저 정보 담는 객체 */
-		List<AttachImageVO> list = new ArrayList<>();
-		
-		// 향상된 for
-		for(MultipartFile multipartFile : uploadFile) {
-			
-			/* 이미지 정보 객체 */
-			AttachImageVO vo = new AttachImageVO();
-			
-			/* 파일 이름 */
-			String uploadFileName = multipartFile.getOriginalFilename();
-			vo.setFileName(uploadFileName);
-			vo.setUploadPath(datePath);
-			
-			/* uuid 적용 파일 이름 */
-			String uuid = UUID.randomUUID().toString();
-			vo.setUuid(uuid);
-			
-			uploadFileName = uuid + "_" + uploadFileName;
-			
-			/* 파일 위치, 파일 이름을 합친 File 객체 */
-			File saveFile = new File(uploadPath, uploadFileName);
-			
-			/* 파일 저장 */
-			try {
-				
-				multipartFile.transferTo(saveFile);
-				
-				// 여기 원래 썸네일 관련 내용들이 우루루 들어감
-				/* 썸네일 생성(ImageIO) */
-				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-				
-			} 
-			
-			list.add(vo);
-			
-		}	//for
-		
-		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
-		System.out.println(result);
-		return result;
-		
-		
-//			// 향상된 for
-//			for(MultipartFile multipartFile : uploadFile) {
-//				logger.info("-----------------------------------------------");
-//				logger.info("파일 이름 : " + multipartFile.getOriginalFilename());
-//				logger.info("파일 타입 : " + multipartFile.getContentType());
-//				logger.info("파일 크기 : " + multipartFile.getSize());			
-//			}
-//			
-//			//기본 for
-//			for(int i = 0; i < uploadFile.length; i++) {
-//				logger.info("-----------------------------------------------");
-//				logger.info("파일 이름 : " + uploadFile[i].getOriginalFilename());
-//				logger.info("파일 타입 : " + uploadFile[i].getContentType());
-//				logger.info("파일 크기 : " + uploadFile[i].getSize());			
-//			}
-		
-	}
-	
-	
-	@ResponseBody
-	@PostMapping(value="/myinfo/modify", produces = "application/text; charset=utf8")
+	@PostMapping(value="/myinfo/modify")
 	public String userModify(HttpServletRequest request, Model model
 			, AccountDTO accountDto, @ModelAttribute MemberVO vo) {
 		logger.info("post userModify(Model={}, accountDto={}, MemberVO={})", model, accountDto, vo);
-		// 파일업로드 관련 메소드. 일단 주석처리.
-//		HttpSession session = request.getSession();
-//		accountDto = (AccountDTO) session.getAttribute("loginData");
-//		
-//		String accountid = accountDto.getaccountid();
-//		logger.info("photoUploadService.getDatas 실행 직전(accountid={})", accountid);
-//		List<PhotoUploadDTO> fileDatas = photoUploadService.getDatas(accountid);
-//		
-//		model.addAttribute("fileDatas", fileDatas);
 
-		
 		boolean result = service.userModify(vo);
 		
 		if(result) {
@@ -242,6 +124,94 @@ public class MemberController {
 			return "alert";
 		}
 	}
+	
+//			// 파일 저장
+//	/* 첨부 파일 업로드 */
+//	@PostMapping(value="uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
+//	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
+//		
+//		logger.info("uploadAjaxActionPOST..........");
+//		String uploadFolder = "/Users/jaein/git/KH_FinalProject_E/final01/src/main/webapp/resources/img/member";
+//		
+//		/* 날짜 폴더 경로 */
+//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//		
+//		Date date = new Date();
+//		
+//		String str = sdf.format(date);
+//		
+//		String datePath = str.replace("-", File.separator);
+//		
+//		/* 폴더 생성 */
+//		File uploadPath = new File(uploadFolder, datePath);
+//		
+//		if(uploadPath.exists() == false) {
+//			uploadPath.mkdirs();
+//		}
+//		
+//		/* 이미저 정보 담는 객체 */
+//		List<AttachImageVO> list = new ArrayList<>();
+//		
+//		// 향상된 for
+//		for(MultipartFile multipartFile : uploadFile) {
+//			
+//			/* 이미지 정보 객체 */
+//			AttachImageVO vo = new AttachImageVO();
+//			
+//			/* 파일 이름 */
+//			String uploadFileName = multipartFile.getOriginalFilename();
+//			vo.setFileName(uploadFileName);
+//			vo.setUploadPath(datePath);
+//			
+//			/* uuid 적용 파일 이름 */
+//			String uuid = UUID.randomUUID().toString();
+//			vo.setUuid(uuid);
+//			
+//			uploadFileName = uuid + "_" + uploadFileName;
+//			
+//			/* 파일 위치, 파일 이름을 합친 File 객체 */
+//			File saveFile = new File(uploadPath, uploadFileName);
+//			
+//			/* 파일 저장 */
+//			try {
+//				
+//				multipartFile.transferTo(saveFile);
+//				
+//				// 여기 원래 썸네일 관련 내용들이 우루루 들어감
+//				/* 썸네일 생성(ImageIO) */
+//				
+//			} catch (Exception e) {
+//				
+//				e.printStackTrace();
+//				
+//			} 
+//			
+//			list.add(vo);
+//			
+//		}	//for
+//		
+//		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
+//		System.out.println(result);
+//		return result;
+//		
+//		
+////			// 향상된 for
+////			for(MultipartFile multipartFile : uploadFile) {
+////				logger.info("-----------------------------------------------");
+////				logger.info("파일 이름 : " + multipartFile.getOriginalFilename());
+////				logger.info("파일 타입 : " + multipartFile.getContentType());
+////				logger.info("파일 크기 : " + multipartFile.getSize());			
+////			}
+////			
+////			//기본 for
+////			for(int i = 0; i < uploadFile.length; i++) {
+////				logger.info("-----------------------------------------------");
+////				logger.info("파일 이름 : " + uploadFile[i].getOriginalFilename());
+////				logger.info("파일 타입 : " + uploadFile[i].getContentType());
+////				logger.info("파일 크기 : " + uploadFile[i].getSize());			
+////			}
+//		
+//	}
 	
 	
 	// 회원 탈퇴

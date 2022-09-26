@@ -24,7 +24,7 @@
 			<div class="search">
 			<input class="text_wide" type="text" id="keywordInput" name="keyword" value="${scri.keyword}">
 			   
-			<button class="btn btn-secondary" id="searchBtn">검색</button>
+			<button class="btn btn-secondary" id="searchBtn" type="submit">검색</button>
 			</div>
 			
 			

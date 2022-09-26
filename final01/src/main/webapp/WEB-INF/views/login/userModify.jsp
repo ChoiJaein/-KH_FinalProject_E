@@ -46,8 +46,8 @@
      
      
 <!--이미지 경로체크 -->              
-			<img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${fileDatas.url}" 
-                   accept="image/png, image/jpeg, image/jpg" width="250" height="250"> 
+<%-- 			<img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${fileDatas.url}" 
+                   accept="image/png, image/jpeg, image/jpg" width="250" height="250">  --%>
 
 			<div class="image-form left">
 				<img id="previewImg" class="image-360" alt="여기에는 증명 사진이 배치됩니다." src="${imagePath}">
@@ -56,11 +56,12 @@
 				<input id="imgSelect" type="file" name="uploadImg" value="이미지 선택" accept="image/png">
 				<c:if test="${not empty imageError}">
 					<label class="input-label-error">${imageError}</label>
-				</c:if> 
+				</c:if>
 --%>
 			</div> 
 
 <!-- 이미지 업로드 테스트용 -->
+<%--
 			<div class="form_section">
 				<div class="form_section_title">
 					<label>상품 이미지</label>
@@ -70,24 +71,24 @@
 				</div>
 			</div>
 
-<!-- 		
+		
 		<div>
 			<label class="fileBtn" for="file">이미지 업로드</label>
 			<input type="file" name="file" id="file">
 		</div> 
--->
+--%>
 
 
 <!--닉네임 value값입력 -->
           <div>
             <input class="text-center mb-3" type="text" name="name" value="${data.name}" size="17">
           </div>
-<!--
+
            <div>
            <label class="input-file-button mb-4" for="imgSelect">프로필사진 변경</label>
            <input id="imgSelect" name="uploadImg" type="file" style ="display:none;">
           </div> 
--->
+
           
        </div>
     </div>
@@ -156,7 +157,7 @@
 <script type="text/javascript">
 
 
-<!-- 테스트 한 내용들 -->
+<!-- 테스트 한 내용들 
 /* 이미지 업로드 */
 $("input[type='file']").on("change", function(e){
 	
@@ -205,7 +206,7 @@ function fileCheck(fileName, fileSize){
 	return true;		
 	
 }
-
+-->
 
 
 <!--이미지 업로드 미리보기-->

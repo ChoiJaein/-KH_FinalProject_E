@@ -155,7 +155,8 @@
                
           <div class="text-end button-left">
             <button class="btn btn-primary" type="button" onclick="cancel();">취 소</button>
-            <button class="btn btn-primary" type="button" onclick="finalPay(this.form);">결 제</button>
+            <!-- <button class="btn btn-primary" type="button" onclick="finalPay(this.form);">결 제</button> -->
+            <button class="btn btn-primary" type="button" id="check_module">결 제</button>
           </div>
        </form>       
   
@@ -174,7 +175,7 @@
 	return;
   }
  
- <!--결제 버튼-->
+ /* <!--결제 버튼-->
  <!--정보입력 빈 칸 방지-->
  function finalPay(form){
 	 if(form.FirstName.value =="" || form.LastName.value ==""){
@@ -194,7 +195,56 @@
 		  }			 
 	 }
 	  
- }
+ } */
+
+ 
+ <!-- 결제 api 테스트!!!!!!!!!! -->
+ <!--결제 버튼-->
+ <!--정보입력 빈 칸 방지-->
+ 
+ 
+ $("#check_module").click(function () {
+	var IMP = window.IMP;
+	var code = "imp33043558"; //가맹점 식별코드
+	IMP.init(code);
+		//결제요청
+		IMP.request_pay({
+			//name과 amout만있어도 결제 진행가능
+			//pg : 'kakao', //pg사 선택 (kakao, kakaopay 둘다 가능)
+			pay_method: 'card',
+			merchant_uid : 'merchant_' + new Date().getTime(),
+			name : '결제테스트', // 상품명
+			amount : 1,
+			buyer_email : 'iamport@siot.do',
+			buyer_name : '구매자이름',
+			buyer_tel : '010-1234-5678',  //필수항목
+			buyer_addr: '서울특별시 강남구 삼성동',   
+			buyer_postcode: '123-456',
+			//결제완료후 이동할 페이지 kko나 kkopay는 생략 가능
+			m_redirect_url : 'localhost/home'
+		}, function(rsp){
+			if(rsp.success){//결제 성공시
+				var msg = '결제가 완료되었습니다';
+				var result = {
+				"imp_uid" : rsp.imp_uid,
+				"merchant_uid" : rsp.merchant_uid,
+				"pay_date" : new Date().getTime(),
+				"amount" : rsp.paid_amount,
+				"card_no" : rsp.apply_num,
+				"refund" : 'payed'
+				}
+				console.log("결제성공 " + msg);
+			}
+			else{//결제 실패시
+				var msg = '결제에 실패했습니다';
+				msg += '에러 : ' + rsp.error_msg
+			}
+			console.log(msg);
+			alert(msg);
+		});//pay
+	}); //check1 클릭 이벤트
+ 
+ 
   
  </script>
 </body>
