@@ -254,10 +254,15 @@
 		         
 		         <div class="col-8">
 		            <div class="mt-4 mb-3 border-bottom border-2 border-secondary">
-		              <p><b style="font-size:23px;">${pData.name}</b> 님 환영합니다</p>
+		              <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
 		             </div>
 		             <div>
-		              <p style="font-size:17px;">상품 판매  : ${sData.sellCnt} 회</p>
+		             <c:if test="${empty sData.sellCnt}">
+		             	<p style="font-size:17px;">상품 판매  : 0 회</p>
+		             </c:if>
+		             <c:if test="${not empty sData.sellCnt}">
+		             	<p style="font-size:17px;">상품 판매  : ${sData.sellCnt} 회</p>
+		           	 </c:if>
 		              <p style="font-size:17px;">내 상점 방문 : ${pData.visitCnt} 회 </p>
 		            </div>
 		         </div>

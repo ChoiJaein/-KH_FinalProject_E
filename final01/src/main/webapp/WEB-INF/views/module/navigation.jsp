@@ -9,7 +9,7 @@
 <script type="text/javascript">
  $(function(){
   $('#searchBtn').click(function() {
-     self.location = "list"
+     self.location = "board/boardList_search"
      + '${pageMaker.makeQuery(1)}'
      + "?keyword="
      + encodeURIComponent($('#keywordInput').val());

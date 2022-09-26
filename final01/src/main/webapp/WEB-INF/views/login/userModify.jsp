@@ -43,11 +43,10 @@
     <div class="mb-4 mt-4">
        <div style="background-color:rgba(233,236,239)">
      
+          
+<img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="<%=request.getContextPath() %>${photo.url}" 
+                    width="250" height="250">      
      
-     
-<!--이미지 경로체크 -->              
-<%-- 			<img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="${fileDatas.url}" 
-                   accept="image/png, image/jpeg, image/jpg" width="250" height="250">  --%>
 
 			<div class="image-form left">
 				<img id="previewImg" class="image-360" alt="여기에는 증명 사진이 배치됩니다." src="${imagePath}">
@@ -86,9 +85,8 @@
 
            <div>
            <label class="input-file-button mb-4" for="imgSelect">프로필사진 변경</label>
-           <input id="imgSelect" name="uploadImg" type="file" style ="display:none;">
+          <input id="imgSelect" name="photoUpload" type="file" onchange="preview()" style ="display:none;">
           </div> 
-
           
        </div>
     </div>
@@ -208,6 +206,8 @@ function fileCheck(fileName, fileSize){
 }
 -->
 
+
+function preview() { previewImg.src=URL.createObjectURL(event.target.files[0]); }
 
 <!--이미지 업로드 미리보기-->
 function showImagePreview(e){

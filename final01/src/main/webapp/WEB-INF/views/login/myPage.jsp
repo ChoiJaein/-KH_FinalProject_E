@@ -186,7 +186,7 @@
 	<!--닉네임value 체크 -->         
 	         <div class="col-8">
 	            <div class="mt-4 mb-3 border-bottom border-2 border-secondary ">
-	              <p><b style="font-size:23px;">${pData.name}</b> 님 환영합니다</p>
+	              <p><b style="font-size:23px;">${loginData.name}</b> 님 환영합니다</p>
 	             </div>
 	<!--닉네임value 체크 -->             
 	             <div>

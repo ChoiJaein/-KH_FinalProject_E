@@ -68,6 +68,7 @@ public class InfoService {
 	}
 	
 	public InfoDTO getUserSelling(String id) {
+		logger.info("getUserSelling(id= {})", id);
 		InfoDTO data = dao.selectSellCount(id);
 		
 		return data;
@@ -81,8 +82,8 @@ public class InfoService {
 	
 	@Transactional
 	public void incVisitCnt(HttpSession session, InfoDTO data) {
+		logger.info("incVisitCnt(session= {}, data= {})", session, data);
 		ProfileStaticsDTO staticsData = new ProfileStaticsDTO();
-		staticsData.setbId(data.getbId());
 		staticsData.setAccId(((AccountDTO)session.getAttribute("loginData")).getAccountid());
 		
 		staticsData = dao.selectStatics(staticsData);
@@ -95,7 +96,6 @@ public class InfoService {
 			}
 			
 			staticsData = new ProfileStaticsDTO();
-			staticsData.setbId(data.getbId());
 			staticsData.setAccId(((AccountDTO)session.getAttribute("loginData")).getAccountid());
 			result = dao.insertStatics(staticsData);
 			if(!result) {
