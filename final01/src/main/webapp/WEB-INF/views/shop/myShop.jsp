@@ -330,8 +330,11 @@
 	            </td>    
 	        </tr>
 	    </table>
-	    
-	    
+	</div>
+  </div>
+</div>  
+  
+<!--페이징 -->	    
 		<nav>
 			<div>
 				<ul class="pagination justify-content-center">
@@ -355,10 +358,9 @@
 				</ul>
 			</div>
 		</nav>
-		    </div>
-		   </div>
-		 </div> 
-		</section>
+
+		  
+  </section>
 	</c:if>
 
 

@@ -296,8 +296,10 @@
 	            <td colspan="2" class="p-price"> 100.000.000 원</td>   
 	        </tr>
 	    </table>
-
-	   
+	   </div>
+	 </div>
+	</div> 
+<!--페이징 -->	    
 	    <nav>
 			<div>
 				<ul class="pagination justify-content-center">
@@ -321,11 +323,7 @@
 				</ul>
 			</div>
 		</nav>
-	    
 	
-	    </div>
-	   </div>
-	 </div> 
 	</section>
 </c:if>
 

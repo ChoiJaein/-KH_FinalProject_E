@@ -212,7 +212,7 @@
             </div>
 <!--개인정보수정버튼 이동경로 설정 -->            
             <div class="text-end mt-4">
-              <button class="btn btn-primary" type="button" onclick="location.href='./modify?id=${loginData.accountid}'">개인정보 수정</button>
+              <button class="btn btn-primary" type="button" style="margin-bottom: 0.8rem;" onclick="location.href='./modify?id=${loginData.accountid}'">개인정보 수정</button>
             </div>
          </div>
        </div>
@@ -230,8 +230,7 @@
 
 
    <div class="row align-items-start">
-   <div class="container-second justify-content-center">
-    
+   <div class="container-second justify-content-center">   
  <!-- 반복문 값이 있을때마다  상품목록div 하나씩 추가-->
  <!-- 클릭시 상품페이지로 이동경로 체크 --> 
  	<c:forEach items="${datas}" var="data">
@@ -269,8 +268,11 @@
 	            <td colspan="2" class="p-price"> 100.000.000 원</td>   
 	        </tr>
 	    </table>
-	
-	<nav>
+   </div>
+  </div>
+ </div>	
+ <!--페이징 -->
+	  <nav>
 			<div>
 				<ul class="pagination justify-content-center">
 					<c:url var="boardUrl" value="/myinfo/shoppinglist"/>
@@ -294,23 +296,13 @@
 			</div>
 		</nav>
     
-    
-      
-
-    </div>
-   </div>
- </div>
+ 
+ 
 </section>
 </c:if>
+
+
 <!--하단-->
-
-
-
-
-
-
-
-
 <%@ include file="../module/footer.jsp" %>
 <script type="text/javascript">
 </script>
