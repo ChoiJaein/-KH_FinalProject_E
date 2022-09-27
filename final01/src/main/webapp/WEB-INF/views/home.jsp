@@ -122,6 +122,7 @@
 	</div>
 	</section>
 	
+	<%@ include file="./module/footer.jsp" %>
 	<!-- 네이버 로그인 callback URL -->
 <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>	
 <script type="text/javascript">

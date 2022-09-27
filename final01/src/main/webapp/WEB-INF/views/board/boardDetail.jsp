@@ -208,7 +208,7 @@
 
 				<table class="table">
 					<tr>
-						<td style="text-align:left; vertical-align : bottom;"><h4>${data.cateName}</h4></td>
+						<td style="text-align:left; vertical-align : bottom;"><h4>카테고리 > ${data.cateName}</h4></td>
 						<fmt:formatDate value="${data.createDate}" var="createDate" dateStyle="long" />
 						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${data.createDate}          조회수 : ${data.viewCnt}회</h6></td>
 					</tr>
