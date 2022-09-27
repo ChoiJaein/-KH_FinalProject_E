@@ -13,41 +13,39 @@
 </head>
 <body>
 <header class="mb-3"></header>
-  <section>
+  <section class="container" style="width: 490px;">
    <c:url var="find_idUrl" value="/login/find_id"/>
    <form action="${find_idUrl}" method="post">
-   <div id ="find_id"></div>
+     <div class="center-block">
+			<img id="previewImg" style="margin-top: 3rem; margin-bottom: 2rem;" class="image-360 profile-size" alt="profile" src="./static/img/logo.png" onerror="this.src='../static/img/logo.png'" onclick="location.href='/home'">
+		</div>
+   <div id ="find_id">
    <div align="center">
-	  <p id ="title" name = "title" align ="center"></p> 
+	  <p id ="title" name = "title" align ="center" style="margin:0;"></p> 
 		<h2>아이디 찾기</h2>
 		<p>아이디는 가입하신 이메일을 통해 찾을 수 있습니다.</p>
 		  <table>
 		  <tr><td>
-	          <input class="form-control" placeholder="이메일"  id="email" name="email" size=50px;>
-	       <br><br> 
-	      </td></tr>    
+	          <input class="form-control" style="border-style: solid; border-color: #00B050; border-width: revert;"
+	                 placeholder="이메일"  id="email" name="email" size=50px;>
+	       <br> 
+	      </td></tr>
+	 </div>         
     <div class="form-label-group">
        <br>
        <br>
         <tr><td>
 	          <div align="center">
-	            <button type="submit" class="btn btn-outline-primary bluebtn"  id="find_id_btn"  value="check" >아이디찾기</button> <br><br>
-	            <button type="button" class="btn btn-outline-primary bluebtn"  id="reset" onclick="location.href='../login'" value="취소" >취소</button> <br><br>
+	            <button type="submit" class="btn btn-outline-success bluebtn"  id="find_id_btn"  value="check" >아이디찾기</button> <br><br>
+	            <button type="button" class="btn btn-outline-success bluebtn"  style="margin-top:-1.5rem" id="reset" onclick="location.href='../login'" value="취소" >취소</button> <br><br>
+	          </div>
 	    </td></tr>
-  </div>
+   </div>
   </div>
  </table>
   </form>
    <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
-   <br>
+   
    
    	<title>비밀번호 찾기</title>
     <header class="mb-3"></header>
@@ -60,16 +58,19 @@
 		<p>비밀번호는  가입하신 아이디와 이메일을 통해 찾을 수 있습니다.</p>
 	        <table>
 		         <tr><td>
-	             <input type ="text" id="id_account" placeholder="아이디" name="accountid" size=50px;>
+	             <input class="form-control" type ="text" id="id_account" style="border-style: solid; border-color: #00B050; border-width: revert;"
+	                    placeholder="아이디" name="accountid" size=50px;>
 	             <br>
-	             <br>
-	             <input  type="text" id="email" name="email" placeholder="이메일" size=50px;> <br><br>
+	             <input class="form-control" type="text" id="email" name="email" style="border-style: solid; border-color: #00B050; border-width: revert; margin-top:-1rem"
+	                     placeholder="이메일" size=50px;> <br><br>
         		 </td></tr>
         		 <br><br>
 	             <tr><td>
+	             
 	             <div align="center">
-	                <button type="submit"  class="btn btn-outline-primary bluebtn" id="findPwBtn">비밀번호 찾기</button><br><br>
-	                <button type="button" class="btn btn-outline-primary bluebtn" id="reset" value="취소" onclick="location.href='../login'">취소</button><br><br>
+	                <button type="submit"  class="btn btn-outline-success bluebtn" id="findPwBtn" style="margin-top:-1.5rem">비밀번호 찾기</button><br><br>
+	                <button type="button" class="btn btn-outline-success bluebtn" style="margin-top:-1.5rem" id="reset" value="취소" onclick="location.href='../login'">취소</button><br><br>
+	             </div>
 	             </td></tr>
 
              </table>
@@ -80,8 +81,6 @@
 	
  </section>
     <br><br><br><br>
-	<br><br><br><br>
-	<br><br><br><br>
 	<br><br><br><br>
 	<br><br><br><br>
 	<%@ include file="../module/footer.jsp" %>
