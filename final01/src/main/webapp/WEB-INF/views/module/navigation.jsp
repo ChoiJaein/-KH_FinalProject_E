@@ -70,7 +70,7 @@
 
 	<div class="align-items-start">
 	 <div class="search">
-			<img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/logo.png" onclick="location.href='/home'">
+			<img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/logo.png" onerror="this.src='../static/img/logo.png'" onclick="location.href='/home'">
 			<input class="text_wide "style="height:39px" type="text" id="keywordInput" name="keyword" value="${scri.keyword}">			   
 			<button class="btn btn-secondary button-color" id="searchBtn">검 색</button>
 	</div>		
