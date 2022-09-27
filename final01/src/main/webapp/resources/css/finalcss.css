@@ -9,8 +9,9 @@ a:link {
 }
 
 a:visited {
-	color:green;
-	}
+	color:#00B050;
+	font-weight: bold;
+}
 	
 .bluebtn {	
 	width:100%;
@@ -21,7 +22,7 @@ a:visited {
 }
 
 .a.hover {
-	background-color : gray;
+	font-weight: bold;
 }
 
 .div-bc{
