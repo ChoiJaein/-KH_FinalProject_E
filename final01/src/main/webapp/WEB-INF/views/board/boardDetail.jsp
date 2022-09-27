@@ -354,7 +354,7 @@
 		     		</c:if>	
 				</c:if>
 		
-			
+			<!-- 
 				<c:choose>
 					<c:when test="${not empty data.buyStatus}">
 						<c:if test="${empty review}">
@@ -369,7 +369,7 @@
 						</div>
 					</c:when>	
 				</c:choose>
-			
+			 -->
 		</div>
 	
 	

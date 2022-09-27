@@ -255,7 +255,7 @@
 	<nav>
 			<div>
 				<ul class="pagination justify-content-center">
-					<c:url var="boardUrl" value="/board/detail"/>
+					<c:url var="boardUrl" value="/myinfo/shoppinglist"/>
 					
 					<c:if test="${shoppingPage.hasPrevPage()}">
 						<li class="page-item">
