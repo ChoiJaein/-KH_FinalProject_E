@@ -302,7 +302,7 @@
 			<div>
 				<ul class="pagination justify-content-center">
 					<c:url var="boardUrl" value="/favoriteList"/>
-					
+					 
 					<c:if test="${favoriteListPage.hasPrevPage()}">
 						<li class="page-item">
 							<a class="page-link" href="${boardUrl}&page=${favoriteListPage.prevPageNumber}">Prev</a>
