@@ -9,10 +9,10 @@
 <script type="text/javascript">
  $(function(){
   $('#searchBtn').click(function() {
-     self.location = "board/boardList_search"
-     + '${pageMaker.makeQuery(1)}'
+     window.location = "/home/board/boardList_search"
      + "?keyword="
      + encodeURIComponent($('#keywordInput').val());
+     + '${pageMaker.makeQuery(1)}'
     });
  });   
  </script>
