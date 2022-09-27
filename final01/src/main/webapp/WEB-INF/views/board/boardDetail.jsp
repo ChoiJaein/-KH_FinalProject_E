@@ -284,28 +284,32 @@
                     
                     <!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
-					<div class="mb-1">
-						<form action="../review/add" method="post" autocomplete="off">
-							<input type="hidden" name="bid" value="${bId}">
-							<div class="input-group">
-								<textarea class="form-control" name="content" id="content" rows="2"></textarea>
-								<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
-							</div>
-						</form>
-					</div>
-			   </div>
-	
-					
 			<c:choose>
-				<c:when test="${not empty status}">
-					<c:if test="${empty review}">
-						<label>후기 미등록.</label>
+				<c:when test="${not empty data.buyStatus}">
+					<c:if test="${loginData.accountid eq data.buyStatus}">
+					<section class="container" style="width:1250px;">	     
+						<div class="mb-1">
+							<form action="../review/add" method="post" autocomplete="off">
+								<input type="hidden" name="bid" value="${bId}">
+								<div class="input-group">
+									<textarea class="form-control" name="content" id="content" rows="2"></textarea>
+									<button class="btn btn-outline-dark" type="button" onclick="formCheck(this.form);">등록</button>
+								</div>
+							</form>
+						</div>
+					</section>
 					</c:if>
 				</c:when>
 				<c:when test="${empty status}">				
 					<label>구매하시고 후기를 남겨보세요.</label>
 				</c:when>	
 			</c:choose>
+				     
+					
+			   </div>
+	
+					
+			
 		
 			<!-- 
 				<c:choose>
