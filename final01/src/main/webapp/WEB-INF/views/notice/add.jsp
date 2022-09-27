@@ -35,8 +35,8 @@
              </div>
              <div class="mb-3 text-end">
                 <c:url var="noticeUrl" value="/notice"/>
-                <button type="button" class="btn btn-primary" onclick="return addCancel();">취소</button>
-                <button type="button" class="btn btn-primary" onclick="return addComplete(this.form);">완료</button>
+                <button type="button" class="btn btn-primary" onclick="addCancel();">취소</button>
+                <button type="submit" class="btn btn-primary" onclick="addComplete(this.form);">완료</button>
              </div>
           </form>
        </div>

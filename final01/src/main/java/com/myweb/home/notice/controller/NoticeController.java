@@ -79,17 +79,19 @@ public class NoticeController {
 	
 	@GetMapping(value="/add")
 	public String add() {
-		return "notice/add"; //
+		return "notice/add"; 
 	}
 	
 	@PostMapping(value="/add") 
 	public String add(HttpServletRequest request,
 			 @ModelAttribute NoticeVO noticeVo
 			,@SessionAttribute("loginData") AccountDTO accDto) {
+		
+		logger.info("add(request= {}, noticeVo ={}, accDto ={})", request, noticeVo, accDto);
+		
 		NoticeDTO data = new NoticeDTO();
 		data.setTitle(noticeVo.getTitle());
 		data.setContent(noticeVo.getContent());
-		data.setNotId(noticeVo.getNotId());
 		
 		if(accDto.getAdmin().equals("Y")) {
 			int id = service.add(data);
@@ -122,7 +124,7 @@ public class NoticeController {
 		if(data != null) {
 			if(accDto.getAdmin().equals("Y")) {
 				model.addAttribute("data", data);
-				return "board/modify";
+				return "notice/modify";
 			} else {	
 				model.addAttribute("msg", "해당 작업을 수행할 권한이 없습니다.");
 				model.addAttribute("url", "/home");

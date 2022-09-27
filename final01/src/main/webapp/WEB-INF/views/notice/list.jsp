@@ -34,7 +34,7 @@
 	  <h5 class="col-10 mt-3">공지사항 <i class="bi bi-megaphone"></i></h5> 
 	    <div class="col-1 " style="padding-left:18px">
 
-  <c:if test="${ session.loginData.admint eq 'Y'}">    
+  <c:if test="${loginData.admin == 'Y'}">    
      	    <button class="btn btn-primary" type="button" onclick="location.href='${noticeUrl}/add'">글 작성</button>  	    
  </c:if>
 	    </div>

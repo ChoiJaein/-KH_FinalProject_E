@@ -34,6 +34,8 @@ public class NoticeService {
 	}
 	
 	public int add(NoticeDTO data) {
+		logger.info(" getData(data ={})", data);
+		
 		int seq = dao.getNextSeq();
 		data.setNotId(seq);
 		

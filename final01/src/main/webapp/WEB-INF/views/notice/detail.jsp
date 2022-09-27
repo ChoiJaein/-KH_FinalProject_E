@@ -26,7 +26,7 @@
 	   <div class="mb-3 text-end"> 
 	      <label class="text-muted"><small>운영자</small></label>
 	      <fmt:formatDate value="${data.createDate }" var="createDate" dateStyle="medium"/>
-	      <label class="text-muted"><small>${createDate}</small></label>
+	      <label class="text-muted"><small>${data.createDate }</small></label>
 	   </div>   
    </div>
    
@@ -41,7 +41,7 @@
       <c:url var="noticeUrl" value="/notice"/>
         <button class="btn btn-primary" type="button" onclick="location.href='${noticeUrl}'">목 록</button>
 
-	<c:if test="${session.loginData.admin eq 'Y'}">
+	<c:if test="${loginData.admin =='Y'}">
 	     <button class="btn btn-primary" type="button" onclick="location.href='${noticeUrl}/modify?id=${data.notId }'">수 정</button>
 	     <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#removeModal">삭 제</button>
     </c:if>  
@@ -64,7 +64,7 @@
 		      </div>
 		      <div class="modal-footer">
 <!--deleteNotice(id값)-->		      
-		        <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal" onclick="deleteNotice()">확인</button>
+		        <button type="button" class="btn btn-sm btn-primary" data-bs-dismiss="modal" onclick="deleteNotice(${data.notId})">확인</button>
 		      </div>
 		    </div>
 		  </div>
@@ -82,7 +82,7 @@ function deleteNotice(noticeId){
 		  url:"${noticeUrl}/delete",
 		  type:"post",
 		  data:{
-			  id:boardId
+			  id:noticeId
 			  
 		  },
 		  dataType:"json",

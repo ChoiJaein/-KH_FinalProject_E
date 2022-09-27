@@ -269,7 +269,7 @@ public class BoardController {
 		}
 		
 		
-		//띰하기
+		//찜하기
 		@PostMapping(value="board/wishList", produces="application/json; charset=utf-8")
 		@ResponseBody
 		public String like(HttpSession session
@@ -298,6 +298,14 @@ public class BoardController {
 				
 			
 			return json.toJSONString();
+		}
+		
+		@PostMapping(value="board/pay", produces="application/json; charset=utf-8")
+		@ResponseBody
+		public String purchase(HttpSession session, @RequestParam("bId") int bId) {
+			logger.info("purchase(session = {}, bId = {})", session, bId);
+			
+			return null;
 		}
 		
 		
