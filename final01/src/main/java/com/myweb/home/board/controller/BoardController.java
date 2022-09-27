@@ -302,15 +302,33 @@ public class BoardController {
 			return json.toJSONString();
 		}
 		
+		//아임포트 API로 결제
+		
 		@PostMapping(value="board/pay", produces="application/json; charset=utf-8")
 		@ResponseBody
-		public String purchase(HttpSession session, @RequestParam("bId") int bId) {
-			logger.info("purchase(session = {}, bId = {})", session, bId);
+		public String purchase(@SessionAttribute("loginData") AccountDTO accDto,
+				@RequestParam("id") int id) {
+			logger.info("purchase(accDto = {}, bId = {})", accDto, id);
 			
-			return null;
+			BoardDTO data = new BoardDTO();
+			JSONObject json = new JSONObject();
+			
+			data.setBuyStatus(accDto.getAccountid());
+			data.setbId(id);
+			
+			boolean result = service.updatePurchase(data);
+			
+			if(result) {
+				json.put("code", "success");
+				
+			} else {
+				json.put("code", "fail");
+				
+			}
+			
+			return json.toJSONString();
+		
 		}
-		
-		
 		
 		
 		@RequestMapping(value="/board/boardDetail", method = RequestMethod.GET)

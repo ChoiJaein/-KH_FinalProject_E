@@ -121,6 +121,12 @@ private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 			return res == 1 ? true : false;
 		}
 		
+		public boolean updateBuyStatus(BoardDTO data) {
+			logger.info("updateBuyStatus(data={})", data);
+			int res = sqlSession.update("boardMapper.updateBuyStatus", data);
+			return res == 1 ? true : false;
+		}
+		
 		//review
 		public void insertReview(ReviewDTO data) {
 			 logger.info("data({})",data);

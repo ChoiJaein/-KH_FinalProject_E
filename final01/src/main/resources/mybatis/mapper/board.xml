@@ -133,4 +133,10 @@
 			DELETE FROM FAVORITE
 			WHERE BID = #{bId} AND ACCOUNTID = #{accId}
 	</delete>
+	
+	<update id="updateBuyStatus" parameterType="boardDto">
+		UPDATE BOARD
+		   SET BUYSTATUS = #{buyStatus}
+		 WHERE BID = #{bId}
+	</update>
   </mapper>

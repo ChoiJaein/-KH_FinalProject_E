@@ -179,6 +179,14 @@ public class BoardService {
 		
 	}
 	
+	public boolean updatePurchase(BoardDTO data) {
+		
+		boolean result = dao.updateBuyStatus(data);
+		
+		return result;
+		
+	} 
+	
 	
 	
 	//review
