@@ -29,8 +29,8 @@
 	</select>
 	
 	<insert id="insertData" parameterType ="noticeDto">
-		INSERT INTO NOTICE(NOTICEID, ACCOUNTID, TITLE, CONTENT, CREATEDATE)
-			VALUES(#{notId}, #{accId}, #{title}, #{content}, SYSDATE)
+		INSERT INTO NOTICE(NOTICEID, ACCOUNTID, TITLE, CONTENT, CREATEDATE, VIEWCNT)
+			VALUES(#{notId}, #{accId}, #{title}, #{content}, SYSDATE, NULL)
 	</insert> 
 	<delete id="deleteData">
 		DELETE FROM NOTICE
