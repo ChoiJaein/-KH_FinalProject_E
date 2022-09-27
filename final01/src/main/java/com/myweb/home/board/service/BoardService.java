@@ -169,5 +169,11 @@ public class BoardService {
 		boolean result = dao.deleteData(data);
 		return result;
 		
+	}
+
+	public boolean modify(ReviewDTO data) {
+		logger.info("updateData({})",data);
+		boolean result = dao.updateData(data);
+		return result;
 	}    
 }

@@ -1,8 +1,10 @@
 package com.myweb.home.board.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -280,7 +282,7 @@ public class BoardController {
 			
 		 }
 		
-		//리뷰 등록
+
 		@RequestMapping(value="/review/add", method = RequestMethod.POST)
 		public String insertReview(Model model,
 				ReviewDTO data, HttpSession session,HttpServletRequest request) throws Exception{
@@ -303,17 +305,16 @@ public class BoardController {
 				 }
 				 service.insertReview(data);
 				 
-			
-				 return "redirect:/board/boardDetail?id=" + data.getbId();
+			 return "redirect:/board/boardDetail?id=" + data.getbId();
+				
 		}
  
 
 
-		//상품후기 삭제
-			
-			@RequestMapping(value="/review/delete", method= RequestMethod.GET)
+		//상품후기 삭제	
+			@RequestMapping(value="/review/delete", method= RequestMethod.POST)
 			@ResponseBody
-			public String reviewDelete(ReviewDTO reviewDTO,HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
+			public void reviewDelete(ReviewDTO reviewDTO,HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
 				
 				
 				logger.info("post review delete");
@@ -322,12 +323,12 @@ public class BoardController {
 				response.setContentType("application/json; charset=utf-8");
 				
 				String id = request.getParameter("id");
-				
 				ReviewDTO reviewData = service.getReview(Integer.parseInt(id));
+				
 				AccountDTO account = (AccountDTO)session.getAttribute("loginData");
 				StringBuilder sb = new StringBuilder();
 				sb.append("{");
-				if(reviewData.getAccountId() == account.getAccountid()) {
+				if((reviewData.getAccountId()).equals( account.getAccountid())) {
 					boolean result =service.remove(reviewData);
 					if(result) {
 			    		sb.append(String.format("\"%s\": \"%s\"", "code","success"));
@@ -341,11 +342,46 @@ public class BoardController {
 				
 				response.getWriter().append(sb.toString());
 				response.getWriter().flush();
-			
-			return "redirect:/board/boardDetail?id=" + reviewDTO.getbId();
-           
-                    }
-           }
+			}
 		
+		
+		
+			
+			@RequestMapping(value="/review/modify", method= RequestMethod.POST)
+			@ResponseBody
+			public void reviewmodify(@RequestParam (value="ReviewDTO",required =false) String reviewDTO,HttpServletRequest request, HttpSession session, HttpServletResponse response) throws Exception {
+		        
+				response.setContentType("application/json; charset=utf-8");
+				logger.info("reviewDTO{}, modify");
+			   
+			    String id = (String) request.getAttribute("id");
+			    if(id == null || id == "") {
+			    	return;
+			    }
+			    String content = request.getParameter("content");
+			  
+			   
+			    ReviewDTO reviewData = service.getReview(Integer.parseInt(id));
+			    AccountDTO accountData = (AccountDTO)session.getAttribute("loginData");
 
+				
+			    StringBuilder sb =new StringBuilder();
+			    sb.append("{");
+			    if(reviewData.getAccountId().equals(accountData.getAccountid())) {
+			    	reviewData.setContent(content);
+			    	boolean result =service.modify(reviewData);
+			    	if(result) {
+			    		sb.append(String.format("\"%s\": \"%s\",", "code","success"));
+			    		sb.append(String.format("\"%s\": \"%s\" ", "value",reviewData.getContent()
+			    				.replace("\r","\\r").replace("\n"," \\n") ));
+			    		
+			    	}
+			    }
+			    sb.append("}");
+			    
+			    response.getWriter().append(sb.toString());
+			    response.getWriter().flush();
+			  
+}
 
+}

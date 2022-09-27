@@ -317,7 +317,7 @@
                        </div>
                      </div>
                      <div class="card-body">
-                      <input type="hidden" value="${review.accountId}">
+                      <input type="hidden" value="${review.id}">
                          <c:choose>
                          <c:when test="${review.isDeleted()}">
                          <p class="text-muted">삭제된 댓글 입니다.</p>
@@ -388,12 +388,27 @@
 			
 			element.setAttribute("onclick", "reviewUpdate(this);");
 		}
+		    function changeText(element) {
+			element.innerText = "수정";
+			var cid = element.parentElement.parentElement.children[0].value;
+			var value = element.parentElement.previousElementSibling.children[0].value;
+			element.parentElement.previousElementSibling.children[0].remove(); //기존의 것 삭제
+			element.parentElement.previousElementSibling.innerText = value;
+			
+			var btnDelete = document.createElement("button");
+			btnDelete.innerText = "삭제";
+			btnDelete.setAttribute("class", "btn btn-sm btn-outline-dark");
+			btnDelete.setAttribute("onclick", "reviewDelete(this, " + cid + ");");
+			
+			element.parentElement.append(btnDelete);
+			element.setAttribute("onclick", "changeEdit(this);");
+		}
 		function reviewUpdate(element) {
 			var cid = element.parentElement.parentElement.children[0].value;
 			var value = element.parentElement.previousElementSibling.children[0].value;
 			
 			$.ajax({
-				url: "/review/modify",
+				url: "/home/review/modify",
 				type: "post",
 				data: {
 					id: cid,
