@@ -5,7 +5,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@page import="java.util.*" %>  
 <!DOCTYPE html>
-<html>
+<html> 
 <head>
 	<meta charset="UTF-8">
 	<title>결제 페이지</title>
