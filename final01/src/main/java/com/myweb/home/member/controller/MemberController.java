@@ -39,7 +39,6 @@ import com.myweb.home.info.service.InfoService;
 import com.myweb.home.login.model.AccountDTO;
 import com.myweb.home.member.service.MemberService;
 import com.myweb.home.member.vo.MemberVO;
-import com.myweb.home.upload.model.AttachImageVO;
 import com.myweb.home.upload.model.PhotoUploadDTO;
 import com.myweb.home.upload.service.PhotoUploadService;
 
@@ -158,95 +157,6 @@ public class MemberController {
 		
 		
 	}
-	
-//			// 파일 저장
-//	/* 첨부 파일 업로드 */
-//	@PostMapping(value="uploadAjaxAction", produces = MediaType.APPLICATION_JSON_VALUE)
-//	public ResponseEntity<List<AttachImageVO>> uploadAjaxActionPOST(MultipartFile[] uploadFile) {
-//		
-//		logger.info("uploadAjaxActionPOST..........");
-//		String uploadFolder = "/Users/jaein/git/KH_FinalProject_E/final01/src/main/webapp/resources/img/member";
-//		
-//		/* 날짜 폴더 경로 */
-//		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//		
-//		Date date = new Date();
-//		
-//		String str = sdf.format(date);
-//		
-//		String datePath = str.replace("-", File.separator);
-//		
-//		/* 폴더 생성 */
-//		File uploadPath = new File(uploadFolder, datePath);
-//		
-//		if(uploadPath.exists() == false) {
-//			uploadPath.mkdirs();
-//		}
-//		
-//		/* 이미저 정보 담는 객체 */
-//		List<AttachImageVO> list = new ArrayList<>();
-//		
-//		// 향상된 for
-//		for(MultipartFile multipartFile : uploadFile) {
-//			
-//			/* 이미지 정보 객체 */
-//			AttachImageVO vo = new AttachImageVO();
-//			
-//			/* 파일 이름 */
-//			String uploadFileName = multipartFile.getOriginalFilename();
-//			vo.setFileName(uploadFileName);
-//			vo.setUploadPath(datePath);
-//			
-//			/* uuid 적용 파일 이름 */
-//			String uuid = UUID.randomUUID().toString();
-//			vo.setUuid(uuid);
-//			
-//			uploadFileName = uuid + "_" + uploadFileName;
-//			
-//			/* 파일 위치, 파일 이름을 합친 File 객체 */
-//			File saveFile = new File(uploadPath, uploadFileName);
-//			
-//			/* 파일 저장 */
-//			try {
-//				
-//				multipartFile.transferTo(saveFile);
-//				
-//				// 여기 원래 썸네일 관련 내용들이 우루루 들어감
-//				/* 썸네일 생성(ImageIO) */
-//				
-//			} catch (Exception e) {
-//				
-//				e.printStackTrace();
-//				
-//			} 
-//			
-//			list.add(vo);
-//			
-//		}	//for
-//		
-//		ResponseEntity<List<AttachImageVO>> result = new ResponseEntity<List<AttachImageVO>>(list, HttpStatus.OK);
-//		System.out.println(result);
-//		return result;
-//		
-//		
-////			// 향상된 for
-////			for(MultipartFile multipartFile : uploadFile) {
-////				logger.info("-----------------------------------------------");
-////				logger.info("파일 이름 : " + multipartFile.getOriginalFilename());
-////				logger.info("파일 타입 : " + multipartFile.getContentType());
-////				logger.info("파일 크기 : " + multipartFile.getSize());			
-////			}
-////			
-////			//기본 for
-////			for(int i = 0; i < uploadFile.length; i++) {
-////				logger.info("-----------------------------------------------");
-////				logger.info("파일 이름 : " + uploadFile[i].getOriginalFilename());
-////				logger.info("파일 타입 : " + uploadFile[i].getContentType());
-////				logger.info("파일 크기 : " + uploadFile[i].getSize());			
-////			}
-//		
-//	}
-	
 	
 	
 	// 회원 탈퇴

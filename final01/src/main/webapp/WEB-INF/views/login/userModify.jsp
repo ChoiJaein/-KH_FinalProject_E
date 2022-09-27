@@ -51,32 +51,7 @@
 			<div class="image-form left">
 				<img id="previewImg" class="image-360" alt="여기에는 증명 사진이 배치됩니다." src="${imagePath}">
 				<br>
-<%-- 			
-				<input id="imgSelect" type="file" name="uploadImg" value="이미지 선택" accept="image/png">
-				<c:if test="${not empty imageError}">
-					<label class="input-label-error">${imageError}</label>
-				</c:if>
---%>
 			</div> 
-
-<!-- 이미지 업로드 테스트용 -->
-<%--
-			<div class="form_section">
-				<div class="form_section_title">
-					<label>상품 이미지</label>
-				</div>
-				<div class="form_section_content">
-					<input type="file" id="fileItem" name="uploadFile">
-				</div>
-			</div>
-
-		
-		<div>
-			<label class="fileBtn" for="file">이미지 업로드</label>
-			<input type="file" name="file" id="file">
-		</div> 
---%>
-
 
 <!--닉네임 value값입력 -->
           <div>
@@ -154,57 +129,6 @@
 
 <script type="text/javascript">
 
-
-<!-- 테스트 한 내용들 
-/* 이미지 업로드 */
-$("input[type='file']").on("change", function(e){
-	
-	let formData = new FormData();
-	let fileInput = $('input[name="uploadFile"]');
-	let fileList = fileInput[0].files;
-	let fileObj = fileList[0];
-	
-	if(!fileCheck(fileObj.name, fileObj.size)){
-		return false;
-	}
-	
-	formData.append("uploadFile", fileObj);
-	
-	$.ajax({
-		url: "/home/uploadAjaxAction",
-    	processData : false,
-    	contentType : false,
-    	data : formData,
-    	type : "post",
-    	dataType : "json",
-    	success : function(result){
-    		console.log(result);
-    	}
-	});	
-	
-});
-
-
-/* var, method related with attachFile */
-let regex = new RegExp("(.*?)\.(jpg|png)$");
-let maxSize = 1048576; //1MB	
-
-function fileCheck(fileName, fileSize){
-
-	if(fileSize >= maxSize){
-		alert("파일 사이즈 초과");
-		return false;
-	}
-		  
-	if(!regex.test(fileName)){
-		alert("해당 종류의 파일은 업로드할 수 없습니다.");
-		return false;
-	}
-	
-	return true;		
-	
-}
--->
 
 
 function preview() { previewImg.src=URL.createObjectURL(event.target.files[0]); }

@@ -90,48 +90,62 @@
   </div>
    
 <!--주소 Check-->
-     <c:url var="payUrl" value="/payment/pay" />
-      <form action="${payUrl}" method="post">
-     <div style="text-align: center;"> 
-      <div>
-         <div class="form-inline-input">
-            <label class="form-label">First Name</label>
-            <input class="form-input form-size-300 mb-4 cursor" type="text" name="FirstName" placeholder="gil-dong">
-          </div>
-          <div class="form-inline-input">
-            <label class="form-label">Last Name</label>
-            <input class="form-input form-size-300 mb-4 cursor" type="text" name="LastName"  placeholder="hong">
-         </div>
-      </div>  
-       
-      <div>   
-         <div class="form-inline-input">
-            <label class="form-label">Address</label>
-            <input class="form-input form-size-610 mb-1 cursor" type="text" name="AddressFirstLine" placeholder="역삼동 KH정보교육원">
-            <input class="form-input form-size-610 mb-4 cursor" type="text" name="AddressSecondLine" placeholder="">
-         </div>
-      </div>   
+	<c:url var="payUrl" value="/payment/pay" />
+	<form action="${payUrl}" method="post">
+	<div style="text-align: center;">
+		<div>
+			<div class="form-inline-input">
+				<label class="form-label">수령인</label>
+				<input class="form-input form-size-300 mb-4 cursor" type="text" name="pkgName" placeholder="홍길동" required>
+			</div>
+		</div>  
+
+		<div>
+			<div class="form-inline-input">
+				<label class="form-label">전화번호</label>
+				<input class="form-input form-size-300 mb-4 cursor" type="number" name="phone" value="${data.phone}" required>
+			</div>
+		</div>  
       
-      <div>  
-         <div class="form-inline-input">
-           <label class="form-label">Country</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="Country" placeholder="서울특별시">
-         </div>
-         <div class="form-inline-input">
-           <label class="form-label">State</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" name="State" placeholder="강남구">         
-         </div>
-          <div class="form-inline-input"> 
-           <label class="form-label">Postal Code</label>
-           <input class="form-input form-size-200 mb-4 cursor" type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                   name="PostalCode"  maxlength="5" placeholder="06234">           
-         </div>
-       </div> 
+		<label class="input-label w-100">배송지</label>
+		<div>  
+		
+			<div class="form-inline-input">
+			<!-- <label class="form-label">Country</label> -->
+				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address1" value="${data.address1}" placeholder="우편번호">
+			</div>
+			
+			<div class="form-inline-input">
+         <!--   <label class="form-label">State</label> -->
+				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address2" value="${data.address2}" placeholder="주소">         
+			</div>
+			
+			<div class="form-inline-input">
+         <!--   <label class="form-label">State</label> -->
+				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address3" value="${data.address3}" placeholder="상세주소">
+					<div>		
+					<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
+					</div>         
+			</div>
+			
+			<div class="form-inline-input">
+         <!--   <label class="form-label">State</label> -->
+				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address4" value="${data.address4}" placeholder="참고항목">         
+			</div>
+			
+		</div> 
+	</div>
+	
+		<div>
+			<div class="form-inline-input">
+				<label class="form-label">결제금액</label>
+				<input class="form-input form-size-300 mb-4 cursor" type="number" name="price" value="${data.phone}" required>
+			</div>
+		</div>  
         
         
           <div class="text-end button-left">
             <button class="btn btn-primary" type="button" onclick="cancel();">취 소</button>
-            <!-- <button class="btn btn-primary" type="button" onclick="finalPay(this.form);">결 제</button> -->
             <button class="btn btn-primary" type="button" id="check_module">결 제</button>
           </div>
        </form>       
@@ -148,31 +162,9 @@
 	if(confirm("결제를 취소하시겠습니까?") === true){
 		window.history.back();
 	}
-	return;
+	return "/home";
   }
  
- /* <!--결제 버튼-->
- <!--정보입력 빈 칸 방지-->
- function finalPay(form){
-	 if(form.FirstName.value =="" || form.LastName.value ==""){
-		 alert("이름은 반드시 입력해주세요");
-	 }else if(form.AddressFirstLine.value =="" || form.Country.value =="" || form.State.value=="" || form.PostalCode.value ==""){
-		 alert("주소를 입력해주세요");
-	 }else if(form.NameOnCard.value=="" || form.CardNumber.value=="" || form.Expiration.value=="" || form.CVV.value==""){
-		 alert("카드정보를 올바르게 입력해주세요");
-	 }else{
-		  if(confirm("결제 하시겠습니까?") === true){
-			  form.submit();
-<!--주소 Check-->			  
-			  alert("결제가 완료되었습니다.\n메인화면으로 이동합니다.");
-			  location.href="https://www.naver.com";
-		  }else{
-			  alert("결제에 실패하였습니다.");
-		  }			 
-	 }
-	  
- } */
-
  
  <!-- 결제 api 테스트!!!!!!!!!! -->
  <!--결제 버튼-->
@@ -182,6 +174,9 @@
  $("#check_module").click(function () {
 	var IMP = window.IMP;
 	var code = "imp33043558"; //가맹점 식별코드
+	/* <c:forEach items="${params}" var="price">
+		alert("${item.val}");	// 위에 list나 변수를 선언하고 alert 자리에 담으면 차례대로 값을 받는다.
+	</c:forEach> */
 	IMP.init(code);
 		//결제요청
 		IMP.request_pay({
@@ -189,7 +184,8 @@
 			pay_method: 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
 			name : '결제테스트', // 상품명
-			amount : 1,
+			amount 10000: 
+			,
 			buyer_email : 'iamport@siot.do',
 			buyer_name : '구매자이름',
 			buyer_tel : '010-1234-5678',  //필수항목
@@ -216,11 +212,64 @@
 			}
 			console.log(msg);
 			alert(msg);
-		});//pay
-	}); //check1 클릭 이벤트
+		});
+	});
  
  
   
  </script>
+ 
+  <!--우편번호 API-->
+ <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script>
+     function sample6_execDaumPostcode() {
+         new daum.Postcode({
+             oncomplete: function(data) {
+                 // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                 // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                 var addr = ''; // 주소 변수
+                 var extraAddr = ''; // 참고항목 변수
+
+                 //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                 if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                     addr = data.roadAddress;
+                 } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                     addr = data.jibunAddress;
+                 }
+
+                 // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                 if(data.userSelectedType === 'R'){
+                     // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                     // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                     if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                         extraAddr += data.bname;
+                     }
+                     // 건물명이 있고, 공동주택일 경우 추가한다.
+                     if(data.buildingName !== '' && data.apartment === 'Y'){
+                         extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                     }
+                     // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                     if(extraAddr !== ''){
+                         extraAddr = ' (' + extraAddr + ')';
+                     }
+                     // 조합된 참고항목을 해당 필드에 넣는다.
+                     document.getElementById("sample6_extraAddress").value = extraAddr;
+                 
+                 } else {
+                     document.getElementById("sample6_extraAddress").value = '';
+                 }
+
+                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                 document.getElementById('sample6_postcode').value = data.zonecode;
+                 document.getElementById("sample6_address").value = addr;
+                 // 커서를 상세주소 필드로 이동한다.
+                 document.getElementById("sample6_detailAddress").focus();
+             }
+         }).open();
+     }
+</script>
+ 
 </body>
 </html>
