@@ -13,29 +13,6 @@
 
 <script type="text/javascript">
 	/* 아이디 중복 확인 */
-	
-/* 	function idOverlap() {
-				console.log("idOverlap 호출")
-				console.log("아이디 입력 값 " + register.accountid.value)
-			$.ajax({
-				type : "post",
-				url : "idOverlap",
-				data : {"accountid" : register.accountid.value},
-				dataType : "text",
-				success : function(data) {
-					if(data == "1") {
-						alert("사용 가능한 아이디입니다.");
-					} else {
-						alert("이미 사용중인 아이디입니다.");
-					}
-				},
-				error : function() {
-					alert("아이디 중복 확인 실패");
-				}
-			});
-	}
-*/
-	
  	function idOverlap() {
 		console.log("idOverlap 호출")
 		console.log("아이디 입력 값 " + $("#id_accountid").val())
@@ -47,11 +24,9 @@
 			success : function(data) {
 				if(data.code == "fail") {
 					alert("이미 사용중인 아이디입니다. 다른 아이디를 입력하세요.");
-//					$("#submit").attr("disabled", "disabled");
 					$("#button_register").attr("disabled",true); 
 				} else if(data.code == "success") {
 					alert("사용 가능한 아이디입니다.");
-//					$("#submit").removeAttr("disabled");
 					$("#button_register").removeAttr("disabled"); 
 				}
 			}
@@ -87,40 +62,40 @@
 		<c:url var="loginUrl" value="/register" />
 		<form action="${loginUrl}" name="register" method="post">
 		<div class="center-block">
-			<h1 align="center"><a href="/main">지구마켓</a></h1>
+			<h1 align="center"><a href="/home">지구마켓</a></h1>
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
-				<label for="id_accountid">아이디</label>
 				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요" required>
+				<label for="id_accountid">아이디</label>
 				<input type="button" onclick="idOverlap()" value="중복확인" />
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<label for="id_password">비밀번호</label>
 				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요" required>
+				<label for="id_password">비밀번호</label>
 			</div>
 			<div class="form-floating mb-2">
-				<label for="id_passwordConfirm">비밀번호 확인</label>
 				<input class="form-control" type="password" id="id_passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요" onkeyup="passConfirm()" required>
+				<label for="id_passwordConfirm">비밀번호 확인</label>
 				<span id ="confirmMsg"></span>
 			</div>
 			<br>
 			
 			<div class="form-floating mb-2">
-				<label for="id_name">닉네임</label>
 				<input class="form-control" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요" required>
+				<label for="id_name">닉네임</label>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<label for="id_email">이메일</label>
 				<input class="form-control" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요" required>
+				<label for="id_email">이메일</label>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<label for="id_phone">전화번호</label>
 				<input class="form-control" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요" required>
+				<label for="id_phone">전화번호</label>
 			</div>
 			<br>
 				

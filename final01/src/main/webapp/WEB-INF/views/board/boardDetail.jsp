@@ -37,8 +37,7 @@
 			<c:set var="accountId" value="111" />
 			<c:set var="uploadId" value="111" />
 		</c:if>
-			<c:set var="buyId" value="${data.buyStatus}" />
-			<c:set var="myId" value="${loginData.accountid}" />
+			
 
 	
 	<c:if test="${empty data}">
@@ -73,13 +72,13 @@
 				<label>상태 : 새상품</label>
 				<br><br><br>
 				
-				<c:if test="${empty status} ">
+				<c:if test="${empty data.buyStatus} ">
 					<c:if test="${not empty loginData}">
 						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
 					</c:if>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
-				<c:if test="${not empty status}">
+				<c:if test="${not empty data.buyStatus}">
 				<button class="btn btn-primary" style="float:right; background-color:red;" disabled>구매불가</button>
 				<h4 style="float:right;">판매완료</h4>
 				</c:if>
@@ -106,9 +105,9 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+			<!-- 판매자아이디 uploadId     로그인한아이디 loginData.accountid    
 				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
-			<c:if test="${uploadId eq myId}">
+			<c:if test="${uploadId eq loginData.accountid}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
 				<br><br>
 			</c:if>
@@ -148,7 +147,7 @@
 
 				<table class="table">
 					<tr>
-						<td style="text-align:left; vertical-align : bottom;"><h4>${data.cateName}</h4></td>
+						<td style="text-align:left; vertical-align : bottom;"><h4>카테고리 > ${data.cateName}</h4></td>
 						<fmt:formatDate value="${data.createDate}" var="createDate" dateStyle="long" />
 						<td style="text-align:right; vertical-align : bottom; color:gray;"><h6>${data.createDate}          조회수 : ${data.viewCnt}회</h6></td>
 					</tr>
@@ -159,7 +158,7 @@
 					<img id="previewImg" class="image-360" alt="profile" src="<%=request.getContextPath() %>${data.url}"
                   width="400px" height="400px" style="max-width:400px; max-height:400px;" />
 				</div>
-			</div>
+			</div>  
 			<div style="float:left; width:800px; margin-left:5px;">
 				<div style="float:right;" onclick="ajaxWishList(${data.bId});">
 						<c:if test="${not empty loginData && loginData.accountid != data.accountId}">
@@ -204,9 +203,9 @@
 			</div>	
 			
 			<br><br><br><br><br><br>
-			<!-- 판매자아이디 uploadId     로그인한아이디 myId    
+			<!-- 판매자아이디 uploadId     로그인한아이디 loginData.accountid    
 				 동일할 경우 내가 작성한 게시글이므로 수정 버튼 출력 -->
-			<c:url var="boardUrl" value="/board" />
+		
 			<c:if test="${uploadId eq myId}">
 				<button class="btn btn-primary" style="float:right;" onclick="location.href='/home/board/modify?id=${data.bId}'">게시글 수정</button>
 				<br><br>
@@ -258,7 +257,7 @@
                        </div>
                      </div>
                      <div class="card-body">
-                      <input type="hidden" value="${review.accountId}">
+                      <input type="hidden" value="${review.id}">
                          <c:choose>
                          <c:when test="${review.isDeleted()}">
                          <p class="text-muted">삭제된 댓글 입니다.</p>
@@ -281,11 +280,11 @@
 	            </div>
 	           </c:forEach>
 	                    
-                    <c:if test="${buyId == myId}"> 
+                    
                     <!-- buyId == myId  -> 구매자아이디와 내 아이디가 동일할 경우 내가 구매자이므로 
 				     후기 작성 메뉴가 나옴 -->
 					<div class="mb-1">
-						<form role="form" method="post" autocomplete="off">
+						<form action="../review/add" method="post" autocomplete="off">
 							<input type="hidden" name="bid" value="${bId}">
 							<div class="input-group">
 								<textarea class="form-control" name="content" id="content" rows="2"></textarea>
@@ -293,8 +292,7 @@
 							</div>
 						</form>
 					</div>
-		      </c:if>	
-			</div>
+			   </div>
 	
 					
 			<c:choose>
@@ -308,7 +306,23 @@
 				</c:when>	
 			</c:choose>
 		
-	
+			<!-- 
+				<c:choose>
+					<c:when test="${not empty data.buyStatus}">
+						<c:if test="${empty review}">
+							<div style="width:100%;">
+								<label style="text-align:center;">후기 미등록.</label>
+							</div>
+						</c:if>
+					</c:when>
+					<c:when test="${empty data.buyStatus}">				
+						<div style="width:100%;">
+							<label style="text-align:center;">구매하시고 후기를 남겨보세요.</label>
+						</div>
+					</c:when>	
+				</c:choose>
+			 -->
+		</div>
 	
 	
 	<footer><%@ include file="../module/footer.jsp" %></footer>
@@ -405,12 +419,27 @@
 			
 			element.setAttribute("onclick", "reviewUpdate(this);");
 		}
+		    function changeText(element) {
+			element.innerText = "수정";
+			var cid = element.parentElement.parentElement.children[0].value;
+			var value = element.parentElement.previousElementSibling.children[0].value;
+			element.parentElement.previousElementSibling.children[0].remove(); //기존의 것 삭제
+			element.parentElement.previousElementSibling.innerText = value;
+			
+			var btnDelete = document.createElement("button");
+			btnDelete.innerText = "삭제";
+			btnDelete.setAttribute("class", "btn btn-sm btn-outline-dark");
+			btnDelete.setAttribute("onclick", "reviewDelete(this, " + cid + ");");
+			
+			element.parentElement.append(btnDelete);
+			element.setAttribute("onclick", "changeEdit(this);");
+		}
 		function reviewUpdate(element) {
 			var cid = element.parentElement.parentElement.children[0].value;
 			var value = element.parentElement.previousElementSibling.children[0].value;
 			
 			$.ajax({
-				url: "/review/modify",
+				url: "/home/review/modify",
 				type: "post",
 				data: {
 					id: cid,

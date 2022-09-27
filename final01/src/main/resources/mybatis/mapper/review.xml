@@ -39,8 +39,14 @@
      ON R.ACCOUNTID = A.ACCOUNTID
    WHERE R.ID = #{id}
   </select>
-  <delete id="deleteData" parameterType="reviewDto">
-	  DELETE FROM REVIEW
+  <update id="deleteData" parameterType="reviewDto">
+	  UPDATE REVIEW
+	     SET DELETED = 'Y'
 	   WHERE ID =#{id}
-	</delete>
+	</update>
+  <update id="updateData" parameterType="reviewDto">
+	  UPDATE REVIEW
+	     SET CONTENT = #{content}
+	   WHERE ID =#{id}
+	</update>
   </mapper>
