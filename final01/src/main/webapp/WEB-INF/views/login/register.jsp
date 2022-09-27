@@ -9,6 +9,19 @@
 	<meta charset="UTF-8">
 	<title>회원가입</title>
 	<%@ include file="../module/head.jsp" %>
+	
+	<style type="text/css">
+	   .label-text{
+		 font-weight: lighter;
+	     color: lightgray;
+    }
+     .button-register{
+     float: right;
+     margin-top: 2%;
+     margin-bottom: 2.5%; 
+     }
+	
+	</style>
 </head>
 
 <script type="text/javascript">
@@ -62,40 +75,40 @@
 		<c:url var="loginUrl" value="/register" />
 		<form action="${loginUrl}" name="register" method="post">
 		<div class="center-block">
-			<h1 align="center"><a href="/home">지구마켓</a></h1>
+			<img id="previewImg" style="margin-top: 3rem;" class="image-360 profile-size" alt="profile" src="./static/img/logo.png" onerror="this.src='../static/img/logo.png'" onclick="location.href='/home'">
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
 				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요" required>
-				<label for="id_accountid">아이디</label>
-				<input type="button" onclick="idOverlap()" value="중복확인" />
+				<label for="id_accountid" class="label-text">아이디</label>
+				<input class="btn btn-outline-success button-register"type="button" onclick="idOverlap()" value="중복확인" />
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요" required>
-				<label for="id_password">비밀번호</label>
+				<label style="margin-top: 1.5rem;"for="id_password" class="label-text">비밀번호</label>
 			</div>
 			<div class="form-floating mb-2">
 				<input class="form-control" type="password" id="id_passwordConfirm" name="passwordConfirm" placeholder="비밀번호를 입력하세요" onkeyup="passConfirm()" required>
-				<label for="id_passwordConfirm">비밀번호 확인</label>
+				<label for="id_passwordConfirm" class="label-text">비밀번호 확인</label>
 				<span id ="confirmMsg"></span>
 			</div>
 			<br>
 			
 			<div class="form-floating mb-2">
 				<input class="form-control" type="text" id="id_name" name="name" value="" placeholder="닉네임을 입력하세요" required>
-				<label for="id_name">닉네임</label>
+				<label for="id_name" class="label-text">닉네임</label>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<input class="form-control" type="text" id="id_email" name="email" value="" placeholder="이메일을 입력하세요" required>
-				<label for="id_email">이메일</label>
+				<label for="id_email" class="label-text">이메일</label>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
 				<input class="form-control" type="text" id="id_phone" name="phone" value="" placeholder="전화번호를 입력하세요" required>
-				<label for="id_phone">전화번호</label>
+				<label for="id_phone" class="label-text">전화번호</label>
 			</div>
 			<br>
 				
@@ -108,7 +121,7 @@
 			 <div class="input-group">
 				<input class="form-control mb-3" type="text" id="sample6_detailAddress" name="address3"  value="" placeholder="상세주소(동,호수)">
 			   <div>		
-				<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
+				<input class="btn btn-outline-success" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
 			   </div>
 			 </div>		
 		
@@ -121,7 +134,7 @@
 			<br><br>
 			
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" type="submit" id="button_register" disabled>가입하기</button>
+				<button class="btn btn-outline-success bluebtn" type="submit" id="button_register">가입하기</button>
 			</div>
 			
 			<br>

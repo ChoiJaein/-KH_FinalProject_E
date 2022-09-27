@@ -24,10 +24,10 @@
 	  }
 	 
 	  .button-color{
-	   background-color: #00B050;
-	   border-color: #00B050;
-	   margin-left: 0.5rem;
-       width: 70px;
+	   background-color: #00B050 !important; 
+	   border-color: #00B050 !important;
+	   margin-left: 0.5rem !important;
+       width: 70px !important;
 	  }
 	  .font-color{
 	  color:#00B050;
@@ -37,6 +37,13 @@
 	  .whole-size{
 	  margin: auto;
       min-width: 1110px;
+	 }
+	 
+	 .hr-style{
+	   margin-bottom: 5px;
+      color: #00B050;
+      height: 1px;
+      opacity: .5;
 	 }
 	</style>
 </head>  
@@ -56,7 +63,7 @@
 <div class="container  text-center">
    	<div class="align-items-start top-menu">				
 			<c:if test="${not empty sessionScope.loginData}">
-                     <b>${sessionScope.loginData.accountid} 님 환영합니다</b>
+                     <b>${sessionScope.loginData.accountid}</b> 님 환영합니다
                     <a style="color:#00B050;" href="/home/notice">공지사항</a>
 					<a style="color:#00B050;" href="/home/myinfo/main">마이페이지</a>
 					<a style="color:#00B050;" href="/home/board/upload">게시글 업로드</a>
@@ -70,7 +77,7 @@
 
 	<div class="align-items-start">
 	 <div class="search">
-			<img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/logo.png" onclick="location.href='/home'">
+			<img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/logo.png" onerror="this.src='../static/img/logo.png'" onclick="location.href='/home'">
 			<input class="text_wide "style="height:39px" type="text" id="keywordInput" name="keyword" value="${scri.keyword}">			   
 			<button class="btn btn-secondary button-color" id="searchBtn">검 색</button>
 	</div>		
@@ -80,4 +87,4 @@
 </div>
 
 <br>
-<hr>
+<hr class="hr-style">
