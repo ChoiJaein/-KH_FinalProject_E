@@ -19,7 +19,7 @@
 		<c:url var="loginUrl" value="/login" />
 		<form action="${loginUrl}" method="post" name ="loginForm">
 		<div class="center-block">
-			<h1 align="center"><a href="/home/main">지구마켓</a></h1>
+			<h1 align="center"><a href="/home">지구마켓</a></h1>
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
@@ -44,20 +44,18 @@
 			<div class="mb-2 text-end">
 				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./register'">회원가입</button>
 			</div>
+			<br>
 	        <div align= 'center'>
-	         <!-- 카카오 로그인 -->
-		        <button onclick="kakaoLogin();">
-		        <a href="javascript:void(0)">
-		            <span><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="210"" alt="카카오계정 로그인" style="height: 50px;"/></span>
-		        </a>
-		  	   </button>
-		       <!-- 
-		       <button onclick="kakaoLogout();">
-		        <a href="javascript:void(0)">
-		            <span>카카오 로그아웃</span>
-		        </a>
-		  	   </button>
-		        -->
+	        <!-- 카카오 로그인 -->
+		    <a id="kakao-login-btn" href="javascript:kakaoLogin();">
+			  <img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="230"/>
+			</a>
+			<p id="token-result"></p>
+			<!-- 
+			<a href="javascript:kakaoLogout();"
+	  		 style="text-decoration: none; color:#61615b;">저장된 카카오 계정 연결 끊기</a><br>
+	  		 <br>
+            -->
 		  <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
 		  <script type="text/javascript">
 		  Kakao.init('d0ef6b76e117277cb82e82d03cff8759'); 
@@ -71,7 +69,6 @@
 		            url: '/v2/user/me',
 		            success: function (response) {
 		          	  console.log(response)
-		          	  alert("로그인 성공 !");
 		            },
 		            fail: function (error) {
 		              console.log(error)
@@ -99,7 +96,7 @@
 		      }
 		    }  
             </script>
-			<!-- 네이버 로그인 -->
+		   	<!-- 네이버 로그인 -->
 			<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>		  
 		    <div id ="naverIdLogin"></div>
 		   <script type="text/javascript">
@@ -114,7 +111,7 @@
 		   
 		     naverLogin.init();
            </script>
-        
+        </div>
 	  </section>
     </body>
 	<br><br><br><br>
