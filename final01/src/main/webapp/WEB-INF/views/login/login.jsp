@@ -26,6 +26,16 @@
 	     margin-right: 0.5rem;
 	     width: 200px;
 	 }
+	 .text-input{
+		border-style: solid;
+	    border-width: revert;
+	    border-color: #00B050;
+	 
+	 }
+	 .label-text{
+		 font-weight: lighter;
+	     color: lightgray;
+    }
 	 
 
 	</style>
@@ -44,13 +54,13 @@
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
  			<div class="form-floating mb-2">
-				<input class="form-control" type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
-				<label for="id_accountid">아이디</label>
+				<input class="form-control" style="border-style: solid; border-color: #00B050; border-width: revert; " type="text" id="id_accountid" name="accountid" value="" placeholder="아이디를 입력하세요">
+				<label class="label-text" for="id_accountid">아이디</label>
 			</div>
 			<br>
 			<div class="form-floating mb-2">
-				<input class="form-control" type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
-				<label for="id_password">비밀번호</label>
+				<input class="form-control" style="border-style: solid; border-color: #00B050; border-width: revert; " type="password" id="id_password" name="password" value="" placeholder="비밀번호를 입력하세요">
+				<label class="label-text" for="id_password">비밀번호</label>
 			</div>
 			<br>
 			<div class="mb-2 text-end">

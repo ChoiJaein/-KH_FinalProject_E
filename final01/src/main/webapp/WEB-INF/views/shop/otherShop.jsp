@@ -271,6 +271,26 @@
 	        </tr>
 	    </table>
 	</c:forEach>
+	
+<!-- 테이블 정렬을위한 태그 --> 
+<!-- 이 테이블이 있어야 등록갯수가 중앙으로 배치되는것이 아닌 좌우로 순차적으로 배치 -->               
+	       <table class="table-product mt-2 pointer" style="visibility:hidden;">
+	        <colgroup>
+				<col class="col-4">
+				<col class="col-8">
+			 </colgroup>
+	        <tr>
+	            <td rowspan="2" style="height:90px;">
+	               <img id="previewImg" class="image-360 product-size" alt="profile" src="./static/img/modify/jewel.png">  
+	            </td>
+	            <td colspan="2" class="p-edit">상품명value</td>
+	        </tr>
+	        <tr>
+	            <td colspan="2" class="p-price"> 100.000.000 원</td>   
+	        </tr>
+	    </table>
+	    
+	    
 	<nav>
 			<div>
 				<ul class="pagination justify-content-center">

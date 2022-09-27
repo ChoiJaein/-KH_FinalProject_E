@@ -57,7 +57,10 @@
 	  .form-size-610{
 	   width:610px;
 	 }
-	 
+	   .form-size-300{
+	   width:300px;
+	 }
+	  
 	   .form-size-200{
 	   width:200px;
 	 }
@@ -92,65 +95,60 @@
 <!--주소 Check-->
 	<c:url var="payUrl" value="/payment/pay" />
 	<form action="${payUrl}" method="post">
-	<div style="text-align: center;">
+	<div class="container" style="text-align: center; width: 630px;">
 		<div>
 			<div class="form-inline-input">
 				<label class="form-label">수령인</label>
 				<input class="form-input form-size-300 mb-4 cursor" type="text" name="pkgName" placeholder="홍길동" required>
 			</div>
-		</div>  
+		  
 
-		<div>
 			<div class="form-inline-input">
 				<label class="form-label">전화번호</label>
 				<input class="form-input form-size-300 mb-4 cursor" type="number" name="phone" value="${data.phone}" required>
 			</div>
 		</div>  
       
-		<label class="input-label w-100">배송지</label>
-		<div>  
-		
+		 <div>  		
 			<div class="form-inline-input">
-			<!-- <label class="form-label">Country</label> -->
-				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address1" value="${data.address1}" placeholder="우편번호">
+		       <label class="form-label">배송지</label>
+			   <input class="form-input form-size-300 mb-4 cursor" type="text" name="address2" value="${data.address2}" placeholder="주소">         
+			</div>			
+			<div class="form-inline-input">
+			  <input class="form-input form-size-300 mb-4 cursor" type="text" name="address3" value="${data.address3}" placeholder="상세주소">
+			</div>
+		</div>	
+			
+		<div>	
+			<div class="form-inline-input">
+			   <input class="form-input form-size-300 mb-4 cursor" type="text" name="address1" value="${data.address1}" placeholder="우편번호">
 			</div>
 			
 			<div class="form-inline-input">
-         <!--   <label class="form-label">State</label> -->
-				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address2" value="${data.address2}" placeholder="주소">         
+			   <input class="form-input form-size-300 mb-4 cursor" type="text" name="address4" value="${data.address4}" placeholder="참고항목">         
 			</div>
 			
-			<div class="form-inline-input">
-         <!--   <label class="form-label">State</label> -->
-				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address3" value="${data.address3}" placeholder="상세주소">
-					<div>		
-					<input class="btn btn-primary" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
-					</div>         
-			</div>
+			<div>		
+			   <input class="btn btn-primary" style="float:right;" type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" ><br>	 
+			</div>         
+       </div>    
 			
-			<div class="form-inline-input">
-         <!--   <label class="form-label">State</label> -->
-				<input class="form-input form-size-200 mb-4 cursor" type="text" name="address4" value="${data.address4}" placeholder="참고항목">         
-			</div>
-			
-		</div> 
-	</div>
-	
-		<div>
-			<div class="form-inline-input">
-				<label class="form-label">결제금액</label>
+
+		<div class="row" style="width:620px">
+			<label class="form-label">결제금액</label>
+			<div class="col-8">
 				<input class="form-input form-size-300 mb-4 cursor" type="number" name="price" value="${data.phone}" required>
 			</div>
+			<div class="col-2">	
+	            <button class="btn btn-primary" style="float:right; margin-right:-2.9rem" type="button" onclick="cancel();">취 소</button>
+	        </div>
+	        <div class="col-2">    
+	            <button class="btn btn-primary" style="float:right; margin-right:-0.6rem" type="button" id="check_module">결 제</button>
+	        </div>
 		</div>  
-        
-        
-          <div class="text-end button-left">
-            <button class="btn btn-primary" type="button" onclick="cancel();">취 소</button>
-            <button class="btn btn-primary" type="button" id="check_module">결 제</button>
-          </div>
-       </form>       
-  
-   
+          
+        </div> 
+     </form>       
   </section>
 
  <!--하단--> 
