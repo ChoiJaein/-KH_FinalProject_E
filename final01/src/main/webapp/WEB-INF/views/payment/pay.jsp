@@ -184,7 +184,7 @@
 			pay_method: 'card',
 			merchant_uid : 'merchant_' + new Date().getTime(),
 			name : '결제테스트', // 상품명
-			amount 10000: 
+			amount : 1 
 			,
 			buyer_email : 'iamport@siot.do',
 			buyer_name : '구매자이름',
