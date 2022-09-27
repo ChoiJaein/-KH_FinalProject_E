@@ -16,10 +16,7 @@
 		margin-top: -8rem;	
 	 }
 	 
-	  .font-color{
-	  color:#00B050;
-	  font-weight: bolder;
-	 }
+
 	 
 	 
 	</style>
