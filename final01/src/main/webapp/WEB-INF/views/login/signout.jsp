@@ -49,12 +49,12 @@ function pwCheck(){
 			
 			
 			
-			 	<div class="div-profile">
+			 	<div class="div-profile" style="position:absolute; left:-20px; top:-100px;">
 					<img src="<%=request.getContextPath()%>${photo.url}" alt="프로필사진" />
 				</div> 
 				
 				
-				<div class="div-profile">
+				<div class="div-profile" style="position:absolute; top:130px;">
 					<input type="text" id="id_name" name="name" value="${data.name}" readonly>
 				</div>
 			</div>

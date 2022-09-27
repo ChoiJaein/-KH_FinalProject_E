@@ -235,7 +235,7 @@
  <!-- 반복문 값이 있을때마다  상품목록div 하나씩 추가-->
  <!-- 클릭시 상품페이지로 이동경로 체크 --> 
  	<c:forEach items="${datas}" var="data">
-	    <table class="table-product mt-2 pointer" onclick="location.href='https://www.naver.com'">
+	    <table class="table-product mt-2 pointer" onclick="location.href='/home/board/detail?id=${data.bId}'">
 	        <colgroup>
 				<col class="col-4">
 				<col class="col-8">
@@ -255,7 +255,7 @@
 	<nav>
 			<div>
 				<ul class="pagination justify-content-center">
-					<c:url var="boardUrl" value="/board/detail"/>
+					<c:url var="boardUrl" value="/myinfo/shoppinglist"/>
 					
 					<c:if test="${shoppingPage.hasPrevPage()}">
 						<li class="page-item">
