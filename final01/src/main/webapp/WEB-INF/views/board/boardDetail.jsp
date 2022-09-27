@@ -301,7 +301,7 @@
 					</c:if>
 				</c:when>
 				<c:when test="${empty status}">				
-					<label>구매하시고 후기를 남겨보세요.</label>
+					
 				</c:when>	
 			</c:choose>
 				     
