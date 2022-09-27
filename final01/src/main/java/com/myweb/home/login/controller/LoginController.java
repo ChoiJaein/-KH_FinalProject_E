@@ -65,7 +65,9 @@ public class LoginController {
 			   return "redirect:/";
 		   } else {
 			   //실패
-			   return"login/login";
+				model.addAttribute("msg", "로그인 정보가 잘못되었습니다.");
+				model.addAttribute("url", "/home/login");
+			   return"alert";
 		   }
 	       }
 
