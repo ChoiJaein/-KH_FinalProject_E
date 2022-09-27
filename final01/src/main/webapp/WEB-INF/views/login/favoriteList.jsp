@@ -236,7 +236,7 @@
 	            </div>
 	<!--개인정보수정버튼 링크설정 -->            
 	            <div class="text-end mt-4">
-	              <button class="btn btn-primary" type="button" onclick="location.href='./usermodify?id=${loginData.accountid}'">개인정보 수정</button>
+	              <button class="btn btn-primary" type="button" onclick="location.href='./modify?id=${loginData.accountid}'">개인정보 수정</button>
 	            </div>
 	         </div>
 	       </div>
