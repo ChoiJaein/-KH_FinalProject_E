@@ -266,7 +266,7 @@
 	 <!-- 클릭시 상품페이지로 이동경로 체크 --> 
 	 
 	 <c:forEach items="${datas}" var="data">
-	    <table class="table-product mt-2 pointer" onclick="location.href='./detail?id=${data.bId}'">
+	    <table class="table-product mt-2 pointer" onclick="location.href='/home/board/detail?id=${data.bId}'">
 	        <colgroup>
 				<col class="col-4">
 				<col class="col-8">
