@@ -179,7 +179,7 @@
 				
 				<c:if test="${empty data.buyStatus}">
 					<c:if test="${not empty loginData && loginData.accountid != data.accountId}">
-						<button class="btn btn-primary" style="float:right;" id ="purchase_btn">바로구매</button>
+						<button class="btn btn-primary" type="button" style="float:right;" id ="purchase_btn">바로구매</button>
 					</c:if>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
@@ -350,21 +350,22 @@
 	            		 bId: ${data.bId}
 	            	 },
 	            	 success:function(data) {
-	            		 if(data.code == done)
+	            		if(data.code == done) {
 	                     alert(data.message);
 	            		 location.href = "/board/detail?id=${data.bId}"
-	            	 } if else(data.code == fail) {
+	            	 } else if(data.code == fail) {
 	            		 alert(data.message)
 	            		 location.href = "/board/detail?id=${data.bId}"
+	            	 	}
 	            	 }
 	            	  
 	              });
+	         
 	          } else {
 	        	  var msg = '결제에 실패하였습니다.';
 	              msg += '에러내용 : ' + rsp.error_msg;
 	              alert(msg);
-	          }
-	      });
+	       });
 	    });
 	
 	</script>
