@@ -1,7 +1,12 @@
 package com.myweb.home.member.controller;
 
+import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +16,9 @@ import org.json.simple.JSONObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -108,6 +117,7 @@ public class MemberController {
 		return "login/userModify";
 	}
 	
+	
 	@PostMapping(value="/myinfo/modify")
 	public String userModify(Model model, HttpServletRequest request
 			, @ModelAttribute MemberVO vo , @SessionAttribute("loginData") AccountDTO accDto
@@ -133,6 +143,7 @@ public class MemberController {
 				return "board/boardUpload";
 			}
 		}
+		
 		
 		if(result) {
 			model.addAttribute("msg", "수정이 완료되었습니다.");

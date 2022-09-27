@@ -37,29 +37,31 @@
   
   
   <c:url var="myinfoModify" value="/myinfo/modify"/>
-  <form class="large-form" action="${myinfoModify}" method="post" enctype="multipart/form-data">
+  <form id="ajaxform" class="large-form" action="${myinfoModify}" method="post" enctype="multipart/form-data">
  <div class="d-flex">
    <div class="col-sm-4 text-center">
     <div class="mb-4 mt-4">
        <div style="background-color:rgba(233,236,239)">
      
-     
-     
           
 <img id="previewImg" class="image-360 mt-5 mb-4" alt="profile" src="<%=request.getContextPath() %>${photo.url}" 
-                    width="250" height="250"> 
+                    width="250" height="250">      
+     
 
-
-
+			<div class="image-form left">
+				<img id="previewImg" class="image-360" alt="여기에는 증명 사진이 배치됩니다." src="${imagePath}">
+				<br>
+			</div> 
 
 <!--닉네임 value값입력 -->
           <div>
             <input class="text-center mb-3" type="text" name="name" value="${data.name}" size="17">
           </div>
-          <div>
+
+           <div>
            <label class="input-file-button mb-4" for="imgSelect">프로필사진 변경</label>
-           <input id="imgSelect" name="photoUpload" type="file" onchange="preview()" style ="display:none;">
-          </div>
+          <input id="imgSelect" name="photoUpload" type="file" onchange="preview()" style ="display:none;">
+          </div> 
           
        </div>
     </div>
@@ -126,6 +128,8 @@
 
 
 <script type="text/javascript">
+
+
 
 function preview() { previewImg.src=URL.createObjectURL(event.target.files[0]); }
 

@@ -15,7 +15,7 @@
 	    width: 26%;
 	    height: 26%;
 	    margin:0;
-	 }
+	 }     
 	  .top-menu{
 	   margin-top: -2rem;
        margin-bottom: 3rem;
@@ -44,10 +44,10 @@
 <script type="text/javascript">
  $(function(){
   $('#searchBtn').click(function() {
-     self.location = "board/boardList_search"
-     + '${pageMaker.makeQuery(1)}'
+     window.location = "/home/board/boardList_search"
      + "?keyword="
      + encodeURIComponent($('#keywordInput').val());
+     + '${pageMaker.makeQuery(1)}'
     });
  });   
  </script>

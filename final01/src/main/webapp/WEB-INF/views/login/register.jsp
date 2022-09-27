@@ -13,29 +13,6 @@
 
 <script type="text/javascript">
 	/* 아이디 중복 확인 */
-	
-/* 	function idOverlap() {
-				console.log("idOverlap 호출")
-				console.log("아이디 입력 값 " + register.accountid.value)
-			$.ajax({
-				type : "post",
-				url : "idOverlap",
-				data : {"accountid" : register.accountid.value},
-				dataType : "text",
-				success : function(data) {
-					if(data == "1") {
-						alert("사용 가능한 아이디입니다.");
-					} else {
-						alert("이미 사용중인 아이디입니다.");
-					}
-				},
-				error : function() {
-					alert("아이디 중복 확인 실패");
-				}
-			});
-	}
-*/
-	
  	function idOverlap() {
 		console.log("idOverlap 호출")
 		console.log("아이디 입력 값 " + $("#id_accountid").val())
@@ -47,11 +24,9 @@
 			success : function(data) {
 				if(data.code == "fail") {
 					alert("이미 사용중인 아이디입니다. 다른 아이디를 입력하세요.");
-//					$("#submit").attr("disabled", "disabled");
 					$("#button_register").attr("disabled",true); 
 				} else if(data.code == "success") {
 					alert("사용 가능한 아이디입니다.");
-//					$("#submit").removeAttr("disabled");
 					$("#button_register").removeAttr("disabled"); 
 				}
 			}
