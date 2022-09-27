@@ -328,8 +328,9 @@
 	<footer><%@ include file="../module/footer.jsp" %></footer>
 	
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js">
-
-	 $("#purchase_btn").click(function purchase() {
+	var puchase_btn = document.getElementById("puchase_btn");
+	
+	 puchase_btn.addEventListener("click", function purchase() {
 		 var IMP = window.IMP;
 	 	 IMP.init('imp16851710');  // 가맹점 식별코드
 		
@@ -365,8 +366,10 @@
 	        	  var msg = '결제에 실패하였습니다.';
 	              msg += '에러내용 : ' + rsp.error_msg;
 	              alert(msg);
-	       });
-	    });
+	       		}
+		 	}
+		 );
+	 } , false);
 	
 	</script>
 	<script type="text/javascript">
