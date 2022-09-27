@@ -12,8 +12,7 @@ a:visited {
 	color:green;
 	}
 	
-.bluebtn {
-	background-color : skyblue;
+.bluebtn {	
 	width:100%;
 }
 
@@ -93,7 +92,10 @@ img {
 }
 
 .text_wide {
-	width:500px; 
+	width:400px; 
+	border-style: solid;
+    border-width: revert;
+    border-color: #00B050;
 }
 
 .upmargin {

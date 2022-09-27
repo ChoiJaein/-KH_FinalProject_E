@@ -10,6 +10,25 @@
    <meta charset="UTF-8">
 	<title>로그인</title>
 	<%@ include file="../module/head.jsp" %>  
+	
+	<style type="text/css">
+	   .profile-size{
+		margin-top: 8%;
+	    margin-bottom: 3%;	    
+	    margin-right: 3%;
+	    width: 110%;
+	    height: 80%;
+	 }
+	 
+	 .kakao-button{
+		 border: none;
+	     padding: 0;
+	     margin-right: 0.5rem;
+	     width: 200px;
+	 }
+	 
+
+	</style>
 </head>
 <body>
 
@@ -19,7 +38,8 @@
 		<c:url var="loginUrl" value="/login" />
 		<form action="${loginUrl}" method="post" name ="loginForm">
 		<div class="center-block">
-			<h1 align="center"><a href="/home/main">지구마켓</a></h1>
+
+			<img id="previewImg" class="image-360 profile-size" alt="profile" src="./static/img/logo.png" onclick="location.href='/home'">     
 		</div>
 			<br><br>
 			<input type="hidden" name="url" value="${param.url}">
@@ -34,23 +54,24 @@
 			</div>
 			<br>
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" type="submit">로그인</button>
+				<button class="btn btn-outline-success bluebtn" type="submit">로그인</button>
 			</div>
 		</form>
 			
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./login/findIdPw'">아이디 비밀번호 찾기</button>
+				<button class="btn btn-outline-success bluebtn" onclick="location.href='./login/findIdPw'">아이디 비밀번호 찾기</button>
 			</div>
 			<div class="mb-2 text-end">
-				<button class="btn btn-outline-primary bluebtn" onclick="location.href='./register'">회원가입</button>
+				<button class="btn btn-outline-success bluebtn" onclick="location.href='./register'">회원가입</button>
 			</div>
-	        <div align= 'center'>
+	        <div align= 'center' style="display: inline-flex;">
 	         <!-- 카카오 로그인 -->
-		        <button onclick="kakaoLogin();">
+		        <button class="kakao-button" onclick="kakaoLogin();">
 		        <a href="javascript:void(0)">
 		            <span><img src="//k.kakaocdn.net/14/dn/btqCn0WEmI3/nijroPfbpCa4at5EIsjyf0/o.jpg" width="210"" alt="카카오계정 로그인" style="height: 50px;"/></span>
 		        </a>
 		  	   </button>
+		  	   
 		       <!-- 
 		       <button onclick="kakaoLogout();">
 		        <a href="javascript:void(0)">
@@ -101,7 +122,8 @@
             </script>
 			<!-- 네이버 로그인 -->
 			<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js" charset="utf-8"></script>		  
-		    <div id ="naverIdLogin"></div>
+		    <div id ="naverIdLogin" style="margin-left: 1rem"></div>
+		    </div>
 		   <script type="text/javascript">
 		      var naverLogin  = new naver.LoginWithNaverId(
 				   {

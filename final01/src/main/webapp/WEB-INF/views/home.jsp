@@ -7,19 +7,28 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>메인화면</title>
+	<title>홈</title>
 	<%@ include file="./module/head.jsp" %>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 	
+	<style type="text/css">
+	   .category-position{
+		margin-top: -8rem;	
+	 }
+	 
+	  .font-color{
+	  color:#00B050;
+	  font-weight: bolder;
+	 }
+	 
+	 
+	</style>
 </head>
 <body>
 	<header><%@ include file="./module/navigation.jsp" %></header>
 	<br><br><br><br><br><br>
 	<section class="container">
-	<div class="mb-1">
-		<div>
-			<h2>카테고리별 상품 찾기</h2>
-		</div>
+	<div class="mb-1 category-position">
 		
 		<c:url var="mainDigital" value="/main/list?type=1" />
 		<c:url var="mainClothes" value="/main/list?type=2" />
@@ -65,8 +74,8 @@
 		<br><br>
 	
 	
-		<div>
-			<h2>실시간 상품</h2>
+		<div style="margin-left:3rem;">
+			<h2><b>실시간 상품</b></h2>
 		</div>
 		
 		<table class="table">
