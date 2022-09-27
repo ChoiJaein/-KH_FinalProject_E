@@ -13,7 +13,6 @@ public class AccountDTO {
 	private String address3;
 	private String address4;
 	private String phone;
-	private Date birth;
 	private String admin;
 	private int visitcnt;
 	private Date registerdate;
@@ -92,13 +91,6 @@ public class AccountDTO {
 		this.phone = phone;
 	}
 
-	public Date getBirth() {
-		return birth;
-	}
-	public void setBirth(Date birth) {
-		this.birth = birth;
-	}
-
 	public String getAdmin() {
 		return admin;
 	}
@@ -130,6 +122,7 @@ public class AccountDTO {
 				+ address4 + ", phone=" + phone + ", admin=" + admin + ", visitcnt=" + visitcnt + ", registerdate="
 				+ registerdate + "]";
 	}
+
 	
 	
 	

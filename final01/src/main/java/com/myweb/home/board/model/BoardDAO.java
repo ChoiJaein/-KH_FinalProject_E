@@ -140,8 +140,14 @@ private static final Logger logger = LoggerFactory.getLogger(BoardDAO.class);
 
 		public boolean deleteData(ReviewDTO data) {
 			logger.info("data({})",data);
-			int res = sqlSession.delete("reviewMapper.deleteData", data);
+			int res = sqlSession.update("reviewMapper.deleteData", data);
 			return res == 1 ? true : false;
+		}
+
+		public boolean updateData(ReviewDTO data) {
+			logger.info("updatedata({})",data);
+			int res = sqlSession.update("reviewMapper.updateData", data);
+			return res == 1 ? true: false;
 		}
 	   
 }
