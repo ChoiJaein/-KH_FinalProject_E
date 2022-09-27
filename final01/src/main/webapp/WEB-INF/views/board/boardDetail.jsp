@@ -74,7 +74,7 @@
 				
 				<c:if test="${empty data.buyStatus} ">
 					<c:if test="${not empty loginData}">
-						<button class="btn btn-primary" style="float:right;" onclick="location.href='/pay'">바로구매</button>
+						<button class="btn btn-primary" style="float:right;" type="button" onclick="location.href='/pay'">바로구매</button>
 					</c:if>
 				<h4 style="float:right;">판매중</h4>
 				</c:if>
@@ -328,10 +328,9 @@
 	<footer><%@ include file="../module/footer.jsp" %></footer>
 	
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js">
-	
-	var puchase_btn = document.getElementById("puchase_btn");
 
-	 puchase_btn.addEventListener("click", function purchase() {
+	 $("#purchase_btn").click(function purchase() {
+		 var IMP = window.IMP;
 	 	 IMP.init('imp16851710');  // 가맹점 식별코드
 		
 		 IMP.request_pay({
@@ -366,8 +365,7 @@
 	              alert(msg);
 	          }
 	      });
-	    }
-	 , false);
+	    });
 	
 	</script>
 	<script type="text/javascript">

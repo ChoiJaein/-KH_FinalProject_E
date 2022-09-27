@@ -92,6 +92,7 @@ public class NoticeController {
 		NoticeDTO data = new NoticeDTO();
 		data.setTitle(noticeVo.getTitle());
 		data.setContent(noticeVo.getContent());
+		data.setAccId(accDto.getAccountid());
 		
 		if(accDto.getAdmin().equals("Y")) {
 			int id = service.add(data);
